@@ -1,0 +1,41 @@
+@charset "UTF-8";
+
+	body{
+		background-color: red;
+	}
+	
+	#homeInsert{
+		margin-bottom: 1.5em;
+	}
+	
+	#logoReg{
+		width: 10em;
+		margin-bottom: 1em;
+	}
+
+	#spaceup{
+		margin-top: 5em;
+	}
+	
+	#footer{
+	margin-top: 23em;
+	}
+	
+	#loginButton{
+		margin-bottom: 1.5em;
+	}
+	
+	@media(max-width: 600px){
+		#footer{
+			margin-top: 5em; 
+		}
+		
+		#logoReg{
+			margin: 0 auto;
+		}
+		
+		#contLogo{
+			text-align: center;
+			margin-bottom: 1em;
+		}
+	}

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+        <!-- Popper JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<meta charset="UTF-8">
+<title>Footer</title>
+</head>
+<body>
+
+	 </nav>
+        <!--/.Navbar-->
+            
+            
+        <!-- Footer -->
+		<footer class="page-footer font-small" style="background-color:#F90;">
+
+  		<!-- Copyright -->
+  		<div class="footer-copyright text-center py-3">&copy2020 Copyright:
+    	<a href="https://mdbootstrap.com/education/bootstrap/"> Smartbooking</a>
+  		</div>
+  		<!-- Copyright -->
+
+		</footer>
+		<!-- Footer -->
+
+
+</body>
+</html>
