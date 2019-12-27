@@ -1,0 +1,34 @@
+@charset "UTF-8";
+
+<!-- Mantenere footer in fondo alla pagina indipendentemente dal contenuto -->
+
+html,body{
+		height: 100%;
+	}
+	
+	#container{
+		min-height: 100%;
+		height: auto !important;
+    	height: 100%;
+    	margin: 0 auto -50px;
+	}
+
+	#footer{
+    	clear: both;
+    	margin-top: 22em;
+	}
+	
+<!-- -->
+
+#logoReg{
+	width: 10em;
+	margin-bottom: 1em;
+}
+	
+#carouselExampleIndicators {
+    margin-top: 3.5em;
+}
+
+#formLogin{
+	margin-top: 4em;
+}
