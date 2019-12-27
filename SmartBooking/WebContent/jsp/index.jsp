@@ -9,13 +9,13 @@
 <body>
 
 	<div id="menu">
-		<%@include file="menu.jsp" %>
+		<%@include file="../html/menu.html" %> 
 	</div>
 	
 	<div id="body">
 	
 	<table>
-	<th> Prova menu</th>
+	<th>Prova menu</th>
 		<tr>
 			<td>Ciao</td>
 		</tr>
@@ -105,7 +105,7 @@
 	
 	
 	<div id="footer">
-		<%@include file="footer.jsp" %>
+		<%@include file="../html/footer.html"%>
 	</div>
 
 </body>

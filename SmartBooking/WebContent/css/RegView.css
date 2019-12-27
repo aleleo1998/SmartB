@@ -1,7 +1,20 @@
 @charset "UTF-8";
 
-	body{
-		background-color: red;
+	html,body{
+		height: 91.2%;
+	}
+	
+	#container{
+	min-height: 100%;
+	height: auto !important;
+    height: 100%;
+    margin: 0 auto -50px;
+    margin-top: 5em;
+	}
+	
+	#footer{
+    clear: both;
+    margin-top: 0em;
 	}
 	
 	#homeInsert{
@@ -12,23 +25,13 @@
 		width: 10em;
 		margin-bottom: 1em;
 	}
-
-	#spaceup{
-		margin-top: 5em;
-	}
-	
-	#footer{
-	margin-top: 23em;
-	}
-	
-	#loginButton{
-		margin-bottom: 1.5em;
-	}
 	
 	@media(max-width: 600px){
-		#footer{
-			margin-top: 5em; 
-		}
+	
+	html, body{
+	height:100%;
+	}
+		
 		
 		#logoReg{
 			margin: 0 auto;
@@ -37,5 +40,9 @@
 		#contLogo{
 			text-align: center;
 			margin-bottom: 1em;
+		}
+		
+		#loginButton{
+		margin-bottom: 2em;
 		}
 	}
