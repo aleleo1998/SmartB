@@ -2,6 +2,6 @@ package Model;
 
 public class prova {
 	
-	private String mammadiLeopardi = "viva la mamma";
+	private String mammaDiLeopardi = "viva la mamma mamma mamma";
 
 }
