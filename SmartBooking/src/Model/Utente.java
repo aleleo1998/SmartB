@@ -7,7 +7,7 @@ package Model;
  * @author ozne2
  *
  */
-public abstract class Utente {
+public class Utente {
 	
 	
 	
