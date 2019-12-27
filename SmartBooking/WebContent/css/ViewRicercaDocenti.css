@@ -5,15 +5,10 @@ html,body{
 }
 
 #container{
-  height: auto !important;
-  min-height: 100%;
-  position: relative;
-  margin: 0 auto -60px;
-}
- 
-#footer
-{
-  height: 50px;
+	min-height: 100%;
+	height: auto !important;
+    height: 100%;
+    margin: 0 auto -50px;
 }
 
 #menu{
@@ -22,6 +17,11 @@ html,body{
 
 #table{
 	margin-top: 2em;
+}
+
+#footer{
+    clear: both;
+    margin-top: 4em;
 }
 
 #search{
