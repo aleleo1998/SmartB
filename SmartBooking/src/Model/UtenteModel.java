@@ -11,9 +11,8 @@ import DBConnection.DriverManagerConnectionPool;
 
 public class UtenteModel {
 
-private static final String TABLE_NAME_STUD = "Studente";
-private static final String TABLE_NAME_DOC = "Docente";
-private static final String TABLE_NAME_UT = "utenti";
+private static final String TABLE_NAME_STUD = "ACALE.Studente";
+private static final String TABLE_NAME_DOC = "ACALE.Docente";
 	
 	/**
 	 * 
@@ -69,39 +68,22 @@ private static final String TABLE_NAME_UT = "utenti";
 	 * @return bean docente con matricola uguale al parametro matricola
 	 * @throws SQLException
 	 */
-	public synchronized Docente doRetrieveByKey(String matricola) throws SQLException {
-		Connection connection = null;
-		PreparedStatement preparedStatement = null;
-
-		Docente bean = new Docente();
-
-		String selectSQL = "SELECT * FROM " + UtenteModel.TABLE_NAME_STUD + " WHERE matricola = ? "+ " UNION " + " SELECT * FROM "+ UtenteModel.TABLE_NAME_DOC + " WHERE matricola = ? ";
-
-
-		try {
-			connection = DriverManagerConnectionPool.getDbConnection();
-			preparedStatement = connection.prepareStatement(selectSQL);
-			preparedStatement.setString(1, matricola);
-			preparedStatement.setString(2, matricola);
-
-			ResultSet rs = preparedStatement.executeQuery();
-
-			while (rs.next()) {
-				bean.setMatricola(rs.getString("matricola"));
-				bean.setNome(rs.getString("nome"));
-				bean.setCognome(rs.getString("cognome"));
-				bean.setPassword(rs.getString("password"));
-				bean.setEmail(rs.getString("email"));
-			}
-
-		} finally {
-			try {
-				if (preparedStatement != null)
-					preparedStatement.close();
-			} finally {
-				DriverManagerConnectionPool.releaseConnection(connection);
-			}
+	public synchronized Utente doRetrieveByKey(String matricola) throws SQLException{
+		
+		StudenteModel sm = new StudenteModel();
+		DocenteModel dm = new DocenteModel();
+		SegreteriaModel segm = new SegreteriaModel();
+		
+		Utente bean = sm.doRetrieveByKey(matricola);
+		System.out.println(bean);
+		if(bean.getMatricola() == null){
+			bean = dm.doRetrieveByKey(matricola);
+			System.out.println(bean);
+		}if(bean.getMatricola() == null){
+			bean = segm.doRetrieveByKey(matricola);
+			System.out.println(bean);
 		}
+		
 		return bean;
 	}
 
@@ -159,17 +141,42 @@ private static final String TABLE_NAME_UT = "utenti";
 	public synchronized void changePassword(String nuovaPassword, Utente utente) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
-
-		String selectSQL = "UPDATE "+ UtenteModel.TABLE_NAME_UT + "SET password = ? WHERE matricola = ?";
+		
+		DocenteModel dm = new DocenteModel();
+		StudenteModel sm = new StudenteModel();
+		
+		String selectSQL = "";
+		
+		Docente d = dm.doRetrieveByKey(utente.getMatricola());
+		
+		//connection = DriverManagerConnectionPool.getDbConnection();
+		
+		
+		if(d.getMatricola() != null) {
+			selectSQL = "UPDATE Docente SET password='"+nuovaPassword+"' WHERE matricola='"+utente.getMatricola()+"';";
+		}
+		else {
+			Studente s = sm.doRetrieveByKey(utente.getMatricola());
+			
+			selectSQL = "UPDATE "+ TABLE_NAME_STUD + " SET password = ? WHERE matricola = ?;";
+		}
 		
 		try {
+			//connection = DriverManagerConnectionPool.createDBConnection();
 			connection = DriverManagerConnectionPool.getDbConnection();
 			preparedStatement = connection.prepareStatement(selectSQL);
-			preparedStatement.setString(1, nuovaPassword);
-			preparedStatement.setString(2,utente.getMatricola());
+			//preparedStatement.setString(1, nuovaPassword);
+			//preparedStatement.setString(2,utente.getMatricola());
+			
+			System.out.println(preparedStatement);
 
-			ResultSet rs = preparedStatement.executeQuery();
-
+			int a = preparedStatement.executeUpdate();
+			System.out.println(a);
+			
+			
+			connection.commit();
+			Docente u = dm.doRetrieveByKey(utente.getMatricola());
+			System.out.println("Utente modificato "+u);
 
 		} finally {
 			try {

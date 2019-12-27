@@ -98,6 +98,11 @@ public class Utente {
 	private String matricola;
 	private String password;
 	private String email;
+	@Override
+	public String toString() {
+		return "Utente [nome=" + nome + ", cognome=" + cognome + ", matricola=" + matricola + ", password=" + password
+				+ ", email=" + email + "]";
+	}
 	
 	
 

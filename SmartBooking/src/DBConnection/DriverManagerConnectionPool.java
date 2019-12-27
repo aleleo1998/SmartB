@@ -31,7 +31,7 @@ public class DriverManagerConnectionPool {
 		String username="progetto";
 		String passwd="ProgettoTSW";
 		
-		Connection newConnection = DriverManager.getConnection("jdbc:mysql://52.212.118.97:3306/"+db+"?serverTimezone=CET", username, passwd);
+		Connection newConnection = DriverManager.getConnection("jdbc:mysql://34.241.115.43:3306/"+db+"?serverTimezone=CET", username, passwd);
 				newConnection.setAutoCommit(false);
 		return newConnection;
 		
