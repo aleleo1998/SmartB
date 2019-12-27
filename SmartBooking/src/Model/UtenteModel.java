@@ -13,6 +13,7 @@ public class UtenteModel {
 
 private static final String TABLE_NAME_STUD = "Studente";
 private static final String TABLE_NAME_DOC = "Docente";
+private static final String TABLE_NAME_UT = "utenti";
 	
 	/**
 	 * 
@@ -145,5 +146,40 @@ private static final String TABLE_NAME_DOC = "Docente";
 			}
 		}
 		return utenti;
+	}
+	
+	
+	/**
+	 * 
+	 * @param nuovaPassword
+	 * @param utente
+	 * @return
+	 * @throws SQLException
+	 */
+	public synchronized void changePassword(String nuovaPassword, Utente utente) throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		String selectSQL = "UPDATE "+ UtenteModel.TABLE_NAME_UT + "SET password = ? WHERE matricola = ?";
+		
+		try {
+			connection = DriverManagerConnectionPool.getDbConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+			preparedStatement.setString(1, nuovaPassword);
+			preparedStatement.setString(2,utente.getMatricola());
+
+			ResultSet rs = preparedStatement.executeQuery();
+
+
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				DriverManagerConnectionPool.releaseConnection(connection);
+			}
+		}
+		
+	
 	}
 }
