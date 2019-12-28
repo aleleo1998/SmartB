@@ -2,6 +2,7 @@ package gestioneUtenti;
 
 import java.sql.SQLException;
 
+import Model.Studente;
 import Model.Utente;
 
 public class GestioneUtentiConcrete implements GestioneUtenti {
@@ -27,6 +28,21 @@ public class GestioneUtentiConcrete implements GestioneUtenti {
 		return false;
 	}
 	
+	
+	@Override
+	public Boolean registrazioneStudente(Studente s) {
+		try {
+			registrazione.registraStudente(s);
+			return true;
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
 	private GestionePassword password = new GestionePassword();
+	private GestioneRegistrazioneStudente registrazione = new GestioneRegistrazioneStudente();
+
+	
 
 }
