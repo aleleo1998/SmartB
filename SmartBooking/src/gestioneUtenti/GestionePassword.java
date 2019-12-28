@@ -32,12 +32,17 @@ public class GestionePassword {
 		
 		UtenteModel utente = new UtenteModel();
 		try {
-			if(utente.checkEmailInDB(email)) {
+			Utente u = utente.retrieveByEmail(email);
+			if(u != null) {
 				//mandare mail server reset?
+				
 			}
-		}catch(Exception e) {
+				
+			}
+		catch(Exception e) {
 			e.printStackTrace();
 			}
-	}
+		}
+	
 
 }

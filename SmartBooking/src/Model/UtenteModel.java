@@ -189,7 +189,7 @@ private static final String TABLE_NAME_DOC = "ACALE.Docente";
 		
 	
 	}
-	public synchronized Boolean checkEmailInDB(String email) throws SQLException{
+	public synchronized Utente retrieveByEmail(String email) throws SQLException{
 		
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -202,26 +202,38 @@ private static final String TABLE_NAME_DOC = "ACALE.Docente";
 			preparedStatement = connection.prepareStatement(selectSQLStudente);
 			preparedStatement.setString(1,email);
 			ResultSet rs = preparedStatement.executeQuery();
-			if(rs.next()) {
-				//L'email appartiene allo studente mandare tramite mail server reset
-				return true;
+			while(rs.next()) {
+				Studente bean = new Studente();
 				
-			}else {
+				bean.setMatricola(rs.getString("matricola"));
+				bean.setNome(rs.getString("nome"));
+				bean.setCognome(rs.getString("cognome"));
+				bean.setPassword(rs.getString("password"));
+				bean.setEmail(rs.getString("email"));
+				
+				return bean;
+						
+				
+			}
 				//controlliamo nei docenti
 				connection = DriverManagerConnectionPool.getDbConnection();
 				preparedStatement = connection.prepareStatement(selectSQLDocente);
 				preparedStatement.setString(1,email);
 				
 				rs = preparedStatement.executeQuery();
-				if(rs.next()) {
-					//L'email appartiene al docente
-					return true;
-				} else {
-					//email non esiste
-					return false;
-				}
+				while(rs.next()) {
+					Docente bean = new Docente();
+					
+					bean.setMatricola(rs.getString("matricola"));
+					bean.setNome(rs.getString("nome"));
+					bean.setCognome(rs.getString("cognome"));
+					bean.setPassword(rs.getString("password"));
+					bean.setEmail(rs.getString("email"));
+					
+					return bean;
+				} 
 				
-			}
+				return null;
 		} finally {
 			try {
 				if (preparedStatement != null)

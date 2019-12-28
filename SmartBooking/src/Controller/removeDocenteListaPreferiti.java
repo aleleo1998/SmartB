@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import Model.Docente;
 import Model.Studente;
@@ -34,18 +35,17 @@ public class removeDocenteListaPreferiti extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String matricolaStudente = request.getParameter("matricolaStudente");
+		HttpSession session = request.getSession();
+		
 		String matricolaDocente = request.getParameter("matricolaDocente");
 		
 		UtenteModel md = new UtenteModel();
 		
 		
-		Studente s = new Studente();
+		Studente s = (Studente) session.getAttribute("user");
 		Docente d = new Docente();
-		s = null;
 		d = null;
 		try {
-			s = (Studente) md.doRetrieveByKey(matricolaStudente);
 			d = (Docente) md.doRetrieveByKey(matricolaDocente);
 		}catch(Exception e) {
 			e.printStackTrace();
