@@ -16,6 +16,16 @@ public class GestioneUtentiConcrete implements GestioneUtenti {
 			return false;
 		}
 	}
+	@Override
+	public Boolean ripristinaPasswordEmail(String email) {
+		try {
+			password.sendResetPasswordEmail(email);
+			return true;
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		return false;
+	}
 	
 	private GestionePassword password = new GestionePassword();
 

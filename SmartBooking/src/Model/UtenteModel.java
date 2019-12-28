@@ -189,4 +189,50 @@ private static final String TABLE_NAME_DOC = "ACALE.Docente";
 		
 	
 	}
+	public synchronized Boolean checkEmailInDB(String email) throws SQLException{
+		
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		String selectSQLStudente = "SELECT * FROM" + UtenteModel.TABLE_NAME_STUD + "WHERE email = ?";
+		String selectSQLDocente = "SELECT * FROM" + UtenteModel.TABLE_NAME_DOC + "WHERE email = ?";
+		
+		try {
+			connection = DriverManagerConnectionPool.getDbConnection();
+			preparedStatement = connection.prepareStatement(selectSQLStudente);
+			preparedStatement.setString(1,email);
+			ResultSet rs = preparedStatement.executeQuery();
+			if(rs.next()) {
+				//L'email appartiene allo studente mandare tramite mail server reset
+				return true;
+				
+			}else {
+				//controlliamo nei docenti
+				connection = DriverManagerConnectionPool.getDbConnection();
+				preparedStatement = connection.prepareStatement(selectSQLDocente);
+				preparedStatement.setString(1,email);
+				
+				rs = preparedStatement.executeQuery();
+				if(rs.next()) {
+					//L'email appartiene al docente
+					return true;
+				} else {
+					//email non esiste
+					return false;
+				}
+				
+			}
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				DriverManagerConnectionPool.releaseConnection(connection);
+			}
+		}
+	}
+	
+	
+	
+	
 }
