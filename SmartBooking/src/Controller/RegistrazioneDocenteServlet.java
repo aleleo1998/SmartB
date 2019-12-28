@@ -39,8 +39,9 @@ public class RegistrazioneDocenteServlet extends HttpServlet {
 		System.out.println(matricola);
 		String password = request.getParameter("password");
 		String email = request.getParameter("email");
+		String ufficio = request.getParameter("ufficio");
 		
-		Docente doc = new Docente(nome, cognome, matricola, password, email);
+		Docente doc = new Docente(nome, cognome, matricola, password, email, ufficio);
 		System.out.println(doc.getNome());
 		gestioneUtenti.registrazioneDocente(doc);
 		

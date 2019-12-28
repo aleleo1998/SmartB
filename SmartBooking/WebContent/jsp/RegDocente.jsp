@@ -35,7 +35,7 @@
                         <div class="tab-content" id="myTabContent">
                             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                             <form name="form" action="../RegistrazioneDocenteServlet">
-                                <h3 class="register-heading" id="homeInsert">Inserisci i tuoi dati</h3>
+                                <h3 class="register-heading" id="homeInsert">Inserisci dati docente</h3>
                                 <div class="row register-form">
                                     <div class="col-md-6">
                                         <div class="form-group">
@@ -61,9 +61,14 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6">
+                                    	<div class="form-group">
+                                            <input type="text" class="form-control" name="ufficio" id="ufficio" placeholder="Ufficio *" value="" />
+                                        </div>
                                         <div class="form-group">
                                             <input type="email" name="email" id="email" class="form-control" placeholder="Email *" value="" />
                                         </div>
+                                        
+                            
                                         <div class="form-group">
                                             <input type="password" class="form-control" name="password" id="password" placeholder="Password *" value="" />
                                         </div>
