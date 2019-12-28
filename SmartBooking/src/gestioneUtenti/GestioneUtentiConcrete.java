@@ -27,6 +27,19 @@ public class GestioneUtentiConcrete implements GestioneUtenti {
 		return false;
 	}
 	
+	@Override
+	public Boolean ripristinaPassword(Utente u , String nuovaPassword){
+		
+		try {
+			password.changePassword(u,nuovaPassword);
+			return true;
+			}catch(Exception e) {
+				e.printStackTrace();
+				return false;
+			}
+		
+	}
+	
 	private GestionePassword password = new GestionePassword();
 
 }

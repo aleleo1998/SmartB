@@ -4,6 +4,7 @@ import java.sql.SQLException;
 
 import Model.Utente;
 import Model.UtenteModel;
+import encryption.EncryptionUtils;
 
 
 public class GestionePassword {
@@ -26,6 +27,15 @@ public class GestionePassword {
 			utente.changePassword(nuovaPassword,u);
 		}
 	}
+	
+	public void changePassword(Utente u,String nuovaPassword) throws SQLException {
+		
+		System.out.println("Passwordddd: "+u.getPassword());
+			UtenteModel utente = new UtenteModel();
+			
+			utente.changePassword(nuovaPassword,u);
+		
+	}
 
 	public void sendResetPasswordEmail(String email) {
 		// TODO AutR-generated method stub
@@ -34,7 +44,11 @@ public class GestionePassword {
 		try {
 			Utente u = utente.retrieveByEmail(email);
 			if(u != null) {
-				//mandare mail server reset?
+				String matCriptata = EncryptionUtils.encryptMatricola(u.getMatricola());
+				String url = "http://localhost:8080/SmartBooking/jsp/CambioRipristinoPassword.jsp?mat="+matCriptata;
+				System.out.println(url);
+				
+				//Invio email
 				
 			}
 				
