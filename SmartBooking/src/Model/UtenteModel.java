@@ -189,6 +189,11 @@ private static final String TABLE_NAME_DOC = "ACALE.Docente";
 		
 	
 	}
+	/**
+	 * @param email
+	 * @return
+	 * @throws SQLException
+	 */
 	public synchronized Utente retrieveByEmail(String email) throws SQLException{
 		
 		Connection connection = null;
