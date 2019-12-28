@@ -15,7 +15,10 @@
 <link rel="stylesheet" href="../css/CambioPassword.css">
 
 </head>
+
 <body>
+
+<% String matCriptata = request.getParameter("mat"); %>
 
 <div id="menu">
 	<%@include file="../html/menu.html"%>
@@ -25,11 +28,11 @@
 
 
 <div id="form">
-<form action="../CambioPasswordServlet">
+<form action="../CambioRipristinoPasswordServlet" method="POST">
   <div class="form-group row">
     <label for="inputPassword3" class="col-sm-2 col-form-label">Nuova password</label>
     <div class="col-sm-10">
-      <input type="password" class="form-control" name="nuovaPassword" id="inputPassword3" placeholder="Inserisci la nuova password">
+      <input type="password" class="form-control" name="password" id="inputPassword3" placeholder="Inserisci la nuova password">
     </div>
   </div>
   <div class="form-group row">
@@ -39,6 +42,7 @@
     </div>
   </div>
   <div class="form-group row">
+   <input type="hidden" name="matricola"  value=<%= matCriptata %> />
     <div class="col-sm-10">
       <button type="submit" class="btn btn-primary">Modifica password</button>
     </div>

@@ -28,8 +28,20 @@ public class GestioneUtentiConcrete implements GestioneUtenti {
 		return false;
 	}
 	
+	@Override
+	public Boolean ripristinaPassword(Utente u , String nuovaPassword){
+		
+		try {
+			password.changePassword(u,nuovaPassword);
+			return true;
+			}catch(Exception e) {
+				e.printStackTrace();
+				return false;
+			}
+	}
+
 	/**
-	 * Registrazione docente (segreteria può aggiungere un nuovo docente)
+	 * Registrazione docente (segreteria puï¿½ aggiungere un nuovo docente)
 	 */
 	@Override
 	public Boolean registrazioneDocente(Docente doc) {
