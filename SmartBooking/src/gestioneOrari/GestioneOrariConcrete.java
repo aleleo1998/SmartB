@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import Model.DisponibilitaModel;
 import Model.Docente;
+import Model.RichiestaModOrario;
 
 /**
  * @author ozne2
@@ -24,8 +25,17 @@ public class GestioneOrariConcrete implements GestioneOrari {
 		orariDocControl.aggiungiFirstOrario( mDocente, giorni, orariInizio, orariFine);
 	}
 	
-	
-	
+	@Override
+	public void inoltraRichiesta(RichiestaModOrario richiesta) throws SQLException {
+		// TODO Auto-generated method stub
+		
+		orariDocControl.creaRichiestaModificaOrario(richiesta);
+		
+	}
+
+
+
+
 	private OrariDocControl orariDocControl;
 	
 

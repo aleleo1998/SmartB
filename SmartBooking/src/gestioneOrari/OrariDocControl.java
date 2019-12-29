@@ -4,6 +4,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import Model.DisponibilitaModel;
+import Model.RichiestaModOrario;
+import Model.RichiestaModOrarioModel;
 
 public class OrariDocControl {
 	
@@ -25,6 +27,13 @@ public class OrariDocControl {
 			disponibilitaModel.aggiungiOrario(mDocente, giorni.get(i), orariInizio.get(i), orariFine.get(i));
 			
 		}
+		
+	}
+	public void creaRichiestaModificaOrario(RichiestaModOrario richiesta) throws SQLException {
+		RichiestaModOrarioModel  model = new RichiestaModOrarioModel();
+		
+		model.doSave(richiesta);
+		
 		
 	}
 
