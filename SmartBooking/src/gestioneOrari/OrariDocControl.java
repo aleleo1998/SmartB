@@ -19,6 +19,8 @@ public class OrariDocControl {
 		
 		for(i= 0; i<giorni.size();i++){
 			
+			System.out.println("Il for è eseguito: "+i);
+			
 			
 			disponibilitaModel.aggiungiOrario(mDocente, giorni.get(i), orariInizio.get(i), orariFine.get(i));
 			
