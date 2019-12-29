@@ -1,9 +1,12 @@
 package Model;
 
 import java.sql.Connection;
+import java.util.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.LinkedList;
 
@@ -215,6 +218,36 @@ private static final String TABLE_NAME = "Disponibilità";
 		}
 		return listaDisponibilita;
 	}
-
+	
+	@SuppressWarnings("deprecation")
+	public synchronized void aggiungiOrario(String mDocente, String giorno,String orarioInizio, String orarioFine) throws SQLException {
+			Disponibilita d = new Disponibilita();
+		 	int mintoset = 0;
+	        DateFormat sdf = new SimpleDateFormat("hh:mm");
+	        
+	        try{    
+	                Date datefine = (Date) sdf.parse(orarioFine);
+	            	Date date = (Date) sdf.parse(orarioInizio);
+	            	while(date.compareTo(datefine) <= 0){
+	            	   
+	            	     System.out.println(date.getHours()+":"+date.getMinutes());
+	            	     	d.setGiorno(giorno);
+	            			d.setOra(sdf.format(date.getHours()));
+	            			d.setMatricolaDocente(mDocente);
+	            			doSave(d);
+	            	     mintoset += 15;
+	            	     if(mintoset % 60 == 0){
+	            	         mintoset = 0;
+	            	         date.setHours(date.getHours()+1);
+	            	     }
+	            	     date.setMinutes(mintoset);
+	            	}
+			       
+	        }catch(Exception e){
+	            System.out.println("Hello Java");
+	            e.printStackTrace();
+	        }
+		
+	    }
 }
 
