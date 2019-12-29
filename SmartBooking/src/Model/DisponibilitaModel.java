@@ -234,7 +234,7 @@ private static final String TABLE_NAME = "Disponibilità ";
 	            	     System.out.println(date.getHours()+":"+date.getMinutes());
 	            	     	d.setGiorno(giorno);
 	            			d.setOra(date.getHours()+":"+date.getMinutes());
-	            			d.setMatricolaDocente(mDocente);
+	            			d.setMatricolaDocente(mDocente); 
 	            			doSave(d);
 	            	     mintoset += 15;
 	            	     if(mintoset % 60 == 0){
