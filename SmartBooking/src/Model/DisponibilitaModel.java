@@ -23,7 +23,7 @@ import DBConnection.DriverManagerConnectionPool;
  */
 public class DisponibilitaModel {
 	
-private static final String TABLE_NAME = "Disponibilità";
+private static final String TABLE_NAME = "Disponibilit�";
 	
 	/**
 	 * @param Disponibilita
@@ -229,7 +229,8 @@ private static final String TABLE_NAME = "Disponibilità";
 	                Date datefine = (Date) sdf.parse(orarioFine);
 	            	Date date = (Date) sdf.parse(orarioInizio);
 	            	while(date.compareTo(datefine) <= 0){
-	            	   
+	            		
+	            		System.out.println(date.compareTo(datefine));
 	            	     System.out.println(date.getHours()+":"+date.getMinutes());
 	            	     	d.setGiorno(giorno);
 	            			d.setOra(sdf.format(date.getHours()));
