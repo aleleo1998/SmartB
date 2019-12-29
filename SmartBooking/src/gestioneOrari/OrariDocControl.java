@@ -19,6 +19,7 @@ public class OrariDocControl {
 		
 		for(i= 0; i<giorni.size();i++){
 			
+			
 			disponibilitaModel.aggiungiOrario(mDocente, giorni.get(i), orariInizio.get(i), orariFine.get(i));
 			
 		}

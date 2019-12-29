@@ -1,7 +1,7 @@
 package Model;
 
 import java.sql.Connection;
-import java.sql.Date;
+import java.util.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -220,7 +220,7 @@ private static final String TABLE_NAME = "Disponibilità";
 	}
 	
 	@SuppressWarnings("deprecation")
-	public synchronized void aggiungiOrario(String mDocente,String orarioInizio, String orarioFine, String giorno) throws SQLException {
+	public synchronized void aggiungiOrario(String mDocente, String giorno,String orarioInizio, String orarioFine) throws SQLException {
 			Disponibilita d = new Disponibilita();
 		 	int mintoset = 0;
 	        DateFormat sdf = new SimpleDateFormat("hh:mm");

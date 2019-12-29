@@ -1,7 +1,10 @@
 package Controller;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Enumeration;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -38,28 +41,6 @@ public class AggiungiOrarioServlet extends HttpServlet {
 		
 		
 		
-		ArrayList<String> giorni = new ArrayList<String>();
-		ArrayList<String> orariInizio = new ArrayList<String>();
-		ArrayList<String> orariFine = new ArrayList<String>();
-		
-		String  num = request.getParameter("numOrari");
-		
-		int numOrari = Integer.parseInt(num);
-		
-		int i = 1;
-		
-		for(i = 1; i<=numOrari; i++);{
-			
-			giorni.add(request.getParameter("giorno"+i));
-			orariInizio.add(request.getParameter("oraInizio"+i));
-			orariFine.add(request.getParameter("oraFine"+i));
-			
-		}
-		
-		gestioneOrari.aggiungiFirstOrario("123",giorni,orariInizio,orariFine);
-		
-		
-		
 		
 		
 	}
@@ -68,8 +49,45 @@ public class AggiungiOrarioServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+Enumeration<String> params = request.getParameterNames();
+		
+		ArrayList<String> okok = Collections.list(params);
+		
+		for(String s : okok) {
+			
+			System.out.println(s);
+		}
+		
+		
+		
+		
+		ArrayList<String> giorni = new ArrayList<String>();
+		ArrayList<String> orariInizio = new ArrayList<String>();
+		ArrayList<String> orariFine = new ArrayList<String>();
+		
+		String  num = request.getParameter("numOrari");
+		
+		System.out.println(num);
+		
+		int numOrari = Integer.parseInt(num);
+		
+		for(int i = 1 ; i<=numOrari; i++){
+			
+			System.out.println("giorno: "+request.getParameter("giorno"+i));
+			
+			giorni.add(request.getParameter("giorno"+i));
+			orariInizio.add(request.getParameter("oraInizio"+i));
+			orariFine.add(request.getParameter("oraFine"+i));
+			
+		}
+		
+		try {
+			gestioneOrari.aggiungiFirstOrario("123",giorni,orariInizio,orariFine);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 
 }
