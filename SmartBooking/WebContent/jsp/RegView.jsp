@@ -75,7 +75,7 @@
                                             <input type="text" class="form-control" id="confermaPassword" name="confermaPassword" placeholder="Conferma password *" value="" />
                                         </div>
                                         
-                                        <input type="submit" class="btnRegister" id="buttonRegistrazione" value="Registrati"/>
+                                        <p id="buttonRegistrazione"> Registrati <p/>
                                     </div>
                                 </div>
                                 </form>

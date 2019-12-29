@@ -7,15 +7,15 @@ $(document).ready(function(){
 	
 	
 	$("#footer").click(function(){
-		/*
+		
 		alert("checkNome: "+checkNome());
 		alert("checkCognome: "+checkCognome());
 		alert("checkMatricola: "+checkMatricola());
 		alert("checkPassword: "+checkPassword());
 		alert("checkConfermaPassword: "+checkConfermaPassword());
 		alert("checkMail: "+checkMail());
-		*/
 		
+		/*
 			if(checkNome()==1 && checkCognome()==1 && checkMatricola()==1 && 
 					checkPassword()==1 && checkConfermaPassword()==1 && checkMail()==1){
 				alert("valori ok");
@@ -24,7 +24,7 @@ $(document).ready(function(){
 			else{
 				alert("Errore. non è possibile effettuare il submit");
 			}
-		
+		*/
 
 	});
 	
@@ -70,7 +70,6 @@ function checkMatricola(){
 }
 
 function checkMail(){
-	var flag = 0;
 	var email = $("#email").val();    //ottengo valore campo email
 	var expr = /^\w+([\.-]?\w+)*@studenti[.]{1}unisa[.]{1}it$/;
 	if(email.length < 20 || email.length > 50){
@@ -82,24 +81,24 @@ function checkMail(){
 		$.ajax({            //AJAX CON JQUERY
 			type : 'Post',   //TIPO DI CHIAMATA
 			data : {email : email},  //COPPIE NOME-VALORE DA PASSARE ALLA SERVLET
+			async: false,
 			url : '../CheckMailServlet',  //SERVLET DA RICHIAMARE IN MANIERA ASINCRONA
 			success : function resultServelt(result) {  //FUNZIONE DA ESEGUIRE IN CASO DI SUCCESSO
-				alert(result);
+				alert("ajax--> valore restituito dalla servlet CheckMailServlet: "+result);
 				if(result == "0"){
-					alert("Indirizzo email già esistente nel DB");
-					flag = 0;
-				}else {
-					alert("L'indirizzo email non esiste nel DB");
-					flag = 1;
+					alert("result == 0. Indirizzo email già esistente nel DB");
+					return 0;
+				}else if(result == "1"){
+					alert("result == 1. L'indirizzo email non esiste nel DB");
+					return 1;
+				}else{
+					alert("Errore.");
+					return 0;
 				}
 			}
 			
 		}); /*fine ajax*/
 	}
-	
-	alert("return flag: "+flag);
-	
-	return flag;
 }
 
 function checkPassword(){

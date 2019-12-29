@@ -23,7 +23,7 @@ public class DocenteModel {
 		PreparedStatement preparedStatement = null;
 
 		String insertSQL = "INSERT INTO " + DocenteModel.TABLE_NAME
-				+ " (matricola, nome, cognome, password, email) VALUES (?, ?, ?, ?, ?)";
+				+ " (matricola, nome, cognome, password, email, ufficio) VALUES (?, ?, ?, ?, ?, ?)";
 
 		try {
 			connection = DriverManagerConnectionPool.getDbConnection();
@@ -33,6 +33,7 @@ public class DocenteModel {
 			preparedStatement.setString(3, docente.getCognome());
 			preparedStatement.setString(4, docente.getPassword());
 			preparedStatement.setString(5, docente.getEmail());
+			preparedStatement.setString(6, docente.getUfficio());
 
 			preparedStatement.executeUpdate();
 
@@ -155,6 +156,7 @@ public class DocenteModel {
 				bean.setCognome(rs.getString("cognome"));
 				bean.setPassword(rs.getString("password"));
 				bean.setEmail(rs.getString("email"));
+				bean.setUfficio(rs.getString("ufficio"));
 			}
 
 		} finally {
@@ -198,6 +200,7 @@ public class DocenteModel {
 				bean.setCognome(rs.getString("cognome"));
 				bean.setPassword(rs.getString("password"));
 				bean.setEmail(rs.getString("email"));
+				bean.setUfficio(rs.getString("ufficio"));
 			
 				
 				docenti.add(bean);

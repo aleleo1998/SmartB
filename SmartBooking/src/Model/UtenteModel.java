@@ -189,13 +189,18 @@ private static final String TABLE_NAME_DOC = "ACALE.Docente";
 		
 	
 	}
+	/**
+	 * @param email
+	 * @return
+	 * @throws SQLException
+	 */
 	public synchronized Utente retrieveByEmail(String email) throws SQLException{
 		
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
-		String selectSQLStudente = "SELECT * FROM" + UtenteModel.TABLE_NAME_STUD + "WHERE email = ?";
-		String selectSQLDocente = "SELECT * FROM" + UtenteModel.TABLE_NAME_DOC + "WHERE email = ?";
+		String selectSQLStudente = "SELECT * FROM " + UtenteModel.TABLE_NAME_STUD + " WHERE email = ?";
+		String selectSQLDocente = "SELECT * FROM " + UtenteModel.TABLE_NAME_DOC + " WHERE email = ?";
 		
 		try {
 			connection = DriverManagerConnectionPool.getDbConnection();
