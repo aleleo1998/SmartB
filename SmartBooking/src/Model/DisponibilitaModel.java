@@ -220,7 +220,7 @@ private static final String TABLE_NAME = "Disponibilità";
 	}
 	
 	@SuppressWarnings("deprecation")
-	public synchronized void aggiungiOrario(String mDocente,String orarioInizio, String orarioFine, String giorno) throws SQLException {
+	public synchronized void aggiungiOrario(String mDocente, String giorno,String orarioInizio, String orarioFine) throws SQLException {
 			Disponibilita d = new Disponibilita();
 		 	int mintoset = 0;
 	        DateFormat sdf = new SimpleDateFormat("hh:mm");

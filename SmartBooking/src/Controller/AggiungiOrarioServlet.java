@@ -3,6 +3,8 @@ package Controller;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Enumeration;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -36,6 +38,22 @@ public class AggiungiOrarioServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+	
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+Enumeration<String> params = request.getParameterNames();
+		
+		ArrayList<String> okok = Collections.list(params);
+		
+		for(String s : okok) {
+			
+			System.out.println(s);
+		}
+		
 		
 		
 		
@@ -45,11 +63,13 @@ public class AggiungiOrarioServlet extends HttpServlet {
 		
 		String  num = request.getParameter("numOrari");
 		
+		System.out.println(num);
+		
 		int numOrari = Integer.parseInt(num);
 		
-		int i = 1;
-		
-		for(i = 1; i<=numOrari; i++);{
+		for(int i = 1 ; i<=numOrari; i++){
+			
+			System.out.println("giorno: "+request.getParameter("giorno"+i));
 			
 			giorni.add(request.getParameter("giorno"+i));
 			orariInizio.add(request.getParameter("oraInizio"+i));
@@ -64,18 +84,6 @@ public class AggiungiOrarioServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		
-		
-		
-		
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
 	}
 
 }

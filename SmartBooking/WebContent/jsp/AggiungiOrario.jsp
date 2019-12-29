@@ -108,7 +108,7 @@ function showForm(){
 	
 	}
 	
-	$( "#aggOrario" ).append('<input type="hidden" nome="numOrari" value="'+num+'" >'+
+	$( "#aggOrario" ).append('<input type="hidden" name="numOrari" value="'+num+'" />'+
 			'<div class="form-group row">'+
 			'	<div class="col-sm-10">'+
 			'	<button type="submit" class="btn btn-primary">Aggiungi orario</button>'+
@@ -135,7 +135,7 @@ function showForm(){
 	<div class="form-group row">
     <label for="inputEmail3" class="col-sm-2 col-form-label">Quanti orari vuoi aggiungere?</label>
     <div class="col-sm-10">
-      <input type="number" class="form-control" id="numOrari" min="1" max="5" >
+      <input type="number" class="form-control" id="numOrari" min="1" max="5" />
     </div>
   </div>
   
@@ -146,15 +146,13 @@ function showForm(){
 
 
 <div id="form" style="display: none">
-<form action="../AggiungiOrarioServlet" id="aggOrario">
+<form action="../AggiungiOrarioServlet" id="aggOrario" method="POST">
   
 </form>
 </div>
 
 </div>
 
-
-</div>
 
 <div id="footer">
 	<%@include file="../html/footer.html"%>
