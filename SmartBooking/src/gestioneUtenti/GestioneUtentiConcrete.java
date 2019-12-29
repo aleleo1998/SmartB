@@ -54,6 +54,21 @@ public class GestioneUtentiConcrete implements GestioneUtenti {
 		return false;
 	}
 	
+	/**
+	 * Rimuovi Docente (La segreteria può rimuovere un docente)
+	 */
+	@Override
+	public Boolean rimuoviDocente(Docente doc) {
+		try {
+			docente.rimuoviDocente(doc);
+			return true;
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
+	
 	private GestionePassword password = new GestionePassword();
 	private GestioneDocente docente = new GestioneDocente();
 }

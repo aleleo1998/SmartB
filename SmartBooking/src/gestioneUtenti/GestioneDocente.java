@@ -14,4 +14,10 @@ public class GestioneDocente {
 		docModel.doSave(d);	
 	}
 
+	public void rimuoviDocente(Docente d) throws SQLException {
+		DocenteModel docModel = new DocenteModel();
+		docModel.doDelete(d.getMatricola());
+	}
+	
+	
 }
