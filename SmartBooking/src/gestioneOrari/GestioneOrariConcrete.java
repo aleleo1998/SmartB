@@ -3,6 +3,7 @@
  */
 package gestioneOrari;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import Model.DisponibilitaModel;
@@ -14,14 +15,18 @@ import Model.Docente;
  */
 public class GestioneOrariConcrete implements GestioneOrari {
 	
-	public void aggiungiFirstOrario(String mDocente,ArrayList<String> giorni,ArrayList<String> orariInizio, ArrayList<String> orariFine) {
+	public GestioneOrariConcrete(){
+		orariDocControl = new OrariDocControl();
+	}
 	
-		OrariDocControl.aggiungiFirstOrario(String mDocente,ArrayList<String> giorni,ArrayList<String> orariInizio, ArrayList<String> orariFine);
+	public void aggiungiFirstOrario(String mDocente,ArrayList<String> giorni,ArrayList<String> orariInizio, ArrayList<String> orariFine) throws SQLException {
+	
+		orariDocControl.aggiungiFirstOrario( mDocente, giorni, orariInizio, orariFine);
 	}
 	
 	
 	
-	private OrariDocControl = new OrariDocControl();
+	private OrariDocControl orariDocControl;
 	
 
 }

@@ -3,6 +3,7 @@
  */
 package gestioneOrari;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import Model.Docente;
@@ -13,7 +14,7 @@ import Model.Docente;
  */
 public interface GestioneOrari {
 	
-	public void aggiungiFirstOrario(String d,ArrayList<String> giorni,ArrayList<String> orariInizio, ArrayList<String> orariFine);
+	public void aggiungiFirstOrario(String d,ArrayList<String> giorni,ArrayList<String> orariInizio, ArrayList<String> orariFine) throws SQLException;
 	
 
 }
