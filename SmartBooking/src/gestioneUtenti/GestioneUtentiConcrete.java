@@ -2,6 +2,10 @@ package gestioneUtenti;
 
 import java.sql.SQLException;
 
+/**
+ * GestioneUtentiConrete è una classe che implementa i metodi dell'interfaccia GestioneUtenti
+ */
+
 import Model.Studente;
 import Model.Docente;
 import Model.Utente;
@@ -28,6 +32,11 @@ public class GestioneUtentiConcrete implements GestioneUtenti {
 			}
 		return false;
 	}
+	
+	/**
+	 * Il metodo registrazioneStudente(Studente s) si occupa di invocare un metodo tramite il quale lo studente verrà memorizzato in maniera persistente nel database.
+	 * @param Studente s
+	 */
 	
 	@Override
 	public Boolean registrazioneStudente(Studente s) {
@@ -66,8 +75,26 @@ public class GestioneUtentiConcrete implements GestioneUtenti {
 		return false;
 	}
 	
+	/**
+	 * Il metodo loginUtente controlla l'accesso verificando se nel database esiste una corrispondenza email/password in una delle tabelle tra Docente,Studente e Segreteria.
+	 * @param email 
+	 * @param password
+	 * @return Utente u
+	 */
+	
+	@Override
+	public Utente loginUtente(String email,String password) {
+		try {
+			return login.controlloAccesso(email, password);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
 	
 	private GestionePassword password = new GestionePassword();
 	private GestioneRegistrazioneStudente registrazione = new GestioneRegistrazioneStudente();
 	private GestioneDocente docente = new GestioneDocente();
+	private GestioneLoginUtenti login = new GestioneLoginUtenti();
 }
