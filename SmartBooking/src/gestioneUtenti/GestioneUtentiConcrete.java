@@ -63,6 +63,8 @@ public class GestioneUtentiConcrete implements GestioneUtenti {
 
 	/**
 	 * Registrazione docente (segreteria puo aggiungere un nuovo docente)
+	 * @param Docente doc docente da inserire 
+	 * @return true se è stata invocata correttamente registrazioneDocente(doc), false altrimenti
 	 */
 	@Override
 	public Boolean registrazioneDocente(Docente doc) {
@@ -77,6 +79,8 @@ public class GestioneUtentiConcrete implements GestioneUtenti {
 	
 	/**
 	 * Rimuovi Docente (La segreteria può rimuovere un docente)
+	 * @param String matricola del docente da rimuovere
+	 * @return true se è stata invocata correttamete rimuoviDocente(matricola), false altrimenti
 	 */
 	@Override
 	public Boolean rimuoviDocente(String matricola) {

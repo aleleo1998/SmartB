@@ -32,9 +32,10 @@ public class EmailUtility {
 	 * @throws AddressException
 	 * @throws MessagingException
 	 */
-	public static void sendEmail(String host, String port,
-			final String userName, final String password, String toAddress,
-			String subject, String message, String nome, String emailMitt) throws AddressException, MessagingException {
+	public void sendEmail(String host, String port, final String userName, final String password, 
+			String emailMittente, String emailDestinatario, String nome, String cognome, String subject, String content)
+			//String toAddress,String subject, String message, String nome, String emailMitt) 
+	throws AddressException, MessagingException {
 
 		// setta le proprietà del server smtp
 		Properties properties = new Properties();
@@ -51,25 +52,30 @@ public class EmailUtility {
 		};
 
 		
-//		Session session = Session.getInstance(properties);
 	    Session session = Session.getInstance(properties, auth);
 
 		// crea un nuovo messaggio email
 		Message msg = new MimeMessage(session);
 
 		msg.setFrom(new InternetAddress(userName)); //setta il mittente dell'email (userName=email mitt (sitoweb))
-		InternetAddress[] toAddresses = { new InternetAddress(toAddress) }; //crea email dei destinatari 
+		InternetAddress[] toAddresses = { new InternetAddress(emailDestinatario) }; //Destinatario email 
 		msg.setRecipients(Message.RecipientType.TO, toAddresses);  //setta i destinatari
 		msg.setSubject(subject); //imposta oggetto del messaggio
 		msg.setSentDate(new Date()); //imposta data di invio alla data attuale
 		
 		//Crea contenuto messaggio da inviare
-		String indexMitt="EMAIL MITTENTE : ";
-		String indexNome="NOME UTENTE : ";
-		String indexOggetto="OGGETTO : ";
-		String indexMex="MESSAGGIO : ";
-		String mex= indexMitt + emailMitt + "\n" + indexNome + nome +"\n"+ indexOggetto + subject +"\n"+ indexMex + message;
+		String indexEmail="Gentile "+emailDestinatario+" hai ricevuto una nuova mail attraverso il sistema SmartBooking, di seguito tutte le info:";
+		String indexMitt="EMAIL MITTENTE: "+emailMittente;
+		String indexNome="NOME: "+nome;
+		String indexCognome="COGNOME: "+cognome;
+		String indexOggetto="OGGETTO : "+subject;
+		String indexMex="MESSAGGIO : "+content;
+		
+		String mex= indexEmail +"\n"+ indexMitt + "\n"+ indexNome + " " + indexCognome+ "\n" + indexOggetto +"\n\n"+indexMex;
+				
 		System.out.println(mex);
+		
+		
 		
 		msg.setText(mex); //imposta il contenuto del messaggio
 		
