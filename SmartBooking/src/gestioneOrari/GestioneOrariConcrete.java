@@ -7,6 +7,8 @@ package gestioneOrari;
  * @author ozne2
  *
  */
-public class GestioneOrariConcrete {
+public class GestioneOrariConcrete implements GestioneOrari {
+	
+	
 
 }
