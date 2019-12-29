@@ -1,6 +1,7 @@
 package Controller;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -56,7 +57,12 @@ public class AggiungiOrarioServlet extends HttpServlet {
 			
 		}
 		
-		gestioneOrari.aggiungiFirstOrario("123",giorni,orariInizio,orariFine);
+		try {
+			gestioneOrari.aggiungiFirstOrario("123",giorni,orariInizio,orariFine);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		
 		
