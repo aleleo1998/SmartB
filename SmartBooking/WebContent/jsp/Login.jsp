@@ -27,15 +27,15 @@
                 <img src="../image/logo.png" id="logoReg" alt=""/>
             </div>
 		    <h2>Login now</h2>
-		    <form class="login-form">
+		    <form class="login-form" action="../LoginServlet">
  				 <div class="form-group">
-    				<label for="exampleInputEmail1" class="text">Username</label>
-    					<input type="text" class="form-control" placeholder="">
+    				<label for="exampleInputEmail1" class="text">Email</label>
+    					<input type="text" name="email" class="form-control" placeholder="">
     			</div>
   
   				<div class="form-group">
     				<label for="exampleInputPassword1" class="text">Password</label>
-    					<input type="password" class="form-control" placeholder="">
+    					<input type="password" name="password" class="form-control" placeholder="">
   				</div>
   
   			    <div class="form-check">

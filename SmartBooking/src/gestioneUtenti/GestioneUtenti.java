@@ -2,6 +2,10 @@ package gestioneUtenti;
 
 import java.sql.SQLException;
 
+/**
+ * Interfaccia per il sottosistema GestioneUtenti.
+ */
+
 import Model.Studente;
 import Model.Docente;
 import Model.Utente;
@@ -13,5 +17,6 @@ public interface GestioneUtenti {
 	public Boolean registrazioneStudente(Studente studente);
 	public Boolean ripristinaPassword(Utente u , String nuovaPassword);
 	public Boolean registrazioneDocente(Docente d);
+	public Utente loginUtente(String email,String password);
 	
 }
