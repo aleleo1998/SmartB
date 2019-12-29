@@ -7,6 +7,10 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
+<!--  JAVASCRIPT -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="../javascript/RegView.js" type="text/javascript"></script>
+
 <link rel="stylesheet" href="../css/RegView.css">
 
 <!------ Include the above in your HEAD tag ---------->
@@ -34,7 +38,7 @@
                     <div class="col-md-9 register-right">
                         <div class="tab-content" id="myTabContent">
                             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                            <form name="form" action="ProvaServlet">
+                            <form name="form" id="form" action="../RegistrazioneStudenteServlet">
                                 <h3 class="register-heading" id="homeInsert">Inserisci i tuoi dati</h3>
                                 <div class="row register-form">
                                     <div class="col-md-6">
@@ -42,10 +46,10 @@
                                             <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome *" value="" />
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" class="form-control" id="cognome" placeholder="Cognome *" value="" />
+                                            <input type="text" class="form-control" name="cognome" id="cognome" placeholder="Cognome *" value="" />
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control" id="matricola" placeholder="Matricola *" value="" />
+                                            <input type="password" class="form-control" name="matricola" id="matricola" placeholder="Matricola *" value="" />
                                         </div>
                                         <div class="form-group">
                                             <div class="maxl">
@@ -62,16 +66,16 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <input type="email" id="email" class="form-control" placeholder="Email *" value="" />
+                                            <input type="email" name="email" id="email" class="form-control" placeholder="Email *" value="" />
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" class="form-control" id="password" placeholder="Password *" value="" />
+                                            <input type="text" class="form-control" name="password" id="password" placeholder="Password *" value="" />
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" class="form-control" id="confermaPassword" placeholder="Conferma password *" value="" />
+                                            <input type="text" class="form-control" id="confermaPassword" name="confermaPassword" placeholder="Conferma password *" value="" />
                                         </div>
                                         
-                                        <input type="submit" class="btnRegister"  value="Registrati"/>
+                                        <p id="buttonRegistrazione"> Registrati <p/>
                                     </div>
                                 </div>
                                 </form>
