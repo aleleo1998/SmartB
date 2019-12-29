@@ -208,5 +208,45 @@ private static final String TABLE_NAME = "Studente";
 		}
 		return utenti;
 	}
+	
+	public synchronized Boolean existIntoDB(String email) throws Exception{
+		
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		Studente bean = new Studente();
+
+		String selectSQL = "SELECT * FROM " + StudenteModel.TABLE_NAME + " WHERE email = ?";
+
+		try {
+			connection = DriverManagerConnectionPool.getDbConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+			preparedStatement.setString(1, email);
+
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) {
+				bean.setMatricola("matricola");
+				bean.setNome(rs.getString("nome"));
+				bean.setCognome(rs.getString("cognome"));
+				bean.setEmail(rs.getString("email"));
+				bean.setPassword(rs.getString("password"));
+			}
+
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				DriverManagerConnectionPool.releaseConnection(connection);
+			}
+		}
+		
+		
+		if(bean.getEmail()==null)
+			return false;
+		else
+			return true;
+	}
 
 }

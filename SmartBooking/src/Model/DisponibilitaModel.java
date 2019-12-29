@@ -1,9 +1,12 @@
 package Model;
 
 import java.sql.Connection;
+import java.util.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.LinkedList;
 
@@ -20,7 +23,7 @@ import DBConnection.DriverManagerConnectionPool;
  */
 public class DisponibilitaModel {
 	
-private static final String TABLE_NAME = "Disponibilità";
+private static final String TABLE_NAME = "Disponibilit�";
 	
 	/**
 	 * @param Disponibilita
@@ -132,16 +135,17 @@ private static final String TABLE_NAME = "Disponibilità";
 	}
 	
 	
-	/**
+	/**usato anche per la segreteria!
 	 * @param matricola_docente
 	 * @return
 	 * @throws SQLException
 	 */
-	public synchronized Disponibilita doRetrieveByKey(String matricola_docente) throws SQLException {
+	public synchronized Collection<Disponibilita> doRetrieveByKey(String matricola_docente) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
-		Disponibilita bean = new Disponibilita();
+		Collection<Disponibilita> listaOrari = new LinkedList<Disponibilita>();
+		
 
 		String selectSQL = "SELECT * FROM " + DisponibilitaModel.TABLE_NAME + " WHERE matricola_docente = ?";
 
@@ -153,9 +157,13 @@ private static final String TABLE_NAME = "Disponibilità";
 			ResultSet rs = preparedStatement.executeQuery();
 
 			while (rs.next()) {
+				Disponibilita bean = new Disponibilita();
+				
 				bean.setGiorno(rs.getString("giorno"));
 				bean.setOra(rs.getString("ora"));
 				bean.setMatricolaDocente("matricola_docente");
+				
+				listaOrari.add(bean);
 			}
 
 		} finally {
@@ -166,7 +174,7 @@ private static final String TABLE_NAME = "Disponibilità";
 				DriverManagerConnectionPool.releaseConnection(connection);
 			}
 		}
-		return bean;
+		return listaOrari;
 	}
 
 	
@@ -210,6 +218,37 @@ private static final String TABLE_NAME = "Disponibilità";
 		}
 		return listaDisponibilita;
 	}
-
+	
+	@SuppressWarnings("deprecation")
+	public synchronized void aggiungiOrario(String mDocente, String giorno,String orarioInizio, String orarioFine) throws SQLException {
+			Disponibilita d = new Disponibilita();
+		 	int mintoset = 0;
+	        DateFormat sdf = new SimpleDateFormat("hh:mm");
+	        
+	        try{    
+	                Date datefine = (Date) sdf.parse(orarioFine);
+	            	Date date = (Date) sdf.parse(orarioInizio);
+	            	while(date.compareTo(datefine) <= 0){
+	            		
+	            		System.out.println(date.compareTo(datefine));
+	            	     System.out.println(date.getHours()+":"+date.getMinutes());
+	            	     	d.setGiorno(giorno);
+	            			d.setOra(date.getHours()+":"+date.getMinutes());
+	            			d.setMatricolaDocente(mDocente); 
+	            			doSave(d);
+	            	     mintoset += 15;
+	            	     if(mintoset % 60 == 0){
+	            	         mintoset = 0;
+	            	         date.setHours(date.getHours()+1);
+	            	     }
+	            	     date.setMinutes(mintoset);
+	            	}
+			       
+	        }catch(Exception e){
+	            System.out.println("Hello Java");
+	            e.printStackTrace();
+	        }
+		
+	    }
 }
 
