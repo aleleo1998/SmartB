@@ -47,10 +47,17 @@ public class RegistrazioneStudenteServlet extends HttpServlet {
 		
 		studente = new Studente(nome,cognome,matricola,password,email);
 		
+		try {
 		if(gestioneUtenti.registrazioneStudente(studente)) {
-			System.out.print("ok");
+			
+			//***SEND MAIL****//
+			
+			response.sendRedirect("./jsp/SuccessReg.jsp");
 		}else {
 			System.out.print("no ok");
+		}
+		}catch(Exception e) {
+			response.sendRedirect("./jsp/RegView.jsp");
 		}
 		
 		
