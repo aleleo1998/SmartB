@@ -132,16 +132,17 @@ private static final String TABLE_NAME = "Disponibilità";
 	}
 	
 	
-	/**
+	/**usato anche per la segreteria!
 	 * @param matricola_docente
 	 * @return
 	 * @throws SQLException
 	 */
-	public synchronized Disponibilita doRetrieveByKey(String matricola_docente) throws SQLException {
+	public synchronized Collection<Disponibilita> doRetrieveByKey(String matricola_docente) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
-		Disponibilita bean = new Disponibilita();
+		Collection<Disponibilita> listaOrari = new LinkedList<Disponibilita>();
+		
 
 		String selectSQL = "SELECT * FROM " + DisponibilitaModel.TABLE_NAME + " WHERE matricola_docente = ?";
 
@@ -153,9 +154,13 @@ private static final String TABLE_NAME = "Disponibilità";
 			ResultSet rs = preparedStatement.executeQuery();
 
 			while (rs.next()) {
+				Disponibilita bean = new Disponibilita();
+				
 				bean.setGiorno(rs.getString("giorno"));
 				bean.setOra(rs.getString("ora"));
 				bean.setMatricolaDocente("matricola_docente");
+				
+				listaOrari.add(bean);
 			}
 
 		} finally {
@@ -166,7 +171,7 @@ private static final String TABLE_NAME = "Disponibilità";
 				DriverManagerConnectionPool.releaseConnection(connection);
 			}
 		}
-		return bean;
+		return listaOrari;
 	}
 
 	

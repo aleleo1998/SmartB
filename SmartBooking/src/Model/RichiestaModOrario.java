@@ -1,29 +1,6 @@
 package Model;
 
-/**
- * @author Alfredo
- *
- */
-/**
- * @author Alfredo
- *
- */
-/**
- * @author Alfredo
- *
- */
-/**
- * @author Alfredo
- *
- */
-/**
- * @author Alfredo
- *
- */
-/**
- * @author Alfredo
- *
- */
+
 public class RichiestaModOrario {
 	
 	public RichiestaModOrario() {}
