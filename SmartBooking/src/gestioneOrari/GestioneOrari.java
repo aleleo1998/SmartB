@@ -13,7 +13,7 @@ import Model.Docente;
  */
 public interface GestioneOrari {
 	
-	public void aggiungiFirstOrario(Docente d,ArrayList<String> giorni,ArrayList<String> orariInizio, ArrayList<String> orariFine);
+	public void aggiungiFirstOrario(String d,ArrayList<String> giorni,ArrayList<String> orariInizio, ArrayList<String> orariFine);
 	
 
 }

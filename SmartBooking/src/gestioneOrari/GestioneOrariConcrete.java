@@ -14,7 +14,7 @@ import Model.Docente;
  */
 public class GestioneOrariConcrete implements GestioneOrari {
 	
-	public void aggiungiFirstOrario(Docente d,ArrayList<String> giorni,ArrayList<String> orariInizio, ArrayList<String> orariFine) {
+	public void aggiungiFirstOrario(String mDocente,ArrayList<String> giorni,ArrayList<String> orariInizio, ArrayList<String> orariFine) {
 		
 		
 		DisponibilitaModel model = new DisponibilitaModel();
