@@ -49,7 +49,7 @@
                                             <input type="text" class="form-control" name="cognome" id="cognome" placeholder="Cognome *" value="" />
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control" name="matricola" id="matricola" placeholder="Matricola *" value="" />
+                                            <input type="text" class="form-control" name="matricola" id="matricola" placeholder="Matricola *" value="" />
                                         </div>
                                         <div class="form-group">
                                             <div class="maxl">
@@ -69,13 +69,13 @@
                                             <input type="email" name="email" id="email" class="form-control" placeholder="Email *" value="" />
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" class="form-control" name="password" id="password" placeholder="Password *" value="" />
+                                            <input type="password" class="form-control" name="password" id="password" placeholder="Password *" value="" />
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" class="form-control" id="confermaPassword" name="confermaPassword" placeholder="Conferma password *" value="" />
+                                            <input type="password" class="form-control" id="confermaPassword" name="confermaPassword" placeholder="Conferma password *" value="" />
                                         </div>
                                         
-                                        <p id="buttonRegistrazione"> Registrati <p/>
+                                        <p id="buttonRegistrazione"> Registrati </p>
                                     </div>
                                 </div>
                                 </form>
