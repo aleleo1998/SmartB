@@ -232,7 +232,7 @@ private static final String TABLE_NAME = "Disponibilità";
 	            	   
 	            	     System.out.println(date.getHours()+":"+date.getMinutes());
 	            	     	d.setGiorno(giorno);
-	            			d.setOra(sdf.format(date.getHours()));
+	            			d.setOra(date.getHours()+":"+date.getMinutes());
 	            			d.setMatricolaDocente(mDocente);
 	            			doSave(d);
 	            	     mintoset += 15;
