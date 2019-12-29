@@ -58,9 +58,10 @@ public class GestioneUtentiConcrete implements GestioneUtenti {
 	 * Rimuovi Docente (La segreteria può rimuovere un docente)
 	 */
 	@Override
-	public Boolean rimuoviDocente(Docente doc) {
+	public Boolean rimuoviDocente(String matricola) {
 		try {
-			docente.rimuoviDocente(doc);
+			docente.rimuoviDocente(matricola);
+			System.out.println(matricola);
 			return true;
 		}catch(Exception e) {
 			e.printStackTrace();
