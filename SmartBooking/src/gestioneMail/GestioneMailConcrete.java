@@ -22,6 +22,7 @@ public class GestioneMailConcrete implements GestioneMail {
 		}
 	}
 	
+	
 	private EmailUtility mailUtility = new EmailUtility();
 
 
