@@ -50,13 +50,23 @@ public class EmailSendingServlet extends HttpServlet {
 		String nome = request.getParameter("name"); //Nome 
 		String cognome = request.getParameter("surname"); //Cognome
 		String subject = request.getParameter("subject"); //Oggetto
-		String content = request.getParameter("message"); //Messaggio 
+		String mex = request.getParameter("message"); //Messaggio 
 
-		String messaggio = "";
-		messaggio = messaggio + emailMittente + "\n" + nome + "\n" + content;
-		//System.out.println(messaggio);
+		
 		String resultMessage = "";
 
+		
+		//Crea contenuto messaggio da inviare
+		String indexEmail="Gentile "+emailDestinatario+" hai ricevuto una nuova mail attraverso il sistema SmartBooking, di seguito tutte le info:";
+		String indexMitt="EMAIL MITTENTE: "+emailMittente;
+		String indexNome="NOME: "+nome;
+		String indexCognome="COGNOME: "+cognome;
+		String indexOggetto="OGGETTO : "+subject;
+		String indexMex="MESSAGGIO : "+mex;
+		
+		String content= indexEmail +"\n"+ indexMitt + "\n"+ indexNome + " " + indexCognome+ "\n" + indexOggetto +"\n\n"+indexMex;
+				
+		
 		try {
 			gestioneMail.sendEmail(host, port, user, pass, emailMittente, emailDestinatario, nome, cognome, subject, content); //invio email di EmailUtility
 			resultMessage = "The e-mail was sent successfully"; //setta il messaggio di buona riuscita dell'invio

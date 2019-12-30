@@ -28,8 +28,7 @@
                         <img src="../image/logo.png" id="logoReg" alt=""/>
                      </div>
                         <h3>Registrazione Docente</h3>
-                        <p>Hai già un account SmartBooking? Effettua l'accesso</p>
-                        <a href="Login.jsp"><input type="submit" id="loginButton" name="" value="Login"/></a><br/>
+                       
                     </div>
                     <div class="col-md-9 register-right">
                         <div class="tab-content" id="myTabContent">
@@ -68,16 +67,11 @@
                                             <input type="email" name="email" id="email" class="form-control" placeholder="Email *" value="" />
                                         </div>
                                         
-                            
-                                        <div class="form-group">
-                                            <input type="password" class="form-control" name="password" id="password" placeholder="Password *" value="" />
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="password" class="form-control" name="confermaPassword" id="confermaPassword" placeholder="Conferma password *" value="" />
-                                        </div>
+                    
                                         
-                                        <input type="submit" class="btnRegister"  value="Registrati"/>
                                     </div>
+                                        <input type="submit" class="btnRegister" id="buttonRegistrazione" value="Registra Docente"/>
+                                    
                                 </div>
                                 </form>
                             </div>

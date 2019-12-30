@@ -29,12 +29,12 @@ public class EmailUtility {
 	 * @param message
 	 * @param nome
 	 * @param emailMitt
+	 * @param mex contiene il messaggio già pronto da inviare
 	 * @throws AddressException
 	 * @throws MessagingException
 	 */
 	public void sendEmail(String host, String port, final String userName, final String password, 
 			String emailMittente, String emailDestinatario, String nome, String cognome, String subject, String content)
-			//String toAddress,String subject, String message, String nome, String emailMitt) 
 	throws AddressException, MessagingException {
 
 		// setta le proprietà del server smtp
@@ -63,21 +63,12 @@ public class EmailUtility {
 		msg.setSubject(subject); //imposta oggetto del messaggio
 		msg.setSentDate(new Date()); //imposta data di invio alla data attuale
 		
-		//Crea contenuto messaggio da inviare
-		String indexEmail="Gentile "+emailDestinatario+" hai ricevuto una nuova mail attraverso il sistema SmartBooking, di seguito tutte le info:";
-		String indexMitt="EMAIL MITTENTE: "+emailMittente;
-		String indexNome="NOME: "+nome;
-		String indexCognome="COGNOME: "+cognome;
-		String indexOggetto="OGGETTO : "+subject;
-		String indexMex="MESSAGGIO : "+content;
-		
-		String mex= indexEmail +"\n"+ indexMitt + "\n"+ indexNome + " " + indexCognome+ "\n" + indexOggetto +"\n\n"+indexMex;
-				
-		System.out.println(mex);
+
+		//System.out.println(content);
 		
 		
 		
-		msg.setText(mex); //imposta il contenuto del messaggio
+		msg.setText(content); //imposta il contenuto del messaggio
 		
 
 		// invia l'email
