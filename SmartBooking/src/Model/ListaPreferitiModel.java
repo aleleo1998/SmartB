@@ -53,7 +53,7 @@ private static final String	SECOND_COLUMN = "Lista_preferiti.matricola_docente";
 			Connection connection = null;
 			PreparedStatement preparedStatement = null;
 
-			String insertSQL = "INSERT INTO" + ListaPreferitiModel.TABLE_NAME + " (matricola_studente,matricola_docente) VALUES (?, ?)";
+			String insertSQL = "INSERT INTO " + ListaPreferitiModel.TABLE_NAME + " (matricola_studente,matricola_docente) VALUES (?, ?)";
 	
 			try {
 				connection = DriverManagerConnectionPool.getDbConnection();
@@ -81,8 +81,9 @@ private static final String	SECOND_COLUMN = "Lista_preferiti.matricola_docente";
 			
 			Connection connection = null;
 			PreparedStatement preparedStatement = null;
+			
 
-			String insertSQL = "DELETE FROM" + ListaPreferitiModel.TABLE_NAME + "WHERE matricola_studente = ? AND matricola_docente = ?";
+			String insertSQL = "DELETE FROM " + ListaPreferitiModel.TABLE_NAME + " WHERE matricola_studente = ? AND matricola_docente = ?";
 	
 			try {
 				connection = DriverManagerConnectionPool.getDbConnection();
