@@ -23,7 +23,7 @@ import DBConnection.DriverManagerConnectionPool;
  */
 public class DisponibilitaModel {
 	
-private static final String TABLE_NAME = "Disponibilit‡†";
+private static final String TABLE_NAME = "Disponibilit√†";
 	
 	/**
 	 * @param Disponibilita
@@ -77,6 +77,7 @@ private static final String TABLE_NAME = "Disponibilit‡†";
 			preparedStatement.setString(1, matricola_docente);
 
 			result = preparedStatement.executeUpdate();
+			connection.commit();
 
 		} finally {
 			try {
@@ -88,6 +89,35 @@ private static final String TABLE_NAME = "Disponibilit‡†";
 		}
 		return (result != 0);
 	}
+	
+	public synchronized boolean doDelete(String matricola_docente, String giorno) throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		int result = 0;
+
+		String deleteSQL = "DELETE FROM " + DisponibilitaModel.TABLE_NAME + " WHERE matricola_docente = ? AND giorno = ? ";
+
+		try {
+			connection = DriverManagerConnectionPool.getDbConnection();
+			preparedStatement = connection.prepareStatement(deleteSQL);
+			preparedStatement.setString(1, matricola_docente);
+			preparedStatement.setString(2, giorno);
+
+			result = preparedStatement.executeUpdate();
+			connection.commit();
+
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				DriverManagerConnectionPool.releaseConnection(connection);
+			}
+		}
+		return (result != 0);
+	}
+	
 	
 	
 	/**

@@ -5,7 +5,12 @@ public class RichiestaModOrario {
 	
 	public RichiestaModOrario() {}
 	
-	public RichiestaModOrario(String matricolaDocente, String matricolaSegreteria, String oraInizio, String oraFine, String giornoPrecedente, String giorno) {
+	
+	
+	public RichiestaModOrario(int id, String matricolaDocente, String matricolaSegreteria, String oraInizio,
+			String oraFine, String giornoPrecedente, String giorno) {
+		super();
+		this.id = id;
 		this.matricolaDocente = matricolaDocente;
 		this.matricolaSegreteria = matricolaSegreteria;
 		this.oraInizio = oraInizio;
@@ -14,8 +19,6 @@ public class RichiestaModOrario {
 		this.giorno = giorno;
 	}
 
-	
-	
 	public String getMatricolaDocente() {
 		return matricolaDocente;
 	}
@@ -66,12 +69,17 @@ public class RichiestaModOrario {
 
 	
 
-	
+	public int getId() {
+		return id;
+	}
 
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	@Override
 	public String toString() {
-		return "RichiestaModOrario matricolaDocente=" + matricolaDocente + ", matricolaSegreteria="
+		return "RichiestaModOrario [id=" + id + ", matricolaDocente=" + matricolaDocente + ", matricolaSegreteria="
 				+ matricolaSegreteria + ", oraInizio=" + oraInizio + ", oraFine=" + oraFine + ", giornoPrecedente="
 				+ giornoPrecedente + ", giorno=" + giorno + "]";
 	}
@@ -81,6 +89,14 @@ public class RichiestaModOrario {
 
 
 
+
+
+
+
+
+
+
+	private int id;
 	private String matricolaDocente;
 	private String matricolaSegreteria;
 	private String oraInizio;
