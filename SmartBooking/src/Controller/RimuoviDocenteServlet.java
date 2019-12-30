@@ -34,9 +34,9 @@ public class RimuoviDocenteServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String matricola = request.getParameter("matricola");
-		System.out.println("0000000");
+		System.out.println("Devo eliminare"+matricola);
 		
-		gestioneUtenti.rimuoviDocente("0000000");
+		gestioneUtenti.rimuoviDocente(matricola);
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
