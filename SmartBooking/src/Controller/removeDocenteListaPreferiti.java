@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import Model.Docente;
 import Model.Studente;
+import Model.StudenteModel;
 import Model.UtenteModel;
 import gestioneListaPreferiti.GestioneListaPreferiti;
 import gestioneListaPreferiti.GestioneListaPreferitiControl;
@@ -20,7 +21,7 @@ import gestioneListaPreferiti.GestioneListaPreferitiControl;
 @WebServlet("/removeDocenteListaPreferiti")
 public class removeDocenteListaPreferiti extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	GestioneListaPreferiti gestioneLista = new GestioneListaPreferitiControl();
+	private GestioneListaPreferiti gestioneLista = new GestioneListaPreferitiControl();
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -41,8 +42,13 @@ public class removeDocenteListaPreferiti extends HttpServlet {
 		
 		UtenteModel md = new UtenteModel();
 		
-		
-		Studente s = (Studente) session.getAttribute("user");
+		//
+			
+			Studente s = (Studente) session.getAttribute("studente");
+			System.out.println("Matricola studente: "+s.getMatricola());
+			
+		//
+		//Studente s = (Studente) session.getAttribute("user");
 		Docente d = new Docente();
 		d = null;
 		try {
@@ -54,7 +60,7 @@ public class removeDocenteListaPreferiti extends HttpServlet {
 		
 		
 		
-		if(gestioneLista.removeDocente(d, s))
+		if(gestioneLista.removeDocente(d,s))
 			System.out.println("Query effettuata con successo.");
 		else
 			System.out.println("Errore durante l'esecuzione della query");

@@ -13,7 +13,6 @@
 <link rel="stylesheet" href="../css/ViewRicercaDocenti.css">
 <%@ page import="Model.*"%>
 <%@ page import="java.util.*"%>
-
 <%
 DocenteModel m = new DocenteModel();
 LinkedList<Docente> list = (LinkedList<Docente>) m.doRetrieveAll(); 
@@ -41,7 +40,6 @@ LinkedList<Docente> list = (LinkedList<Docente>) m.doRetrieveAll();
 
 </div>
 
-
 <table class="table table-striped" id="table">
   <thead class="thead-dark">
     <tr>
@@ -53,17 +51,40 @@ LinkedList<Docente> list = (LinkedList<Docente>) m.doRetrieveAll();
     </tr>
   </thead>
   <tbody>
+  
+  
+  
   	<tr>
-  	
   	<% for(int i=0;i<list.size();i++){ %>
-  	<form name="form"+i action="../RicercaDocentiServlet">
-      <th scope="row"><label id="nome"><%= list.get(i).getNome()%></label> <label id="cognome"><%=list.get(i).getCognome()%></label></th>
+  	
+      <th scope="row">
+      
+      <label name="nome" id="nome"><%= list.get(i).getNome()%></label> <label name="cognome" id="cognome"><%=list.get(i).getCognome()%></label>
+      
+      </th>
       <td><p id="ufficio"><%=list.get(i).getUfficio()%><p></td>
       <td><a href="RegView.jsp"><i class="fas fa-info-circle"></i></a></td>
-      <td><button name="add"><i class="fas fa-user-plus"></i></button></td> <!--  Aggiungi docente icon -->
-      <td><button name="remove"><i class="fas fa-user-minus"></i></button></td> <!-- Rimuovi docente icon -->
-      </form>
+ 	
+      	<td>
+      		<form name="<%="form"+i%>" action="../addDocenteListaPreferiti">
+    			<input id="matricolaDocente" style="display:none;" name="matricolaDocente" value="<%=list.get(i).getMatricola()%>"/>
+    		
+      			<button name="add"><i class="fas fa-user-plus"></i></button> <!--  Aggiungi docente icon -->
+      		</form>
+      	</td>
+      	<td>
+      		<form name="<%="form"+i%>" action="../removeDocenteListaPreferiti">
+    			<input id="matricolaDocente" style="display:none;" name="matricolaDocente" value="<%=list.get(i).getMatricola()%>"/>
+    		
+      			<button name="remove"><i class="fas fa-user-minus"></i></button>  <!-- Rimuovi docente icon -->
+      		</form>
+     	</td> 
+     	<td>
+    		
+    	</td>
     </tr>
+    
+    
    
     <% } %>
 

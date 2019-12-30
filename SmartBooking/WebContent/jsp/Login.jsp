@@ -13,6 +13,7 @@
 </head>
 <body>
 
+
 <div id="menu">
 		<%@include file="../html/menu.html"%>
 	</div>
