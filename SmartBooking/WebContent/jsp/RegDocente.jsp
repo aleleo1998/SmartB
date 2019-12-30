@@ -7,11 +7,16 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-<link rel="stylesheet" href="../css/RegView.css">
+<!--  JAVASCRIPT -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="../javascript/RegDocente.js" type="text/javascript"></script>
+
+<!-- CSS -->
+<link rel="stylesheet" href="../css/RegDocente.css">
 
 <!------ Include the above in your HEAD tag ---------->
 <meta charset="UTF-8">
-<title>SmartBooking: Registrazione</title>
+<title>SmartBooking: Registrazione Docente</title>
 </head>
 <body>
 
@@ -33,7 +38,7 @@
                     <div class="col-md-9 register-right">
                         <div class="tab-content" id="myTabContent">
                             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                            <form name="form" action="../RegistrazioneDocenteServlet">
+                            <form name="form" id="form" action="../RegistrazioneDocenteServlet">
                                 <h3 class="register-heading" id="homeInsert">Inserisci dati docente</h3>
                                 <div class="row register-form">
                                     <div class="col-md-6">
@@ -70,7 +75,7 @@
                     
                                         
                                     </div>
-                                        <input type="submit" class="btnRegister" id="buttonRegistrazione" value="Registra Docente"/>
+                                           <p id="buttonRegistrazione"> Inserisci Docente </p>
                                     
                                 </div>
                                 </form>

@@ -217,6 +217,98 @@ public class DocenteModel {
 		return docenti;
 	}
 	
+	/**
+	 * Verifica se un email da verificare, passata come parametro, esiste già nel database come email associata a un docente
+	 * @param email email da verificare
+	 * @return false se l'email non esiste, true altrimenti
+	 * @throws Exception
+	 */
+	public synchronized Boolean existEmail(String email) throws Exception{
+		
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		Docente bean = new Docente();
+
+		String selectSQL = "SELECT * FROM " + DocenteModel.TABLE_NAME + " WHERE email = ?";
+
+		try {
+			connection = DriverManagerConnectionPool.getDbConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+			preparedStatement.setString(1, email);
+
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) {
+				bean.setMatricola("matricola");
+				bean.setNome(rs.getString("nome"));
+				bean.setCognome(rs.getString("cognome"));
+				bean.setPassword(rs.getString("password"));
+				bean.setEmail(rs.getString("email"));
+				bean.setUfficio(rs.getString("ufficio"));
+			}
+
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				DriverManagerConnectionPool.releaseConnection(connection);
+			}
+		}
+			
+		if(bean.getEmail()==null)
+			return false;
+		else
+			return true;
+	}
+	
+	
+	/**
+	 * verifica se esiste una matricola, passata come parametro, già associata a un docente nel database
+	 * @param matricola : matricola da verificare
+	 * @return false se la matricola non esiste, true altrimenti
+	 * @throws Exception
+	 */
+	public synchronized Boolean existMatricola(String matricola) throws Exception{
+		
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		Docente bean = new Docente();
+
+		String selectSQL = "SELECT * FROM " + DocenteModel.TABLE_NAME + " WHERE matricola = ?";
+
+		try {
+			connection = DriverManagerConnectionPool.getDbConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+			preparedStatement.setString(1, matricola);
+
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) {
+				bean.setMatricola("matricola");
+				bean.setNome(rs.getString("nome"));
+				bean.setCognome(rs.getString("cognome"));
+				bean.setPassword(rs.getString("password"));
+				bean.setEmail(rs.getString("email"));
+				bean.setUfficio(rs.getString("ufficio"));
+			}
+
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				DriverManagerConnectionPool.releaseConnection(connection);
+			}
+		}
+		
+		if(bean.getMatricola()==null)
+			return false;
+		else
+			return true;
+	}
 	
 	
 }

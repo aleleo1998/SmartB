@@ -72,49 +72,56 @@ public class RegistrazioneDocenteServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		System.out.println("SONO IN REGSERVLET");
+		
 		String nome = request.getParameter("nome");
 		String cognome = request.getParameter("cognome");
 		String matricola = request.getParameter("matricola");
 		System.out.println(matricola);
 		/* Genera password casuale*/
 		String password=generaPassword();
-		System.out.println("password"+password);
+		//System.out.println("password"+password);
 		
 		//String password = request.getParameter("password");
 		String email = request.getParameter("email");
 		String ufficio = request.getParameter("ufficio");
 		
+		System.out.println("CREO DOCENTE DA INSERIRE");
 		Docente doc = new Docente(nome, cognome, matricola, password, email, ufficio);
+		System.out.println("DOCENTE CREATO");
 		//System.out.println(doc.getNome());
 		gestioneUtenti.registrazioneDocente(doc);
 		
+		System.out.println("Registrazione fatta");
 		
 		
+			
+		//*******INVIO EMAIL********//
+			//Invio email con credenziali
+			String emailMittente="smartbookingplatform@gmail.com";
+			String emailDestinatario=email;
+			String subject="Benvenuto Su SmartBooking";
+			
+			//Creazione messaggio(content) da inviare 
+			String indexEmail="Gentile "+cognome +" "+ nome+" "+"benvenuto su SmartBooking. \n Le sue credenziali di accesso sono: \n";
+			String indexCredenziali="Email: "+email+"\n"+"Password: "+password;
+			
+			String content= indexEmail +"\n"+ indexCredenziali;
+			
+			
+			String resultMessage = "";
+	
+			try {
+				gestioneMail.sendEmail(host, port, user, pass, emailMittente, emailDestinatario, nome, cognome, subject, content); //invio email di EmailUtility
+				resultMessage = "The e-mail was sent successfully"; //setta il messaggio di buona riuscita dell'invio
+			} catch (Exception ex) {
+				ex.printStackTrace();
+				resultMessage = "There were an error: " + ex.getMessage(); //altrimenti crea un messaggio di errore
+			} finally {
+				//**Cosa fare dopo aver fatto il sendMail***
+			} 
 		
-	//*******INVIO EMAIL********//
-		//Invio email con credenziali
-		String emailMittente="smartbookingplatform@gmail.com";
-		String emailDestinatario=email;
-		String subject="Benvenuto Su SmartBooking";
 		
-		//Crea messaggio da inviare da inviare
-		String indexEmail="Gentile "+cognome +" "+ nome+" "+"benvenuto su SmartBooking. \n Le sue credenziali di accesso sono: \n";
-		String indexCredenziali="Email: "+email+"\n"+"Password: "+password;
-		
-		String content= indexEmail +"\n"+ indexCredenziali;
-		
-		
-		String resultMessage = "";
-
-		try {
-			gestioneMail.sendEmail(host, port, user, pass, emailMittente, emailDestinatario, nome, cognome, subject, content); //invio email di EmailUtility
-			resultMessage = "The e-mail was sent successfully"; //setta il messaggio di buona riuscita dell'invio
-		} catch (Exception ex) {
-			ex.printStackTrace();
-			resultMessage = "There were an error: " + ex.getMessage(); //altrimenti crea un messaggio di errore
-		} finally {
-			//**Cosa fare dopo aver fatto il sendMail***
-		} 
 		
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
