@@ -216,6 +216,44 @@ public class DocenteModel {
 		}
 		return docenti;
 	}
+
+	public Docente doRetrieveByNameAndSurname(String name, String surname) throws Exception {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		Docente bean = new Docente();
+
+		String selectSQL = "SELECT * FROM " + DocenteModel.TABLE_NAME + " WHERE nome = ? AND cognome = ?";
+
+		try {
+			connection = DriverManagerConnectionPool.getDbConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+			preparedStatement.setString(1,name);
+			preparedStatement.setString(2,surname);
+
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) {
+				bean.setMatricola(rs.getString("matricola"));
+				bean.setNome(rs.getString("nome"));
+				bean.setCognome(rs.getString("cognome"));
+				bean.setPassword(rs.getString("password"));
+				bean.setEmail(rs.getString("email"));
+				bean.setUfficio(rs.getString("ufficio"));
+			}
+			
+			System.out.print("Docente bean dopo la query: "+bean);
+
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				DriverManagerConnectionPool.releaseConnection(connection);
+			}
+		}
+		return bean;
+	}
 	
 	
 	

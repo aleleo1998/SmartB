@@ -10,6 +10,10 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://kit.fontawesome.com/7606041806.js" crossorigin="anonymous"></script>
 
+<!--  JAVASCRIPT -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="../javascript/ViewRicercaDocenti.js" type="text/javascript"></script>
+
 <link rel="stylesheet" href="../css/ViewRicercaDocenti.css">
 <%@ page import="Model.*"%>
 <%@ page import="java.util.*"%>
@@ -30,9 +34,11 @@ LinkedList<Docente> list = (LinkedList<Docente>) m.doRetrieveAll();
 <div id="searchBar">
 
 <!-- Search form -->
+
+<p id="cerca">Ricerca docente </p>
 <form class="form-inline md-form form-sm mt-0" id="search">
-	<a href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
-  <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search"
+	<a id="searchButton" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+  <input class="form-control form-control-sm ml-3 w-75" id="nameDoc" type="text" placeholder="Cognome* Nome*"
     aria-label="Search">
 </form>
 
@@ -50,31 +56,29 @@ LinkedList<Docente> list = (LinkedList<Docente>) m.doRetrieveAll();
       <th scope="col">Rimuovi dai miei docenti</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody id="tbody">
   
-  
-  
+  	<% for(Docente d : list){ %>
   	<tr>
-  	<% for(int i=0;i<list.size();i++){ %>
   	
       <th scope="row">
       
-      <label name="nome" id="nome"><%= list.get(i).getNome()%></label> <label name="cognome" id="cognome"><%=list.get(i).getCognome()%></label>
+      <label name="nome" id="nome"><%= d.getNome()%></label> <label name="cognome" id="cognome"><%=d.getCognome()%></label>
       
       </th>
-      <td><p id="ufficio"><%=list.get(i).getUfficio()%><p></td>
+      <td><p id="ufficio"><%=d.getUfficio()%><p></td>
       <td><a href="RegView.jsp"><i class="fas fa-info-circle"></i></a></td>
  	
       	<td>
-      		<form name="<%="form"+i%>" action="../addDocenteListaPreferiti">
-    			<input id="matricolaDocente" style="display:none;" name="matricolaDocente" value="<%=list.get(i).getMatricola()%>"/>
+      		<form name="form" action="../addDocenteListaPreferiti">
+    			<input id="matricolaDocente" style="display:none;" name="matricolaDocente" value="<%=d.getMatricola()%>"/>
     		
       			<button name="add"><i class="fas fa-user-plus"></i></button> <!--  Aggiungi docente icon -->
       		</form>
       	</td>
       	<td>
-      		<form name="<%="form"+i%>" action="../removeDocenteListaPreferiti">
-    			<input id="matricolaDocente" style="display:none;" name="matricolaDocente" value="<%=list.get(i).getMatricola()%>"/>
+      		<form name="form" action="../removeDocenteListaPreferiti">
+    			<input id="matricolaDocente" style="display:none;" name="matricolaDocente" value="<%=d.getMatricola()%>"/>
     		
       			<button name="remove"><i class="fas fa-user-minus"></i></button>  <!-- Rimuovi docente icon -->
       		</form>
