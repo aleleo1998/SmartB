@@ -17,6 +17,7 @@ public interface GestioneUtenti {
 	public Boolean registrazioneStudente(Studente studente);
 	public Boolean ripristinaPassword(Utente u , String nuovaPassword);
 	public Boolean registrazioneDocente(Docente d);
+	public Boolean rimuoviDocente(String matricola);
 	public Utente loginUtente(String email,String password);
 	
 }

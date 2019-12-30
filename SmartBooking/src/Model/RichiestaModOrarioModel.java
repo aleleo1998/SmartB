@@ -25,18 +25,17 @@ private static final String TABLE_NAME = "Richiesta_modifica_orario";
 		PreparedStatement preparedStatement = null;
 
 		String insertSQL = "INSERT INTO " + RichiestaModOrarioModel.TABLE_NAME
-				+ " (id,matricola_docente, matricola_segreteria, ora_inizio, ora_fine, giorno_precedente, giorno) VALUES (?, ?, ?, ?, ?, ?, ?)";
+				+ " (matricola_segreteria, matricola_docente,ora_inizio, ora_fine, giorno, giorno_precedente) VALUES (?, ?, ?, ?, ?, ?)";
 
 		try {
 			connection = DriverManagerConnectionPool.getDbConnection();
 			preparedStatement = connection.prepareStatement(insertSQL);
-			preparedStatement.setInt(1, richiestaModOrario.getId());
+			preparedStatement.setString(1, richiestaModOrario.getMatricolaSegreteria());
 			preparedStatement.setString(2, richiestaModOrario.getMatricolaDocente());
-			preparedStatement.setString(3, richiestaModOrario.getMatricolaSegreteria());
-			preparedStatement.setString(4, richiestaModOrario.getOraInizio());
-			preparedStatement.setString(5, richiestaModOrario.getOraFine());
+			preparedStatement.setString(3, richiestaModOrario.getOraInizio());
+			preparedStatement.setString(4, richiestaModOrario.getOraFine());
+			preparedStatement.setString(5, richiestaModOrario.getGiorno());
 			preparedStatement.setString(6, richiestaModOrario.getGiornoPrecedente());
-			preparedStatement.setString(7, richiestaModOrario.getGiorno());
 			
 
 			preparedStatement.executeUpdate();
@@ -56,7 +55,7 @@ private static final String TABLE_NAME = "Richiesta_modifica_orario";
 	/**
 	 * 
 	 * @param id : id della richiesta da rimuovere
-	 * @return restituisce true se result è diverso da 0, false altrimenti
+	 * @return restituisce true se result ï¿½ diverso da 0, false altrimenti
 	 * @throws SQLException
 	 */
 	public synchronized boolean doDelete(int id) throws SQLException {
@@ -73,7 +72,9 @@ private static final String TABLE_NAME = "Richiesta_modifica_orario";
 			preparedStatement.setInt(1, id);
 
 			result = preparedStatement.executeUpdate();
-
+			
+			connection.commit();
+			
 		} finally {
 			try {
 				if (preparedStatement != null)

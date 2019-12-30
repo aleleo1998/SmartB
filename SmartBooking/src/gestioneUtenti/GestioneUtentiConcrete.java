@@ -63,6 +63,8 @@ public class GestioneUtentiConcrete implements GestioneUtenti {
 
 	/**
 	 * Registrazione docente (segreteria puo aggiungere un nuovo docente)
+	 * @param Docente doc docente da inserire 
+	 * @return true se è stata invocata correttamente registrazioneDocente(doc), false altrimenti
 	 */
 	@Override
 	public Boolean registrazioneDocente(Docente doc) {
@@ -76,12 +78,27 @@ public class GestioneUtentiConcrete implements GestioneUtenti {
 	}
 	
 	/**
+	 * Rimuovi Docente (La segreteria può rimuovere un docente)
+	 * @param String matricola del docente da rimuovere
+	 * @return true se è stata invocata correttamete rimuoviDocente(matricola), false altrimenti
+	 */
+	@Override
+	public Boolean rimuoviDocente(String matricola) {
+		try {
+			docente.rimuoviDocente(matricola);
+			System.out.println(matricola);
+			return true;
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+	/**	
 	 * Il metodo loginUtente controlla l'accesso verificando se nel database esiste una corrispondenza email/password in una delle tabelle tra Docente,Studente e Segreteria.
 	 * @param email 
 	 * @param password
 	 * @return Utente u
 	 */
-	
 	@Override
 	public Utente loginUtente(String email,String password) {
 		try {
