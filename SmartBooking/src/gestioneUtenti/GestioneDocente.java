@@ -9,7 +9,8 @@ public class GestioneDocente {
 	
 	public GestioneDocente() {}
 	
-	public void registrazioneDocente(Docente d) throws SQLException {
+	public void registrazioneDocente(Docente d) throws SQLException 
+	{
 		DocenteModel docModel = new DocenteModel();
 		docModel.doSave(d);	
 	}

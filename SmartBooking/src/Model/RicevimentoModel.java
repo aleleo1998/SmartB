@@ -24,7 +24,7 @@ import java.sql.PreparedStatement;
 			try {
 				connection = DriverManagerConnectionPool.getDbConnection();
 				preparedStatement = connection.prepareStatement(insertSQL);
-				preparedStatement.setInt(1, Ricevimento.getId());
+				preparedStatement.setString(1, Ricevimento.getId());
 				preparedStatement.setString(2, Ricevimento.getMatStudente());
 				preparedStatement.setString(3, Ricevimento.getMatDocente());
 				preparedStatement.setDate(4, (Date) Ricevimento.getDataPrenotazione());
@@ -44,7 +44,7 @@ import java.sql.PreparedStatement;
 			}
 		}
 		
-		public synchronized boolean doDelete(String id) throws SQLException {
+		public synchronized boolean doDelete(String string) throws SQLException {
 			Connection connection = null;
 			PreparedStatement preparedStatement = null;
 
@@ -55,7 +55,7 @@ import java.sql.PreparedStatement;
 			try {
 				connection = DriverManagerConnectionPool.getDbConnection();
 				preparedStatement = connection.prepareStatement(deleteSQL);
-				preparedStatement.setString(1, id);
+				preparedStatement.setString(1, string);
 
 				result = preparedStatement.executeUpdate();
 
@@ -92,7 +92,7 @@ import java.sql.PreparedStatement;
 				while (rs.next()) {
 					Ricevimento bean = new Ricevimento();
 
-					bean.setId(rs.getInt("id"));
+					bean.setId(rs.getString("id"));
 					bean.setMatDocente(rs.getString("docente"));
 					bean.setMatStudente(rs.getString("studente"));
 					bean.setData(rs.getDate("data_prenotazione"));
@@ -129,7 +129,7 @@ import java.sql.PreparedStatement;
 				ResultSet rs = preparedStatement.executeQuery();
 
 				while (rs.next()) {
-					bean.setId(rs.getInt("id"));
+					bean.setId(rs.getString("id"));
 					bean.setMatDocente(rs.getString("docente"));
 					bean.setMatStudente(rs.getString("studente"));
 					bean.setData(rs.getDate("data_prenotazione"));
@@ -147,7 +147,7 @@ import java.sql.PreparedStatement;
 			}
 			return bean;
 		}
-
+ 
 		
 		public synchronized Collection<Ricevimento> doRetrieveAll() throws SQLException {
 			Connection connection = null;
@@ -168,7 +168,7 @@ import java.sql.PreparedStatement;
 				while (rs.next()) {
 					Ricevimento bean = new Ricevimento();
 
-					bean.setId(rs.getInt("id"));
+					bean.setId(rs.getString("id"));
 					bean.setMatDocente(rs.getString("docente"));
 					bean.setMatStudente(rs.getString("studente"));
 					bean.setData(rs.getDate("data_prenotazione"));
@@ -186,6 +186,61 @@ import java.sql.PreparedStatement;
 				}
 			}
 			return utenti;
+		}
+		
+		public synchronized Collection<Ricevimento> doRetrieveAllByDoc(String matricolaDoc) throws SQLException {
+			Connection connection = null;
+			PreparedStatement preparedStatement = null;
+
+			Collection<Ricevimento> rv = new LinkedList<Ricevimento>();
+
+			String selectSQL = "SELECT * FROM " + RicevimentoModel.TABLE_NAME +" WHERE docente = ?";
+
+			
+
+			try {
+				connection = DriverManagerConnectionPool.getDbConnection();
+				preparedStatement = connection.prepareStatement(selectSQL);
+                preparedStatement.setString(1, matricolaDoc);
+				ResultSet rs = preparedStatement.executeQuery();
+
+				while (rs.next()) {
+					Ricevimento bean = new Ricevimento();
+
+					bean.setId(rs.getString("id"));
+					bean.setMatDocente(rs.getString("docente"));
+					bean.setMatStudente(rs.getString("studente"));
+					bean.setData(rs.getDate("data_prenotazione"));
+					bean.setDataPrenotazione(rs.getDate("data_ricevimento"));
+					bean.setStato(rs.getString("stato"));
+					rv.add(bean);
+				}
+
+			} finally {
+				try {
+					if (preparedStatement != null)
+						preparedStatement.close();
+				} finally {
+					DriverManagerConnectionPool.releaseConnection(connection);
+				}
+			}
+			return rv;
+		}
+		public synchronized void changeState(String id,String state) throws SQLException
+		{
+			Connection connection = null;
+			PreparedStatement preparedStatement = null;
+			String query= "UPDATE "+RicevimentoModel.TABLE_NAME+"SET stato = ? WHERE id = ? ";
+			
+			connection = DriverManagerConnectionPool.getDbConnection();
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, state);
+			preparedStatement.setString(2, id);
+			preparedStatement.executeUpdate();
+			
+			connection.commit();
+			
+			
 		}
 
 	}

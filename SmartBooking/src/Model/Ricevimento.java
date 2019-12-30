@@ -13,7 +13,7 @@ public class Ricevimento {
 	
 	
 	
-	public Ricevimento(String stato, Date data, Date dataPrenotazione, int id, String matDocente,
+	public Ricevimento(String stato, Date data, Date dataPrenotazione, String id, String matDocente,
 			String matStudente) {
 		super();
 		this.stato = stato;
@@ -26,11 +26,11 @@ public class Ricevimento {
 	
 	public Ricevimento(){}
 
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -93,7 +93,7 @@ public class Ricevimento {
 	private String stato;
 	private Date data;
 	private Date dataPrenotazione;
-	private int id;
+	private String id;
 	private String matDocente;
 	private String matStudente;
 	
