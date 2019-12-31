@@ -20,7 +20,7 @@ private static final String	SECOND_COLUMN = "Lista_preferiti.matricola_docente";
 			PreparedStatement preparedStatement = null;
 			Collection<Docente> docenti= new LinkedList<Docente>();
 
-			String insertSQL = "SELECT * FROM" + ListaPreferitiModel.TABLE_NAME + "JOIN Docente ON" + ListaPreferitiModel.SECOND_COLUMN + "= Docente.matricola WHERE" +"matricola_studente ="+s.getMatricola();
+			String insertSQL = "SELECT * FROM " + ListaPreferitiModel.TABLE_NAME + " JOIN Docente ON " + ListaPreferitiModel.SECOND_COLUMN + " = Docente.matricola WHERE " +"matricola_studente = "+s.getMatricola();
 			
 			try {
 				connection = DriverManagerConnectionPool.getDbConnection();

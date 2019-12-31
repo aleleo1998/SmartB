@@ -187,6 +187,48 @@ import java.sql.PreparedStatement;
 			}
 			return utenti;
 		}
+		
+		
+		public synchronized Collection<Ricevimento> doRetrieveAllByStudent(Studente studente) throws SQLException {
+			Connection connection = null;
+			PreparedStatement preparedStatement = null;
+
+			Collection<Ricevimento> utenti = new LinkedList<Ricevimento>();
+
+			String selectSQL = "SELECT * FROM " + RicevimentoModel.TABLE_NAME+" WHERE studente = ?";
+
+			try {
+				connection = DriverManagerConnectionPool.getDbConnection();
+				preparedStatement = connection.prepareStatement(selectSQL);
+				preparedStatement.setString(1, studente.getMatricola());
+
+				ResultSet rs = preparedStatement.executeQuery();
+
+				while (rs.next()) {
+					Ricevimento bean = new Ricevimento();
+
+					bean.setId(rs.getInt("id"));
+					bean.setMatDocente(rs.getString("docente"));
+					bean.setMatStudente(rs.getString("studente"));
+					bean.setData(rs.getDate("data_prenotazione"));
+					bean.setDataPrenotazione(rs.getDate("data_ricevimento"));
+					
+					utenti.add(bean);
+				}
+
+			} finally {
+				try {
+					if (preparedStatement != null)
+						preparedStatement.close();
+				} finally {
+					DriverManagerConnectionPool.releaseConnection(connection);
+				}
+			}
+			return utenti;
+		}
+		
+		
+		
 
 	}
 
