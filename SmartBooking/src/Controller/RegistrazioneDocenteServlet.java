@@ -72,7 +72,6 @@ public class RegistrazioneDocenteServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		System.out.println("SONO IN REGSERVLET");
 		
 		String nome = request.getParameter("nome");
 		String cognome = request.getParameter("cognome");
@@ -86,13 +85,10 @@ public class RegistrazioneDocenteServlet extends HttpServlet {
 		String email = request.getParameter("email");
 		String ufficio = request.getParameter("ufficio");
 		
-		System.out.println("CREO DOCENTE DA INSERIRE");
 		Docente doc = new Docente(nome, cognome, matricola, password, email, ufficio);
-		System.out.println("DOCENTE CREATO");
 		//System.out.println(doc.getNome());
 		gestioneUtenti.registrazioneDocente(doc);
 		
-		System.out.println("Registrazione fatta");
 		
 		
 			
