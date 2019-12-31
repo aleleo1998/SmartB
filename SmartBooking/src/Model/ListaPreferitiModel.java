@@ -102,6 +102,39 @@ private static final String	SECOND_COLUMN = "Lista_preferiti.matricola_docente";
 				}
 			}
 			
+		/**
+		 * Il metodo existIntoDB(String matricolaDocente, String matricolaStudente) verifica se nella tabella ListaPreferiti c'è una corrispondenza tra il docente e lo studente
+		 * @param matricolaDocente
+		 * @param matricolaStudente
+		 * @return Boolean
+		 */
+		}
+		public Boolean existIntoDB(String matricolaDocente, String matricolaStudente) throws Exception {
+			Connection connection = null;
+			PreparedStatement preparedStatement = null;
+
+			String insertSQL = "SELECT * FROM " + ListaPreferitiModel.TABLE_NAME + " WHERE matricola_studente = ? AND matricola_docente = ?";
+	
+			try {
+				connection = DriverManagerConnectionPool.getDbConnection();
+				preparedStatement = connection.prepareStatement(insertSQL);
+				preparedStatement.setString(1, matricolaStudente);
+				preparedStatement.setString(2, matricolaDocente);
+				ResultSet rs = preparedStatement.executeQuery();
+				while (rs.next()) {
+					return true;
+				}
+					
+			} finally {
+				try {
+					if (preparedStatement != null)
+						preparedStatement.close();
+				} finally {
+					DriverManagerConnectionPool.releaseConnection(connection);
+				}
+			}
+			return false;
+			
 			
 		}
 		

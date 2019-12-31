@@ -41,6 +41,8 @@ public class LoginServlet extends HttpServlet {
 		
 		Utente utente = gestioneUtenti.loginUtente(email, password);
 		
+		System.out.println("matricola"+utente.getMatricola());
+		
 		
 		request.getSession().setAttribute("Utente",utente.getMatricola());
 		System.out.println("Settato in sessione con nome 'user': "+utente);
