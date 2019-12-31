@@ -58,6 +58,9 @@ public class addDocenteListaPreferiti extends HttpServlet {
 			System.out.println("Query effettuata con successo.");
 		else
 			System.out.println("Errore durante l'esecuzione della query");
+		
+		
+		response.sendRedirect("./jsp/ViewRicercaDocenti.jsp");
 	}
 
 	/**

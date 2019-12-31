@@ -6,11 +6,12 @@ $(document).ready(function(){
 	
 	$("#searchButton").click(function(){
 		var docente = $("#nameDoc").val();
+		alert(posizione);
 		//alert(docente);
 		
 		$.ajax({            //AJAX CON JQUERY
 			type : 'Post',   //TIPO DI CHIAMATA
-			data : {docente : docente, id : 0},  //COPPIE NOME-VALORE DA PASSARE ALLA SERVLET
+			data : {docente : docente},  //COPPIE NOME-VALORE DA PASSARE ALLA SERVLET
 			url : '../FindServlet',  //SERVLET DA RICHIAMARE IN MANIERA ASINCRONA
 			success : function resultServlet(result) {  //FUNZIONE DA ESEGUIRE IN CASO DI SUCCESSO
 				//alert("ajax--> valore restituito dalla servlet FindServlet: "+result);
@@ -52,23 +53,26 @@ for(i=0;i<addButton.length;i++)
 	
 	//var prezzoUnitario = array2[i].innerHTML;  //modifica valore	
 	
+	//$(".addButton").attr("disabled",true);
+	
 	$.ajax({            //AJAX CON JQUERY
 		type : 'Post',   //TIPO DI CHIAMATA
-		async : true,
+		async : false,
 		data : {matricolaDocente : matricolaDocente},  //COPPIE NOME-VALORE DA PASSARE ALLA SERVLET
 		url : '../TrovaCorrispondenzaDocenteStudenteServlet',  //SERVLET DA RICHIAMARE IN MANIERA ASINCRONA
 		success : function resultServlet(result) {  //FUNZIONE DA ESEGUIRE IN CASO DI SUCCESSO
 			//alert("ajax--> valore restituito dalla servlet: "+result);
 			if(result == "esiste"){  //corrispondenza trovata
-				addButton[i].css("disabled","true");
+				//alert("#addButton"+i);
+				$("#addButton"+matricolaDocente).attr("disabled",true);
+				$("#removeButton"+matricolaDocente).attr("disabled",false);
 			}else{
-				//$("#tbody").html(result);
+				$("#addButton"+matricolaDocente).attr("disabled",false);
+				$("#removeButton"+matricolaDocente).attr("disabled",true);
 			}
 		}
 		
 	}); /*fine ajax*/
-	
-	
 	
 }
 

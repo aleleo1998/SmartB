@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import Model.Docente;
 import Model.DocenteModel;
+import Model.ListaPreferitiModel;
 
 /**
  * Servlet implementation class FindServlet
@@ -54,6 +55,8 @@ public class FindServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
+		System.out.print("\nEntrato in FindServlet");
+		
 		PrintWriter out = response.getWriter();
 		
 		String docente = request.getParameter("docente");
@@ -78,22 +81,44 @@ public class FindServlet extends HttpServlet {
 			out.write("Errore");
 			return;
 		}else {
-			String result = "<tr>";
-			result = result+"<th scope=\"row\">";
-			result = result+"<label name=\"nome\" id=\"nome\">"+d.getNome()+"</label> <label name=\"cognome\" id=\"cognome\">"+d.getCognome()+"</label>";
-			result = result+"</th>";
-			result = result+"<td><p id=\"ufficio\">"+d.getUfficio()+"<p></td>";
-			result = result+"<td><a href=\"RegView.jsp\"><i class=\"fas fa-info-circle\"></i></a></td>";
-			result = result+"<td>";
-			result = result+"<form name=\"form\" action=\"../addDocenteListaPreferiti\">";
-			result = result+"<input id=\"matricolaDocente\" style=\"display:none;\" name=\"matricolaDocente\" value=\""+d.getMatricola()+"\"</>";
-			result = result+"<button name=\"add\"><i class=\"fas fa-user-plus\"></i></button>";
-			result = result+"</form>";
-			result = result+"</td>";
-			result = result+"<td>";
-			result = result+"<form name=\"form\" action=\"../removeDocenteListaPreferiti\">";
-			result = result+"<input id=\"matricolaDocente\" style=\"display:none;\" name=\"matricolaDocente\" value=\""+d.getMatricola()+"\"</>";
-			result = result+"<button name=\"remove\"><i class=\"fas fa-user-plus\"></i></button>";
+			
+			String result = "";
+			
+			ListaPreferitiModel lpm = new ListaPreferitiModel();
+			try {
+				
+				result = result+"<tr>";
+				result = result+"<th scope=\"row\">";
+				result = result+"<label name=\"nome\" id=\"nome\">"+d.getNome()+"</label> <label name=\"cognome\" id=\"cognome\">"+d.getCognome()+"</label>";
+				result = result+"</th>";
+				result = result+"<td><p id=\"ufficio\">"+d.getUfficio()+"<p></td>";
+				result = result+"<td><a href=\"RegView.jsp\"><i class=\"fas fa-info-circle\"></i></a></td>";
+				result = result+"<td>";
+				result = result+"<form name=\"form\" action=\"../addDocenteListaPreferiti\">";
+				result = result+"<input id=\"matricolaDocente\" style=\"display:none;\" name=\"matricolaDocente\" value=\""+d.getMatricola()+"\"</>";
+			
+				if(lpm.existIntoDB(d.getMatricola(),(String) request.getSession().getAttribute("Utente"))) {  //Se esiste una corrispondenza docente studente
+																									//il docente è nella lista preferiti dello studente
+					result = result+"<button name=\"add\" id=\"addButton"+d.getMatricola()+"\" class=\"addButton\" disabled><i class=\"fas fa-user-plus\"></i></button>";
+					result = result+"</form>";
+					result = result+"</td>";
+					result = result+"<td>";
+					result = result+"<form name=\"form\" action=\"../removeDocenteListaPreferiti\">";
+					result = result+"<input id=\"matricolaDocente\" style=\"display:none;\" name=\"matricolaDocente\" value=\""+d.getMatricola()+"\"</>";
+					result = result+"<button name=\"remove\" id=\"removeButton"+d.getMatricola()+"\" class=\"removeButton\"><i class=\"fas fa-user-plus\"></i></button>";
+				}else {
+					result = result+"<button name=\"add\" id=\"addButton"+d.getMatricola()+"\" class=\"addButton\"><i class=\"fas fa-user-plus\"></i></button>";
+					result = result+"</form>";
+					result = result+"</td>";
+					result = result+"<td>";
+					result = result+"<form name=\"form\" action=\"../removeDocenteListaPreferiti\">";
+					result = result+"<input id=\"matricolaDocente\" style=\"display:none;\" name=\"matricolaDocente\" value=\""+d.getMatricola()+"\"</>";
+					result = result+"<button name=\"remove\" id=\"removeButton"+d.getMatricola()+"\" class=\"removeButton\" disabled><i class=\"fas fa-user-plus\"></i></button>";
+				}
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			
 			result = result+"</form>";
 			result = result+"</td>";
 			result = result+"</tr>";

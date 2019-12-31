@@ -256,7 +256,7 @@ public class DocenteModel {
 	}
 	
 	/**
-	 * Verifica se un email da verificare, passata come parametro, esiste già nel database come email associata a un docente
+	 * Verifica se un email da verificare, passata come parametro, esiste giï¿½ nel database come email associata a un docente
 	 * @param email email da verificare
 	 * @return false se l'email non esiste, true altrimenti
 	 * @throws Exception
@@ -303,7 +303,7 @@ public class DocenteModel {
 	
 	
 	/**
-	 * verifica se esiste una matricola, passata come parametro, già associata a un docente nel database
+	 * verifica se esiste una matricola, passata come parametro, giï¿½ associata a un docente nel database
 	 * @param matricola : matricola da verificare
 	 * @return false se la matricola non esiste, true altrimenti
 	 * @throws Exception
@@ -347,6 +347,5 @@ public class DocenteModel {
 		else
 			return true;
 	}
-	
 	
 }
