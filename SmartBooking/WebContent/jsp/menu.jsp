@@ -112,7 +112,7 @@
 		                </li>
                 		
                 		<li class="nav-item ">
-		                <a class="nav-link" href="index.jsp">Profilo studente<span class="sr-only">(current)</span></a>
+		                <a class="nav-link" href="ProfiloStudente.jsp">Profilo studente<span class="sr-only">(current)</span></a>
 		                </li>
 		                
 		                <li class="nav-item">
@@ -136,7 +136,7 @@
 		                </li>
                 	
                 		<li class="nav-item ">
-		                <a class="nav-link" href="index.jsp">Profilo segreteria<span class="sr-only">(current)</span></a>
+		                <a class="nav-link" href="ProfiloSegreteria.jsp">Profilo segreteria<span class="sr-only">(current)</span></a>
 		                </li>
 		                
 		                <li class="nav-item">
