@@ -50,14 +50,18 @@ public class LoginServlet extends HttpServlet {
 		System.out.println(utente);
 		
 		if(utente instanceof Model.Docente) {
-			response.sendRedirect("");  //profilo docente
 			request.getSession().setAttribute("docente", (Docente) utente);
+			response.sendRedirect("./jsp/index.jsp");  //profilo docente
 		}else if(utente instanceof Model.Studente) {
 			request.getSession().setAttribute("studente",(Studente) utente);  //'Utente'in sessione restituisce la matricola
+
 			response.sendRedirect("./jsp/ProfiloStudente.jsp");  //profilo studente
+
 		}else if(utente instanceof Model.Segreteria) {
 			request.getSession().setAttribute("segreteria",(Segreteria) utente);
+			
 			response.sendRedirect("./jsp/ProfiloSegreteria.jsp");  //profilo segreteria
+
 		}else
 			response.sendRedirect("./jsp/Login.jsp");  //se le credenziali sono sbagliate l'utente viene riportato sulla pagina di login
 	
