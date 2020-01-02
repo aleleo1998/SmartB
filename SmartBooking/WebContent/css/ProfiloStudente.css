@@ -27,7 +27,6 @@ html,body{
 	}
 	
 	#buttonRicerca{
-	float: left;
 		padding-top:0.2em;
 		text-align: center;
 		font-weight: 600;
@@ -46,7 +45,7 @@ html,body{
 	}
 	
 	#image{
-		margin-top: 0em;
+		margin-top: 2em;
 		height: 10em;
 		width: 10em;
 	}

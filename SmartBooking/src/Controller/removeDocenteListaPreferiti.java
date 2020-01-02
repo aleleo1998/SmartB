@@ -35,6 +35,8 @@ public class removeDocenteListaPreferiti extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
 		
@@ -42,10 +44,15 @@ public class removeDocenteListaPreferiti extends HttpServlet {
 		
 		UtenteModel md = new UtenteModel();
 		
+		
+		
 		//
 			
 			Studente s = (Studente) session.getAttribute("studente");
 			System.out.println("Matricola studente: "+s.getMatricola());
+			
+			System.out.println("*****"+matricolaDocente+"******");
+			System.out.println("*****"+s.getMatricola()+"******");
 			
 		//
 		//Studente s = (Studente) session.getAttribute("user");
