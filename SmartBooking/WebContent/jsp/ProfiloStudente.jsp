@@ -12,6 +12,7 @@
 <head>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://kit.fontawesome.com/7606041806.js" crossorigin="anonymous"></script>
 
 <!--  CSS -->
 <link rel="stylesheet" href="../css/ProfiloStudente.css">
@@ -42,7 +43,7 @@ preferiti = (LinkedList<Docente>) lpm.getAllDocenti(studente);
     <div class="container-fluid well span6">
 	<div class="row-fluid">
         <div class="span2" >
-		    <img id="image" src="../image/student.png" class="img-circle">
+		    <img id="image" src="../image/default.jpg" class="img-circle">
         </div>
         
         <br/>
@@ -104,6 +105,8 @@ preferiti = (LinkedList<Docente>) lpm.getAllDocenti(studente);
     <tr>
       <th scope="col">Docente</th>
       <th scope="col">Ufficio</th>
+      <th scope="col">Nuova richiesta di ricevimento</th>
+      <th scope="col">Rimuovi dai preferiti</th>
     </tr>
   </thead>
   <tbody id="tbody">
@@ -112,7 +115,13 @@ preferiti = (LinkedList<Docente>) lpm.getAllDocenti(studente);
   
       <td><p id="docente"><%=d.getNome()%> <%=d.getCognome()%></p></td>
       <td><p id="ufficio"><%=d.getUfficio()%></p></td>
-     
+      <td><a href="#####"></a><i class="far fa-comment-dots"></i></td>
+      <td>
+      	<form action="../removeDocenteListaPreferiti">
+      		<button><i class="fas fa-user-slash"></i> </button>
+      		<input type="text" id="matricolaDocente" name="matricolaDocente" value="<%=d.getMatricola()%>" style="display:none;"></input>
+      	</form>	
+      </td>
     </tr>
     
     <% } %>

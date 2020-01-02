@@ -72,14 +72,14 @@ LinkedList<Docente> list = (LinkedList<Docente>) m.doRetrieveAll();
       		<form name="form" action="../addDocenteListaPreferiti">
     			<input id="matricolaDocente" style="display:none;" name="matricolaDocente" value="<%=d.getMatricola()%>"/>
     		
-      			<button name="add" id=<%="addButton"+d.getMatricola()%> class="addButton"><i class="fas fa-user-plus"></i></button> <!--  Aggiungi docente icon -->
+      			<button name="add" id=<%="addButton"+d.getMatricola()%> class="addButton"><i id="addIcon" class="fas fa-user-plus"></i></button> <!--  Aggiungi docente icon -->
       		</form>
       	</td>
       	<td>
       		<form name="form" action="../removeDocenteListaPreferiti">
     			<input class="rowMatricola" id="matricolaDocente" style="display:none;" name="matricolaDocente" value="<%=d.getMatricola()%>"/>
     		
-      			<button name="remove" id=<%="removeButton"+d.getMatricola()%> class="removeButton"><i class="fas fa-user-minus"></i></button>  <!-- Rimuovi docente icon -->
+      			<button name="remove" id=<%="removeButton"+d.getMatricola()%> class="removeButton"><i id="rmvIcon" class="fas fa-user-minus"></i></button>  <!-- Rimuovi docente icon -->
       		</form>
      	</td> 
      	<td>

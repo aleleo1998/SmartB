@@ -31,7 +31,7 @@ html,body{
 		color: black;
 		background: #F90;
 		height: 35px;
-		width: auto;
+		width: 15em;
 		border-radius: 2em;
 		cursor: pointer;
 		margin: 2em 0em 5em 0em;
@@ -41,8 +41,6 @@ html,body{
 		box-shadow: 0 1px 3px rgba(0,0,0,0.5);
 		border: solid black 1px;
 }
-
-
 
 #search{
     margin-left:1em;

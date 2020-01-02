@@ -29,7 +29,7 @@ private static final String	SECOND_COLUMN = "Lista_preferiti.matricola_docente";
 				while (rs.next()) {
 					Docente bean = new Docente();
 
-					bean.setMatricola("matricola");
+					bean.setMatricola(rs.getString("matricola"));
 					bean.setNome(rs.getString("nome"));
 					bean.setCognome(rs.getString("cognome"));
 					bean.setEmail(rs.getString("email"));
