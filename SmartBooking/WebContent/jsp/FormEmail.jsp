@@ -32,7 +32,7 @@ LinkedList<Studente> listStudenti = (LinkedList<Studente>) s.doRetrieveAll();
 <body>
 
 	<div id="menu">
-		<%@include file="../html/menu.html" %> 
+		<%@include file="menu.jsp" %> 
 	</div>
 
 	<div class="col-xl-8 offset-xl-2 py-5">
