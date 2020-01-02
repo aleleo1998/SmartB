@@ -55,6 +55,8 @@ public class FindServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
+		String result = "";
+		
 		System.out.print("\nEntrato in FindServlet");
 		
 		PrintWriter out = response.getWriter();
@@ -78,11 +80,20 @@ public class FindServlet extends HttpServlet {
 		}
 		
 		if(d.getMatricola() == null) {  //Se non esiste un docente con quella coppia Nome/Cognome
-			out.write("Errore");
-			return;
-		}else {
 			
-			String result = "";
+			result = result+"<tr>";
+			result = result+"<th scope=\"row\">";
+			result = result+"Spiacente. Il docente "+docente+" non &egrave; presente nel database";
+			result = result+"</th><td></td><td></td><td></td><td></td>";
+			result = result+"</tr>";
+			result = result+"<tr>";
+			result = result+"<td>";
+			result = result+"<a href=\"../jsp/ViewRicercaDocenti.jsp\" ><p id=\"all\">Visualizza tutti i docenti</p></a>";
+			result = result+"</td>";
+			result = result+"</tr>";
+			
+			
+		}else {
 			
 			ListaPreferitiModel lpm = new ListaPreferitiModel();
 			try {
@@ -115,24 +126,26 @@ public class FindServlet extends HttpServlet {
 					result = result+"<input id=\"matricolaDocente\" style=\"display:none;\" name=\"matricolaDocente\" value=\""+d.getMatricola()+"\"</>";
 					result = result+"<button name=\"remove\" id=\"removeButton"+d.getMatricola()+"\" class=\"removeButton\" disabled><i class=\"fas fa-user-plus\"></i></button>";
 				}
+				
+				result = result+"</form>";
+				result = result+"</td>";
+				result = result+"</tr>";
+				result = result+"<tr>";
+				result = result+"<td>";
+				result = result+"<a href=\"../jsp/ViewRicercaDocenti.jsp\" ><p id=\"all\">Visualizza tutti i docenti</p></a>";
+				result = result+"</td>";
+				result = result+"</tr>";
+				
+				System.out.println(result);
+				
+				
 			}catch(Exception e) {
 				e.printStackTrace();
 			}
 			
-			result = result+"</form>";
-			result = result+"</td>";
-			result = result+"</tr>";
-			result = result+"<tr>";
-			result = result+"<td>";
-			result = result+"<a href=\"../jsp/ViewRicercaDocenti.jsp\" ><p id=\"all\">Visualizza tutti i docenti</p></a>";
-			result = result+"</td>";
-			result = result+"</tr>";
-			
-			System.out.println(result);
-			
-			out.append(result);
-		
 		}  //fine else interno
+		
+		out.append(result);
 		
 	}
 
