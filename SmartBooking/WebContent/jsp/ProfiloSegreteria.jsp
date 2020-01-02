@@ -24,7 +24,7 @@ LinkedList<Model.RichiestaModOrario> orari = (LinkedList<RichiestaModOrario>) mo
 <body>
 
 <div id="menu">
-	<%@include file="../html/menu.html"%>
+	<%@include file="menu.jsp"%>
 </div>
 
 <div id="container">
