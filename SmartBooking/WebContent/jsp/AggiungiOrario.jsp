@@ -12,7 +12,7 @@
 <!-- FontAwesome -->
 <script src="https://kit.fontawesome.com/7606041806.js" crossorigin="anonymous"></script>
 
-<link rel="stylesheet" href="../css/CambioPassword.css">
+<link rel="stylesheet" href="../css/AggiungiOrario.css">
 
 </head>
 <body>
@@ -33,7 +33,8 @@ function showForm(){
 	
 	for(var i = 1; i<=num; i++){
 	
-	$( "#aggOrario" ).append('<div class="form-group row">'+
+	$( "#aggOrario" ).append('<h2 id="rowTitle">Giorno '+i+'</h2>'+
+			'<div class="form-group row">'+
 			'	<label for="inputEmail3" class="col-sm-2 col-form-label">Giorno</label>'+
 			'    <div class="col-sm-10">'+
 			'      <select name="giorno'+i+'" form="aggOrario">'+
@@ -117,6 +118,7 @@ function showForm(){
 	
 	
 	$( "#form" ).show("slow");
+	$( "#form2" ).hide("slow");
 	console.log("ciao");
 	
 }

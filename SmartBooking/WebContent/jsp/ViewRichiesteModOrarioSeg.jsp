@@ -41,14 +41,24 @@ function accDecRichiesta(idRichiesta, stat){
 
 </script>
 
-
 <div id="menu">
 	<%@include file="menu.jsp"%>
 </div>
 
 <div id="container">
 
-<div id="titleContainer">
+
+<%
+    	Utente u = null;
+    	u = (Utente) request.getSession().getAttribute("segreteria");
+    	if(u == null){  	
+%>
+
+		<h1 style="text-align:center">Non sei autorizzato</h1>
+		
+	<%} else { %>
+	
+		<div id="titleContainer">
 
 <h1>Richieste per modificare l'orario</h1>
 
@@ -89,12 +99,28 @@ function accDecRichiesta(idRichiesta, stat){
 
   </tbody>
 </table>
-
-</div>
-
-<div id="footer">
+	
+	
+	
+	<%} %>
+	
+	</div>
+	<div id="footer">
 	<%@include file="../html/footer.html"%>
 </div>
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
