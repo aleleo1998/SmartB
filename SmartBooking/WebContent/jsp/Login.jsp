@@ -45,7 +45,7 @@
       						<small>Remember Me</small>
     				</label>
     			
-    				<button type="submit" class="btn btn-login float-right">Submit</button>
+    				<button type="submit" id="loginButton" class="btn btn-login float-right">Submit</button>
   				
   				</div>
   
