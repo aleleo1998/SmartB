@@ -4,7 +4,7 @@
 $(document).ready(function(){
 	
 	$("#buttonInvia").click(function(){
-	
+		alert("CIAO");
 		
 			if(checkNome()==1 && checkCognome()==1 && checkMailMittente()==0 && checkMailDestinatario()==0){
 				//alert("Si può procedere alla registrazione");
