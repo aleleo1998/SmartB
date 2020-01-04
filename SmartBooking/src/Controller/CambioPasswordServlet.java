@@ -13,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class CambioPasswordServlet
@@ -45,8 +46,19 @@ public class CambioPasswordServlet extends HttpServlet {
 		
 		
 		Utente u = null;
+		
+		HttpSession session = request.getSession();
+		
+		u = (Utente) session.getAttribute("studente");
+		if(u == null) {
+			u = (Utente) session.getAttribute("docente");
+			if(u == null) {
+				u = (Utente) session.getAttribute("segreteria");
+			}
+		}
+		
 		try {
-			u = md.doRetrieveByKey("123");
+			u = md.doRetrieveByKey(u.getMatricola());
 			System.out.println(u);
 		}catch(Exception e) {
 			e.printStackTrace();
