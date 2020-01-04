@@ -54,6 +54,7 @@ LinkedList<Docente> list = (LinkedList<Docente>) m.doRetrieveAll();
       <th scope="col">Informazioni docente</th>
       <th scope="col">Aggiungi ai miei docenti</th>
       <th scope="col">Rimuovi dai miei docenti</th>
+      <th scope="col">Richiedi incontro</th>
     </tr>
   </thead>
   <tbody id="tbody">
@@ -83,7 +84,11 @@ LinkedList<Docente> list = (LinkedList<Docente>) m.doRetrieveAll();
       		</form>
      	</td> 
      	<td>
+    		<form name="form" action="############">
+    			<input id="matricolaDocente" style="display:none;" name="matricolaDocente" value="<%=d.getMatricola()%>"/>
     		
+      			<button name="prenota" id=<%="prenota"+d.getMatricola()%> class="prenotaButton">Prenota</button> 
+      		</form>
     	</td>
     </tr>
     

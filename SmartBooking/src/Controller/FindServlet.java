@@ -129,6 +129,12 @@ public class FindServlet extends HttpServlet {
 				
 				result = result+"</form>";
 				result = result+"</td>";
+				result = result+"<td>";
+	    		result = result+"<form name=\"form\" action=\"############\">";
+	    		result = result+"<input id=\"matricolaDocente\" style=\"display:none;\" name=\"matricolaDocente\" value=\""+d.getMatricola()+"\"/>";
+	    		result = result+"<button name=\"prenota\" id=\"prenota"+d.getMatricola()+"\" class=\"prenotaButton\">Prenota</button>"; 
+	      		result = result+"</form>";
+	      		result = result+"</td>";
 				result = result+"</tr>";
 				result = result+"<tr>";
 				result = result+"<td>";

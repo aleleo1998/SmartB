@@ -42,6 +42,24 @@ html,body{
 		border: solid black 1px;
 }
 
+.prenotaButton{
+	padding-top:0.2em;
+		text-align: center;
+		font-weight: 600;
+		color: black;
+		background: #F90;
+		height: 30px;
+		width: 150px;
+		cursor: pointer;
+		border-radius: 2em;
+		margin: 0em 0em 0em 0em;
+		-moz-border-radius: 20px;
+		-moz-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+		-webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+		box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+		border: solid black 1px;
+}
+
 #search{
     margin-left:1em;
     margin-right: 40em;
