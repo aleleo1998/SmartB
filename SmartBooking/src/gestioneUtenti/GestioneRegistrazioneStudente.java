@@ -1,5 +1,7 @@
 package gestioneUtenti;
 
+import java.sql.SQLException;
+
 import Model.Studente;
 import Model.StudenteModel;
 
@@ -28,6 +30,21 @@ public class GestioneRegistrazioneStudente {
 			System.out.println("\nErrore nel metodo registraStudente(Studente studente) della classe GestioneRegistrazioneStudente");
 			e.printStackTrace();
 		}
+	}
+	
+	
+	public Studente findStudenteByKey(String matricola){
+		
+		StudenteModel sm = new StudenteModel();
+		
+		try {
+			return sm.doRetrieveByKey(matricola);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+		
 	}
 
 }

@@ -17,6 +17,7 @@ public interface GestioneListaPreferiti {
 	
 	public boolean addDocente(Docente d,Studente s);
 	public boolean removeDocente(Docente d, Studente s);
+	public boolean trovaCorrispondenza(String matDoc, String matStud) throws Exception;
 
 	
 

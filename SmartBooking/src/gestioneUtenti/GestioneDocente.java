@@ -30,5 +30,26 @@ public class GestioneDocente {
 		docModel.doDelete(matricola);
 	}
 	
+	public boolean matricolaExist(String matricola) throws Exception{
+		
+		DocenteModel docM = new DocenteModel();
+		
+		try {
+			if(docM.existMatricola(matricola)){
+				
+				return true;
+				
+			}else{
+				
+				return false;
+				
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new Exception("Errore");
+		}
+		
+	}
+	
 	
 }

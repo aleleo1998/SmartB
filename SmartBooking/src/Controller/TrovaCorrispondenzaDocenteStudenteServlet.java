@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import Model.DocenteModel;
 import Model.ListaPreferitiModel;
+import gestioneListaPreferiti.GestioneListaPreferiti;
+import gestioneListaPreferiti.GestioneListaPreferitiControl;
 
 /**
  * Servlet implementation class TrovaCorrispondenzaDocenteStudenteServlet
@@ -18,6 +20,8 @@ import Model.ListaPreferitiModel;
 @WebServlet("/TrovaCorrispondenzaDocenteStudenteServlet")
 public class TrovaCorrispondenzaDocenteStudenteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	GestioneListaPreferiti gestioneListaPreferiti = new GestioneListaPreferitiControl();
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -38,7 +42,27 @@ public class TrovaCorrispondenzaDocenteStudenteServlet extends HttpServlet {
 		
 		String matricolaStudente = (String) request.getSession().getAttribute("Utente"); 
 		
-		ListaPreferitiModel lpm = new ListaPreferitiModel();
+		try {
+			if(gestioneListaPreferiti.trovaCorrispondenza(matricolaDocente, matricolaStudente)){
+				
+				out.write("esiste");
+				
+			}else{
+				
+				out.write("non esiste");
+				
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
+		
+		
+		//OLD
+		/*ListaPreferitiModel lpm = new ListaPreferitiModel();
 		
 		try {
 			if(lpm.existIntoDB(matricolaDocente,matricolaStudente)) //se esiste corrispondenza
@@ -49,7 +73,7 @@ public class TrovaCorrispondenzaDocenteStudenteServlet extends HttpServlet {
 		} catch (Exception e) {
 			
 
-		}
+		}*/
 		
 		
 		

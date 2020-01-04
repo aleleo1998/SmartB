@@ -19,5 +19,7 @@ public interface GestioneUtenti {
 	public Boolean registrazioneDocente(Docente d);
 	public Boolean rimuoviDocente(String matricola);
 	public Utente loginUtente(String email,String password);
+	public Studente cercaStudente(String matricola);
+	public boolean checkMatricolaDocente(String matricola) throws Exception;
 	
 }
