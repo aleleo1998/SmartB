@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 <link rel="stylesheet" href="../css/HomeDocente.css">
 <script type="text/javascript" src="../javascript/AvatarJS.js"></script>
@@ -17,9 +18,13 @@
 
 <%
 DocenteModel m = new DocenteModel();
+RicevimentoModel r = new RicevimentoModel();
 
 String matricola=(String)session.getAttribute("Utente");
 Docente doc = m.doRetrieveByKey(matricola);
+
+LinkedList<Docente> list = (LinkedList<Docente>) m.doRetrieveAll(); 
+LinkedList<Ricevimento> listRicevimenti = (LinkedList<Ricevimento>) r.doRetrieveTodayByDocente(matricola);
 %>
 
 </head>
@@ -69,15 +74,52 @@ Docente doc = m.doRetrieveByKey(matricola);
       </div>
       <!--info docente-->
       
-      
-      <!-- FORM ACCETTA/RIFIUTA RICEVIMENTI -->
-      
-      <!--  -->
+ 
     </div>
   </div>
   </div>
   </div>
   </div>   
+  
+  
+     <!-- FORM ACCETTA/RIFIUTA RICEVIMENTI -->
+      
+      <!--  -->
+      
+   <!-- Form visualizza i ricevimenti di oggi -->
+      <div id="ricevimentiOggi">
+		  <table class="table table-striped" id="table">
+		  <h5>Ricevimenti di oggi</h3>
+			  <thead class="thead-dark">
+			    <tr>
+			      <th scope="col">id Richiesta</th>
+			      <th scope="col">Data</th>
+			      <th scope="col">Studente</th>
+			    </tr>
+			  </thead>
+			  <tbody id="tbody">
+			  		<td colspan="3">
+			  	<% 
+			  	if(listRicevimenti.size()==0){ %>
+				      <label name="idRichiesta" id="idRichiesta">Non sono presenti ricevimenti</label> 
+			    <%} else{%></td>
+			    
+			  	<% for(Ricevimento ric : listRicevimenti){ %>
+			  	<tr>
+			  	
+			      <td><p id="idRichiesta"><%= ric.getId()%></p> </td>
+			      <td><p id="data"><%=ric.getData()%><p></td>
+			      <td><p id="matricolaStudente"><%=ric.getMatStudente()%><p></td>
+			      
+			     
+			    </tr>
+			    
+			    <% }} %>
+			
+			  </tbody>
+		</table>
+      </div>
+      
 	
 	
 	

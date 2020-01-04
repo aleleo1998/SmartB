@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -95,15 +95,14 @@ LinkedList<Studente> listStudenti = (LinkedList<Studente>) s.doRetrieveAll();
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
-                            <div class="col-md-12">
-                            <!--	<p id="buttonInvia"> Invia </p> -->
-                                 <input type="submit" id="buttonInvia" class="btn btn-success btn-send" value="Invia ">
                             
-                            </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-12">
-                                <p class="text-muted">
+							<div class="col-md-12">
+                            	<!--  <p id="buttonInvia"> Invia </p> -->
+                                  <input type="submit" id="buttonInvia" class="btn btn-success btn-send" value="Invia ">                                             
+                                 <input type="reset" id="buttonReset" class="btn btn-success btn-send" value="Annulla ">
+                           
                             </div>
                         </div>
                     </div>
