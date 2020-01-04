@@ -69,9 +69,12 @@ public class CambioPasswordServlet extends HttpServlet {
 		
 		if(gestioneUtenti.cambiaPassword(u, vecchiaPassword, nuovaPassword))
 			System.out.println("Query effettuata con successo.");
+			
 		else
 			System.out.println("Errore durante l'esecuzione della query");
 		
+		
+		response.sendRedirect("./jsp/index.jsp");
 	}
 
 	/**
