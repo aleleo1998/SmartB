@@ -241,7 +241,8 @@ import java.sql.PreparedStatement;
 			Collection<Ricevimento> ricevimenti = new LinkedList<Ricevimento>();
 
 			String selectSQL = "SELECT * FROM " + RicevimentoModel.TABLE_NAME+" WHERE docente = ?";
-
+			
+			Date date = new Date(System.currentTimeMillis());
 			try {
 				connection = DriverManagerConnectionPool.getDbConnection();
 				preparedStatement = connection.prepareStatement(selectSQL);
@@ -259,7 +260,7 @@ import java.sql.PreparedStatement;
 					bean.setDataPrenotazione(rs.getDate("data_ricevimento"));
 					bean.setStato(rs.getString("stato"));
 					
-					if(bean.getStato().contentEquals("Accettato")) {	
+					if(bean.getStato().contentEquals("Accettato") && bean.getData().equals(date)) {	
 						ricevimenti.add(bean);
 					}
 				}

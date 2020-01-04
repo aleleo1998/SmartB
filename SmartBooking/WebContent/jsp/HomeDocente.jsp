@@ -88,37 +88,35 @@ LinkedList<Ricevimento> listRicevimenti = (LinkedList<Ricevimento>) r.doRetrieve
       
    <!-- Form visualizza i ricevimenti di oggi -->
       <div id="ricevimentiOggi">
-		      <table class="table table-striped" id="table">
-		      <h5>Ricevimenti di oggi</h3>
-		  <thead class="thead-dark">
-		    <tr>
-		      <th scope="col">id Richiesta</th>
-		      <th scope="col">Data</th>
-		      <th scope="col">Studente</th>
-		    </tr>
-		  </thead>
-		  <tbody id="tbody">
-		  	<% 
-		  	if(listRicevimenti.size()==0){ %>
-		  		<td colspan="3">
-			      <label name="idRichiesta" id="idRichiesta">Non sono presenti ricevimenti</label> </td>
-		  <%	} %>		  	
-		  	<% for(Ricevimento ric : listRicevimenti){ %>
-		  	<tr>
-		  	
-		      <td>
-		      <label name="idRichiesta" id="idRichiesta"><%= ric.getId()%></label> 
-		      
-		      </td>
-		      <td><p id="Orario"><%=ric.getData()%><p></td>
-		      <td><p id="Orario"><%=ric.getMatStudente()%><p></td>
-		      
-		     
-		    </tr>
-		    
-		    <% } %>
-		
-		  </tbody>
+		  <table class="table table-striped" id="table">
+		  <h5>Ricevimenti di oggi</h3>
+			  <thead class="thead-dark">
+			    <tr>
+			      <th scope="col">id Richiesta</th>
+			      <th scope="col">Data</th>
+			      <th scope="col">Studente</th>
+			    </tr>
+			  </thead>
+			  <tbody id="tbody">
+			  		<td colspan="3">
+			  	<% 
+			  	if(listRicevimenti.size()==0){ %>
+				      <label name="idRichiesta" id="idRichiesta">Non sono presenti ricevimenti</label> 
+			    <%} else{%></td>
+			    
+			  	<% for(Ricevimento ric : listRicevimenti){ %>
+			  	<tr>
+			  	
+			      <td><p id="idRichiesta"><%= ric.getId()%></p> </td>
+			      <td><p id="data"><%=ric.getData()%><p></td>
+			      <td><p id="matricolaStudente"><%=ric.getMatStudente()%><p></td>
+			      
+			     
+			    </tr>
+			    
+			    <% }} %>
+			
+			  </tbody>
 		</table>
       </div>
       
