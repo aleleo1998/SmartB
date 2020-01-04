@@ -11,7 +11,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import Model.Docente;
 import Model.DocenteModel;
 import gestioneOrari.GestioneOrari;
 import gestioneOrari.GestioneOrariConcrete;
@@ -54,6 +56,11 @@ public class AggiungiOrarioServlet extends HttpServlet {
 			System.out.println(s);
 		}
 		
+		HttpSession session = request.getSession();
+		
+		Docente d =(Docente) session.getAttribute("docente");
+		
+		String matricolaDocente = d.getMatricola();
 		
 		
 		
@@ -78,7 +85,7 @@ public class AggiungiOrarioServlet extends HttpServlet {
 		}
 		
 		try {
-			gestioneOrari.aggiungiFirstOrario("123",giorni,orariInizio,orariFine);
+			gestioneOrari.aggiungiFirstOrario(matricolaDocente,giorni,orariInizio,orariFine);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
