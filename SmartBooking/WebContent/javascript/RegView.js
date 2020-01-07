@@ -3,22 +3,22 @@
  */
 
 function checkSubmit(){
-	
+	/*
 	alert("checkNome: "+checkNome());
 	alert("checkCognome: "+checkCognome());
 	alert("checkMatricola: "+checkMatricola());
 	alert("checkPassword: "+checkPassword());
 	alert("checkConfermaPassword: "+checkConfermaPassword());
 	alert("checkMail: "+checkMail());
-	
+	*/
 	
 	if(checkNome()==1 && checkCognome()==1 && checkMatricola()==1 && 
 	checkPassword()==1 && checkConfermaPassword()==1 && checkMail()==1){
-	alert("Si può procedere alla registrazione");
-	$("#form").submit();
+	//alert("Si può procedere alla registrazione");
+		$("#form").submit();
 	}	
 	else{
-	alert("Errore. non è possibile effettuare il submit");
+		alert("Errore. non è possibile effettuare il submit");
 	}
 	
 }
