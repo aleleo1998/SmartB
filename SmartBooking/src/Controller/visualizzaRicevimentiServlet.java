@@ -1,7 +1,6 @@
 package Controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.Collection;
 import java.util.LinkedList;
@@ -13,9 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import Model.Ricevimento;
-import Model.RicevimentoModel;
-import Model.Studente;
+import Model.*;
 
 /**
  * Servlet implementation class visualizzaRicevimentiServlet
@@ -35,25 +32,21 @@ public class visualizzaRicevimentiServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
-	{
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		RicevimentoModel rm= new RicevimentoModel();
-		PrintWriter out = response.getWriter();
-		HttpSession sessione = request.getSession();
-		//String matricolaDocente = request.getParameter("matricola");
-		Collection<Ricevimento> ricevimenti;
-		try {
+		RicevimentoModel rm=new RicevimentoModel();
+		Collection<Ricevimento> ricevimenti = new LinkedList<Ricevimento>();
+		HttpSession sessione= request.getSession();
+		try 
+		{
 			ricevimenti = rm.doRetrieveAllByDoc("0512154321");
-		    sessione.setAttribute("ricevimenti", ricevimenti);
-		    response.sendRedirect("./jsp/RicevimentiView.jsp");
-		   
-			
+			sessione.setAttribute("ricevimenti", ricevimenti);
+			response.sendRedirect("./jsp/RicevimentiView.jsp");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
-	    
+		
 		
 	}
 

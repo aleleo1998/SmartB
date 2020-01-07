@@ -14,6 +14,7 @@ public boolean accetta(Ricevimento r)
 		rm.changeState(r.getId(),"Accettato");
 	} catch (SQLException e) {
 		// TODO Auto-generated catch block
+		e.printStackTrace();
 		return false;
 	}
 	return true;
@@ -30,16 +31,6 @@ public boolean cancellaRiv(Ricevimento r)
 	return true;
 }
 
-public boolean aggiungiRiv(Ricevimento r)
-{
-	try {
-		rm.doSave(r);
-	} catch (SQLException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-		return false;
-	}
-	return true;
-}
+
 private RicevimentoModel rm = new RicevimentoModel();
 }

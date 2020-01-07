@@ -3,17 +3,18 @@
  */
 package Model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * @author ozne2
  *
  */
-public class Ricevimento {
+public class Ricevimento implements Serializable {
 	
 	
 	
-	public Ricevimento(String stato, Date data, Date dataPrenotazione, String id, String matDocente,
+	public Ricevimento(String stato, Date data, Date dataPrenotazione, int id, String matDocente,
 			String matStudente) {
 		super();
 		this.stato = stato;
@@ -26,11 +27,11 @@ public class Ricevimento {
 	
 	public Ricevimento(){}
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -93,7 +94,7 @@ public class Ricevimento {
 	private String stato;
 	private Date data;
 	private Date dataPrenotazione;
-	private String id;
+	private int id;
 	private String matDocente;
 	private String matStudente;
 	
