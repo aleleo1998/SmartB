@@ -37,6 +37,7 @@ public class EmailUtility {
 			String emailMittente, String emailDestinatario, String nome, String cognome, String subject, String content)
 	throws AddressException, MessagingException {
 
+		
 		// setta le proprietà del server smtp
 		Properties properties = new Properties();
 		properties.put("mail.smtp.host", host);

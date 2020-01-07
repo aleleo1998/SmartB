@@ -9,17 +9,14 @@ public class GestioneDocente {
 	
 	public GestioneDocente() {}
 	
-<<<<<<< HEAD
-	public void registrazioneDocente(Docente d) throws SQLException 
-	{
-=======
+
+
 	/**
 	 * Registrazione Docente
 	 * @param d docente da registrare
 	 * @throws SQLException
 	 */
 	public void registrazioneDocente(Docente d) throws SQLException {
->>>>>>> branch 'master' of https://github.com/ozne23/SmartB.git
 		DocenteModel docModel = new DocenteModel();
 		docModel.doSave(d);	
 	}
