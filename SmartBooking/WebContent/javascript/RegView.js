@@ -6,30 +6,54 @@ $(document).ready(function(){
 	
 	
 	
-	$("#buttonRegistrazione").click(function(){
+	//$("#buttonRegistrazione").click(function(){
 		
-		/*
-		alert("checkNome: "+checkNome());
+		
+	//	alert("ciao");
+		
+		/*alert("checkNome: "+checkNome());
 		alert("checkCognome: "+checkCognome());
 		alert("checkMatricola: "+checkMatricola());
 		alert("checkPassword: "+checkPassword());
 		alert("checkConfermaPassword: "+checkConfermaPassword());
-		alert("checkMail: "+checkMail());
-		*/
+		alert("checkMail: "+checkMail());*/
 		
-			if(checkNome()==1 && checkCognome()==1 && checkMatricola()==1 && 
+		
+			/*if(checkNome()==1 && checkCognome()==1 && checkMatricola()==1 && 
 					checkPassword()==1 && checkConfermaPassword()==1 && checkMail()==1){
-				//alert("Si può procedere alla registrazione");
+				alert("Si può procedere alla registrazione");
 				$("#form").submit();
 			}	
 			else{
 				//alert("Errore. non è possibile effettuare il submit");
-			}
+			}*/
 		
 
-	});
+	//});
 	
 });
+
+
+function buttonCiao(){
+	
+	alert("checkNome: "+checkNome());
+	alert("checkCognome: "+checkCognome());
+	alert("checkMatricola: "+checkMatricola());
+	alert("checkPassword: "+checkPassword());
+	alert("checkConfermaPassword: "+checkConfermaPassword());
+	alert("checkMail: "+checkMail());
+	
+	
+	if(checkNome()==1 && checkCognome()==1 && checkMatricola()==1 && 
+	checkPassword()==1 && checkConfermaPassword()==1 && checkMail()==1){
+	alert("Si può procedere alla registrazione");
+	$("#form").submit();
+	}	
+	else{
+	alert("Errore. non è possibile effettuare il submit");
+	}
+	
+}
 
 
 
@@ -59,6 +83,7 @@ function checkCognome(){
 }
 
 function checkMatricola(){
+	var flag = 0;
 	var matricola = $("#matricola").val();  //ottengo valore campo matricola
 	var expr = /^[0-9]{10}$/;
 	if(matricola.match(expr)){
@@ -73,18 +98,19 @@ function checkMatricola(){
 				//alert("ajax--> valore restituito dalla servlet CheckMailServlet: "+result);
 				if(result == "0"){
 					alert("Matricola già presente nel database");
-					flag = 0;
+					flag =  0;
 				}else if(result == "1"){
 					alert("result == 1. Matricola non esiste nel database");
-					flag = 1;
+					flag =  1;
 				}else{
 					//alert("Errore.");
-					flag = 0;
+					flag =  0;
 				}
 			}
 			
 		}); /*fine ajax*/
 		
+		return flag;
 		
 	}else{
 		alert("Matricola non corretta");
@@ -93,7 +119,7 @@ function checkMatricola(){
 }
 
 function checkMail(){
-	var flag;
+	var flag = 0;
 	var email = $("#email").val();    //ottengo valore campo email
 	var expr = /^\w+([\.-]?\w+)*@studenti[.]{1}unisa[.]{1}it$/;
 	if(email.length < 20 || email.length > 50){
@@ -111,19 +137,21 @@ function checkMail(){
 				//alert("ajax--> valore restituito dalla servlet CheckMailServlet: "+result);
 				if(result == "0"){
 					alert("Email già presente nel database");
-					flag = 0;
+					flag =  0;
 				}else if(result == "1"){
 					//alert("result == 1. L'indirizzo email non esiste nel DB");
-					flag = 1;
+					flag =  1;
 				}else{
 					//alert("Errore.");
-					flag = 0;
+					flag =  0;
 				}
 			}
 			
 		}); /*fine ajax*/
+		
+		return flag;
 	}
-	return flag;
+	return 0;
 }
 
 function checkPassword(){
