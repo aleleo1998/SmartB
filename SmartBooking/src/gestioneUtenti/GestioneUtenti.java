@@ -12,12 +12,15 @@ import Model.Utente;
 
 public interface GestioneUtenti {
 	
-	public Boolean cambiaPassword(Utente u,String vecchiaPassword,String nuovaPassword);
-	public Boolean ripristinaPasswordEmail(String email);
-	public Boolean registrazioneStudente(Studente studente);
-	public Boolean ripristinaPassword(Utente u , String nuovaPassword);
-	public Boolean registrazioneDocente(Docente d);
-	public Boolean rimuoviDocente(String matricola);
+	public boolean cambiaPassword(Utente u,String vecchiaPassword,String nuovaPassword);
+	public boolean ripristinaPasswordEmail(String email);
+	public boolean registrazioneStudente(Studente studente);
+	public boolean ripristinaPassword(Utente u , String nuovaPassword);
+	public boolean registrazioneDocente(Docente d);
+	public boolean rimuoviDocente(String matricola);
 	public Utente loginUtente(String email,String password);
+	public Studente cercaStudente(String matricola);
+	public boolean checkMatricolaDocente(String matricola) throws Exception;
+	public boolean cercaEmail(String email);
 	
 }

@@ -8,7 +8,6 @@ import Model.DocenteModel;
 public class GestioneDocente {
 	
 	public GestioneDocente() {}
-	
 
 
 	/**
@@ -30,6 +29,27 @@ public class GestioneDocente {
 		DocenteModel docModel = new DocenteModel();
 		//System.out.println(matricola);
 		docModel.doDelete(matricola);
+	}
+	
+	public boolean matricolaExist(String matricola) throws Exception{
+		
+		DocenteModel docM = new DocenteModel();
+		
+		try {
+			if(docM.existMatricola(matricola)){
+				
+				return true;
+				
+			}else{
+				
+				return false;
+				
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new Exception("Errore");
+		}
+		
 	}
 	
 	

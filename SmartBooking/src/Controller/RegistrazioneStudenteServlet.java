@@ -45,6 +45,7 @@ public class RegistrazioneStudenteServlet extends HttpServlet {
 		String password = request.getParameter("password");
 		String confermaPassword =  request.getParameter("confermaPassword");
 		
+		
 		studente = new Studente(nome,cognome,matricola,password,email);
 		
 		try {
