@@ -62,13 +62,13 @@ LinkedList<Docente> list = (LinkedList<Docente>) m.doRetrieveAll();
       <td><%= d.getMatricola() %></td>
       <td><%= d.getEmail() %></td>
       <td><%= d.getUfficio() %></td>
-      <td><button class="buttonRemove" id="<%=d.getMatricola()%>"><i class="fas fa-user-minus"></i></button></td>  <!-- Rimuovi docente icon -->
-    </tr>
+      <td><button class="buttonRemove" id="<%=d.getMatricola()%>"><i class="fas fa-user-minus"></i></button></td>  <!-- Rimuovi docente icon -->    </tr>
     <% } %>
   </tbody>
 </table>
 
 </div>
+
 
 <div id="footer">
 	<%@include file="../html/footer.html"%>

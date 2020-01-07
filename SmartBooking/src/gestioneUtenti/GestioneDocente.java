@@ -4,6 +4,7 @@ import java.sql.SQLException;
 
 import Model.Docente;
 import Model.DocenteModel;
+import Model.StudenteModel;
 
 public class GestioneDocente {
 	
@@ -31,6 +32,7 @@ public class GestioneDocente {
 		docModel.doDelete(matricola);
 	}
 	
+	
 	public boolean matricolaExist(String matricola) throws Exception{
 		
 		DocenteModel docM = new DocenteModel();
@@ -50,6 +52,22 @@ public class GestioneDocente {
 			throw new Exception("Errore");
 		}
 		
+	}
+	
+	public boolean checkMailDocente(String email) {
+		DocenteModel dm = new DocenteModel();
+		try {
+			if(dm.existEmail(email)) {
+				System.out.println("Mail esistente nel DB");
+				return false;
+			}else {
+				System.out.println("Mail non esistente nel DB");
+				return true;
+				
+			}
+				}catch(Exception e) {
+					return false;
+				}
 	}
 	
 	

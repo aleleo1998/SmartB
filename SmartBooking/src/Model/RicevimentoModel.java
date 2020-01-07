@@ -194,6 +194,7 @@ import DBConnection.DriverManagerConnectionPool;
 
 
 
+
 		public synchronized Collection<Ricevimento> doRetrieveAllByDoc(String matricolaDoc) throws SQLException {
 			Connection connection = null;
 			PreparedStatement preparedStatement = null;

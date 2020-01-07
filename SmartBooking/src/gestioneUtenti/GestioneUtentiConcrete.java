@@ -122,10 +122,13 @@ public class GestioneUtentiConcrete implements GestioneUtenti {
 	
 	}
 	
+	public boolean checkEmailDocente(String email) throws Exception{
+		return docente.checkMailDocente(email);
+	}
+	
 	public boolean cercaEmail(String email) {
 		
 		return  mail.verificaMail(email);
-		
 		
 	}
 	

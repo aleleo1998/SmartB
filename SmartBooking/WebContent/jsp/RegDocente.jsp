@@ -66,7 +66,7 @@
                                     </div>
                                            <p id="buttonRegistrazione"> Inserisci Docente </p>
                                     
-                                </div>
+                                	</div>
                                 </form>
                             </div>
                         </div>

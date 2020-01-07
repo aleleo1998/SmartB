@@ -8,20 +8,37 @@
 $(document).ready(function(){
 	
 	$("#buttonInvia").click(function(){
-		alert("CIAO");
 		
+		alert("sss");
 		
-			if(checkNome()==1 && checkCognome()==1 && checkMailMittente()==0 && checkMailDestinatario()==0){
+		alert(checkCognome());
+		alert(checkMailMittente());
+		alert(checkMailDestinario());
+		/*	if(checkNome()==1 && checkCognome()==1 && checkMailMittente()==0 && checkMailDestinatario()==0){
 				//alert("Si può procedere alla registrazione");
 				$("#form").submit();
 			}	
 			else{
 				alert("Errore. non è possibile effettuare il submit");
 			}
+			*/
 	});
 	
 });
 
+/*
+function inviaEmail(){ 
+	alert("CCC");
+	if(checkNome()==1 && checkCognome()==1 && checkMailMittente()==0 && checkMailDestinatario()==0){
+		alert("Si può procedere alla registrazione");
+		$("#form").submit();
+	}	
+	else{
+		alert("Errore. non è possibile effettuare il submit");
+	}
+}
+
+*/
 
 
 /**
@@ -32,7 +49,7 @@ function checkNome(){
 	var nome = $("#name").val();  //ottengo valore campo name
 	var expr = /^[A-Za-z]{1,10}$/;
 	if(nome.match(expr)){
-		//alert("Nome corretto");
+		alert("Nome corretto");
 		return 1;
 	}else{
 		alert("Nome non corretto"); 
@@ -66,7 +83,7 @@ function checkCognome(){
 function checkMailMittente(){
 	var flag;
 	var email = $("#emailMittente").val();    //ottengo valore campo emailMittente
-	var expr = /^\w+([\.-]?\w+)*@studenti[.]{1}unisa[.]{1}it$/;
+	var expr = /^\w+([\.-]?\w+)*@unisa[.]{1}it$/;
 	if(email.length < 20 || email.length > 50){
 		alert("Email non corretta");
 		return 1;

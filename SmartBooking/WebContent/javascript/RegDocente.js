@@ -5,7 +5,7 @@ $(document).ready(function(){
 	
 	$("#buttonRegistrazione").click(function(){
 		
-			if(checkNome()==1 && checkCognome()==1 && checkMatricola()==1 && checkUfficio()==1 &&checkMail()==1){
+			if(checkNome()==1 && checkCognome()==1 && checkMatricola()==1 && checkUfficio()==1 && checkMail()==1){
 				//alert("Si può procedere alla registrazione");
 				$("#form").submit();
 			}	
@@ -111,7 +111,7 @@ function checkUfficio(){
 function checkMail(){
 	var flag;
 	var email = $("#email").val();    //ottengo valore campo email
-	var expr = /^\w+([\.-]?\w+)*@studenti[.]{1}unisa[.]{1}it$/;
+	var expr = /^\w+([\.-]?\w+)*@unisa[.]{1}it$/;
 	if(email.length < 20 || email.length > 50){
 		alert("Email non corretta");
 		return 0;
