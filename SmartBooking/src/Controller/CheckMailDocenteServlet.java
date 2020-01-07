@@ -35,6 +35,7 @@ public class CheckMailDocenteServlet extends HttpServlet {
 		String email = request.getParameter("email");
 		System.out.print(email);
 		
+		
 		DocenteModel docM = new DocenteModel();
 		
 		try {
