@@ -3,13 +3,14 @@
  */
 package Model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * @author ozne2
  *
  */
-public class Ricevimento {
+public class Ricevimento implements Serializable {
 	
 	
 	

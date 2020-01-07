@@ -42,7 +42,7 @@ private static final String TABLE_NAME = "Disponibilità";
 			preparedStatement = connection.prepareStatement(insertSQL);
 			
 			preparedStatement.setString(1, Disponibilita.getGiorno());
-			preparedStatement.setString(2, Disponibilita.getOra());
+			preparedStatement.setTime(2, Disponibilita.getOra());
 			preparedStatement.setString(3, Disponibilita.getMatricolaDocente());		
 
 			preparedStatement.executeUpdate();
@@ -120,6 +120,8 @@ private static final String TABLE_NAME = "Disponibilità";
 	
 	
 	
+	
+	
 	/**
 	 * @param order
 	 * @return
@@ -147,7 +149,7 @@ private static final String TABLE_NAME = "Disponibilità";
 				Disponibilita bean = new Disponibilita();
 
 				bean.setGiorno(rs.getString("giorno"));
-				bean.setOra(rs.getString("ora"));
+				bean.setOra(rs.getTime("ora"));
 				bean.setMatricolaDocente("matricola_docente");
 				
 				listaDisponibilita.add(bean);
@@ -190,8 +192,8 @@ private static final String TABLE_NAME = "Disponibilità";
 				Disponibilita bean = new Disponibilita();
 				
 				bean.setGiorno(rs.getString("giorno"));
-				bean.setOra(rs.getString("ora"));
-				bean.setMatricolaDocente("matricola_docente");
+				bean.setOra(rs.getTime("ora"));
+				bean.setMatricolaDocente(rs.getString("matricola_docente"));
 				
 				listaOrari.add(bean);
 			}
@@ -232,7 +234,7 @@ private static final String TABLE_NAME = "Disponibilità";
 				Disponibilita bean = new Disponibilita();
 
 				bean.setGiorno(rs.getString("giorno"));
-				bean.setOra(rs.getString("ora"));
+				bean.setOra(rs.getTime("ora"));
 				bean.setMatricolaDocente("matricola_docente");
 				
 				listaDisponibilita.add(bean);
@@ -263,7 +265,7 @@ private static final String TABLE_NAME = "Disponibilità";
 	            		System.out.println(date.compareTo(datefine));
 	            	     System.out.println(date.getHours()+":"+date.getMinutes());
 	            	     	d.setGiorno(giorno);
-	            			d.setOra(date.getHours()+":"+date.getMinutes());
+	            			//d.setOra(date.getHours()+":"+date.getMinutes());
 	            			d.setMatricolaDocente(mDocente); 
 	            			doSave(d);
 	            	     mintoset += 15;
