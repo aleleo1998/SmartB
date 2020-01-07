@@ -59,10 +59,10 @@ public class GestioneDocente {
 		try {
 			if(dm.existEmail(email)) {
 				System.out.println("Mail esistente nel DB");
-				return false;
+				return false; //se l'email è presente nel db ritorna false
 			}else {
 				System.out.println("Mail non esistente nel DB");
-				return true;
+				return true; //se l'email NON è presente nel db ritorna true
 				
 			}
 				}catch(Exception e) {

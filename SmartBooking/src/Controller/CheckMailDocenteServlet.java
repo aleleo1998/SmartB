@@ -44,9 +44,9 @@ public class CheckMailDocenteServlet extends HttpServlet {
 		
 		try {
 			if(gestioneUtenti.checkEmailDocente(email)==false) {
-				out.write("0");  //email già esiste nel database
+				out.write("0");  //email esiste nel database
 			}else {
-				out.write("1");  //matricola non esiste nel database
+				out.write("1");  //email non esiste nel database
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
