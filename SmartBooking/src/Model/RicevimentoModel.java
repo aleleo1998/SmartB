@@ -191,7 +191,6 @@ import DBConnection.DriverManagerConnectionPool;
 			return utenti;
 		}
 		
-<<<<<<< HEAD
 		public synchronized Collection<Ricevimento> doRetrieveAllByDoc(String matricolaDoc) throws SQLException {
 			Connection connection = null;
 			PreparedStatement preparedStatement = null;
@@ -299,12 +298,11 @@ import DBConnection.DriverManagerConnectionPool;
 			
 			
 		}
-=======
+
 		
 		public synchronized Collection<Ricevimento> doRetrieveAllByStudent(Studente studente) throws SQLException {
 			Connection connection = null;
 			PreparedStatement preparedStatement = null;
->>>>>>> branch 'master' of https://github.com/ozne23/SmartB.git
 
 			Collection<Ricevimento> utenti = new LinkedList<Ricevimento>();
 
