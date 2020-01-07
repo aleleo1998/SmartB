@@ -3,6 +3,8 @@
  */
 package Model;
 
+import java.sql.Time;
+
 /**
  * @author ozne2
  *
@@ -18,7 +20,7 @@ public class Disponibilita {
 	 * @param giorno
 	 * @param ora
 	 */
-	public Disponibilita(String giorno, String ora, String matricolaDocente) {
+	public Disponibilita(String giorno, Time ora, String matricolaDocente) {
 		super();
 		this.giorno = giorno;
 		this.ora = ora;
@@ -41,13 +43,13 @@ public class Disponibilita {
 	/**
 	 * @return the ora
 	 */
-	public String getOra() {
+	public Time getOra() {
 		return ora;
 	}
 	/**
-	 * @param ora the ora to set
+	 * @param string the ora to set
 	 */
-	public void setOra(String ora) {
+	public void setOra(Time ora) {
 		this.ora = ora;
 	}
 	
@@ -56,6 +58,7 @@ public class Disponibilita {
 	 * @return the docente
 	 */
 	public String getMatricolaDocente() {
+		System.out.println(docente);
 		return docente;
 	}
 
@@ -70,7 +73,7 @@ public class Disponibilita {
 
 	//variabili
 	private String giorno;
-	private String ora;
+	private Time ora;
 	private String docente;
 
 }

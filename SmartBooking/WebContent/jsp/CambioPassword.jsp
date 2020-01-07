@@ -55,7 +55,7 @@
 </div>
 
 
-</div>
+
 
 <div id="footer">
 	<%@include file="../html/footer.html"%>

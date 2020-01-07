@@ -4,12 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<title>SmartBooking: registrazione completata</title>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<link rel="stylesheet" href="../css/Login.css">
-<!------ Include the above in your HEAD tag ---------->
-<title>Smartbooking: Login</title>
+<link rel="stylesheet" href="../css/SuccessReg.css">
 </head>
 <body>
 
@@ -26,29 +25,11 @@
 			<div id="contLogo">
                 <img src="../image/logo.png" id="logoReg" alt=""/>
             </div>
-		    <h2>Login now</h2>
-		    <form class="login-form" action="../LoginServlet">
- 				 <div class="form-group">
-    				<label for="exampleInputEmail1" class="text">Email</label>
-    					<input type="text" name="email" class="form-control" placeholder="">
-    			</div>
-  
-  				<div class="form-group">
-    				<label for="exampleInputPassword1" class="text">Password</label>
-    					<input type="password" name="password" class="form-control" placeholder="">
-  				</div>
-  
-  			    <div class="form-check">
-    				<label class="form-check-label">
-      					<input type="checkbox" class="form-check-input">
-      						<small>Remember Me</small>
-    				</label>
-    			
-    				<button type="submit" class="btn btn-login float-right">Submit</button>
-  				
-  				</div>
-  
-				</form>
+		    <h2>Complimenti!</h2>
+		    </h4> La registrazione è avvenuta con successo.</h4>
+		    <p> Procedi con il Login </p>
+		    <a href="Login.jsp"><p id="loginButton"> Login </p></a>
+		    
 					<div class="copy-text"></div>
 		</div>
 		
@@ -104,6 +85,7 @@
 <div id="footer">
 		<%@include file="../html/footer.html"%>
 	</div>
+
 
 </body>
 </html>

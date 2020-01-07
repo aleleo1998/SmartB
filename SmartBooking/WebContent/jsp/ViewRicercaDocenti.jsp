@@ -54,14 +54,19 @@ LinkedList<Docente> list = (LinkedList<Docente>) m.doRetrieveAll();
   </thead>
   <tbody>
   	<tr>
-  	<% for(Docente d : list){ %>
-      <th scope="row"><%= d.getNome()+" "+d.getCognome()%></th>
-      <td><%= d.getMatricola() %></td>
+  	
+  	<% for(int i=0;i<list.size();i++){ %>
+  	<form name="form"+i action="../RicercaDocentiServlet">
+      <th scope="row"><label id="nome"><%= list.get(i).getNome()%></label> <label id="cognome"><%=list.get(i).getCognome()%></label></th>
+      <td><p id="ufficio"><%=list.get(i).getUfficio()%><p></td>
       <td><a href="RegView.jsp"><i class="fas fa-info-circle"></i></a></td>
-      <td><button><i class="fas fa-user-plus"></i></button></td> <!--  Aggiungi docente icon -->
-      <td><button><i class="fas fa-user-minus"></i></button></td>  <!-- Rimuovi docente icon -->
+      <td><button name="add"><i class="fas fa-user-plus"></i></button></td> <!--  Aggiungi docente icon -->
+      <td><button name="remove"><i class="fas fa-user-minus"></i></button></td> <!-- Rimuovi docente icon -->
+      </form>
     </tr>
+   
     <% } %>
+
   </tbody>
 </table>
 

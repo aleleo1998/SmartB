@@ -68,7 +68,7 @@ public class DocenteModel {
 			preparedStatement.setString(1, matricola);
 
 			result = preparedStatement.executeUpdate();
-
+			connection.commit();
 		} finally {
 			try {
 				if (preparedStatement != null)
@@ -216,4 +216,7 @@ public class DocenteModel {
 		}
 		return docenti;
 	}
+	
+	
+	
 }

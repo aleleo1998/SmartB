@@ -18,16 +18,18 @@ package Model;
 			PreparedStatement preparedStatement = null;
 
 			String insertSQL = "INSERT INTO " + SegreteriaModel.TABLE_NAME
-					+ " (matricola, email, nome, cognome, password) VALUES (?, ?, ?, ?, ?)";
+					+ " (matricola, email, password, nome, cognome, orario) VALUES (?, ?, ?, ?, ?, ?)";
 
 			try {
 				connection = DriverManagerConnectionPool.getDbConnection();
 				preparedStatement = connection.prepareStatement(insertSQL);
 				preparedStatement.setString(1, Segreteria.getMatricola());
 				preparedStatement.setString(2, Segreteria.getEmail());
-				preparedStatement.setString(3, Segreteria.getNome());
-				preparedStatement.setString(4, Segreteria.getCognome());
-				preparedStatement.setString(5, Segreteria.getPassword());
+				preparedStatement.setString(3, Segreteria.getPassword());
+				preparedStatement.setString(4, Segreteria.getNome());
+				preparedStatement.setString(5, Segreteria.getCognome());
+				preparedStatement.setString(6, Segreteria.getOrari());
+				
 
 				preparedStatement.executeUpdate();
 
@@ -95,6 +97,7 @@ package Model;
 					bean.setCognome(rs.getString("cognome"));
 					bean.setEmail(rs.getString("email"));
 					bean.setPassword(rs.getString("password"));
+					bean.setOrari(rs.getString("orario"));
 					
 					utenti.add(bean);
 				}
@@ -132,6 +135,7 @@ package Model;
 					bean.setCognome(rs.getString("cognome"));
 					bean.setEmail(rs.getString("email"));
 					bean.setPassword(rs.getString("password"));
+					bean.setOrari(rs.getString("orario"));
 				}
 
 			} finally {
@@ -170,6 +174,7 @@ package Model;
 					bean.setCognome(rs.getString("cognome"));
 					bean.setEmail(rs.getString("email"));
 					bean.setPassword(rs.getString("password"));
+					bean.setOrari(rs.getString("orario"));
 					
 					utenti.add(bean);
 				}

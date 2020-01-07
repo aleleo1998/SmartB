@@ -25,18 +25,17 @@ private static final String TABLE_NAME = "Richiesta_modifica_orario";
 		PreparedStatement preparedStatement = null;
 
 		String insertSQL = "INSERT INTO " + RichiestaModOrarioModel.TABLE_NAME
-				+ " (id,matricola_docente, matricola_segreteria, ora_inizio, ora_fine, giorno_precedente, giorno) VALUES (?, ?, ?, ?, ?, ?, ?)";
+				+ " (matricola_segreteria, matricola_docente,ora_inizio, ora_fine, giorno, giorno_precedente) VALUES (?, ?, ?, ?, ?, ?)";
 
 		try {
 			connection = DriverManagerConnectionPool.getDbConnection();
 			preparedStatement = connection.prepareStatement(insertSQL);
-			preparedStatement.setInt(1, richiestaModOrario.getId());
+			preparedStatement.setString(1, richiestaModOrario.getMatricolaSegreteria());
 			preparedStatement.setString(2, richiestaModOrario.getMatricolaDocente());
-			preparedStatement.setString(3, richiestaModOrario.getMatricolaSegreteria());
-			preparedStatement.setString(4, richiestaModOrario.getOraInizio());
-			preparedStatement.setString(5, richiestaModOrario.getOraFine());
+			preparedStatement.setString(3, richiestaModOrario.getOraInizio());
+			preparedStatement.setString(4, richiestaModOrario.getOraFine());
+			preparedStatement.setString(5, richiestaModOrario.getGiorno());
 			preparedStatement.setString(6, richiestaModOrario.getGiornoPrecedente());
-			preparedStatement.setString(7, richiestaModOrario.getGiorno());
 			
 
 			preparedStatement.executeUpdate();
@@ -59,18 +58,18 @@ private static final String TABLE_NAME = "Richiesta_modifica_orario";
 	 * @return restituisce true se result è diverso da 0, false altrimenti
 	 * @throws SQLException
 	 */
-	public synchronized boolean doDelete(int id) throws SQLException {
+	public synchronized boolean doDelete(String matricolaDocente) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
 		int result = 0;
 
-		String deleteSQL = "DELETE FROM " + RichiestaModOrarioModel.TABLE_NAME + " WHERE id = ? ";
+		String deleteSQL = "DELETE FROM " + RichiestaModOrarioModel.TABLE_NAME + " WHERE matricola_docente = ? ";
 
 		try {
 			connection = DriverManagerConnectionPool.getDbConnection();
 			preparedStatement = connection.prepareStatement(deleteSQL);
-			preparedStatement.setInt(1, id);
+			preparedStatement.setString(1, matricolaDocente);
 
 			result = preparedStatement.executeUpdate();
 
@@ -113,7 +112,6 @@ private static final String TABLE_NAME = "Richiesta_modifica_orario";
 			while (rs.next()) {
 				RichiestaModOrario bean = new RichiestaModOrario();
 
-				bean.setId(rs.getInt("id"));
 				bean.setMatricolaDocente(rs.getString("matricola_docente"));
 				bean.setMatricolaSegreteria(rs.getString("matricola_segreteria"));
 				bean.setOraInizio(rs.getString("ora_inizio"));
@@ -142,23 +140,22 @@ private static final String TABLE_NAME = "Richiesta_modifica_orario";
 	 * @return restituisce una RichiestaModOrario con l'id passato come parametro, se presente nel database
 	 * @throws SQLException
 	 */
-	public synchronized RichiestaModOrario doRetrieveByKey(int id) throws SQLException {
+	public synchronized RichiestaModOrario doRetrieveByKey(String matricolaDocente) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
 		RichiestaModOrario bean = new RichiestaModOrario();
 
-		String selectSQL = "SELECT * FROM " + RichiestaModOrarioModel.TABLE_NAME + " WHERE id = ?";
+		String selectSQL = "SELECT * FROM " + RichiestaModOrarioModel.TABLE_NAME + " WHERE matricola_docente = ?";
 
 		try {
 			connection = DriverManagerConnectionPool.getDbConnection();
 			preparedStatement = connection.prepareStatement(selectSQL);
-			preparedStatement.setInt(1, id);
+			preparedStatement.setString(1, matricolaDocente);
 
 			ResultSet rs = preparedStatement.executeQuery();
 
 			while (rs.next()) {
-				bean.setId(rs.getInt("id"));
 				bean.setMatricolaDocente(rs.getString("matricola_docente"));
 				bean.setMatricolaSegreteria(rs.getString("matricola_segreteria"));
 				bean.setOraInizio(rs.getString("ora_inizio"));
@@ -203,7 +200,6 @@ private static final String TABLE_NAME = "Richiesta_modifica_orario";
 			while (rs.next()) {
 				RichiestaModOrario bean = new RichiestaModOrario();
 
-				bean.setId(rs.getInt("id"));
 				bean.setMatricolaDocente(rs.getString("matricola_docente"));
 				bean.setMatricolaSegreteria(rs.getString("matricola_segreteria"));
 				bean.setOraInizio(rs.getString("ora_inizio"));
