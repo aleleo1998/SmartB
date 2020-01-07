@@ -51,18 +51,6 @@
                                         <div class="form-group">
                                             <input type="text" class="form-control" name="matricola" id="matricola" placeholder="Matricola *" value="" />
                                         </div>
-                                        <div class="form-group">
-                                            <div class="maxl">
-                                                <label class="radio inline"> 
-                                                    <input type="radio" name="gender" value="male" checked>
-                                                    <span>M</span> 
-                                                </label>
-                                                <label class="radio inline"> 
-                                                    <input type="radio" name="gender" value="female">
-                                                    <span>F</span> 
-                                                </label>
-                                            </div>
-                                        </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">

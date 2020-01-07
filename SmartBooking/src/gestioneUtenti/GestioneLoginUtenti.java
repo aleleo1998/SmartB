@@ -7,7 +7,7 @@ import Model.UtenteModel;
  * 
  * @author carminesorrentino
  * 
- * GestioneLoginUtenti è una classe che si occupa della funzionalità relativa al Login.
+ * cD
  *
  */
 
