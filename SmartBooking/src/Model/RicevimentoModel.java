@@ -191,6 +191,7 @@ import DBConnection.DriverManagerConnectionPool;
 			return utenti;
 		}
 		
+<<<<<<< HEAD
 		public synchronized Collection<Ricevimento> doRetrieveAllByDoc(String matricolaDoc) throws SQLException {
 			Connection connection = null;
 			PreparedStatement preparedStatement = null;
@@ -298,7 +299,95 @@ import DBConnection.DriverManagerConnectionPool;
 			
 			
 		}
+=======
+		
+		public synchronized Collection<Ricevimento> doRetrieveAllByStudent(Studente studente) throws SQLException {
+			Connection connection = null;
+			PreparedStatement preparedStatement = null;
+>>>>>>> branch 'master' of https://github.com/ozne23/SmartB.git
 
+			Collection<Ricevimento> utenti = new LinkedList<Ricevimento>();
+
+			String selectSQL = "SELECT * FROM " + RicevimentoModel.TABLE_NAME+" WHERE studente = ?";
+
+			try {
+				connection = DriverManagerConnectionPool.getDbConnection();
+				preparedStatement = connection.prepareStatement(selectSQL);
+				preparedStatement.setString(1, studente.getMatricola());
+
+				ResultSet rs = preparedStatement.executeQuery();
+
+				while (rs.next()) {
+					Ricevimento bean = new Ricevimento();
+
+					bean.setId(rs.getInt("id"));
+					bean.setMatDocente(rs.getString("docente"));
+					bean.setMatStudente(rs.getString("studente"));
+					bean.setData(rs.getDate("data_prenotazione"));
+					bean.setDataPrenotazione(rs.getDate("data_ricevimento"));
+					
+					utenti.add(bean);
+				}
+
+			} finally {
+				try {
+					if (preparedStatement != null)
+						preparedStatement.close();
+				} finally {
+					DriverManagerConnectionPool.releaseConnection(connection);
+				}
+			}
+			return utenti;
+		}
+		
+		
+		/**
+		 * Metodo che restituisce tutti i ricevimenti di un determinato docente per la giornata odierna
+		 * @param matricolaDocente matricola del docente 
+		 * @return collezione di ricevimenti di un docente nella giornata odierna
+		 * @throws SQLException
+		 */
+		public synchronized Collection<Ricevimento> doRetrieveTodayByDocente(String matricolaDocente) throws SQLException {
+			Connection connection = null;
+			PreparedStatement preparedStatement = null;
+
+			Collection<Ricevimento> ricevimenti = new LinkedList<Ricevimento>();
+
+			String selectSQL = "SELECT * FROM " + RicevimentoModel.TABLE_NAME+" WHERE docente = ?";
+			
+			Date date = new Date(System.currentTimeMillis());
+			try {
+				connection = DriverManagerConnectionPool.getDbConnection();
+				preparedStatement = connection.prepareStatement(selectSQL);
+				preparedStatement.setString(1, matricolaDocente);
+
+				ResultSet rs = preparedStatement.executeQuery();
+
+				while (rs.next()) {
+					Ricevimento bean = new Ricevimento();
+
+					bean.setId(rs.getInt("id"));
+					bean.setMatDocente(rs.getString("docente"));
+					bean.setMatStudente(rs.getString("studente"));
+					bean.setData(rs.getDate("data_prenotazione"));
+					bean.setDataPrenotazione(rs.getDate("data_ricevimento"));
+					bean.setStato(rs.getString("stato"));
+					
+					if(bean.getStato().contentEquals("Accettato") && bean.getData().equals(date)) {	
+						ricevimenti.add(bean);
+					}
+				}
+
+			} finally {
+				try {
+					if (preparedStatement != null)
+						preparedStatement.close();
+				} finally {
+					DriverManagerConnectionPool.releaseConnection(connection);
+				}
+			}
+			return ricevimenti;
+		}
 	}
 
 

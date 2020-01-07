@@ -17,6 +17,23 @@ html,body{
     	clear: both;
     	margin-top: 22em;
 	}
+	
+	#loginButton{
+	padding-top:0.2em;
+		text-align: center;
+		font-weight: 600;
+		color: black;
+		background: #F90;
+		height: 35px;
+		width: 150px;
+		border-radius: 2em;
+		cursor: pointer;
+		margin: 2em 0em -1em 0em;
+		-moz-border-radius: 20px;
+		-moz-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+		-webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+		box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+		border: solid black 1px;}
 
 #logoReg{
 	width: 10em;

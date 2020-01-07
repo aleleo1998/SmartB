@@ -40,7 +40,7 @@ public class GestioneListaPreferitiControl implements GestioneListaPreferiti {
 		ListaPreferitiModel model = new ListaPreferitiModel();
 		
 		try {
-			model.removeDocente(d, s);
+			model.removeDocente(d,s);
 			return true;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

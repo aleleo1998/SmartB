@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Model.Docente;
+import Model.Segreteria;
+import Model.Studente;
 import Model.Utente;
 import gestioneUtenti.GestioneUtenti;
 import gestioneUtenti.GestioneUtentiConcrete;
@@ -38,17 +41,28 @@ public class LoginServlet extends HttpServlet {
 		
 		Utente utente = gestioneUtenti.loginUtente(email, password);
 		
-		request.getSession().setAttribute("Utente", utente.getMatricola());  //'Utente'in sessione restituisce la matricola
+		System.out.println("matricola"+utente.getMatricola());
+		
+		
+		request.getSession().setAttribute("Utente",utente.getMatricola());
+		System.out.println("Settato in sessione con nome 'user': "+utente);
 		
 		System.out.println(utente);
 		
-		if(utente instanceof Model.Docente)
-			response.sendRedirect("");  //profilo docente
-		else if(utente instanceof Model.Studente)
-			response.sendRedirect("");  //profilo studente
-		else if(utente instanceof Model.Segreteria)
-			response.sendRedirect("");  //profilo segreteria
-		else
+		if(utente instanceof Model.Docente) {
+			request.getSession().setAttribute("docente", (Docente) utente);
+			response.sendRedirect("./jsp/index.jsp");  //profilo docente
+		}else if(utente instanceof Model.Studente) {
+			request.getSession().setAttribute("studente",(Studente) utente);  //'Utente'in sessione restituisce la matricola
+
+			response.sendRedirect("./jsp/ProfiloStudente.jsp");  //profilo studente
+
+		}else if(utente instanceof Model.Segreteria) {
+			request.getSession().setAttribute("segreteria",(Segreteria) utente);
+			
+			response.sendRedirect("./jsp/ProfiloSegreteria.jsp");  //profilo segreteria
+
+		}else
 			response.sendRedirect("./jsp/Login.jsp");  //se le credenziali sono sbagliate l'utente viene riportato sulla pagina di login
 	
 	}

@@ -17,12 +17,23 @@
 <body>
 
 	<div id="menu">
-		<%@include file="../html/menu.html"%>
+		<%@include file="menu.jsp"%>
 	</div>
 	
 	<div id="container">
 	
-	<div class="container register" id="spaceup">
+	<%
+    	Utente u = null;
+    	u = (Utente) request.getSession().getAttribute("segreteria");
+    	if(u == null){  	
+%>
+
+		<h1 style="text-align:center">Non sei autorizzato</h1>
+		
+	<%} else { %>
+	
+			
+			<div class="container register" id="spaceup">
                 <div class="row">
                     <div class="col-md-3 register-left">
                     <div id="contLogo">
@@ -81,6 +92,12 @@
 
             </div>
 	
+	
+	
+	<% } %>
+	
+	
+	
 	</div>
 	
 	<div id="footer">
@@ -89,3 +106,11 @@
 
 </body>
 </html>
+	
+	
+	
+	
+	
+	
+	
+	

@@ -41,10 +41,12 @@ public class addDocenteListaPreferiti extends HttpServlet {
 		
 		String matricolaDocente = request.getParameter("matricolaDocente");
 		
+		System.out.println(matricolaDocente);
+		
 		UtenteModel md = new UtenteModel();
 		
 		
-		Studente s = (Studente) session.getAttribute("user");
+		Studente s = (Studente) session.getAttribute("studente");
 		Docente d = new Docente();
 		d = null;
 		try {
@@ -56,6 +58,9 @@ public class addDocenteListaPreferiti extends HttpServlet {
 			System.out.println("Query effettuata con successo.");
 		else
 			System.out.println("Errore durante l'esecuzione della query");
+		
+		
+		response.sendRedirect("./jsp/ViewRicercaDocenti.jsp");
 	}
 
 	/**

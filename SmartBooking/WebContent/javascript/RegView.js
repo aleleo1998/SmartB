@@ -62,8 +62,30 @@ function checkMatricola(){
 	var matricola = $("#matricola").val();  //ottengo valore campo matricola
 	var expr = /^[0-9]{10}$/;
 	if(matricola.match(expr)){
-		//alert("Matricola corretta");
-		return 1;
+		//se la matricola rispetta lunghezza e formato...
+		
+		$.ajax({            //AJAX CON JQUERY
+			type : 'Post',   //TIPO DI CHIAMATA
+			data : {matricola : matricola},  //COPPIE NOME-VALORE DA PASSARE ALLA SERVLET
+			async: false,
+			url : '../CheckMatricolaStudenteServlet',  //SERVLET DA RICHIAMARE IN MANIERA ASINCRONA
+			success : function resultServelt(result) {  //FUNZIONE DA ESEGUIRE IN CASO DI SUCCESSO
+				//alert("ajax--> valore restituito dalla servlet CheckMailServlet: "+result);
+				if(result == "0"){
+					alert("Matricola già presente nel database");
+					flag = 0;
+				}else if(result == "1"){
+					alert("result == 1. Matricola non esiste nel database");
+					flag = 1;
+				}else{
+					//alert("Errore.");
+					flag = 0;
+				}
+			}
+			
+		}); /*fine ajax*/
+		
+		
 	}else{
 		alert("Matricola non corretta");
 		return 0;
@@ -88,7 +110,7 @@ function checkMail(){
 			success : function resultServelt(result) {  //FUNZIONE DA ESEGUIRE IN CASO DI SUCCESSO
 				//alert("ajax--> valore restituito dalla servlet CheckMailServlet: "+result);
 				if(result == "0"){
-					//alert("result == 0. Indirizzo email già esistente nel DB");
+					alert("Email già presente nel database");
 					flag = 0;
 				}else if(result == "1"){
 					//alert("result == 1. L'indirizzo email non esiste nel DB");

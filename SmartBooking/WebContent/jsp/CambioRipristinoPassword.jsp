@@ -21,7 +21,7 @@
 <% String matCriptata = request.getParameter("mat"); %>
 
 <div id="menu">
-	<%@include file="../html/menu.html"%>
+	<%@include file="menu.jsp"%>
 </div>
 
 <div id="container">
