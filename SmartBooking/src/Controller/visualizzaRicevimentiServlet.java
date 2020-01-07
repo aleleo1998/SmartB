@@ -39,7 +39,7 @@ public class visualizzaRicevimentiServlet extends HttpServlet {
 		HttpSession sessione= request.getSession();
 		try 
 		{
-			ricevimenti = rm.doRetrieveAllByDoc("0512154321");
+			ricevimenti = rm.doRetrieveAllByDoc((String)sessione.getAttribute("Utente"));
 			sessione.setAttribute("ricevimenti", ricevimenti);
 			response.sendRedirect("./jsp/RicevimentiView.jsp");
 		} catch (SQLException e) {

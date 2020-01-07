@@ -111,14 +111,15 @@ Collection<Ricevimento> rv =(Collection) request.getSession().getAttribute("rice
     <tbody><% 
     
     String name="nome";
+    String data="";
 for(Ricevimento r : rv)
 	{
-    
+	 data=(r.getData().getDate()+1)+"/"+(r.getData().getMonth()+1)+"/"+(r.getData().getYear()+1900);
 	%><tr>
 	<td><%= r.getId()%></td>
 	<td><%= r.getMatStudente()%></td>
 	<td><%= r.getDataPrenotazione()%></td>
-	<td><%= r.getData()%></td>
+	<td><%=data%></td>
 	<td><%= r.getStato()%></td>
 	<%if(!(r.getStato().equals("Accettato"))){ %>
 	<td>
@@ -130,7 +131,7 @@ for(Ricevimento r : rv)
 	</td>
     <td>
       <form class="form" id="<%=r.getId()%>i"  action="../AccettaRicevimentoServlet" method="Post">
-      <input type="text" style="height:30px;width:300px" placeholder="inserisci una breve motivazione" id='<%= r.getId() %>' name="motivazione"><br>
+      <input type="text" style="height:30px;width:300px" placeholder="inserisci una breve motivazione" id='<%= r.getId() %>' name="motivazioneCancellazione"><br>
       <input type="text" name="id" class="id"  value='<%= r.getId() %>'>
       <input type="text" class="op" name="operazione" value="2">
       </form>
@@ -143,7 +144,7 @@ for(Ricevimento r : rv)
     <td></td>
     <td>
       <form class="form" id="<%=r.getId()%>i" action="../AccettaRicevimentoServlet" method="Post">
-      <input type="text" style="height:30px;width:300px" placeholder="inserisci una breve motivazione" id='<%= r.getId() %>' name="motivazione"><br>
+      <input type="text" style="height:30px;width:300px" placeholder="inserisci una breve motivazione" id='<%= r.getId() %>' name="motivazioneCancellazione"><br>
       
        
       <input type="text" name="id" class="id" value='<%= r.getId() %>'>

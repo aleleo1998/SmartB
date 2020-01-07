@@ -12,6 +12,11 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://kit.fontawesome.com/7606041806.js" crossorigin="anonymous"></script>
 <script>
+$(document).ready(function(){
+	$("#matricolaDocente").hide();
+});
+
+
 function controllo(id)
 {
 	
@@ -59,7 +64,7 @@ function controllo(id)
 		<td><%=ds.getMatricolaDocente()%></td>
 		<td><%=ds.getOra()%></td>
 		<td>
-		<input type="text" name="matricolaDocente" value=<%=ds.getMatricolaDocente()%>>
+		<input type="text" name="matricolaDocente" id="matricolaDocente" value=<%=ds.getMatricolaDocente()%>>
 		<select name="date" id="<%=ds.getOra() %>"><%
 		while(d.getMonth()==mese)
 		{
@@ -136,7 +141,7 @@ function controllo(id)
 		calendar.add(calendar.DAY_OF_MONTH,1);
 		d=calendar.getTime();
 		}
-		%></td></select></form><td><button onclick="controllo('<%=ds.getOra()%>')">Prenota</button></td></tr>
+		%></td></select></form><td><button  onclick="controllo('<%=ds.getOra()%>')">Prenota</button></td></tr>
 	  <%
   }
   

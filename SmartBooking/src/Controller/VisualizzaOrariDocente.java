@@ -32,7 +32,7 @@ public class VisualizzaOrariDocente extends HttpServlet {
 		DisponibilitaModel dm= new DisponibilitaModel();
 		try 
 		{
-			Collection<Disponibilita> orari= dm.doRetrieveByKey("123");
+			Collection<Disponibilita> orari= dm.doRetrieveByKey(request.getParameter("matricolaDocente"));
 			request.getSession().setAttribute("orari", orari);
 			response.sendRedirect("./jsp/OrariDocenteView.jsp");
 		} 
