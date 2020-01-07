@@ -63,7 +63,7 @@
                                             <input type="password" class="form-control" id="confermaPassword" name="confermaPassword" placeholder="Conferma password *" value="" />
                                         </div>
                                         
-                                        <p id="buttonRegistrazione"> Registrati </p>
+                                        <p id="buttonRegistrazione"  onClick="checkSubmit()"> Registrati </p>
                                     </div>
                                 </div>
                                 </form>

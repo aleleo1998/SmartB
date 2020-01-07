@@ -48,5 +48,23 @@ public class GestioneListaPreferitiControl implements GestioneListaPreferiti {
 		}
 		return false;
 	}
+	
+	
+	public boolean trovaCorrispondenza(String matDoc, String matStud) throws Exception{
+		ListaPreferitiModel lpm = new ListaPreferitiModel();
+		
+		try {
+			if(lpm.existIntoDB(matDoc,matStud)) //se esiste corrispondenza
+				return true;
+			else
+				return false;
+				
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new Exception("Errore");
+
+		}
+		
+	}
 
 }

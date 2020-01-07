@@ -191,6 +191,9 @@ import DBConnection.DriverManagerConnectionPool;
 			return utenti;
 		}
 		
+
+
+
 		public synchronized Collection<Ricevimento> doRetrieveAllByDoc(String matricolaDoc) throws SQLException {
 			Connection connection = null;
 			PreparedStatement preparedStatement = null;
@@ -303,7 +306,6 @@ import DBConnection.DriverManagerConnectionPool;
 		public synchronized Collection<Ricevimento> doRetrieveAllByStudent(Studente studente) throws SQLException {
 			Connection connection = null;
 			PreparedStatement preparedStatement = null;
-
 
 			Collection<Ricevimento> utenti = new LinkedList<Ricevimento>();
 

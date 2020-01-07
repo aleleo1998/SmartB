@@ -64,7 +64,7 @@ public class GestioneUtentiConcrete implements GestioneUtenti {
 	/**
 	 * Registrazione docente (segreteria puo aggiungere un nuovo docente)
 	 * @param Docente doc docente da inserire 
-	 * @return true se è stata invocata correttamente registrazioneDocente(doc), false altrimenti
+	 * @return true se ï¿½ stata invocata correttamente registrazioneDocente(doc), false altrimenti
 	 */
 	@Override
 	public Boolean registrazioneDocente(Docente doc) {
@@ -78,9 +78,9 @@ public class GestioneUtentiConcrete implements GestioneUtenti {
 	}
 	
 	/**
-	 * Rimuovi Docente (La segreteria può rimuovere un docente)
+	 * Rimuovi Docente (La segreteria puï¿½ rimuovere un docente)
 	 * @param String matricola del docente da rimuovere
-	 * @return true se è stata invocata correttamete rimuoviDocente(matricola), false altrimenti
+	 * @return true se ï¿½ stata invocata correttamete rimuoviDocente(matricola), false altrimenti
 	 */
 	@Override
 	public Boolean rimuoviDocente(String matricola) {
@@ -107,6 +107,18 @@ public class GestioneUtentiConcrete implements GestioneUtenti {
 			e.printStackTrace();
 		}
 		return null;
+	}
+	
+	public Studente cercaStudente(String matricola){
+		
+		return registrazione.findStudenteByKey(matricola);
+		
+	}
+	
+	public boolean checkMatricolaDocente(String matricola) throws Exception{
+		
+		return docente.matricolaExist(matricola);
+		
 	}
 	
 	
