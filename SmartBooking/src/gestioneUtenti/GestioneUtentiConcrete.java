@@ -128,7 +128,7 @@ public class GestioneUtentiConcrete implements GestioneUtenti {
 	
 	public boolean cercaEmail(String email) {
 		
-		return  mail.verificaMail(email);
+		return  registrazione.verificaMail(email);
 		
 	}
 	
