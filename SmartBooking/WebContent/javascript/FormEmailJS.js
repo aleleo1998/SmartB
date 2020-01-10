@@ -14,14 +14,14 @@ $(document).ready(function(){
 		alert(checkCognome());
 		alert(checkMailMittente());
 		alert(checkMailDestinario());
-		/*	if(checkNome()==1 && checkCognome()==1 && checkMailMittente()==0 && checkMailDestinatario()==0){
+			if(checkNome()==1 && checkCognome()==1 && checkMailMittente()==0 && checkMailDestinatario()==0){
 				//alert("Si può procedere alla registrazione");
 				$("#form").submit();
 			}	
 			else{
 				alert("Errore. non è possibile effettuare il submit");
 			}
-			*/
+			
 	});
 	
 });
