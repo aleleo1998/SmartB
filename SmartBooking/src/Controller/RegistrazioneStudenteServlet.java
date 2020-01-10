@@ -67,7 +67,7 @@ public class RegistrazioneStudenteServlet extends HttpServlet {
 				System.out.println("Cognome ok");
 				//risposta="Cognome ok";
 				
-				if(Check.checkMatricola(matricola)) {
+				if(Check.checkMatricolaStudente(matricola).contentEquals("ok")) {
 					System.out.println("Matricola ok");
 					//risposta="Matricola ok";
 					
@@ -107,44 +107,47 @@ public class RegistrazioneStudenteServlet extends HttpServlet {
 								
 								
 							}else { 
-								System.out.println("Conferma Password non ok");
-								risposta="Conferma Password non ok";
+								System.out.println("Le password non corrispondono");
+								risposta="Le password non corrispondono";
 								
 							}
 							
 							
 						}else {
 							System.out.println("Password non ok");
-							risposta="Password non ok";
+							risposta="Password non corretta";
 							
 						}
 						
-					}else if(Check.checkStudenteMail("po@studenti.unisa.it").contentEquals("gia esiste")) {
-						System.out.println("Email già esistente nel database");
-						risposta="Email già esistente nel database";
+					}else if(Check.checkStudenteMail(email).contentEquals("gia esiste")) {
+						System.out.println("Email già presente nel database");
+						risposta="Email già presente nel database";
 					}else if(Check.checkStudenteMail(email).contentEquals("non corretto")) {
 						System.out.println("Email non corretta");
 						risposta="Email non corretta";
 						
 					}
 					
-				}else {
-					System.out.println("Matricola non ok");
-					risposta="Matricola non ok";
+				}else if(Check.checkMatricolaStudente(matricola).contentEquals("gia esiste")){
+					System.out.println("Matricola già presente nel database");
+					risposta="Matricola già presente nel database";
+				}else if(Check.checkMatricolaStudente(matricola).contentEquals("non corretto")) {
+					System.out.println("Matricola non corretta");
+					risposta="Matricola non corretta";
 					
 				}
 				
 				
 				
 			}else{
-				System.out.println("Cognome non ok");
-				risposta="Cognome non ok";
+				System.out.println("Cognome non corretto");
+				risposta="Cognome non corretto";
 				
 			}
 			
 		}else{
-			System.out.println("Nome non ok");
-			risposta="Nome non ok";
+			System.out.println("Nome non corretto");
+			risposta="Nome non corretto";
 		}
 		
 		 

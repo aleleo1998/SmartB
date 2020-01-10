@@ -133,9 +133,17 @@ public class GestioneUtentiConcrete implements GestioneUtenti {
 	}
 	
 	
+	public boolean cercaMatricola(String matricola) {
+		
+		return registrazione.verificaMatricola(matricola);
+		
+	}
+	
+	
 	private GestionePassword password = new GestionePassword();
 	private GestioneRegistrazioneStudente registrazione = new GestioneRegistrazioneStudente();
 	private GestioneDocente docente = new GestioneDocente();
 	private GestioneLoginUtenti login = new GestioneLoginUtenti();
 	private GestioneEmailStudente mail = new GestioneEmailStudente();
+	
 }

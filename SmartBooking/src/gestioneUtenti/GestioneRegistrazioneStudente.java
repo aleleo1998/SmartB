@@ -47,4 +47,21 @@ public class GestioneRegistrazioneStudente {
 		
 	}
 
+	public boolean verificaMatricola(String matricola) {
+		
+		StudenteModel sm = new StudenteModel();
+		try {
+			if(sm.existMatricolaIntoDB(matricola)) {
+				System.out.println("Matricola esistente nel DB");
+				return false;
+			}else {
+				System.out.println("Matricola non esistente nel DB");
+				return true;
+				
+			}
+				}catch(Exception e) {
+					return false;
+				}
+	}
+
 }

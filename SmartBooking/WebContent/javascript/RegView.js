@@ -128,7 +128,7 @@ function checkMail(){
 
 function checkPassword(){
 	var password = $("#password").val();  //ottengo valore campo password
-	var expr = /^[A-Za-z0-9]{1,20}$/;
+	var expr = /^[A-Za-z0-9]{8,20}$/;
 	if(password.match(expr)){
 		//alert("Password corretta");
 		return 1;
@@ -146,7 +146,7 @@ function checkConfermaPassword(){
 		//alert("Le password coincidono");
 		return 1;
 	}else{
-		alert("Le password non coincidono");
+		alert("Le password non corrispondono");
 		return 0;
 	}
 }

@@ -45,7 +45,7 @@ public class CheckMailServlet extends HttpServlet {
 		if(gestioneUtenti.cercaEmail(email)==false) {
 			out.write("0");  //email già esiste nel database
 		}else {
-			out.write("1");  //matricola non esiste nel database
+			out.write("1");  //email non esiste nel database
 		}
 		
 	}

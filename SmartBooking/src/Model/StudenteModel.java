@@ -247,6 +247,56 @@ private static final String TABLE_NAME = "Studente";
 			return false;
 		else
 			return true;
+		
+	}
+	
+	
+	/**
+	 * Metodo che prende in input la matricola di uno studente e restituisce true nel caso in cui lo studente è già presente nel DB, false altrimenti.
+	 * @param matricola
+	 * @return boolean
+	 * @throws SQLException 
+	 */
+
+	public boolean existMatricolaIntoDB(String matricola) throws SQLException {
+		
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		Studente bean = new Studente();
+
+		String selectSQL = "SELECT * FROM " + StudenteModel.TABLE_NAME + " WHERE matricola = ?";
+
+		try {
+			connection = DriverManagerConnectionPool.getDbConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+			preparedStatement.setString(1, matricola);
+
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) {
+				bean.setMatricola("matricola");
+				bean.setNome(rs.getString("nome"));
+				bean.setCognome(rs.getString("cognome"));
+				bean.setEmail(rs.getString("email"));
+				bean.setPassword(rs.getString("password"));
+			}
+
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				DriverManagerConnectionPool.releaseConnection(connection);
+			}
+		}
+		
+		
+		if(bean.getMatricola()==null)
+			return false;
+		else
+			return true;
+		
 	}
 
 }

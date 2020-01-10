@@ -23,5 +23,6 @@ public interface GestioneUtenti {
 	public boolean checkMatricolaDocente(String matricola) throws Exception;
 	public boolean cercaEmail(String email);
 	public boolean checkEmailDocente(String email) throws Exception;
+	public boolean cercaMatricola(String matricola);
 	
 }

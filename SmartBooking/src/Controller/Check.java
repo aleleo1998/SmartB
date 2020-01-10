@@ -21,11 +21,18 @@ public class Check {
 		file = new FileWriter("log.txt");
 	}
 
-	public static boolean checkMatricola(String matricola) {
-		if(matricola.matches("[0-9]{10}")) 
-			return true;
+	public static String checkMatricolaStudente(String matricola) {
+		
+		GestioneUtenti gestioneUtenti = new GestioneUtentiConcrete();
+		
+		if(matricola.matches("[0-9]{10}")) {
+			if(gestioneUtenti.cercaMatricola(matricola))
+				return "ok";
+			else
+				return "gia esiste";
+		}
 		else
-			return false;
+			return "non corretto";
 	}
 	
 	public static boolean checkNome(String nome) {
@@ -46,7 +53,7 @@ public class Check {
 		
 			GestioneUtenti gestioneUtenti = new GestioneUtentiConcrete();
 		
-			if(email.matches("\\w+([\\.-]?\\w+)*@studenti[.]{1}unisa[.]{1}it")) {
+			if(email.matches("\\w+([\\.-]?\\w+)*@studenti[.]{1}unisa[.]{1}it")  &&  email.length()>=20 &&  email.length() <=50) {
 				if(gestioneUtenti.cercaEmail(email))
 					return "ok";
 				else
@@ -86,14 +93,14 @@ public class Check {
 	}
 	
 	public static boolean checkPassword(String password) {
-		if(password.matches("[A-Za-z0-9]{1,20}"))
+		if(password.matches("[A-Za-z0-9]{8,20}"))
 			return true;
 		else
 			return false;
 	}
 	
 	public static boolean checkConfermaPassword(String password,String conferma) {
-		if(conferma.matches("[A-Za-z0-9]{1,20}") && conferma.contentEquals(password))
+		if(conferma.matches("[A-Za-z0-9]{8,20}") && conferma.contentEquals(password))
 			return true;
 		else
 			return false;
