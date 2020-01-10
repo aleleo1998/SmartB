@@ -22,7 +22,7 @@ import Controller.creaRichiestaModificaOrario;
 import Model.Docente;
 import Model.DocenteModel;
 
-public class TC_GestioneOrari {
+public class TC6_0_RichiesteModificaOrario {
 	creaRichiestaModificaOrario myServlet;
 	
 	@Mock
