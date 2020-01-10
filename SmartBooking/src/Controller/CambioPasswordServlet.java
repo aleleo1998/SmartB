@@ -1,6 +1,7 @@
 package Controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 
 import Model.Utente;
@@ -37,10 +38,28 @@ public class CambioPasswordServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		PrintWriter writer = response.getWriter();
+		
+		String risposta = "";
+		
+		
 		String vecchiaPassword = request.getParameter("vecchiaPassword");
 		System.out.print("vecchia password: "+vecchiaPassword);
 		String nuovaPassword = request.getParameter("nuovaPassword");
 		System.out.println("nuova password: "+nuovaPassword);
+		
+		if(!Check.checkPassword(vecchiaPassword) ) {
+			
+			risposta = "password non corretta";
+			writer.write(risposta);
+			return;
+		}
+		
+		if(!Check.checkPassword(nuovaPassword) ) {
+			risposta = "nuova password non corretta";
+			writer.write(risposta);
+			return;
+		}
 		
 		UtenteModel md = new UtenteModel();
 		
@@ -57,6 +76,9 @@ public class CambioPasswordServlet extends HttpServlet {
 			}
 		}
 		
+		
+		
+		
 		try {
 			u = md.doRetrieveByKey(u.getMatricola());
 			System.out.println(u);
@@ -67,20 +89,24 @@ public class CambioPasswordServlet extends HttpServlet {
 		
 		
 		
-		if(gestioneUtenti.cambiaPassword(u, vecchiaPassword, nuovaPassword))
+		if(gestioneUtenti.cambiaPassword(u, vecchiaPassword, nuovaPassword)) {
 			System.out.println("Query effettuata con successo.");
+			risposta = "Password cambiata"	;		
+		}
 			
-		else
+		else {
 			System.out.println("Errore durante l'esecuzione della query");
+		}
+			
 		
-		
+		writer.write(risposta);
 		response.sendRedirect("./jsp/index.jsp");
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
