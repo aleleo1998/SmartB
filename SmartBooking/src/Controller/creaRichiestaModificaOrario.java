@@ -1,6 +1,7 @@
 package Controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 
 import javax.servlet.ServletException;
@@ -38,6 +39,11 @@ public class creaRichiestaModificaOrario extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
+
+		PrintWriter writer = response.getWriter();
+		
+		String risposta = "";
+		
 		HttpSession session = request.getSession();
 		
 		Docente d =(Docente) session.getAttribute("docente");
@@ -54,18 +60,73 @@ public class creaRichiestaModificaOrario extends HttpServlet {
 		richiesta.setGiornoPrecedente(request.getParameter("giornoVecchio"));
 		richiesta.setGiorno(request.getParameter("giornoNuovo"));
 		
-		try {
-			gestioneOrari.inoltraRichiesta(richiesta);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		
+		if(Check.checkGiorno(richiesta.getGiorno())){
+			
+			if(Check.checkGiorno(richiesta.getGiornoPrecedente())){
+				
+				if(Check.checkOra(richiesta.getOraInizio())){
+					
+					if(Check.checkOra(richiesta.getOraFine())){
+						
+						if(Check.checkOraInizioOraFine(richiesta.getOraInizio(), richiesta.getOraFine())){
+							
+							try {
+								gestioneOrari.inoltraRichiesta(richiesta);
+							} catch (SQLException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+							
+							
+							
+						}else {
+							
+							risposta = "Orario fine non corretto";
+							
+						}
+						
+						
+						
+					}else{
+						
+						risposta = "Orario fine non corretto";
+						
+					}
+					
+					
+				}else {
+					
+					risposta = "Orario inizio non corretto";
+					
+				}
+				
+				
+			}else {
+				
+				risposta = "Giorno da modificare non corretto";
+				
+			}
+			
+		}else{
+			
+			risposta = "Nuovo giorno non corretto";
+			
 		}
+		
+		
+		
+		response.setContentType("text");
+		writer.print(risposta);
+		
+		
+		
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}

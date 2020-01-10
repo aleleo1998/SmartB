@@ -116,6 +116,94 @@ public class Check {
 	
 	
 	
+	
+	
+	
+	
+	
+	//GESTIONE RICHIESTA MODIFCA ORARIO
+	
+		public static boolean checkGiorno(String giorno){
+			
+			if(giorno.equalsIgnoreCase("lunedi") || giorno.equalsIgnoreCase("lunedì")){
+				return true;
+			}
+			
+			if(giorno.equalsIgnoreCase("martedi") || giorno.equalsIgnoreCase("martedì")){
+				return true;
+			}
+			
+			if(giorno.equalsIgnoreCase("mercoledi") || giorno.equalsIgnoreCase("mercoledì")){
+				return true;
+			}
+			
+			if(giorno.equalsIgnoreCase("giovedi") || giorno.equalsIgnoreCase("giovedì")){
+				return true;
+			}
+			
+			if(giorno.equalsIgnoreCase("venerdi") || giorno.equalsIgnoreCase("venerdì")){
+				return true;
+			}
+			
+			if(giorno.equalsIgnoreCase("sabato")){
+				return true;
+			}
+			
+			if(giorno.equalsIgnoreCase("domenica")){
+				return true;
+			}
+			
+			return false;
+			
+		}
+		
+		
+		
+			public static boolean checkOra(String ora){
+					
+					if(ora.matches("^([01]\\d|2[0-3]):([0-5]\\d)$")) {
+						
+						return true;
+						
+					}
+					
+					return false;
+					
+				}
+			
+			
+			public static boolean checkOraInizioOraFine(String oraInizio, String oraFine){
+				
+				if(oraInizio.matches("^([01]\\d|2[0-3]):([0-5]\\d)$")  &&  oraFine.matches("^([01]\\d|2[0-3]):([0-5]\\d)$")) {
+					
+					float temp2 = Float.parseFloat(oraInizio.substring(3,5));
+					float temp = Float.parseFloat(oraInizio.substring(0,2));
+					
+					float inizio = temp +(temp2/100);
+					
+					temp2 = Float.parseFloat(oraFine.substring(3,5));
+					temp = Float.parseFloat(oraFine.substring(0,2));
+					
+					float fine = temp +(temp2/100);
+					
+					if(inizio < fine)
+				    	return true;
+					else
+				    	return false;
+					
+					
+					
+				}
+				
+				return false;
+				
+				
+				
+			}
+	
+	
+	
+	
 	 private static FileWriter file;
 
 }
