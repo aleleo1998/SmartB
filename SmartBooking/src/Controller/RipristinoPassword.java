@@ -1,6 +1,8 @@
 package Controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -32,9 +34,29 @@ public class RipristinoPassword extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		PrintWriter writer = response.getWriter();
+		
+		String risposta = "";
+		
 		String email = request.getParameter("email");
 		
+		
+		
+		
+		risposta = Check.checkStudenteMail(email);		
+		if(risposta.equals("ok")) {
+			String risp ="";
+			risp = "L'indirizzo email non esiste nel db";
+			writer.write(risp);	
+			return;
+		}
+		if(risposta.equals("non corretto")) {
+			writer.write(risposta);
+			return;
+		}
 		gestioneUtenti.ripristinaPasswordEmail(email);
+		risposta = "email inviato";
+		writer.write(risposta);
 		
 		
 	}
@@ -42,7 +64,7 @@ public class RipristinoPassword extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
