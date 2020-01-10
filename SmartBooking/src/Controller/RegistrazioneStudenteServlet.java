@@ -61,109 +61,73 @@ public class RegistrazioneStudenteServlet extends HttpServlet {
 		
 		if(Check.checkNome(nome)) {
 			System.out.println("Nome ok");
-			//risposta="Nome ok";
-			
-			if(Check.checkCognome(cognome)){
-				System.out.println("Cognome ok");
-				//risposta="Cognome ok";
-				
-				if(Check.checkMatricolaStudente(matricola).contentEquals("ok")) {
-					System.out.println("Matricola ok");
-					//risposta="Matricola ok";
-					
-					if(Check.checkStudenteMail(email).contentEquals("ok")) {
-						System.out.println("Email ok");
-						//risposta="Email ok";
-						
-						if(Check.checkPassword(password)) {
-							System.out.println("Password ok");
-							//risposta="Password ok";
-							
-							if(Check.checkConfermaPassword(password, confermaPassword)) {
-								System.out.println("Conferma Password ok");
-								//risposta="Conferma Password ok";
-								
-								
-								
-								
-								
-								try {
-									if(gestioneUtenti.registrazioneStudente(studente)) {
-										
-										//***SEND MAIL****//
-										
-										response.sendRedirect("./jsp/SuccessReg.jsp");
-									}else {
-										System.out.print("no ok");
-									}
-									}catch(Exception e) {
-										response.sendRedirect("./jsp/RegView.jsp");
-									}
-								
-								
-								
-								
-								
-								
-								
-							}else { 
-								System.out.println("Le password non corrispondono");
-								risposta="Le password non corrispondono";
-								
-							}
-							
-							
-						}else {
-							System.out.println("Password non ok");
-							risposta="Password non corretta";
-							
-						}
-						
-					}else if(Check.checkStudenteMail(email).contentEquals("gia esiste")) {
-						System.out.println("Email già presente nel database");
-						risposta="Email già presente nel database";
-					}else if(Check.checkStudenteMail(email).contentEquals("non corretto")) {
-						System.out.println("Email non corretta");
-						risposta="Email non corretta";
-						
-					}
-					
-				}else if(Check.checkMatricolaStudente(matricola).contentEquals("gia esiste")){
-					System.out.println("Matricola già presente nel database");
-					risposta="Matricola già presente nel database";
-				}else if(Check.checkMatricolaStudente(matricola).contentEquals("non corretto")) {
-					System.out.println("Matricola non corretta");
-					risposta="Matricola non corretta";
-					
-				}
-				
-				
-				
-			}else{
-				System.out.println("Cognome non corretto");
-				risposta="Cognome non corretto";
-				
-			}
-			
-		}else{
+		}else {
 			System.out.println("Nome non corretto");
 			risposta="Nome non corretto";
 		}
 		
-		 
+		
+		if(Check.checkCognome(cognome)) {
+			System.out.println("Cognome ok");
+		}else {
+			System.out.println("Cognome non corretto");
+			risposta="Cognome non corretto";
+		}
 		
 		
+		if(Check.checkMatricolaStudente(matricola).contentEquals("ok")) {
+			System.out.println("Matricola ok");
+		}else if(Check.checkMatricolaStudente(matricola).contentEquals("gia esiste")){
+			System.out.println("Matricola già presente nel database");
+			risposta="Matricola già presente nel database";
+		}else if(Check.checkMatricolaStudente(matricola).contentEquals("non corretto")) {
+			System.out.println("Matricola non corretta");
+			risposta="Matricola non corretta";
+		}
+		
+		
+		if(Check.checkStudenteMail(email).contentEquals("ok")) {
+			System.out.println("Email ok");
+		}else if(Check.checkStudenteMail(email).contentEquals("gia esiste")) {
+			System.out.println("Email già presente nel database");
+			risposta="Email già presente nel database";
+		}else if(Check.checkStudenteMail(email).contentEquals("non corretto")) {
+			System.out.println("Email non corretta");
+			risposta="Email non corretta";
+		}
+		
+						
+		if(Check.checkPassword(password)) {
+			System.out.println("Password ok");
+			if(Check.checkConfermaPassword(password,confermaPassword)){
+				System.out.println("Conferma Password ok");
+			}
+			else if(!Check.checkConfermaPassword(password,confermaPassword)){
+				System.out.println("Le password non corrispondono");
+				risposta="Le password non corrispondono";
+			}
+		}else {
+			System.out.println("Password non ok");
+			risposta="Password non corretta";
+		}
+								
+
+		try {
+			if(gestioneUtenti.registrazioneStudente(studente)) {
+										
+			//***SEND MAIL****//
+										
+				response.sendRedirect("./jsp/SuccessReg.jsp");
+			}else {
+				System.out.print("no ok");
+			}
+		}catch(Exception e) {
+			response.sendRedirect("./jsp/RegView.jsp");
+		  }
+								
+	
 		response.setContentType("text");
 		writer.print(risposta);
-		
-		
-		
-		
-		///
-		
-		
-		
-		
 		
 	}
 

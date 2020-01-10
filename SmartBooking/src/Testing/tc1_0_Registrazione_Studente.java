@@ -137,7 +137,7 @@ RegistrazioneStudenteServlet myServlet;
 		when(request.getParameter("password")).thenReturn("carminesorrentino96");
 		when(request.getParameter("confermaPassword")).thenReturn("carminesorrentino96");
 		
-		
+	
 		when(response.getWriter()).thenReturn(out);
 		
 		
