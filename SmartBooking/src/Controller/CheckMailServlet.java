@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Model.StudenteModel;
+import gestioneUtenti.GestioneUtenti;
+import gestioneUtenti.GestioneUtentiConcrete;
 
 /**
  * Servlet implementation class CheckMailServlet
@@ -17,6 +19,8 @@ import Model.StudenteModel;
 @WebServlet("/CheckMailServlet")
 public class CheckMailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	GestioneUtenti gestioneUtenti = new GestioneUtentiConcrete();
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -38,17 +42,12 @@ public class CheckMailServlet extends HttpServlet {
 		
 		StudenteModel sm = new StudenteModel();
 		
-		try {
-		if(sm.existIntoDB(email)) {
-			System.out.println("Mail esistente nel DB");
-			out.write("0");
+		if(gestioneUtenti.cercaEmail(email)==false) {
+			out.write("0");  //email già esiste nel database
 		}else {
-			out.write("1");
-			System.out.println("Mail non esistente nel DB");
+			out.write("1");  //email non esiste nel database
 		}
-			}catch(Exception e) {
-				out.write("errore");
-			}
+		
 	}
 
 	/**

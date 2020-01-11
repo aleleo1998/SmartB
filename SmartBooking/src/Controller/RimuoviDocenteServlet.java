@@ -37,7 +37,7 @@ public class RimuoviDocenteServlet extends HttpServlet {
 		System.out.println("Devo eliminare"+matricola);
 		
 		gestioneUtenti.rimuoviDocente(matricola);
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+
 	}
 
 	/**

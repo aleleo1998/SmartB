@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Model.DocenteModel;
+import gestioneUtenti.GestioneUtenti;
+import gestioneUtenti.GestioneUtentiConcrete;
 
 /**
  * Servlet implementation class CheckMatricolaDocenteServlet
@@ -17,6 +19,8 @@ import Model.DocenteModel;
 @WebServlet("/CheckMatricolaDocenteServlet")
 public class CheckMatricolaDocenteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	GestioneUtenti gestioneUtenti = new GestioneUtentiConcrete();
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -35,9 +39,33 @@ public class CheckMatricolaDocenteServlet extends HttpServlet {
 		String matricola = request.getParameter("matricola");
 		//System.out.print(matricola);
 		
-		DocenteModel docM = new DocenteModel();
-		
 		try {
+			if(gestioneUtenti.checkMatricolaDocente(matricola)){
+				
+				out.write("0");
+				
+			}else{
+				
+				out.write("1");
+				
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
+		
+		
+		
+		
+	//	DocenteModel docM = new DocenteModel();
+		
+		
+		
+		//OLD
+		/*try {
 		if(docM.existMatricola(matricola)) {
 			//System.out.println("Matricola esistente nel DB");
 			out.write("0");
@@ -47,7 +75,7 @@ public class CheckMatricolaDocenteServlet extends HttpServlet {
 		}
 			}catch(Exception e) {
 				out.write("errore");
-			}		
+			}	*/	
 	}
 
 	/**

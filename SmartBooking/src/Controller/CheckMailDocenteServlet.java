@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Model.DocenteModel;
+import gestioneUtenti.GestioneUtenti;
+import gestioneUtenti.GestioneUtentiConcrete;
 
 /**
  * Servlet implementation class CheckMailDocenteServlet
@@ -18,6 +20,11 @@ import Model.DocenteModel;
 public class CheckMailDocenteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
+	
+	GestioneUtenti gestioneUtenti = new GestioneUtentiConcrete();
+
+	
+	
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -35,19 +42,17 @@ public class CheckMailDocenteServlet extends HttpServlet {
 		String email = request.getParameter("email");
 		System.out.print(email);
 		
-		DocenteModel docM = new DocenteModel();
-		
 		try {
-		if(docM.existEmail(email)) {
-			System.out.println("Matricola esistente nel DB");
-			out.write("0");
-		}else {
-			System.out.println("Matricola non esistente nel DB");
-			out.write("1");
+			if(gestioneUtenti.checkEmailDocente(email)==false) {
+				out.write("0");  //email esiste nel database
+			}else {
+				out.write("1");  //email non esiste nel database
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-			}catch(Exception e) {
-				out.write("errore");
-			}		
+		
 	}
 
 	/**

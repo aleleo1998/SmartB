@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import Model.Studente;
 import Model.StudenteModel;
+import gestioneUtenti.GestioneUtenti;
+import gestioneUtenti.GestioneUtentiConcrete;
 
 /**
  * Servlet implementation class CheckMatricolaStudenteServlet
@@ -18,6 +20,8 @@ import Model.StudenteModel;
 @WebServlet("/CheckMatricolaStudenteServlet")
 public class CheckMatricolaStudenteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	GestioneUtenti gestioneUtenti = new GestioneUtentiConcrete();
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -40,19 +44,13 @@ public class CheckMatricolaStudenteServlet extends HttpServlet {
 		
 		System.out.println(matricola);
 		
-		StudenteModel sm = new StudenteModel();
 		
-		try {
-		Studente s = sm.doRetrieveByKey(matricola);
-		
-		if(s.getMatricola()!=null) 
+		if(gestioneUtenti.cercaStudente(matricola).getMatricola()!=null) 
 			out.write("0");  //La matricola già esiste
 		else
 			out.write("1");  //La matricola non esiste
 		
-		}catch(Exception e) {
-			e.printStackTrace();
-		}	
+			
 		
 	}
 

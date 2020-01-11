@@ -9,11 +9,12 @@ import java.sql.SQLException;
 import Model.Studente;
 import Model.Docente;
 import Model.Utente;
+import gestioneMail.GestioneMail;
 
 public class GestioneUtentiConcrete implements GestioneUtenti {
 
 	@Override
-	public Boolean cambiaPassword(Utente u, String vecchiaPassword, String nuovaPassword){
+	public boolean cambiaPassword(Utente u, String vecchiaPassword, String nuovaPassword){
 		try {
 		password.changePassword(u,vecchiaPassword, nuovaPassword);
 		return true;
@@ -23,7 +24,7 @@ public class GestioneUtentiConcrete implements GestioneUtenti {
 		}
 	}
 	@Override
-	public Boolean ripristinaPasswordEmail(String email) {
+	public boolean ripristinaPasswordEmail(String email) {
 		try {
 			password.sendResetPasswordEmail(email);
 			return true;
@@ -39,7 +40,7 @@ public class GestioneUtentiConcrete implements GestioneUtenti {
 	 */
 	
 	@Override
-	public Boolean registrazioneStudente(Studente s) {
+	public boolean registrazioneStudente(Studente s) {
 		try {
 			registrazione.registraStudente(s);
 			return true;
@@ -50,7 +51,7 @@ public class GestioneUtentiConcrete implements GestioneUtenti {
 	}
 
 	@Override
-	public Boolean ripristinaPassword(Utente u , String nuovaPassword){
+	public boolean ripristinaPassword(Utente u , String nuovaPassword){
 		
 		try {
 			password.changePassword(u,nuovaPassword);
@@ -64,10 +65,10 @@ public class GestioneUtentiConcrete implements GestioneUtenti {
 	/**
 	 * Registrazione docente (segreteria puo aggiungere un nuovo docente)
 	 * @param Docente doc docente da inserire 
-	 * @return true se è stata invocata correttamente registrazioneDocente(doc), false altrimenti
+	 * @return true se ï¿½ stata invocata correttamente registrazioneDocente(doc), false altrimenti
 	 */
 	@Override
-	public Boolean registrazioneDocente(Docente doc) {
+	public boolean registrazioneDocente(Docente doc) {
 		try {
 			docente.registrazioneDocente(doc);
 			return true;
@@ -78,12 +79,12 @@ public class GestioneUtentiConcrete implements GestioneUtenti {
 	}
 	
 	/**
-	 * Rimuovi Docente (La segreteria può rimuovere un docente)
+	 * Rimuovi Docente (La segreteria puï¿½ rimuovere un docente)
 	 * @param String matricola del docente da rimuovere
-	 * @return true se è stata invocata correttamete rimuoviDocente(matricola), false altrimenti
+	 * @return true se ï¿½ stata invocata correttamete rimuoviDocente(matricola), false altrimenti
 	 */
 	@Override
-	public Boolean rimuoviDocente(String matricola) {
+	public boolean rimuoviDocente(String matricola) {
 		try {
 			docente.rimuoviDocente(matricola);
 			System.out.println(matricola);
@@ -109,9 +110,40 @@ public class GestioneUtentiConcrete implements GestioneUtenti {
 		return null;
 	}
 	
+	public Studente cercaStudente(String matricola){
+		
+		return registrazione.findStudenteByKey(matricola);
+		
+	}
+	
+	public boolean checkMatricolaDocente(String matricola) throws Exception{
+		
+		return docente.matricolaExist(matricola);
+	
+	}
+	
+	public boolean checkEmailDocente(String email) throws Exception{
+		return docente.checkMailDocente(email);
+	}
+	
+	public boolean cercaEmail(String email) {
+		
+		return  registrazione.verificaMail(email);
+		
+	}
+	
+	
+	public boolean cercaMatricola(String matricola) {
+		
+		return registrazione.verificaMatricola(matricola);
+		
+	}
+	
 	
 	private GestionePassword password = new GestionePassword();
 	private GestioneRegistrazioneStudente registrazione = new GestioneRegistrazioneStudente();
 	private GestioneDocente docente = new GestioneDocente();
 	private GestioneLoginUtenti login = new GestioneLoginUtenti();
+	private GestioneEmailStudente mail = new GestioneEmailStudente();
+	
 }

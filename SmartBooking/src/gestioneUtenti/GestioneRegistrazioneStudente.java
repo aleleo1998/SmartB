@@ -1,5 +1,7 @@
 package gestioneUtenti;
 
+import java.sql.SQLException;
+
 import Model.Studente;
 import Model.StudenteModel;
 
@@ -29,5 +31,55 @@ public class GestioneRegistrazioneStudente {
 			e.printStackTrace();
 		}
 	}
+	
+	
+	public Studente findStudenteByKey(String matricola){
+		
+		StudenteModel sm = new StudenteModel();
+		
+		try {
+			return sm.doRetrieveByKey(matricola);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+		
+	}
+
+	public boolean verificaMatricola(String matricola) {
+		
+		StudenteModel sm = new StudenteModel();
+		try {
+			if(sm.existMatricolaIntoDB(matricola)) {
+				System.out.println("Matricola esistente nel DB");
+				return false;
+			}else {
+				System.out.println("Matricola non esistente nel DB");
+				return true;
+				
+			}
+				}catch(Exception e) {
+					return false;
+				}
+	}
+	
+	
+	public boolean verificaMail(String email) {
+		StudenteModel sm = new StudenteModel();
+		try {
+			if(sm.existIntoDB(email)) {
+				System.out.println("Mail esistente nel DB");
+				return false;
+			}else {
+				System.out.println("Mail non esistente nel DB");
+				return true;
+				
+			}
+				}catch(Exception e) {
+					return false;
+				}
+	}
+
 
 }

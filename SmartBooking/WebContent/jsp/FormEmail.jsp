@@ -99,14 +99,13 @@ LinkedList<Studente> listStudenti = (LinkedList<Studente>) s.doRetrieveAll();
                         </div>
                         <div class="row">
 							<div class="col-md-12">
-                            	<!--  <p id="buttonInvia"> Invia </p> -->
-                                 <input type="submit" id="buttonInvia" class="btn btn-success btn-send" value="Invia ">                                             
+                            	<p id="buttonInvia" onClick="inviaEmail()"> Invia </p> 
+                                <!--   <input type="submit" id="buttonInvia" class="btn btn-success btn-send" value="Invia ">                                             
                                  <input type="reset" id="buttonReset" class="btn btn-success btn-send" value="Annulla ">
-                           
+                           -->
                             </div>
                         </div>
                     </div>
-
            </form>
 	</div>
 
