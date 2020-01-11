@@ -25,4 +25,6 @@ public interface GestioneUtenti {
 	public boolean checkEmailDocente(String email) throws Exception;
 	public boolean cercaMatricola(String matricola);
 	
+	//Da aggiungere alla specifica delle interfacce
+	public Docente cercaDocente(String matricola);
 }

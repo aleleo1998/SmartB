@@ -34,7 +34,7 @@ public class PrenotaRicevimento extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		GestioneRicevimento gr= new GestioneRicevimentoConcrete();
-		RicevimentoModel rm= new RicevimentoModel();
+		//RicevimentoModel rm= new RicevimentoModel();
 		//String stato, Date data, Date dataPrenotazione, int id, String matDocente,
 		//String matStudente
 		String d= request.getParameter("date");
