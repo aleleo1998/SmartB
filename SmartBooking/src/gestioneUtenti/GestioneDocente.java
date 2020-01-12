@@ -32,7 +32,12 @@ public class GestioneDocente {
 		docModel.doDelete(matricola);
 	}
 	
-	
+	/**
+	 * Verifica se la matricola esiste
+	 * @param matricola matricola da verificare
+	 * @return 
+	 * @throws Exception
+	 */
 	public boolean matricolaExist(String matricola) throws Exception{
 		
 		DocenteModel docM = new DocenteModel();
@@ -42,8 +47,8 @@ public class GestioneDocente {
 				
 				return true;
 				
-			}else{
-				
+			}
+			else{	
 				return false;
 				
 			}
@@ -54,6 +59,11 @@ public class GestioneDocente {
 		
 	}
 	
+	/**
+	 * Verifica se già esiste la mail del docente (il docente può registrarsi se il metodo ritorna true)
+	 * @param email mail da verificare
+	 * @return false se l'email già esiste nel db, true se non esiste
+	 */
 	public boolean checkMailDocente(String email) {
 		DocenteModel dm = new DocenteModel();
 		try {
