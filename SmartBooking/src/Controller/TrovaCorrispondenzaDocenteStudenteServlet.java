@@ -15,7 +15,9 @@ import gestioneListaPreferiti.GestioneListaPreferiti;
 import gestioneListaPreferiti.GestioneListaPreferitiControl;
 
 /**
- * Servlet implementation class TrovaCorrispondenzaDocenteStudenteServlet
+ * Servlet richiamata da ViewRicercaDocenti.js. Legge un dato dalla richiesta http (matricolaDocente), 
+ * riceve informazioni dalla sessione riguardanti la matricola dello studente ed effettua una query nel database (tabella ListaPreferiti)
+ * per determinare se la lista dei preferiti dello studente loggato contiene il docente ottenuto dalla richiesta.
  */
 @WebServlet("/TrovaCorrispondenzaDocenteStudenteServlet")
 public class TrovaCorrispondenzaDocenteStudenteServlet extends HttpServlet {

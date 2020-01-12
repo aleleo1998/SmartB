@@ -15,7 +15,9 @@ import gestioneUtenti.GestioneUtenti;
 import gestioneUtenti.GestioneUtentiConcrete;
 
 /**
- * Servlet implementation class LoginServlet
+ * Servlet richiamata da Login.jsp. Vengono letti i dati del form (email,password) e viene ricercata una corrispondenza
+ * in una tabella tra: ACALE.Docente, ACALE.Studente, ACALE.Segreteria. Se viene trovata una corrispondenza viene
+ * fatta una redirect sul profilo corrispondente.
  */
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {

@@ -15,7 +15,9 @@ import Model.DocenteModel;
 import Model.ListaPreferitiModel;
 
 /**
- * Servlet implementation class FindServlet
+ * Servlet richiamata da ViewRicercaDocenti.js in maniera asincrona. Effettua una query sul databse
+ * in modo da restituire come risultato soltanto una tupla della tabella ACALE.Docente contenente le informazioni riguardanti il docente
+ * da ricercare.
  */
 @WebServlet("/FindServlet")
 public class FindServlet extends HttpServlet {

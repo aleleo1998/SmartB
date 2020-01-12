@@ -7,7 +7,8 @@ import Model.UtenteModel;
  * 
  * @author carminesorrentino
  * 
- * cD
+ * La classe GestioneLoginUtenti si occupa della ricerca nel database in una tabella tra Docente,Studente
+ * e Segreteria della corrispondenza email/password per l’accesso.
  *
  */
 
@@ -19,9 +20,9 @@ public class GestioneLoginUtenti {
 	 * 
 	 * Il metodo controlloAccesso(String email,String password) controlla l'accesso verificando se nel database esiste una corrispondenza email/password in una delle tabelle tra Docente,Studente e Segreteria.
 	 * 
-	 * @param email
-	 * @param password
-	 * @return Utente
+	 * @param String email
+	 * @param String password
+	 * @return Utente u
 	 */
 	
 	public Utente controlloAccesso(String email,String password) {

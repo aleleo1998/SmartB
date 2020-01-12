@@ -15,7 +15,8 @@ import gestioneUtenti.GestioneUtenti;
 import gestioneUtenti.GestioneUtentiConcrete;
 
 /**
- * Servlet implementation class CheckMatricolaStudenteServlet
+ * Servlet richiamata da RegView.js in maniera asincrona. Controlla se la matricola dello studente
+ * è già presente nel database effettuando una query.
  */
 @WebServlet("/CheckMatricolaStudenteServlet")
 public class CheckMatricolaStudenteServlet extends HttpServlet {

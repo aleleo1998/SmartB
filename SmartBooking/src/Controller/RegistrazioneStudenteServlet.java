@@ -14,7 +14,8 @@ import gestioneUtenti.GestioneUtenti;
 import gestioneUtenti.GestioneUtentiConcrete;
 
 /**
- * Servlet implementation class RegistrazioneStudenteServlet
+ * Servlet richiamata da RegView.jsp. Vengono letti i dati del form (matricola, nome,cognome,mail,passowrd e confermaPassword) e vengono memorizzati
+ * i dati dello studente in maniera persistente nel database.
  */
 @WebServlet("/RegistrazioneStudenteServlet")
 public class RegistrazioneStudenteServlet extends HttpServlet {
