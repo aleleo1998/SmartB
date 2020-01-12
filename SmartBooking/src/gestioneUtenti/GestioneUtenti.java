@@ -24,5 +24,8 @@ public interface GestioneUtenti {
 	public boolean cercaEmail(String email);
 	public boolean checkEmailDocente(String email);
 	public boolean cercaMatricola(String matricola);
+	public Utente doRetriveByKey(String matricola) throws SQLException;
 	
+	//Da aggiungere alla specifica delle interfacce
+	public Docente cercaDocente(String matricola);
 }

@@ -150,11 +150,25 @@ public class GestioneUtentiConcrete implements GestioneUtenti {
 		
 	}
 	
+
+	//Da aggiungere alla specifica delle interfacce
+	public Docente cercaDocente(String matricola) {
+		return docente.findDoc(matricola);
+	}
+	
+	
+	public Utente doRetriveByKey(String matricola) throws SQLException{
+		
+		return login.doRetriveByKey(matricola);
+		
+	}
+	
 	
 	private GestionePassword password = new GestionePassword();
 	private GestioneRegistrazioneStudente registrazione = new GestioneRegistrazioneStudente();
 	private GestioneDocente docente = new GestioneDocente();
 	private GestioneLoginUtenti login = new GestioneLoginUtenti();
 	private GestioneEmailStudente mail = new GestioneEmailStudente();
+	
 	
 }

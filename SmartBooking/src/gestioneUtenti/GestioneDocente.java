@@ -69,15 +69,29 @@ public class GestioneDocente {
 		try {
 			if(dm.existEmail(email)) {
 				System.out.println("Mail esistente nel DB");
-				return false; //se l'email è presente nel db ritorna false
+				return false; //se l'email ï¿½ presente nel db ritorna false
 			}else {
 				System.out.println("Mail non esistente nel DB");
-				return true; //se l'email NON è presente nel db ritorna true
+				return true; //se l'email NON ï¿½ presente nel db ritorna true
 				
 			}
 				}catch(Exception e) {
 					return false;
 				}
+	}
+
+	//Metodo da aggiungere alla specifica delle interfacce
+	public Docente findDoc(String matricola) {
+		DocenteModel dm = new DocenteModel();
+		
+		try {
+			return dm.doRetrieveByKey(matricola);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return null;
 	}
 	
 	

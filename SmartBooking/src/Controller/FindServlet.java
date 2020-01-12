@@ -103,7 +103,12 @@ public class FindServlet extends HttpServlet {
 				result = result+"<label name=\"nome\" id=\"nome\">"+d.getNome()+"</label> <label name=\"cognome\" id=\"cognome\">"+d.getCognome()+"</label>";
 				result = result+"</th>";
 				result = result+"<td><p id=\"ufficio\">"+d.getUfficio()+"<p></td>";
-				result = result+"<td><a href=\"RegView.jsp\"><i class=\"fas fa-info-circle\"></i></a></td>";
+				result = result+"<td>";
+				result = result+"<form action=\"../visualizzaInfoDocente\">";
+				result = result+"<input id=\"matricolaDocente\" style=\"display:none;\" name=\"matricolaDocente\" value=\""+d.getMatricola()+"\"</>";
+				result = result+"<button type=\"submit\" href=\"../visualizzaInfoDocente\"><i class=\"fas fa-info-circle\"></i></button>";
+				result = result+"</form>";
+				result = result+"</td>";
 				result = result+"<td>";
 				result = result+"<form name=\"form\" action=\"../addDocenteListaPreferiti\">";
 				result = result+"<input id=\"matricolaDocente\" style=\"display:none;\" name=\"matricolaDocente\" value=\""+d.getMatricola()+"\"</>";
@@ -138,7 +143,7 @@ public class FindServlet extends HttpServlet {
 				result = result+"</tr>";
 				result = result+"<tr>";
 				result = result+"<td>";
-				result = result+"<a href=\"../jsp/ViewRicercaDocenti.jsp\" ><p id=\"all\">Visualizza tutti i docenti</p></a>";
+				result = result+"<a id=\"link\" href=\"../jsp/ViewRicercaDocenti.jsp\" ><p id=\"all\">Visualizza tutti i docenti</p></a>";
 				result = result+"</td>";
 				result = result+"</tr>";
 				
