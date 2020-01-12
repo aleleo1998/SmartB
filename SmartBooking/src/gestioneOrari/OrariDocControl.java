@@ -7,12 +7,29 @@ import Model.DisponibilitaModel;
 import Model.RichiestaModOrario;
 import Model.RichiestaModOrarioModel;
 
+/**
+ * 
+ * 
+ * 
+ * Gestisce gli orari di un docente
+ *
+ */
 public class OrariDocControl {
 	
 	public OrariDocControl(
 			
 			){}
 	
+	/**
+	 * @param mDocente
+	 * @param giorni
+	 * @param orariInizio
+	 * @param orariFine
+	 * @throws SQLException
+	 * 
+	 * 
+	 * Permette di aggiungere per la prima volta l'orario ad un docente
+	 */
 	public void aggiungiFirstOrario(String mDocente,ArrayList<String> giorni,ArrayList<String> orariInizio, ArrayList<String> orariFine) throws SQLException{
 		
 		DisponibilitaModel  disponibilitaModel = new DisponibilitaModel();
@@ -30,6 +47,17 @@ public class OrariDocControl {
 		
 	}
 	
+	
+	
+/**
+ * @param mDocente
+ * @param giorno
+ * @param oraroInizio
+ * @param oraroFine
+ * @throws SQLException
+ * 
+ * Permette di aggiungere un orario ad un docente
+ */
 public void aggiungiOrario(String mDocente,String giorno,String oraroInizio, String oraroFine) throws SQLException{
 		
 		DisponibilitaModel  disponibilitaModel = new DisponibilitaModel();
@@ -48,6 +76,15 @@ public void aggiungiOrario(String mDocente,String giorno,String oraroInizio, Str
 		
 	}
 	
+	
+	
+	/**
+	 * @param matDoc
+	 * @param giorno
+	 * @throws SQLException
+	 * 
+	 * Permette di eliminare un orario
+	 */
 	public void delete(String matDoc, String giorno) throws SQLException{
 		DisponibilitaModel  disponibilitaModel = new DisponibilitaModel();
 		
