@@ -46,23 +46,23 @@ public class AggiungiOrarioServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Enumeration<String> params = request.getParameterNames();
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		/*Enumeration<String> params = request.getParameterNames();
 		
 		ArrayList<String> okok = Collections.list(params);
 		
 		for(String s : okok) {
 			
-			System.out.println(s);
-		}
+			System.out.println("aooo"+s);
+		}*/
+		String risposta="";
+		//HttpSession session = request.getSession();
 		
-		HttpSession session = request.getSession();
-		
-		Docente d =(Docente) session.getAttribute("docente");
-		
+		Docente d =(Docente) request.getSession().getAttribute("docente");
+		System.out.println(d);
 		String matricolaDocente = d.getMatricola();
 		
-		
+		boolean tf=true;
 		
 		ArrayList<String> giorni = new ArrayList<String>();
 		ArrayList<String> orariInizio = new ArrayList<String>();
@@ -74,23 +74,56 @@ public class AggiungiOrarioServlet extends HttpServlet {
 		
 		int numOrari = Integer.parseInt(num);
 		
-		for(int i = 1 ; i<=numOrari; i++){
+		for(int i = 1 ; i<=numOrari; i++)
+		{
 			
 			System.out.println("giorno: "+request.getParameter("giorno"+i));
-			
-			giorni.add(request.getParameter("giorno"+i));
-			orariInizio.add(request.getParameter("oraInizio"+i));
-			orariFine.add(request.getParameter("oraFine"+i));
-			
+			System.out.println(request.getParameter("oraInizio"+i)+" "+request.getParameter("oraFine"+i));
+			if(Check.checkGiorno((request.getParameter("giorno"+i))))
+			{
+			  giorni.add(request.getParameter("giorno"+i));
+			  if(Check.checkOra(request.getParameter("oraInizio"+i)))
+			  {
+			    if(Check.checkOra(request.getParameter("oraFine"+i))) {
+			      if(Check.checkOraInizioOraFine((request.getParameter("oraInizio"+i)),(request.getParameter("oraFine"+i))))
+			      {
+			        orariInizio.add(request.getParameter("oraInizio"+i));
+			        orariFine.add(request.getParameter("oraFine"+i));
+			      }
+			      else{
+				    risposta="orario Inizio/Fine non corretto";
+				    tf=false;
+				    break;
+				  }
+			    }
+			    else
+			    {
+			    	risposta="orario Fine non corretto";
+					tf=false;
+					break;
+			    }
+			  }
+			  else {
+				risposta="orario Inizio non corretto";
+				tf=false;
+				break;
+			  }
+			}
+			else{
+				tf=false;
+				risposta="giorno non corretto";
+				break;
+			}
 		}
 		
 		try {
+			if(tf)
 			gestioneOrari.aggiungiFirstOrario(matricolaDocente,giorni,orariInizio,orariFine);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		response.getWriter().print(risposta);
 	}
 
 }
