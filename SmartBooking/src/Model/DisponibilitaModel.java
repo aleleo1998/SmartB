@@ -134,51 +134,7 @@ private static final String TABLE_NAME = "Disponibilità";
 	
 	
 	
-	/**
-	 * @param order
-	 * @return
-	 * @throws SQLException
-	 * 
-	 * Prende tutte le disponibilità in un determinato ordine
-	 */
-	public synchronized Collection<Disponibilita> doRetrieveAll(String order) throws SQLException {
-		Connection connection = null;
-		PreparedStatement preparedStatement = null;
-
-		Collection<Disponibilita> listaDisponibilita = new LinkedList<Disponibilita>();
-
-		String selectSQL = "SELECT * FROM " + DisponibilitaModel.TABLE_NAME;
-
-		if (order != null && !order.equals("")) {
-			selectSQL += " ORDER BY " + order;
-		}
-
-		try {
-			connection = DriverManagerConnectionPool.getDbConnection();
-			preparedStatement = connection.prepareStatement(selectSQL);
-
-			ResultSet rs = preparedStatement.executeQuery();
-
-			while (rs.next()) {
-				Disponibilita bean = new Disponibilita();
-
-				bean.setGiorno(rs.getString("giorno"));
-				bean.setOra(rs.getString("ora"));
-				bean.setMatricolaDocente("matricola_docente");
-				
-				listaDisponibilita.add(bean);
-			}
-
-		} finally {
-			try {
-				if (preparedStatement != null)
-					preparedStatement.close();
-			} finally {
-				DriverManagerConnectionPool.releaseConnection(connection);
-			}
-		}
-		return listaDisponibilita;
-	}
+	
 	
 	
 	/**usato anche per la segreteria!
@@ -226,48 +182,7 @@ private static final String TABLE_NAME = "Disponibilità";
 	}
 
 	
-	/**
-	 * @return
-	 * @throws SQLException
-	 * 
-	 * Prende tutte le disponibilità
-	 */
-	public synchronized Collection<Disponibilita> doRetrieveAll() throws SQLException {
-		Connection connection = null;
-		PreparedStatement preparedStatement = null;
-
-		Collection<Disponibilita> listaDisponibilita = new LinkedList<Disponibilita>();
-
-		String selectSQL = "SELECT * FROM " + DisponibilitaModel.TABLE_NAME;
-
-		
-
-		try {
-			connection = DriverManagerConnectionPool.getDbConnection();
-			preparedStatement = connection.prepareStatement(selectSQL);
-
-			ResultSet rs = preparedStatement.executeQuery();
-
-			while (rs.next()) {
-				Disponibilita bean = new Disponibilita();
-
-				bean.setGiorno(rs.getString("giorno"));
-				bean.setOra(rs.getString("ora"));
-				bean.setMatricolaDocente("matricola_docente");
-				
-				listaDisponibilita.add(bean);
-			}
-
-		} finally {
-			try {
-				if (preparedStatement != null)
-					preparedStatement.close();
-			} finally {
-				DriverManagerConnectionPool.releaseConnection(connection);
-			}
-		}
-		return listaDisponibilita;
-	}
+	
 	
 	
 	/**

@@ -119,54 +119,7 @@ private static final String TABLE_NAME = "Richiesta_modifica_orario";
 	
 	
 	
-	/**
-	 * 
-	 * @param order ASC/DESC per ordinare i risultati ottenuti
-	 * @return restituisce una collezione di RichiestaModOrario
-	 * @throws SQLException
-	 */
-	public synchronized Collection<RichiestaModOrario> doRetrieveAll(String order) throws SQLException {
-		Connection connection = null;
-		PreparedStatement preparedStatement = null;
-
-		Collection<RichiestaModOrario> richiesteModOrario = new LinkedList<RichiestaModOrario>();
-
-		String selectSQL = "SELECT * FROM " + RichiestaModOrarioModel.TABLE_NAME;
-
-		if (order != null && !order.equals("")) {
-			selectSQL += " ORDER BY " + order;
-		}
-
-		try {
-			connection = DriverManagerConnectionPool.getDbConnection();
-			preparedStatement = connection.prepareStatement(selectSQL);
-
-			ResultSet rs = preparedStatement.executeQuery();
-
-			while (rs.next()) {
-				RichiestaModOrario bean = new RichiestaModOrario();
-
-				bean.setId(rs.getInt("id"));
-				bean.setMatricolaDocente(rs.getString("matricola_docente"));
-				bean.setMatricolaSegreteria(rs.getString("matricola_segreteria"));
-				bean.setOraInizio(rs.getString("ora_inizio"));
-				bean.setOraFine(rs.getString("ora_fine"));
-				bean.setGiornoPrecedente(rs.getString("giorno_precedente"));
-				bean.setGiorno(rs.getString("giorno"));
-				
-				richiesteModOrario.add(bean);
-			}
-
-		} finally {
-			try {
-				if (preparedStatement != null)
-					preparedStatement.close();
-			} finally {
-				DriverManagerConnectionPool.releaseConnection(connection);
-			}
-		}
-		return richiesteModOrario;
-	}
+	
 	
 	
 	/**

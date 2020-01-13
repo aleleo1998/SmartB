@@ -51,7 +51,7 @@ public class AccettaRicevimentoServlet extends HttpServlet {
 		
 		
 		try
-		{
+		{ 
 		  Ricevimento r= rm.doRetrieveByKey(id);
 			DocenteModel dm= new DocenteModel();
 			StudenteModel sm= new StudenteModel();

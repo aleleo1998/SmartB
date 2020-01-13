@@ -148,7 +148,7 @@ RegistrazioneStudenteServlet myServlet;
 		System.out.println(output.toString());
 		
 		
-		assertEquals("Password non corretta",output.toString().toString());
+		assertEquals("Password non corretta",output.toString());
 	}
 	
 	
