@@ -29,7 +29,7 @@ public class EmailUtility {
 	 * @param message
 	 * @param nome
 	 * @param emailMitt
-	 * @param mex contiene il messaggio già pronto da inviare
+	 * @param mex contiene il messaggio gia' pronto da inviare
 	 * @throws AddressException
 	 * @throws MessagingException
 	 */
@@ -38,7 +38,7 @@ public class EmailUtility {
 	throws AddressException, MessagingException {
 
 		
-		// setta le proprietà del server smtp
+		// setta le proprieta' del server smtp
 		Properties properties = new Properties();
 		properties.put("mail.smtp.host", host);
 		properties.put("mail.smtp.port", port);

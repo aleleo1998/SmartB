@@ -6,14 +6,23 @@ import Model.Docente;
 import Model.DocenteModel;
 import Model.StudenteModel;
 
+/**
+ * 
+ * @author carminesorrentino
+ *
+ *La classe GestioneDocente si occupa di andare a inserire in maniera persistente i dati di un docente nel database e 
+ *di andare ad effettuare delle query per controllare tramite matricola o email se il docente Ã¨ presente nel database.
+ *Inoltre prevede query per la cancellazione del docente e per la ricerca.
+ *
+ */
 public class GestioneDocente {
 	
 	public GestioneDocente() {}
 
 
 	/**
-	 * Registrazione Docente
-	 * @param d docente da registrare
+	 * Il metodo registrazioneDocente(Docente d) consente di memorizzare nel database in maniera persistente il Docente passato come argomento.
+	 * @param Docente d
 	 * @throws SQLException
 	 */
 	public void registrazioneDocente(Docente d) throws SQLException {
@@ -22,8 +31,8 @@ public class GestioneDocente {
 	}
 
 	/**
-	 * Rimuovere un docente registrato dalla piattaforma
-	 * @param matricola matricola del docente da rimuovere
+	 * Il metodo rimuoviDocente(String matricola) permette di rimuovere dalla tabella ACALE.Docente nel database il docente con matricola uguale a String 'matricola' passata come argomento del metodo.
+	 * @param String matricola
 	 * @throws SQLException
 	 */
 	public void rimuoviDocente(String matricola) throws SQLException {
@@ -33,9 +42,10 @@ public class GestioneDocente {
 	}
 	
 	/**
-	 * Verifica se la matricola esiste
-	 * @param matricola matricola da verificare
-	 * @return 
+	 * Il metodo matricolaExist(String matricola) consente di ricercare nel database, nella tabella ACALE.Docente se esiste un docente con matricola = String 'matricola' passata come argomento del metodo.
+	 * Nel caso in cui esiste una corrispondenza il metodo restituisce true, altrimenti false.
+	 * @param String matricola
+	 * @return boolean b
 	 * @throws Exception
 	 */
 	public boolean matricolaExist(String matricola) throws Exception{
@@ -60,9 +70,11 @@ public class GestioneDocente {
 	}
 	
 	/**
-	 * Verifica se già esiste la mail del docente (il docente può registrarsi se il metodo ritorna true)
-	 * @param email mail da verificare
-	 * @return false se l'email già esiste nel db, true se non esiste
+	 * Il metodo checkMailDocente(String email) consente di ricercare nel database, nella tabella ACALE.Docente se esiste un docente con email = String 'email' passata come argomento del metodo.
+	 * Nel caso in cui esiste una corrispondenza il metodo restituisce true, altrimenti false.
+	 * @param String email
+	 * @return boolean b
+	 * @throws Exception
 	 */
 	public boolean checkMailDocente(String email) {
 		DocenteModel dm = new DocenteModel();
@@ -80,7 +92,12 @@ public class GestioneDocente {
 				}
 	}
 
-	//Metodo da aggiungere alla specifica delle interfacce
+	/**
+	 * Il metodo findDoc(String matricola)consente di ricercare nel database, nella tabella ACALE.Docente se esiste un docente con matricola = String 'matricola' passata come argomento del metodo.
+	 * Nel caso in cui esiste una corrispondenza il metodo restituisce il Docente, altrimenti restituisce null.
+	 * @param String matricola
+	 * @return Docente docente
+	 */
 	public Docente findDoc(String matricola) {
 		DocenteModel dm = new DocenteModel();
 		
