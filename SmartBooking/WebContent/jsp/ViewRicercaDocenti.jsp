@@ -67,7 +67,12 @@ LinkedList<Docente> list = (LinkedList<Docente>) m.doRetrieveAll();
       
       </th>
       <td><p id="ufficio"><%=d.getUfficio()%><p></td>
-      <td><a href="RegView.jsp"><i class="fas fa-info-circle"></i></a></td>
+      <td>
+      	<form action="../visualizzaInfoDocente">
+      	<input id="matricolaDocente" style="display:none;" name="matricolaDocente" value="<%=d.getMatricola()%>"/>
+      	<button type="submit" href="../visualizzaInfoDocente"><i class="fas fa-info-circle"></i></button>
+      	</form>	
+      </td>
  	
       	<td>
       		<form name="form" action="../addDocenteListaPreferiti">

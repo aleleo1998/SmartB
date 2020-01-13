@@ -116,15 +116,26 @@ public class GestioneUtentiConcrete implements GestioneUtenti {
 		
 	}
 	
+	/**
+	 * Verifica la matricola del docente
+	 * @param matricola matricola da verificare
+	 * @return true se la matricola non esiste, false altrimenti
+	 */
 	public boolean checkMatricolaDocente(String matricola) throws Exception{
 		
 		return docente.matricolaExist(matricola);
 	
 	}
 	
-	public boolean checkEmailDocente(String email) throws Exception{
+	/**
+	 * Verifica la mail del docente
+	 * @param email mail da verificare
+	 * @return true se la mail non esiste, false altrimenti
+	 */
+	public boolean checkEmailDocente(String email){
 		return docente.checkMailDocente(email);
 	}
+	
 	
 	public boolean cercaEmail(String email) {
 		
@@ -139,11 +150,25 @@ public class GestioneUtentiConcrete implements GestioneUtenti {
 		
 	}
 	
+
+	//Da aggiungere alla specifica delle interfacce
+	public Docente cercaDocente(String matricola) {
+		return docente.findDoc(matricola);
+	}
+	
+	
+	public Utente doRetriveByKey(String matricola) throws SQLException{
+		
+		return login.doRetriveByKey(matricola);
+		
+	}
+	
 	
 	private GestionePassword password = new GestionePassword();
 	private GestioneRegistrazioneStudente registrazione = new GestioneRegistrazioneStudente();
 	private GestioneDocente docente = new GestioneDocente();
 	private GestioneLoginUtenti login = new GestioneLoginUtenti();
 	private GestioneEmailStudente mail = new GestioneEmailStudente();
+	
 	
 }

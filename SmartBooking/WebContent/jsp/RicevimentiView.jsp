@@ -11,6 +11,7 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://kit.fontawesome.com/7606041806.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="../css/Ricevimenti.css">
 <script>
 $(document).ready(function(){
 	$(".id").hide();
@@ -86,11 +87,13 @@ function controllo_data()
 </script>
 </head>
 <body>
-<div id="menu">
-	<%@include file="../html/menu.html"%>
+
 
 </div>
+<div id="container">
 
+<div id="menu">
+	<%@include file="../html/menu.html"%>
 <div>
 <%
 Collection<Ricevimento> rv =(Collection) request.getSession().getAttribute("ricevimenti");
@@ -175,7 +178,7 @@ for(Ricevimento r : rv)
       <button  id="buttonDate" value="cancella appuntamento" onclick="controllo('generico')">Cancella appuntamento</button>
      </div>
 
-
+</div>
 <div id="footer">
 	<%@include file="../html/footer.html"%>
 </div>

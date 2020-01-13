@@ -11,6 +11,7 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://kit.fontawesome.com/7606041806.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="../css/OrarioDocente.css">
 <script>
 $(document).ready(function(){
 	$("#matricolaDocente").hide();
@@ -32,6 +33,9 @@ function controllo(id)
 </script>
 </head>
 <body>
+<div id="menu">
+	<%@include file="menu.jsp"%>
+</div>
 <% Collection<Disponibilita> orari=(Collection) request.getSession().getAttribute("orari"); %>
 
 <table class="table table-striped" id="table">
@@ -149,6 +153,8 @@ function controllo(id)
   %>
   
   </tbody>
-    
+    <div id="footer">
+	<%@include file="../html/footer.html"%>
+</div>
 </body>
 </html>

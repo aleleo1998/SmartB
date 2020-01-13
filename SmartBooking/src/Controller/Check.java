@@ -64,33 +64,48 @@ public class Check {
 		}
 
 	
-	public static boolean checkDocenteMail(String email) throws IOException {
-		
-		file = new FileWriter("log.txt");
+	/**
+	 * Verifica la correttezza del campo matricola
+	 * @param matricola matricola da verificare
+	 * @return "ok" se l'email inserita è valida, "gia esiste" se è già presente nel database, "non corretto" se l'email non è corretta
+	 */
+	public static String checkMatricolaDocente(String matricola) {
 		
 		GestioneUtenti gestioneUtenti = new GestioneUtentiConcrete();
 		
-		if(email.matches("\\w+([\\.-]?\\w+)*@unisa[.]{1}it")) {
-			if(gestioneUtenti.cercaEmail(email)) {
-				return true;
-			}
-			String message = "Email giÃ  esiste nel database";
-			//byte[] b = message.getBytes();
-			file.write(message);
-			file.close();
-			
-			FileInputStream read = new FileInputStream("log.txt");
-			System.out.println("leggo: "+read.read());
-			file.close();
-			
-			//email giÃ  esiste nel database
-			return false;
+		if(matricola.matches("[0-9]{10}")) {
+			if(gestioneUtenti.cercaMatricola(matricola))
+				return "ok";
+			else
+				return "gia esiste";
 		}
-		else {
-			//email non corretta
-			return false;
+		else
+			return "non corretto";
+	}
+	
+	
+	/**
+	 * Verifica la correttezza del campo email
+	 * @param email da verificare
+	 * @return "ok" se l'email inserita è valida, "gia esiste" se è già presente nel database, "non corretto" se l'email non è corretta
+	 */
+	public static String checkMailDocente(String email){
+		
+		GestioneUtenti gestioneUtenti = new GestioneUtentiConcrete();
+	
+		if(email.matches("\\w+([\\.-]?\\w+)*@unisa[.]{1}it")  &&  email.length()>=20 &&  email.length() <=50) {
+			if(gestioneUtenti.checkEmailDocente(email)) {
+				return "ok";
+			}	
+			else {
+				return "gia esiste";
+			}
+		}
+		else { 
+			return "non corretto";
 		}
 	}
+
 	
 	public static boolean checkPassword(String password) {
 		if(password.matches("[A-Za-z0-9]{8,20}"))

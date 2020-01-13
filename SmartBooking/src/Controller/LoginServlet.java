@@ -41,10 +41,13 @@ public class LoginServlet extends HttpServlet {
 	
 		
 		Utente utente = gestioneUtenti.loginUtente(email, password);
+
 		String risposta="";
 		//String matricola=utente.getMatricola();
 		//System.out.println(matricola);
 		//System.out.println("matricola"+utente.getMatricola()+" "+utente.getNome()+" "+utente.getPassword()+" "+utente.getEmail());
+		
+		//System.out.println("matricola"+utente.getMatricola());
 		
 		
 		
