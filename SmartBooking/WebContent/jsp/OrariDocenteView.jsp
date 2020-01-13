@@ -36,7 +36,13 @@ function controllo(id)
 <div id="menu">
 	<%@include file="menu.jsp"%>
 </div>
+<<<<<<< HEAD
 <div id="container">
+=======
+
+
+
+>>>>>>> branch 'master' of https://github.com/ozne23/SmartB.git
 <% Collection<Disponibilita> orari=(Collection) request.getSession().getAttribute("orari"); %>
 
 <table class="table table-striped" id="table">
@@ -152,6 +158,7 @@ function controllo(id)
   
   
   %>
+  
   
   </tbody>
   </table>

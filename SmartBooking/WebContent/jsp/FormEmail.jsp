@@ -34,6 +34,8 @@ LinkedList<Studente> listStudenti = (LinkedList<Studente>) s.doRetrieveAll();
 	<div id="menu">
 		<%@include file="menu.jsp" %> 
 	</div>
+	
+	<%if(tipo==1){ %>
 
 	<div class="col-xl-8 offset-xl-2 py-5">
          <form name="form" id="form" method="post" action="../EmailSendingServlet" role="form">
@@ -113,6 +115,10 @@ LinkedList<Studente> listStudenti = (LinkedList<Studente>) s.doRetrieveAll();
 	<div id="footer">
 		<%@include file="../html/footer.html"%>
 	</div>
+	
+	<%}else{ %>
+		<h1 style="text-align:center">Non sei autorizzato</h1>
+	<%} %>
 
   <!--
   

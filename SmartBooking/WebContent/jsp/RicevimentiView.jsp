@@ -91,12 +91,23 @@ function controllo_data()
 
 </div>
 <div id="menu">
+<<<<<<< HEAD
 	<%@include file="../html/menu.html"%>
 	</div>
 <div id="container">
 
 
 <div>
+=======
+	<%@include file="menu.jsp"%>
+</div>
+
+<div id="container">
+
+
+
+<%if(tipo==1){ %>
+>>>>>>> branch 'master' of https://github.com/ozne23/SmartB.git
 <%
 Collection<Ricevimento> rv =(Collection) request.getSession().getAttribute("ricevimenti");
 
@@ -116,6 +127,7 @@ Collection<Ricevimento> rv =(Collection) request.getSession().getAttribute("rice
     <tbody><% 
     
     String name="nome";
+
     String data="";
 for(Ricevimento r : rv)
 	{
@@ -181,6 +193,11 @@ for(Ricevimento r : rv)
      </div>
 
 </div>
+
+<%}else{ %>
+
+<h1 style="text-align:center">Non sei autorizzato</h1>
+<%} %>
 <div id="footer">
 	<%@include file="../html/footer.html"%>
 </div>

@@ -26,6 +26,16 @@
 	
 	<div id="container">
 	
+		<%
+    	Utente u = null;
+    	u = (Utente) request.getSession().getAttribute("segreteria");
+    	if(u == null){  	
+%>
+
+		<h1 style="text-align:center">Non sei autorizzato</h1>
+		
+	<%} else { %>
+	
 	<div class="container register" id="spaceup">
                 <div class="row">
                     <div class="col-md-3 register-left">
@@ -76,6 +86,8 @@
             </div>
 	
 	</div>
+	
+	<%} %>
 	
 	<div id="footer">
 		<%@include file="../html/footer.html" %>

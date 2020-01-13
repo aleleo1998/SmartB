@@ -16,7 +16,12 @@
 <!------ Include the above in your HEAD tag ---------->
 <meta charset="UTF-8">
 <title>SmartBooking: Informazioni docente</title>
-<% Model.Docente docente = (Model.Docente) request.getSession().getAttribute("infoDocente"); %>
+<%@ page import="Model.*"%>
+<%@ page import ="java.util.*" %>
+<% Model.Docente docente = (Model.Docente) request.getSession().getAttribute("infoDocente"); 
+DisponibilitaModel dm= new DisponibilitaModel();
+Collection<Disponibilita> orari=dm.doRetrieveByKey(docente.getMatricola());
+%>
 </head>
 <body>
 <script>
@@ -120,7 +125,16 @@ $(document).ready(function(){
                                               <p id="prenotazioneButton"><a id="link" href="richiestaModificaOrario.jsp">Modifica orario</a></p>
                                                <p id="prenotazioneButton"><a id="link" href="../visualizzaRicevimentiServlet">Ricevimenti</a></p>
                                               
-                                              <%} %>
+                                              <%} 
+                                              for(Disponibilita d : orari)
+                                              {
+                                            	  %>
+                                            	  <%= d.getGiorno()%>
+                                            	  <%
+                                              }
+                                              
+                                              %>
+                                              
                                             </div>
                                         </div>
                             </div>

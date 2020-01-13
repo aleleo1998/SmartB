@@ -15,6 +15,8 @@
 <div id="menu">
 		<%@include file="menu.jsp"%>
 	</div>
+	
+
 
 <div id="container">
 
@@ -80,6 +82,9 @@
 </section>		
 		
 </div>
+
+
+
 
 
 <div id="footer">

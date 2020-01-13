@@ -75,14 +75,14 @@ public class tc2_0_Registrazione_Docente {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		
-		String deleteSQL = "DELETE FROM ACALE.Docente WHERE matricola = ? OR matricola = ? OR matricola = ? OR email = ?;";
+		String deleteSQL = "DELETE FROM ACALE.Docente WHERE matricola = ? OR matricola = ? OR email = ? OR email = ?;";
 		
 		connection = DriverManagerConnectionPool.getDbConnection();
 		preparedStatement = connection.prepareStatement(deleteSQL);
 		preparedStatement.setString(1,"0512100000");
 		preparedStatement.setString(2, "0512100001");
-		preparedStatement.setString(3, "0512100010");
-		preparedStatement.setString(4, "d.docente@unisa.it");
+		preparedStatement.setString(3, "filomena.ferrucci@unisa.it");
+		preparedStatement.setString(4, "docente.docente@unisa.it");
 		
 
 		preparedStatement.executeUpdate();
@@ -103,7 +103,7 @@ public class tc2_0_Registrazione_Docente {
 		when(request.getParameter("cognome")).thenReturn("Ferrucci");
 		when(request.getParameter("matricola")).thenReturn("0512100001");
 		when(request.getParameter("ufficio")).thenReturn("ufficio01");
-		when(request.getParameter("email")).thenReturn("f.ferrucci@unisa.it");
+		when(request.getParameter("email")).thenReturn("filomena.ferrucci@unisa.it");
 				
 		when(response.getWriter()).thenReturn(out);
 	
@@ -123,7 +123,7 @@ public class tc2_0_Registrazione_Docente {
 		when(request.getParameter("cognome")).thenReturn("Ferrucci");
 		when(request.getParameter("matricola")).thenReturn("0512100001");
 		when(request.getParameter("ufficio")).thenReturn("ufficio01");
-		when(request.getParameter("email")).thenReturn("f.ferrucci@unisa.it");
+		when(request.getParameter("email")).thenReturn("filomena.ferrucci@unisa.it");
 				
 		when(response.getWriter()).thenReturn(out);
 	
@@ -145,7 +145,7 @@ public class tc2_0_Registrazione_Docente {
 		when(request.getParameter("cognome")).thenReturn("Ferrucci");
 		when(request.getParameter("matricola")).thenReturn("0512100001");
 		when(request.getParameter("ufficio")).thenReturn("ufficio01");
-		when(request.getParameter("email")).thenReturn("f.ferrucci@unisa.it");
+		when(request.getParameter("email")).thenReturn("filomena.ferrucci@unisa.it");
 				
 		when(response.getWriter()).thenReturn(out);
 	
@@ -167,7 +167,7 @@ public class tc2_0_Registrazione_Docente {
 		when(request.getParameter("cognome")).thenReturn("");
 		when(request.getParameter("matricola")).thenReturn("0512100001");
 		when(request.getParameter("ufficio")).thenReturn("ufficio01");
-		when(request.getParameter("email")).thenReturn("f.ferrucci@unisa.it");
+		when(request.getParameter("email")).thenReturn("filomena.ferrucci@unisa.it");
 				
 		when(response.getWriter()).thenReturn(out);
 	
@@ -189,7 +189,7 @@ public class tc2_0_Registrazione_Docente {
 		when(request.getParameter("cognome")).thenReturn("Ferruccifilomenaferrucci");
 		when(request.getParameter("matricola")).thenReturn("0512100001");
 		when(request.getParameter("ufficio")).thenReturn("ufficio01");
-		when(request.getParameter("email")).thenReturn("f.ferrucci@unisa.it");
+		when(request.getParameter("email")).thenReturn("filomena.ferrucci@unisa.it");
 				
 		when(response.getWriter()).thenReturn(out);
 	
@@ -211,7 +211,7 @@ public class tc2_0_Registrazione_Docente {
 		when(request.getParameter("cognome")).thenReturn("Ferrucci01");
 		when(request.getParameter("matricola")).thenReturn("0512100001");
 		when(request.getParameter("ufficio")).thenReturn("ufficio01");
-		when(request.getParameter("email")).thenReturn("f.ferrucci@unisa.it");
+		when(request.getParameter("email")).thenReturn("filomena.ferrucci@unisa.it");
 				
 		when(response.getWriter()).thenReturn(out);
 	
@@ -233,7 +233,7 @@ public class tc2_0_Registrazione_Docente {
 		when(request.getParameter("cognome")).thenReturn("Ferrucci");
 		when(request.getParameter("matricola")).thenReturn("00001");
 		when(request.getParameter("ufficio")).thenReturn("ufficio01");
-		when(request.getParameter("email")).thenReturn("f.ferrucci@unisa.it");
+		when(request.getParameter("email")).thenReturn("filomena.ferrucci@unisa.it");
 				
 		when(response.getWriter()).thenReturn(out);
 	
@@ -260,7 +260,7 @@ public class tc2_0_Registrazione_Docente {
 		preparedStatement.setString(2,"docente");
 		preparedStatement.setString(3, "docente");
 		preparedStatement.setString(4, "pass001");
-		preparedStatement.setString(5, "d.docente@unisa.it");
+		preparedStatement.setString(5, "docente.docente@unisa.it");
 		preparedStatement.setString(6, "uff01");
 
 		preparedStatement.executeUpdate();
@@ -274,7 +274,7 @@ public class tc2_0_Registrazione_Docente {
 		when(request.getParameter("cognome")).thenReturn("Ferrucci");
 		when(request.getParameter("matricola")).thenReturn("0512100000");
 		when(request.getParameter("ufficio")).thenReturn("ufficio01");
-		when(request.getParameter("email")).thenReturn("f.ferrucci@unisa.it");
+		when(request.getParameter("email")).thenReturn("filomena.ferrucci@unisa.it");
 				
 		when(response.getWriter()).thenReturn(out);
 	
@@ -282,7 +282,7 @@ public class tc2_0_Registrazione_Docente {
 		
 		System.out.println(output.toString());
 				
-		assertEquals("Matricola già presente nel database",output.toString().toString());
+		assertEquals("Matricola gia presente nel database",output.toString().toString());
 	}
 	
 	
@@ -296,7 +296,7 @@ public class tc2_0_Registrazione_Docente {
 		when(request.getParameter("cognome")).thenReturn("Ferrucci");
 		when(request.getParameter("matricola")).thenReturn("0512100001");
 		when(request.getParameter("ufficio")).thenReturn("");
-		when(request.getParameter("email")).thenReturn("f.ferrucci@unisa.it");
+		when(request.getParameter("email")).thenReturn("filomena.ferrucci@unisa.it");
 				
 		when(response.getWriter()).thenReturn(out);
 	
@@ -318,7 +318,7 @@ public class tc2_0_Registrazione_Docente {
 		when(request.getParameter("cognome")).thenReturn("Ferrucci");
 		when(request.getParameter("matricola")).thenReturn("0512100001");
 		when(request.getParameter("ufficio")).thenReturn("ufficiostanza01piano01");
-		when(request.getParameter("email")).thenReturn("f.ferrucci@unisa.it");
+		when(request.getParameter("email")).thenReturn("filomena.ferrucci@unisa.it");
 				
 		when(response.getWriter()).thenReturn(out);
 	
@@ -340,7 +340,7 @@ public class tc2_0_Registrazione_Docente {
 		when(request.getParameter("cognome")).thenReturn("Ferrucci");
 		when(request.getParameter("matricola")).thenReturn("0512100001");
 		when(request.getParameter("ufficio")).thenReturn("ufficio@01");
-		when(request.getParameter("email")).thenReturn("f.ferrucci@unisa.it");
+		when(request.getParameter("email")).thenReturn("filomena.ferrucci@unisa.it");
 				
 		when(response.getWriter()).thenReturn(out);
 	
@@ -405,7 +405,7 @@ public class tc2_0_Registrazione_Docente {
 		when(request.getParameter("cognome")).thenReturn("Ferrucci");
 		when(request.getParameter("matricola")).thenReturn("0512100001");
 		when(request.getParameter("ufficio")).thenReturn("ufficio01");
-		when(request.getParameter("email")).thenReturn("f.ferrucci!!@unisa.it");
+		when(request.getParameter("email")).thenReturn("filomena.ferrucci!!@unisa.it");
 				
 		when(response.getWriter()).thenReturn(out);
 	
@@ -433,7 +433,7 @@ public class tc2_0_Registrazione_Docente {
 		preparedStatement.setString(2,"docente");
 		preparedStatement.setString(3, "docente");
 		preparedStatement.setString(4, "pass001");
-		preparedStatement.setString(5, "d.docente@unisa.it");
+		preparedStatement.setString(5, "docente.docente@unisa.it");
 		preparedStatement.setString(6, "uff01");
 
 		preparedStatement.executeUpdate();
@@ -446,7 +446,7 @@ public class tc2_0_Registrazione_Docente {
 		when(request.getParameter("cognome")).thenReturn("Ferrucci");
 		when(request.getParameter("matricola")).thenReturn("0512100001");
 		when(request.getParameter("ufficio")).thenReturn("ufficio01");
-		when(request.getParameter("email")).thenReturn("d.docente@unisa.it");
+		when(request.getParameter("email")).thenReturn("docente.docente@unisa.it");
 				
 		when(response.getWriter()).thenReturn(out);
 	
@@ -454,7 +454,7 @@ public class tc2_0_Registrazione_Docente {
 		
 		System.out.println(output.toString());
 				
-		assertEquals("Email già presente nel database",output.toString().toString());
+		assertEquals("Email gia presente nel database",output.toString().toString());
 	}
 	
 	
@@ -468,7 +468,7 @@ public class tc2_0_Registrazione_Docente {
 		when(request.getParameter("cognome")).thenReturn("Ferrucci");
 		when(request.getParameter("matricola")).thenReturn("0512100001");
 		when(request.getParameter("ufficio")).thenReturn("ufficio01");
-		when(request.getParameter("email")).thenReturn("f.ferrucci@unisa.it");
+		when(request.getParameter("email")).thenReturn("filomena.ferrucci@unisa.it");
 				
 		when(response.getWriter()).thenReturn(out);
 	
@@ -476,6 +476,6 @@ public class tc2_0_Registrazione_Docente {
 		
 		System.out.println(output.toString());
 				
-		assertEquals("Email non corretta",output.toString().toString());
+		assertEquals("",output.toString().toString());
 	}
 }
