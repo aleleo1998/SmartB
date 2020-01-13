@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,6 +36,7 @@ function controllo(id)
 <div id="menu">
 	<%@include file="menu.jsp"%>
 </div>
+<div id="container">
 <% Collection<Disponibilita> orari=(Collection) request.getSession().getAttribute("orari"); %>
 
 <table class="table table-striped" id="table">
@@ -153,6 +154,8 @@ function controllo(id)
   %>
   
   </tbody>
+  </table>
+  </div>
     <div id="footer">
 	<%@include file="../html/footer.html"%>
 </div>

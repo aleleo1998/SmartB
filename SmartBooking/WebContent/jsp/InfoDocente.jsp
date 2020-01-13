@@ -19,6 +19,12 @@
 <% Model.Docente docente = (Model.Docente) request.getSession().getAttribute("infoDocente"); %>
 </head>
 <body>
+<script>
+$(document).ready(function(){
+	$(".matricola").hide();
+});
+</script>
+
 
 	<div id="menu">
 		<%@include file="menu.jsp"%>
@@ -28,7 +34,7 @@
 
 
 		<div class="container emp-profile">
-            <form method="post">
+           
                 <div class="row">
                     <div class="col-md-4">
                         <div class="profile-img">
@@ -104,14 +110,24 @@
                                                 <label>Richiedi incontro con il docente</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p id="prenotazioneButton"><a id="link" href="####">Invia richiesta</a></p>
+                                            <% if(tipo==2){%>
+                                             <form method="post" action="../VisualizzaOrariDocente">
+                                                <input type="text" class="matricola" name="matricolaDocente" value=<%=docente.getMatricola() %>>
+                                                <p id="prenotazioneButton"><input type="submit" value="Invia richiesta"></p>
+                                              <% }%>
+                                              </form>   
+                                              <%if(tipo==1){ %>
+                                              <p id="prenotazioneButton"><a id="link" href="richiestaModificaOrario.jsp">Modifica orario</a></p>
+                                               <p id="prenotazioneButton"><a id="link" href="../visualizzaRicevimentiServlet">Ricevimenti</a></p>
+                                              
+                                              <%} %>
                                             </div>
                                         </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </form>           
+                    
         </div>     
 </div>
 
