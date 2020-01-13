@@ -118,6 +118,7 @@ Collection<Ricevimento> rv =(Collection) request.getSession().getAttribute("rice
     <tbody><% 
     
     String name="nome";
+
     String data="";
 for(Ricevimento r : rv)
 	{
