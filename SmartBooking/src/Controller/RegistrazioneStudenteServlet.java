@@ -3,6 +3,7 @@ package Controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Model.Studente;
+import gestioneMail.GestioneMail;
+import gestioneMail.GestioneMailConcrete;
 import gestioneUtenti.GestioneUtenti;
 import gestioneUtenti.GestioneUtentiConcrete;
 
@@ -21,7 +24,13 @@ import gestioneUtenti.GestioneUtentiConcrete;
 public class RegistrazioneStudenteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
+	private String host;
+	private String port;
+	private String user;
+	private String pass;
+	
 	private GestioneUtenti gestioneUtenti = new GestioneUtentiConcrete();
+	private static GestioneMail gestioneMail = new GestioneMailConcrete();
 	
 	
        
@@ -32,6 +41,20 @@ public class RegistrazioneStudenteServlet extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
+    
+    
+    /**
+	 * metodo di configurazione, legge i dati dal file web.xml 
+	 */
+	public void init() {
+		ServletContext context = getServletContext();
+		host = context.getInitParameter("host"); 
+		port = context.getInitParameter("port");
+		user = context.getInitParameter("user"); //indirizzo email mittente (smartbookingplatform@gmail.com)
+		pass = context.getInitParameter("pass"); //password email mittente (SmartAcale)
+	}
+
+	
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -119,10 +142,28 @@ public class RegistrazioneStudenteServlet extends HttpServlet {
 			//***SEND MAIL****//
 				
 				
-				
-				
-				/**********/
-										
+				//Invio email con credenziali
+							String emailMittente="smartbookingplatform@gmail.com";
+							String emailDestinatario=email;
+							String subject="Benvenuto su SmartBooking";
+							
+							//Creazione messaggio(content) da inviare 
+							String indexEmail="Gentile "+cognome +" "+ nome+" "+"benvenuto su SmartBooking. \n Accedi per iniziare ad usare SmartBooking!\n";
+							
+							
+							String content= indexEmail;
+							
+							
+							String resultMessage = "";
+					
+							try {
+								gestioneMail.sendEmail(host, port, user, pass, emailMittente, emailDestinatario, nome, cognome, subject, content); //invio email di EmailUtility
+								resultMessage = "The e-mail was sent successfully"; //setta il messaggio di buona riuscita dell'invio
+							} catch (Exception ex) {
+								ex.printStackTrace();
+								resultMessage = "There were an error: " + ex.getMessage(); //altrimenti crea un messaggio di errore
+							}
+						
 				response.sendRedirect("./jsp/SuccessReg.jsp");
 			}else {
 				System.out.print("no ok");
