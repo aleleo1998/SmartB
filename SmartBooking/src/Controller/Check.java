@@ -175,16 +175,11 @@ public class Check {
 			return false;
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	//GESTIONE RICHIESTA MODIFCA ORARIO
-	
+	/**
+	 * Il metodo checkGiorno(String giorno) controlla se il giorno passato come parametro è un giorno della settimana.
+	 * @param String giorno
+	 * @return boolean b
+	 */
 		public static boolean checkGiorno(String giorno){
 			
 			if(giorno.equalsIgnoreCase("lunedi") || giorno.equalsIgnoreCase("lunedì")){
@@ -220,7 +215,11 @@ public class Check {
 		}
 		
 		
-		
+		/**
+		 * Il metodo checkOra(String ora) controlla se il parametro String ora passato al metodo rispetta il formato specificato dall' espressione regolare ^([01]\\d|2[0-3]):([0-5]\\d)$.
+		 * @param ora
+		 * @return
+		 */
 			public static boolean checkOra(String ora){
 					
 					if(ora.matches("^([01]\\d|2[0-3]):([0-5]\\d)$")) {
@@ -233,7 +232,12 @@ public class Check {
 					
 				}
 			
-			
+			/**
+			 * Il metodo checkOraInizioOraFine(String oraInizio, String oraFine) verifica che l'ora di inizio precede l'ora di fine.
+			 * @param String oraInizio
+			 * @param String oraFine
+			 * @return boolean b
+			 */
 			public static boolean checkOraInizioOraFine(String oraInizio, String oraFine){
 				
 				if(oraInizio.matches("^([01]\\d|2[0-3]):([0-5]\\d)$")  &&  oraFine.matches("^([01]\\d|2[0-3]):([0-5]\\d)$")) {
