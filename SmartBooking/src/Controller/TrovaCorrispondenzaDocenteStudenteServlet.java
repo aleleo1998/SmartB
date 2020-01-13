@@ -2,6 +2,9 @@ package Controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import DBConnection.DriverManagerConnectionPool;
 import Model.DocenteModel;
 import Model.ListaPreferitiModel;
 import gestioneListaPreferiti.GestioneListaPreferiti;
@@ -58,34 +62,13 @@ public class TrovaCorrispondenzaDocenteStudenteServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
-		
-		
-		
-		//OLD
-		/*ListaPreferitiModel lpm = new ListaPreferitiModel();
-		
-		try {
-			if(lpm.existIntoDB(matricolaDocente,matricolaStudente)) //se esiste corrispondenza
-				out.write("esiste");
-			else
-				out.write("non esiste");
-				
-		} catch (Exception e) {
-			
 
-		}*/
-		
-		
-		
-		
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
