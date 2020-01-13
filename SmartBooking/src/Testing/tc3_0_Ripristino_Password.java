@@ -19,6 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -29,26 +30,27 @@ import DBConnection.DriverManagerConnectionPool;
 import Model.Docente;
 import Model.DocenteModel;
 import Model.Studente;
+import Model.StudenteModel;
 import Model.Utente;
 import Model.UtenteModel;
 
 public class tc3_0_Ripristino_Password {
 	
-	RipristinoPassword myServlet;
+	static RipristinoPassword myServlet;
 	
 	@Mock
-	HttpServletRequest request;
+	static HttpServletRequest request;
 	
 	@Mock
-	HttpServletResponse response;
+	static HttpServletResponse response;
 	
 	@Mock
-	HttpSession session;
+	static HttpSession session;
 	@Mock
-	Utente utente;
+	static Utente utente;
 
-	@BeforeEach
-	public void beforeEachTestCase() throws SQLException{
+	@BeforeAll
+	static public void beforeEachTestCase() throws SQLException{
 		request = mock(HttpServletRequest.class);
 		response = mock(HttpServletResponse.class);
 		session = mock(HttpSession.class);
@@ -125,8 +127,8 @@ public class tc3_0_Ripristino_Password {
 		when(request.getParameter("email")).thenReturn("carminesorrentino50@studenti.unisa.it");
 		when(response.getWriter()).thenReturn(out);
 		
-		
-		myServlet.doPost(request, response);
+		 
+		myServlet.doGet(request, response);
 		
 		System.out.println(output.toString());
 		
@@ -135,11 +137,21 @@ public class tc3_0_Ripristino_Password {
 	}
 	
 	@Test
-	public void tc_3_0_5() throws IOException, ServletException{
+	public void tc_3_0_5() throws IOException, ServletException, SQLException{
 		StringWriter output = new StringWriter();
 		PrintWriter out = new PrintWriter(output);
 		
-
+		StudenteModel sm = new StudenteModel();
+		
+		Studente s = new Studente();
+		
+		s.setEmail("carminesorrentino51@studenti.unisa.it");
+		
+		s.setMatricola("0000055555");
+		
+		sm.doSave(s);
+		
+			
 	
 		when(request.getParameter("email")).thenReturn("carminesorrentino51@studenti.unisa.it");
 		when(response.getWriter()).thenReturn(out);
@@ -148,6 +160,8 @@ public class tc3_0_Ripristino_Password {
 		myServlet.doPost(request, response);
 		
 		System.out.println(output.toString());
+		
+		sm.doDeleteByEmail("carminesorrentino51@studenti.unisa.it");
 		
 		
 		assertEquals("email inviato",output.toString().toString());

@@ -73,7 +73,7 @@ import DBConnection.DriverManagerConnectionPool;
 			return (result != 0);
 		}
 		
-		
+		//
 		public synchronized Collection<Ricevimento> doRetrieveAll(String order) throws SQLException {
 			Connection connection = null;
 			PreparedStatement preparedStatement = null;

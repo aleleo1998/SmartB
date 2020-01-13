@@ -178,6 +178,42 @@ private static final String TABLE_NAME = "Richiesta_modifica_orario";
 		}
 		return bean;
 	}
+	
+	public synchronized RichiestaModOrario doRertiveByDoc(String mat) throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		RichiestaModOrario bean = new RichiestaModOrario();
+
+		String selectSQL = "Select *  FROM " + RichiestaModOrarioModel.TABLE_NAME + " WHERE matricola_docente = ?";
+
+		try {
+			connection = DriverManagerConnectionPool.getDbConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+			preparedStatement.setString(1, mat);
+
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) {
+				bean.setId(rs.getInt("id"));
+				bean.setMatricolaDocente(rs.getString("matricola_docente"));
+				bean.setMatricolaSegreteria(rs.getString("matricola_segreteria"));
+				bean.setOraInizio(rs.getString("ora_inizio"));
+				bean.setOraFine(rs.getString("ora_fine"));
+				bean.setGiornoPrecedente(rs.getString("giorno_precedente"));
+				bean.setGiorno(rs.getString("giorno"));
+			}
+
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				DriverManagerConnectionPool.releaseConnection(connection);
+			}
+		}
+		return bean;
+	}
 
 	
 	/**

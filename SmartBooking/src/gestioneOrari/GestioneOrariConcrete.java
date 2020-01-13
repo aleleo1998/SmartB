@@ -57,6 +57,7 @@ public class GestioneOrariConcrete implements GestioneOrari {
 			
 			try {
 				RichiestaModOrario richiesta = rm.doRetrieveByKey(id);
+				System.out.println("Richiesta "+richiesta);
 				if(orariSegControl.accettaRichiesta(id)){
 					orariDocControl.delete(richiesta.getMatricolaDocente(),richiesta.getGiornoPrecedente());
 					orariDocControl.aggiungiOrario(richiesta.getMatricolaDocente(),richiesta.getGiorno(),richiesta.getOraInizio().substring(0, 4),richiesta.getOraFine().substring(0, 4));
