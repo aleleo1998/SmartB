@@ -14,7 +14,8 @@ import gestioneUtenti.GestioneUtenti;
 import gestioneUtenti.GestioneUtentiConcrete;
 
 /**
- * Servlet implementation class CheckMailServlet
+ * Servlet richiamata da RegView.js in maniera asincrona. 
+ * Controlla se la mail dello studente è già presente nel database effettuando una query.
  */
 @WebServlet("/CheckMailServlet")
 public class CheckMailServlet extends HttpServlet {
