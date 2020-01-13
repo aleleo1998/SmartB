@@ -1,5 +1,6 @@
 @charset "UTF-8";
-html,body{
+html,body
+{
 		height: 100%;
 	}
 	
@@ -12,5 +13,5 @@ html,body{
 
 	#footer{
     	clear: both;
-    	margin-top: 28em !important; 
+    	margin-top: 22em; 
 	}

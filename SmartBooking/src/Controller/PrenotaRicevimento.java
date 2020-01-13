@@ -73,7 +73,6 @@ public class PrenotaRicevimento extends HttpServlet {
 	
 			Studente s = sm.doRetrieveByKey((String)request.getSession().getAttribute("Utente"));
 			Docente doc= dm.doRetrieveByKey(request.getParameter("matricolaDocente"));
-			System.out.println(s);
 		
 		String content="Prenotazione effettuata per la data "+d+" da parte dello studente:\n"+s.getCognome()+" "+s.getNome()+"\nMatricola: "+s.getMatricola();
 		
