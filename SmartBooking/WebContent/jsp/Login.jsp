@@ -39,15 +39,12 @@
     					<input type="password" id="password" name="password" class="form-control" placeholder="">
   				</div>
   
-  			    <div class="form-check">
-    				<label class="form-check-label">
-      					<input type="checkbox" class="form-check-input">
-      						<small>Remember Me</small>
-    				</label>
+  			    
+    				
     			
     				<button type="submit" id="loginButton" class="btn btn-login float-right">Submit</button>
   				
-  				</div>
+  		
   
 				</form>
 					<div class="copy-text"></div>

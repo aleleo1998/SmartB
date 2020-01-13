@@ -36,19 +36,16 @@ function controllo(id)
 <div id="menu">
 	<%@include file="menu.jsp"%>
 </div>
-<<<<<<< HEAD
+
 <div id="container">
-=======
 
-
-
->>>>>>> branch 'master' of https://github.com/ozne23/SmartB.git
 <% Collection<Disponibilita> orari=(Collection) request.getSession().getAttribute("orari"); %>
 
 <table class="table table-striped" id="table">
   <thead class="thead-dark">
     <tr>
       <th scope="col">Matricola professore</th>
+      <th scope="col">Giorno</th>
       <th scope="col">Ora</th>
       <th scope="col">Data disponibile</th>
       <th scope="col">Prenota</th>
@@ -73,9 +70,10 @@ function controllo(id)
 		i=1;
 		%><form action="../PrenotaRicevimento" id="<%=ds.getOra()%>i"><tr>
 		<td><%=ds.getMatricolaDocente()%></td>
+        <td><%= ds.getGiorno()%></td>	
 		<td><%=ds.getOra()%></td>
 		<td>
-		<input type="text" name="matricolaDocente" id="matricolaDocente" value=<%=ds.getMatricolaDocente()%>>
+		<input type="text" name="matricolaDocente" id="matricolaDocente" style="display:none"value=<%=ds.getMatricolaDocente()%>>
 		<select name="date" id="<%=ds.getOra() %>"><%
 		while(d.getMonth()==mese)
 		{

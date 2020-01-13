@@ -18,9 +18,38 @@
 <title>SmartBooking: Informazioni docente</title>
 <%@ page import="Model.*"%>
 <%@ page import ="java.util.*" %>
-<% Model.Docente docente = (Model.Docente) request.getSession().getAttribute("infoDocente"); 
-DisponibilitaModel dm= new DisponibilitaModel();
-Collection<Disponibilita> orari=dm.doRetrieveByKey(docente.getMatricola());
+<% Model.Docente docente = (Model.Docente) request.getSession().getAttribute("docente"); 
+
+	String mat;
+	String matRequest = request.getParameter("mat");
+	
+	boolean doc = false;
+
+	if(docente != null){
+		mat = docente.getMatricola();
+		
+		System.out.println("il doc c'è");
+		
+		if(mat.equals(matRequest)){
+			
+			System.out.println("Sono uguali");
+			
+			doc= true;
+		}
+		
+		
+	}
+		
+		DocenteModel dm = new DocenteModel();
+		
+		docente = dm.doRetrieveByKey(matRequest);
+		
+	
+
+System.out.println("DOCENTE: "+docente);
+System.out.println("Matricola:"+matRequest);
+//DisponibilitaModel dm= new DisponibilitaModel();
+//Collection<Disponibilita> orari=dm.doRetrieveByKey(docente.getMatricola());
 %>
 </head>
 <body>
@@ -111,29 +140,22 @@ $(document).ready(function(){
                                         </div>
                                         <div><br><br><br></div>
                                         <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Richiedi incontro con il docente</label>
-                                            </div>
+                                            
                                             <div class="col-md-6">
                                             <% if(tipo==2){%>
                                              <form method="post" action="../VisualizzaOrariDocente">
                                                 <input type="text" class="matricola" name="matricolaDocente" value=<%=docente.getMatricola() %>>
+                                                <div class="col-md-6">
+                                                <label>Richiedi incontro con il docente</label>
+                                            </div>
                                                 <p id="prenotazioneButton"><input type="submit" value="Invia richiesta"></p>
                                               <% }%>
                                               </form>   
-                                              <%if(tipo==1){ %>
+                                              <%if(tipo==1 && doc){ %>
                                               <p id="prenotazioneButton"><a id="link" href="richiestaModificaOrario.jsp">Modifica orario</a></p>
                                                <p id="prenotazioneButton"><a id="link" href="../visualizzaRicevimentiServlet">Ricevimenti</a></p>
                                               
-                                              <%} 
-                                              for(Disponibilita d : orari)
-                                              {
-                                            	  %>
-                                            	  <%= d.getGiorno()%>
-                                            	  <%
-                                              }
-                                              
-                                              %>
+                                              <%}%>
                                               
                                             </div>
                                         </div>
