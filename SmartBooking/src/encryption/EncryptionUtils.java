@@ -22,6 +22,11 @@ import java.util.Base64.Encoder;
 import javax.crypto.*;
 import javax.crypto.spec.IvParameterSpec;
 
+/**
+ * Permette di criptare delle Stringhe. Per decriptare una stringa serve una chiave che viene auto generata
+ * e salvata inun file apposito
+ *
+ */
 public class EncryptionUtils {
 	
 	public final static String FILENAME = "chiave.txt";

@@ -7,6 +7,10 @@ import Model.UtenteModel;
 import encryption.EncryptionUtils;
 
 
+/**
+ * Gestisce le password degli utenti
+ *
+ */
 public class GestionePassword {
 	
 	public GestionePassword() {}
@@ -16,6 +20,8 @@ public class GestionePassword {
 	 * @param vecchiaPassword
 	 * @param nuovaPassword
 	 * @throws SQLException
+	 * 
+	 * Permette il cambio della password dell'utente u
 	 */
 	public void changePassword(Utente u,String vecchiaPassword,String nuovaPassword) throws SQLException {
 		
@@ -28,6 +34,15 @@ public class GestionePassword {
 		}
 	}
 	
+	
+	
+	/**
+	 * @param u
+	 * @param nuovaPassword
+	 * @throws SQLException
+	 * 
+	 * Permette l'aggiunta della password dell'utente u
+	 */
 	public void changePassword(Utente u,String nuovaPassword) throws SQLException {
 		
 		System.out.println("Passwordddd: "+u.getPassword());
@@ -37,6 +52,11 @@ public class GestionePassword {
 		
 	}
 
+	/**
+	 * @param email
+	 * 
+	 * Permette di inviare un email per il ripristino della password
+	 */
 	public void sendResetPasswordEmail(String email) {
 		// TODO AutR-generated method stub
 		
