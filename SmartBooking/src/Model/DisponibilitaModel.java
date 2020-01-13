@@ -9,6 +9,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.LinkedList;
+import java.sql.Time;
 
 import DBConnection.DriverManagerConnectionPool;
 
@@ -19,6 +20,7 @@ import DBConnection.DriverManagerConnectionPool;
  */
 public class DisponibilitaModel {
 	
+
 private static final String TABLE_NAME = "Disponibilità";
 	
 	/**
@@ -40,7 +42,7 @@ private static final String TABLE_NAME = "Disponibilità";
 			preparedStatement = connection.prepareStatement(insertSQL);
 			
 			preparedStatement.setString(1, Disponibilita.getGiorno());
-			preparedStatement.setTime(2, Disponibilita.getOra());
+			preparedStatement.setString(2, Disponibilita.getOra());
 			preparedStatement.setString(3, Disponibilita.getMatricolaDocente());		
 
 			preparedStatement.executeUpdate();
@@ -159,7 +161,7 @@ private static final String TABLE_NAME = "Disponibilità";
 				Disponibilita bean = new Disponibilita();
 
 				bean.setGiorno(rs.getString("giorno"));
-				bean.setOra(rs.getTime("ora"));
+				bean.setOra(rs.getString("ora"));
 				bean.setMatricolaDocente("matricola_docente");
 				
 				listaDisponibilita.add(bean);
@@ -204,7 +206,7 @@ private static final String TABLE_NAME = "Disponibilità";
 				Disponibilita bean = new Disponibilita();
 				
 				bean.setGiorno(rs.getString("giorno"));
-				bean.setOra(rs.getTime("ora"));
+				bean.setOra(rs.getString("ora"));
 				bean.setMatricolaDocente(rs.getString("matricola_docente"));
 				
 				listaOrari.add(bean);
@@ -248,7 +250,7 @@ private static final String TABLE_NAME = "Disponibilità";
 				Disponibilita bean = new Disponibilita();
 
 				bean.setGiorno(rs.getString("giorno"));
-				bean.setOra(rs.getTime("ora"));
+				bean.setOra(rs.getString("ora"));
 				bean.setMatricolaDocente("matricola_docente");
 				
 				listaDisponibilita.add(bean);
@@ -289,7 +291,7 @@ private static final String TABLE_NAME = "Disponibilità";
 	            		System.out.println(date.compareTo(datefine));
 	            	     System.out.println(date.getHours()+":"+date.getMinutes());
 	            	     	d.setGiorno(giorno);
-	            			//d.setOra(date.getHours()+":"+date.getMinutes());
+	            			d.setOra(date.getHours()+":"+date.getMinutes());
 	            			d.setMatricolaDocente(mDocente); 
 	            			doSave(d);
 	            	     mintoset += 15;
@@ -306,5 +308,38 @@ private static final String TABLE_NAME = "Disponibilità";
 	        }
 		
 	    }
+	
+	public synchronized boolean checkOrarioDefinito(String matricola_docente) throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		Collection<Disponibilita> listaOrari = new LinkedList<Disponibilita>();
+		
+
+		String selectSQL = "SELECT * FROM " + DisponibilitaModel.TABLE_NAME + " WHERE matricola_docente = ?";
+
+		try {
+			connection = DriverManagerConnectionPool.getDbConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+			preparedStatement.setString(1, matricola_docente);
+
+			ResultSet rs = preparedStatement.executeQuery();
+
+			if(rs.next()) {
+				return true;
+			}else {
+				return false;
+			}
+
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				DriverManagerConnectionPool.releaseConnection(connection);
+			}
+		}
+		
+	}
 }
 

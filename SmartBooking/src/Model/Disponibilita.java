@@ -20,7 +20,7 @@ public class Disponibilita {
 	 * @param giorno
 	 * @param ora
 	 */
-	public Disponibilita(String giorno, Time ora, String matricolaDocente) {
+	public Disponibilita(String giorno, String ora, String matricolaDocente) {
 		super();
 		this.giorno = giorno;
 		this.ora = ora;
@@ -43,13 +43,13 @@ public class Disponibilita {
 	/**
 	 * @return the ora
 	 */
-	public Time getOra() {
+	public String getOra() {
 		return ora;
 	}
 	/**
 	 * @param string the ora to set
 	 */
-	public void setOra(Time ora) {
+	public void setOra(String ora) {
 		this.ora = ora;
 	}
 	
@@ -73,7 +73,7 @@ public class Disponibilita {
 
 	//variabili
 	private String giorno;
-	private Time ora;
+	private String ora;
 	private String docente;
 
 }
