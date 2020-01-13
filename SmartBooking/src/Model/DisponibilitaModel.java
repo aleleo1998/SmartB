@@ -20,7 +20,8 @@ import DBConnection.DriverManagerConnectionPool;
  */
 public class DisponibilitaModel {
 	
-private static final String TABLE_NAME = "Disponibilit‡";
+
+private static final String TABLE_NAME = "Disponibilit√†";
 	
 	/**
 	 * @param Disponibilita
