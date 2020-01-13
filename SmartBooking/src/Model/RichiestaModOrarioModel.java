@@ -86,6 +86,36 @@ private static final String TABLE_NAME = "Richiesta_modifica_orario";
 		return (result != 0);
 	}
 	
+	public synchronized boolean doDeleteByDoc(String doc) throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		int result = 0;
+
+		String deleteSQL = "DELETE FROM " + RichiestaModOrarioModel.TABLE_NAME + " WHERE matricola_docente = ? ";
+
+		try {
+			connection = DriverManagerConnectionPool.getDbConnection();
+			preparedStatement = connection.prepareStatement(deleteSQL);
+			preparedStatement.setString(1, doc);
+
+			result = preparedStatement.executeUpdate();
+			
+			connection.commit();
+			
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				DriverManagerConnectionPool.releaseConnection(connection);
+			}
+		}
+		return (result != 0);
+	}
+	
+	
+	
 	
 	/**
 	 * 

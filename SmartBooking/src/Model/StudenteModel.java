@@ -111,7 +111,7 @@ private static final String TABLE_NAME = "Studente";
 	 * @return
 	 * @throws SQLException
 	 */
-	public synchronized Collection<Studente> doRetrieveAll(String order) throws SQLException {
+	public synchronized Collection<Studente> doRetrieveAll() throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
@@ -119,9 +119,7 @@ private static final String TABLE_NAME = "Studente";
 
 		String selectSQL = "SELECT * FROM " + StudenteModel.TABLE_NAME;
 
-		if (order != null && !order.equals("")) {
-			selectSQL += " ORDER BY " + order;
-		}
+		
 
 		try {
 			connection = DriverManagerConnectionPool.getDbConnection();

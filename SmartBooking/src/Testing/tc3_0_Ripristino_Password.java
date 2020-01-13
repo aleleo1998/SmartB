@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -57,6 +58,15 @@ public class tc3_0_Ripristino_Password {
 		myServlet = new RipristinoPassword();
 		UtenteModel md = new UtenteModel();	
 		utente = md.doRetrieveByKey("05121");
+	}
+	
+	@AfterAll
+	static public void afterTestCase() throws SQLException{
+		
+		StudenteModel sm = new StudenteModel();
+		
+		sm.doDeleteByEmail("carminesorrentino51@studenti.unisa.it");
+		
 	}
 	
 	
@@ -143,11 +153,15 @@ public class tc3_0_Ripristino_Password {
 		
 		StudenteModel sm = new StudenteModel();
 		
+		
+		
 		Studente s = new Studente();
 		
 		s.setEmail("carminesorrentino51@studenti.unisa.it");
 		
 		s.setMatricola("0000055555");
+		
+		sm.doDeleteByEmail("carminesorrentino51@studenti.unisa.it");
 		
 		sm.doSave(s);
 		

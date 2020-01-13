@@ -8,12 +8,14 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
@@ -21,6 +23,8 @@ import org.mockito.Mock;
 import Controller.creaRichiestaModificaOrario;
 import Model.Docente;
 import Model.DocenteModel;
+import Model.RichiestaModOrario;
+import Model.RichiestaModOrarioModel;
 
 public class TC6_0_RichiesteModificaOrario {
 	creaRichiestaModificaOrario myServlet;
@@ -46,17 +50,30 @@ public class TC6_0_RichiesteModificaOrario {
 		
 		DocenteModel md = new DocenteModel();
 		
-		docente = md.doRetrieveByKey("123");
+		md.doDelete("9992634518");
+		
+		docente = new Docente("nome","cognome","9992634518","1234","abbdbdbd@studenti.unisa.it","uff");
+		
+		md.doSave(docente);
+		
 
 	}
 	
-	/*@After
-	public void after(){
+	@After
+	public void after() throws SQLException{
+		
+		DocenteModel md = new DocenteModel();
+		
+		md.doDelete("9992634518");
+		
+		RichiestaModOrarioModel rm = new RichiestaModOrarioModel();
+		
+		rm.doDeleteByDoc("9992634518");
 		
 		
-	}*/
+	}
 	
-	
+	 
 	@Test
 	public void tc_6_0_1() throws IOException, ServletException{
 		StringWriter output = new StringWriter();

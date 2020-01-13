@@ -26,6 +26,7 @@ import org.mockito.Mock;
 import Controller.AggiungiOrarioServlet;
 import Controller.GestisciRischiesteModOrarioServlet;
 import DBConnection.DriverManagerConnectionPool;
+import Model.DisponibilitaModel;
 import Model.Docente;
 import Model.RichiestaModOrario;
 import Model.RichiestaModOrarioModel;
@@ -80,6 +81,15 @@ class GestioneRichiesteModOtatioWB {
 		 GestioneUtenti gu = new GestioneUtentiConcrete();
 		 
 		 gu.rimuoviDocente("9934857635");
+		 
+		 DisponibilitaModel dm = new DisponibilitaModel();
+		 
+		 dm.doDelete("9934857635");
+		 
+		 RichiestaModOrarioModel rm = new RichiestaModOrarioModel();
+		 
+		 rm.doDeleteByDoc("9934857635");
+		 
 		
 	}
 	

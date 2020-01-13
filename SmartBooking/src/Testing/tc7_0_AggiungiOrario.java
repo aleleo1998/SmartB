@@ -26,6 +26,7 @@ import org.mockito.Mock;
 
 import Controller.*;
 import DBConnection.DriverManagerConnectionPool;
+import Model.DisponibilitaModel;
 import Model.Docente;
 import gestioneUtenti.GestioneUtenti;
 import gestioneUtenti.GestioneUtentiConcrete;
@@ -65,6 +66,12 @@ class tc7_0_AggiungiOrario {
 		GestioneUtenti gu = new GestioneUtentiConcrete();
 		
 		gu.rimuoviDocente("9992634512");
+		
+		DisponibilitaModel dm = new DisponibilitaModel();
+		
+		dm.doDelete("9992634512");
+		
+		
 		
 		
 	}
