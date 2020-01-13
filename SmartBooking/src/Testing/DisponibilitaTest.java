@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import Model.Disponibilita;
 
 
-class Disponibilit‡Test {
+class DisponibilitaTest {
 
 	@Test
 	  void testDocentCostructorEmpty() {

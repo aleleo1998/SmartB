@@ -87,7 +87,7 @@
 		                </li>
 		                
 		                <li class="nav-item">
-                        <a class="nav-link" >Visualizza ricevimenti</a>
+                        <a class="nav-link" href="../visualizzaRicevimentiServlet" >Visualizza ricevimenti</a>
                         </li>
                         
                         <li class="nav-item">

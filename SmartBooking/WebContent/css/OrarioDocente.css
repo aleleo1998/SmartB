@@ -1,0 +1,16 @@
+@charset "UTF-8";
+html,body{
+		height: 100%;
+	}
+	
+	#container{
+		min-height: 100%;
+		height: auto !important;
+    	height: 100%;
+    	margin: 0 auto -50px;
+	}
+
+	#footer{
+    	clear: both;
+    	margin-top: 22em;
+	}
