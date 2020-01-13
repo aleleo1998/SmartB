@@ -218,6 +218,21 @@ public class RegistrazioneDocenteServlet extends HttpServlet {
 		
 		
 		//Controllo mail
+<<<<<<< HEAD
+		try {
+			if(Check.checkMailDocente(email).contentEquals("ok")) {
+				System.out.println("Email ok");
+			}else if(Check.checkMailDocente(email).contentEquals("gia esiste")) {
+				System.out.println("Email già presente nel database");
+				risposta="Email già presente nel database";
+			}else if(Check.checkMailDocente(email).contentEquals("non corretto")) {
+				System.out.println("Email non corretta");
+				risposta="Email non corretta";
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+=======
 		if(Check.checkMailDocente(email).contentEquals("ok")) {
 			System.out.println("Email ok");
 		}else if(Check.checkMailDocente(email).contentEquals("gia esiste")) {
@@ -228,6 +243,7 @@ public class RegistrazioneDocenteServlet extends HttpServlet {
 			System.out.println("Email non corretta");
 			risposta="Email non corretta";
 			flag=true;
+>>>>>>> branch 'master' of https://github.com/ozne23/SmartB.git
 		}
 	
 		

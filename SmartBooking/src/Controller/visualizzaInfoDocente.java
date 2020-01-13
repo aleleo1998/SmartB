@@ -12,7 +12,8 @@ import gestioneUtenti.GestioneUtenti;
 import gestioneUtenti.GestioneUtentiConcrete;
 
 /**
- * Servlet implementation class visualizzaInfoDocente
+ * La servlet visualizzaInfoDocente si occupa di ricercare nel database un docente con una specifica matricola, 
+ * settandolo in sessione con il nome di “infoDocente”.
  */
 @WebServlet("/visualizzaInfoDocente")
 public class visualizzaInfoDocente extends HttpServlet {
