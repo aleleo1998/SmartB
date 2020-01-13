@@ -111,7 +111,7 @@ Collection<Ricevimento> rv =(Collection) request.getSession().getAttribute("rice
     <tbody><% 
     
     String name="nome";
-for(Ricevimento r : rv)
+	for(Ricevimento r : rv)
 	{
     
 	%><tr>
