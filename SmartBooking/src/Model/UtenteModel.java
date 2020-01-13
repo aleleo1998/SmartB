@@ -14,6 +14,13 @@ public class UtenteModel {
 private static final String TABLE_NAME_STUD = "ACALE.Studente";
 private static final String TABLE_NAME_DOC = "ACALE.Docente";
 private static final String TABLE_NAME_SEG = "ACALE.Segreteria";
+
+
+
+
+
+
+
 	
 	/**
 	 * 

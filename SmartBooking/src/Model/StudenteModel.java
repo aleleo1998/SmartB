@@ -79,6 +79,32 @@ private static final String TABLE_NAME = "Studente";
 		return (result != 0);
 	}
 	
+	public synchronized boolean doDeleteByEmail(String email) throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		int result = 0;
+
+		String deleteSQL = "DELETE FROM " + StudenteModel.TABLE_NAME + " WHERE email = ? ";
+
+		try {
+			connection = DriverManagerConnectionPool.getDbConnection();
+			preparedStatement = connection.prepareStatement(deleteSQL);
+			preparedStatement.setString(1, email);
+
+			result = preparedStatement.executeUpdate();
+
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				DriverManagerConnectionPool.releaseConnection(connection);
+			}
+		}
+		return (result != 0);
+	}
+	
 	
 	/**
 	 * @param order
@@ -171,43 +197,7 @@ private static final String TABLE_NAME = "Studente";
 	 * @return
 	 * @throws SQLException
 	 */
-	public synchronized Collection<Studente> doRetrieveAll() throws SQLException {
-		Connection connection = null;
-		PreparedStatement preparedStatement = null;
-
-		Collection<Studente> utenti = new LinkedList<Studente>();
-
-		String selectSQL = "SELECT * FROM " + StudenteModel.TABLE_NAME;
-
-		
-
-		try {
-			connection = DriverManagerConnectionPool.getDbConnection();
-			preparedStatement = connection.prepareStatement(selectSQL);
-
-			ResultSet rs = preparedStatement.executeQuery();
-
-			while (rs.next()) {
-				Studente bean = new Studente();
-
-				bean.setNome(rs.getString("nome"));
-				bean.setCognome(rs.getString("cognome"));
-				bean.setMatricola("matricola");
-				bean.setEmail(rs.getString("email"));
-				
-				utenti.add(bean);
-			}
-
-		} finally {
-			try {
-				if (preparedStatement != null)
-					preparedStatement.close();
-			} finally {
-				DriverManagerConnectionPool.releaseConnection(connection);
-			}
-		}
-		return utenti;
-	}
+	
 	
 	public synchronized Boolean existIntoDB(String email) throws Exception{
 		
