@@ -13,7 +13,10 @@
 <meta charset="UTF-8">
 <title>SmartBooking: area segreteria</title>
 <script src="https://kit.fontawesome.com/7606041806.js" crossorigin="anonymous"></script>
-<% Model.Segreteria segreteria = (Segreteria) request.getSession().getAttribute("segreteria"); %>
+<% Model.Segreteria seg = (Segreteria) request.getSession().getAttribute("segreteria"); %>
+<% 
+SegreteriaModel sm = new SegreteriaModel();
+Model.Segreteria segreteria = sm.doRetrieveByKey(seg.getMatricola()); %>
 <% Model.RichiestaModOrarioModel mom = new RichiestaModOrarioModel();
 LinkedList<Model.RichiestaModOrario> orari = (LinkedList<RichiestaModOrario>) mom.doRetrieveAll(); %>
 
@@ -41,6 +44,7 @@ LinkedList<Model.RichiestaModOrario> orari = (LinkedList<RichiestaModOrario>) mo
             <h3><%= segreteria.getNome() %> <%= segreteria.getCognome() %> </h3>
             <h6>Email: <%= segreteria.getEmail() %></h6>
             <h6>Matricola: <%= segreteria.getMatricola() %></h6>
+            <h6>Orari di apertura al pubblico: <%=segreteria.getOrari() %></h6>
         </div>  
         
 <table class="table table-striped" id="tableRicevimenti">
