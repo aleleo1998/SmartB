@@ -117,6 +117,14 @@ public interface GestioneUtenti {
 	public boolean cercaMatricola(String matricola);
 	
 	/**
+	 * Il metodo doRetrieveByKey(String matricola) prende un utente dal database attraverso la matricola passata come parametro.
+	 * @param String matricola
+	 * @return Utente u
+	 * @throws SQLException
+	 */
+	public Utente doRetriveByKey(String matricola) throws SQLException;
+	
+	/**
 	 * Il metodo cercaDocente(String matricola) ricerca un docente all'interno della tabella ACALE.Docente del database con matricola uguale alla String matricola passata come argomento del metodo.
 	 * Se viene trovata una corrispondenza restituisce lo Studente con le relative informazioni, altrimenti restituisce null.
 	 * @param String matricola

@@ -162,11 +162,17 @@ public class GestioneUtentiConcrete implements GestioneUtenti {
 	}
 	
 	/**
+<<<<<<< HEAD
 	 * Il metodo checkMatricolaDocente(String matricola) verifica se nel database, nella tabella ACALE.Docente esiste una corrispondenza per la matricola passata come argomento.
 	 * Se esiste una corrispondenza, il metodo restituisce true, altrimenti restituisce false.
 	 * @param String matricola
 	 * @return boolean b
 	 * @throws Exception
+=======
+	 * Verifica la matricola del docente
+	 * @param matricola matricola da verificare
+	 * @return true se la matricola non esiste, false altrimenti
+>>>>>>> branch 'master' of https://github.com/ozne23/SmartB.git
 	 */
 	public boolean checkMatricolaDocente(String matricola) throws Exception{
 		
@@ -182,6 +188,7 @@ public class GestioneUtentiConcrete implements GestioneUtenti {
 	 * @throws Exception
 	 */
 	public boolean checkEmailDocente(String email) throws Exception{
+
 		return docente.checkMailDocente(email);
 	}
 	
@@ -218,6 +225,18 @@ public class GestioneUtentiConcrete implements GestioneUtenti {
 	 */
 	public Docente cercaDocente(String matricola) {
 		return docente.findDoc(matricola);
+	}
+	
+	/**
+	 * Il metodo doRetrieveByKey(String matricola) prende un utente dal database attraverso la matricola passata come parametro.
+	 * @param String matricola
+	 * @return Utente u
+	 * @throws SQLException
+	 */
+	public Utente doRetriveByKey(String matricola) throws SQLException{
+		
+		return login.doRetriveByKey(matricola);
+		
 	}
 	
 	

@@ -1,5 +1,7 @@
 package gestioneUtenti;
 
+import java.sql.SQLException;
+
 import Model.Utente;
 import Model.UtenteModel;
 
@@ -36,6 +38,15 @@ public class GestioneLoginUtenti {
 			e.printStackTrace();
 		}
 		return null;
+	}
+	
+	
+	public Utente doRetriveByKey(String matricola) throws SQLException {
+		
+		UtenteModel um = new UtenteModel();
+		
+		return um.doRetrieveByKey(matricola);
+		
 	}
 
 }

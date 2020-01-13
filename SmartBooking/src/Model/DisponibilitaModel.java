@@ -12,13 +12,9 @@ import java.util.LinkedList;
 
 import DBConnection.DriverManagerConnectionPool;
 
-/**
- * @author ozne2
- *
- */
 
 /**
- * @author ozne2
+ * Permette di eseguire query per la gestione delle disponibilità
  *
  */
 public class DisponibilitaModel {
@@ -28,6 +24,8 @@ private static final String TABLE_NAME = "Disponibilità";
 	/**
 	 * @param Disponibilita
 	 * @throws SQLException
+	 * 
+	 * Salva una disponibilità nel DB
 	 */
 	public synchronized void doSave(Disponibilita Disponibilita) throws SQLException {
 
@@ -62,6 +60,8 @@ private static final String TABLE_NAME = "Disponibilità";
 	 * @param matricola_docente
 	 * @return
 	 * @throws SQLException
+	 * 
+	 * Cancela una disponibilità legata al docente
 	 */
 	public synchronized boolean doDelete(String matricola_docente) throws SQLException {
 		Connection connection = null;
@@ -90,6 +90,14 @@ private static final String TABLE_NAME = "Disponibilità";
 		return (result != 0);
 	}
 	
+	/**
+	 * @param matricola_docente
+	 * @param giorno
+	 * @return
+	 * @throws SQLException
+	 * 
+	 * Cancella una disponibilità
+	 */
 	public synchronized boolean doDelete(String matricola_docente, String giorno) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -126,6 +134,8 @@ private static final String TABLE_NAME = "Disponibilità";
 	 * @param order
 	 * @return
 	 * @throws SQLException
+	 * 
+	 * Prende tutte le disponibilità in un determinato ordine
 	 */
 	public synchronized Collection<Disponibilita> doRetrieveAll(String order) throws SQLException {
 		Connection connection = null;
@@ -171,6 +181,8 @@ private static final String TABLE_NAME = "Disponibilità";
 	 * @param matricola_docente
 	 * @return
 	 * @throws SQLException
+	 * 
+	 * Prende tutte le disponibilità di un docente
 	 */
 	public synchronized Collection<Disponibilita> doRetrieveByKey(String matricola_docente) throws SQLException {
 		Connection connection = null;
@@ -213,6 +225,8 @@ private static final String TABLE_NAME = "Disponibilità";
 	/**
 	 * @return
 	 * @throws SQLException
+	 * 
+	 * Prende tutte le disponibilità
 	 */
 	public synchronized Collection<Disponibilita> doRetrieveAll() throws SQLException {
 		Connection connection = null;
@@ -251,6 +265,16 @@ private static final String TABLE_NAME = "Disponibilità";
 		return listaDisponibilita;
 	}
 	
+	
+	/**
+	 * @param mDocente
+	 * @param giorno
+	 * @param orarioInizio
+	 * @param orarioFine
+	 * @throws SQLException
+	 * 
+	 * Aggiunge una disponibilità al DB
+	 */
 	@SuppressWarnings("deprecation")
 	public synchronized void aggiungiOrario(String mDocente, String giorno,String orarioInizio, String orarioFine) throws SQLException {
 			Disponibilita d = new Disponibilita();

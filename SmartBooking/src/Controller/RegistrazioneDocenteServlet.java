@@ -1,6 +1,7 @@
 package Controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Random;
 
 import javax.servlet.ServletContext;
@@ -72,16 +73,14 @@ public class RegistrazioneDocenteServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		PrintWriter writer = response.getWriter();
+		
+		String risposta = "";
 		
 		String nome = request.getParameter("nome");
 		String cognome = request.getParameter("cognome");
-		String matricola = request.getParameter("matricola");
-		System.out.println(matricola);
-		/* Genera password casuale*/
-		String password=generaPassword();
-		//System.out.println("password"+password);
-		
-		//String password = request.getParameter("password");
+		String matricola = request.getParameter("matricola");		
+		String password=generaPassword(); /* Genera password casuale*/
 		String email = request.getParameter("email");
 		String ufficio = request.getParameter("ufficio");
 		
@@ -90,11 +89,73 @@ public class RegistrazioneDocenteServlet extends HttpServlet {
 		gestioneUtenti.registrazioneDocente(doc);
 		
 		
+		//Controlli
+		//Controllo nome
+		if(Check.checkNome(nome)) {
+			System.out.println("Nome ok");	
+		}else{
+			System.out.println("Nome non corretto");
+			risposta="Nome non corretto";
+		}
 		
-			
+		
+		//Controllo cognome
+		if(Check.checkCognome(cognome)) {
+			System.out.println("Cognome ok");	
+		}else{
+			System.out.println("Cognome non corretto");
+			risposta="Cognome non corretto";
+		}
+		
+
+		//Controllo matricola
+		if(Check.checkMatricolaDocente(matricola).contentEquals("ok")) {
+			System.out.println("Matricola ok");	
+		}else if(Check.checkMatricolaDocente(matricola).contentEquals("gia esiste")){
+			System.out.println("Matricola già presente nel database");
+			risposta="Matricola già presente nel database";
+		}
+		else if(Check.checkMatricolaDocente(matricola).contentEquals("non corretto")) {
+			System.out.println("Matricola non corretta");
+			risposta="Matricola non corretta";
+		}
+		
+		
+		//Controllo ufficio
+		if(Check.checkUfficio(ufficio)) {
+			System.out.println("Ufficio ok");
+		}else{
+			System.out.println("Ufficio non corretto");
+			risposta="Ufficio non corretto";
+		}
+		
+		
+		//Controllo mail
+		try {
+			if(Check.checkMailDocente(email).contentEquals("ok")) {
+				System.out.println("Email ok");
+			}else if(Check.checkMailDocente(email).contentEquals("gia esiste")) {
+				System.out.println("Email già presente nel database");
+				risposta="Email già presente nel database";
+			}else if(Check.checkMailDocente(email).contentEquals("non corretto")) {
+				System.out.println("Email non corretta");
+				risposta="Email non corretta";
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	
+		
+		
+	
+		
+		
+		
+		
 		//*******INVIO EMAIL********//
 			//Invio email con credenziali
-			String emailMittente="smartbookingplatform@gmail.com";
+/*			String emailMittente="smartbookingplatform@gmail.com";
 			String emailDestinatario=email;
 			String subject="Benvenuto Su SmartBooking";
 			
@@ -117,15 +178,16 @@ public class RegistrazioneDocenteServlet extends HttpServlet {
 				//**Cosa fare dopo aver fatto il sendMail***
 			} 
 		
+	*/	
 		
-		
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+			response.setContentType("text");
+			writer.print(risposta);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}

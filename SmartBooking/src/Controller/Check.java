@@ -103,38 +103,48 @@ public class Check {
 
 	
 	/**
-	 * Il metodo checkDocenteMail(String email) verifica se all'interno del database, nella tabella ACALE.Docente esiste uno docente con email = String email passata come argomento.
-	 * Se esiste restituisce la stringa "gia esiste", se l'indirizzo email passato come argomento non rispetta il formato \\w+([\\.-]?\\w+)*@studenti[.]{1}unisa[.]{1}it e la lunghezza 20<=length<=50 restituisce la stringa "non corretto", altrimenti restituisce "ok".
-	 * @param String email
-	 * @return boolean b
+	 * Verifica la correttezza del campo matricola
+	 * @param matricola matricola da verificare
+	 * @return "ok" se l'email inserita � valida, "gia esiste" se � gi� presente nel database, "non corretto" se l'email non � corretta
 	 */
-	public static boolean checkDocenteMail(String email) throws IOException {
-		
-		file = new FileWriter("log.txt");
+	public static String checkMatricolaDocente(String matricola) {
 		
 		GestioneUtenti gestioneUtenti = new GestioneUtentiConcrete();
 		
-		if(email.matches("\\w+([\\.-]?\\w+)*@unisa[.]{1}it")) {
-			if(gestioneUtenti.cercaEmail(email)) {
-				return true;
-			}
-			String message = "Email già esiste nel database";
-			//byte[] b = message.getBytes();
-			file.write(message);
-			file.close();
-			
-			FileInputStream read = new FileInputStream("log.txt");
-			System.out.println("leggo: "+read.read());
-			file.close();
-			
-			//email già esiste nel database
-			return false;
+		if(matricola.matches("[0-9]{10}")) {
+			if(gestioneUtenti.cercaMatricola(matricola))
+				return "ok";
+			else
+				return "gia esiste";
 		}
-		else {
-			//email non corretta
-			return false;
+		else
+			return "non corretto";
+	}
+	
+	
+/** Il metodo checkMailDocente(String email) verifica se all'interno del database, nella tabella ACALE.Docente esiste uno docente con email = String email passata come argomento.
+* Se esiste restituisce la stringa "gia esiste", se l'indirizzo email passato come argomento non rispetta il formato \\w+([\\.-]?\\w+)*@studenti[.]{1}unisa[.]{1}it e la lunghezza 20<=length<=50 restituisce la stringa "non corretto", altrimenti restituisce "ok".
+* @param String email
+* @return boolean b
+ * @throws Exception 
+*/
+	public static String checkMailDocente(String email) throws Exception{
+		
+		GestioneUtenti gestioneUtenti = new GestioneUtentiConcrete();
+	
+		if(email.matches("\\w+([\\.-]?\\w+)*@unisa[.]{1}it")  &&  email.length()>=20 &&  email.length() <=50) {
+			if(gestioneUtenti.checkEmailDocente(email)) {
+				return "ok";
+			}	
+			else {
+				return "gia esiste";
+			}
+		}
+		else { 
+			return "non corretto";
 		}
 	}
+
 	
 	/**
 	 * Il metodo checkPassword(String password) verifica se String password passato come argomento al metodo rispetta il formato definito tramite l'espressione regolare [A-Za-z0-9]{8,20}.

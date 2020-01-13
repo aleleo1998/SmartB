@@ -12,8 +12,12 @@ import Model.RichiestaModOrario;
 import Model.RichiestaModOrarioModel;
 
 /**
- * @author ozne2
  *
+ *
+ *
+ * 
+ *
+ *Implementa i metodi che mette a disposizione l'interfaccia GestioneOrari
  */
 public class GestioneOrariConcrete implements GestioneOrari {
 	
@@ -22,11 +26,18 @@ public class GestioneOrariConcrete implements GestioneOrari {
 		orariSegControl = new OrariSegControl();
 	}
 	
+	
+	/* (non-Javadoc)
+	 * @see gestioneOrari.GestioneOrari#aggiungiFirstOrario(java.lang.String, java.util.ArrayList, java.util.ArrayList, java.util.ArrayList)
+	 */
 	public void aggiungiFirstOrario(String mDocente,ArrayList<String> giorni,ArrayList<String> orariInizio, ArrayList<String> orariFine) throws SQLException {
 	
 		orariDocControl.aggiungiFirstOrario( mDocente, giorni, orariInizio, orariFine);
 	}
 	
+	/* (non-Javadoc)
+	 * @see gestioneOrari.GestioneOrari#inoltraRichiesta(Model.RichiestaModOrario)
+	 */
 	@Override
 	public void inoltraRichiesta(RichiestaModOrario richiesta) throws SQLException {
 		// TODO Auto-generated method stub
@@ -35,6 +46,9 @@ public class GestioneOrariConcrete implements GestioneOrari {
 		
 	}
 	
+	/* (non-Javadoc)
+	 * @see gestioneOrari.GestioneOrari#accettaRichiesta(int)
+	 */
 	public boolean accettaRichiesta(int id){
 		
 		RichiestaModOrarioModel rm = new RichiestaModOrarioModel();
@@ -62,6 +76,9 @@ public class GestioneOrariConcrete implements GestioneOrari {
 			
 	}
 	
+	/* (non-Javadoc)
+	 * @see gestioneOrari.GestioneOrari#rifiutaRichiesta(int)
+	 */
 	public boolean rifiutaRichiesta(int id){
 		
 		return orariSegControl.rifiutaRichiesta( id);
