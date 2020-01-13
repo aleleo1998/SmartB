@@ -58,7 +58,7 @@ LinkedList<Ricevimento> listRicevimenti = (LinkedList<Ricevimento>) r.doRetrieve
           <ul class="inline stats">
                <li>
                  <div class="col-sm-12">
-      				<button type="submit" class="btn btn-primary">Modifica Orari Ricevimento</button>
+      				<button type="submit" onclick="location.href='richiestaModificaOrario.jsp';" class="btn btn-primary">Modifica Orari Ricevimento</button>
    				 </div>
                  
               </li>
