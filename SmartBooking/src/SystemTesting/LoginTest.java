@@ -30,7 +30,7 @@ class LoginTest {
 	 
 	 @Test
 	  public void testLogin() throws Exception {
-		 System.setProperty("webdriver.chrome.driver","C:\\Users\\alfre\\Desktop\\chromedriver.exe");
+		 System.setProperty("webdriver.chrome.driver","/SmartBooking/WebContent/Driver/chromedriver");
 
 		driver = new ChromeDriver();	  
 		driver.get("http://localhost:8080/SmartBooking/jsp/Login.jsp");
