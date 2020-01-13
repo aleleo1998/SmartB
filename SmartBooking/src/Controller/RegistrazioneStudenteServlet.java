@@ -117,11 +117,16 @@ public class RegistrazioneStudenteServlet extends HttpServlet {
 			if(gestioneUtenti.registrazioneStudente(studente)) {
 										
 			//***SEND MAIL****//
+				
+				
+				
+				
+				/**********/
 										
 				response.sendRedirect("./jsp/SuccessReg.jsp");
 			}else {
 				System.out.print("no ok");
-			}
+			} 
 		}catch(Exception e) {
 			response.sendRedirect("./jsp/RegView.jsp");
 		  }
