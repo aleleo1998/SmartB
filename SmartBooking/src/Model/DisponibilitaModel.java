@@ -307,5 +307,38 @@ private static final String TABLE_NAME = "Disponibilità";
 	        }
 		
 	    }
+	
+	public synchronized boolean checkOrarioDefinito(String matricola_docente) throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		Collection<Disponibilita> listaOrari = new LinkedList<Disponibilita>();
+		
+
+		String selectSQL = "SELECT * FROM " + DisponibilitaModel.TABLE_NAME + " WHERE matricola_docente = ?";
+
+		try {
+			connection = DriverManagerConnectionPool.getDbConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+			preparedStatement.setString(1, matricola_docente);
+
+			ResultSet rs = preparedStatement.executeQuery();
+
+			if(rs.next()) {
+				return true;
+			}else {
+				return false;
+			}
+
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				DriverManagerConnectionPool.releaseConnection(connection);
+			}
+		}
+		
+	}
 }
 
