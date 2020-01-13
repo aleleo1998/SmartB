@@ -91,6 +91,14 @@ function controllo_data()
 
 </div>
 <div id="menu">
+<<<<<<< HEAD
+	<%@include file="../html/menu.html"%>
+	</div>
+<div id="container">
+
+
+<div>
+=======
 	<%@include file="menu.jsp"%>
 </div>
 
@@ -99,6 +107,7 @@ function controllo_data()
 
 
 <%if(tipo==1){ %>
+>>>>>>> branch 'master' of https://github.com/ozne23/SmartB.git
 <%
 Collection<Ricevimento> rv =(Collection) request.getSession().getAttribute("ricevimenti");
 
