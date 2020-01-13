@@ -68,13 +68,14 @@ public class Check {
 	 * Verifica la correttezza del campo matricola
 	 * @param matricola matricola da verificare
 	 * @return "ok" se l'email inserita è valida, "gia esiste" se è già presente nel database, "non corretto" se l'email non è corretta
+	 * @throws Exception 
 	 */
-	public static String checkMatricolaDocente(String matricola) {
+	public static String checkMatricolaDocente(String matricola) throws Exception {
 		
 		GestioneUtenti gestioneUtenti = new GestioneUtentiConcrete();
 		
 		if(matricola.matches("[0-9]{10}")) {
-			if(gestioneUtenti.cercaMatricola(matricola))
+			if(!gestioneUtenti.checkMatricolaDocente(matricola))
 				return "ok";
 			else
 				return "gia esiste";
@@ -92,18 +93,29 @@ public class Check {
 	public static String checkMailDocente(String email){
 		
 		GestioneUtenti gestioneUtenti = new GestioneUtentiConcrete();
-	
-		if(email.matches("\\w+([\\.-]?\\w+)*@unisa[.]{1}it")  &&  email.length()>=20 &&  email.length() <=50) {
+/*		
+		if(email.matches("\\w+([\\.-]?\\w+)*@unisa[.]{1}it")) {
+			System.out.println("******ok*********");
+			System.out.println(email.length());
+		}
+		else {
+			System.out.println("/////no//////");
+			System.out.println(email.length());
+		}
+	*/
+		if(email.matches("\\w+([\\.-]?\\w+)*@unisa[.]{1}it")  && email.length()>=20 &&  email.length()<=50) {	
+			System.out.println(email.length());
 			if(gestioneUtenti.checkEmailDocente(email)) {
+				System.out.println("OKOKOKOKOK"+email);
 				return "ok";
 			}	
-			else {
+			else{
 				return "gia esiste";
 			}
 		}
-		else { 
+		else{ 
 			return "non corretto";
-		}
+		} 
 	}
 
 	

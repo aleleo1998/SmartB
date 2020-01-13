@@ -31,12 +31,12 @@
 		    <form class="login-form" action="../LoginServlet">
  				 <div class="form-group">
     				<label for="exampleInputEmail1" class="text">Email</label>
-    					<input type="text" name="email" class="form-control" placeholder="">
+    					<input type="text" id="email" name="email" class="form-control" placeholder="">
     			</div>
   
   				<div class="form-group">
     				<label for="exampleInputPassword1" class="text">Password</label>
-    					<input type="password" name="password" class="form-control" placeholder="">
+    					<input type="password" id="password" name="password" class="form-control" placeholder="">
   				</div>
   
   			    <div class="form-check">

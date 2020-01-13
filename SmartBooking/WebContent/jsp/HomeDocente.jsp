@@ -19,10 +19,8 @@
 <%
 DocenteModel m = new DocenteModel();
 RicevimentoModel r = new RicevimentoModel();
-
 String matricola=(String)session.getAttribute("Utente");
 Docente doc = m.doRetrieveByKey(matricola);
-
 LinkedList<Docente> list = (LinkedList<Docente>) m.doRetrieveAll(); 
 LinkedList<Ricevimento> listRicevimenti = (LinkedList<Ricevimento>) r.doRetrieveTodayByDocente(matricola);
 %>

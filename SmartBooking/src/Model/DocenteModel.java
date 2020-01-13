@@ -13,7 +13,7 @@ public class DocenteModel {
 	private static final String TABLE_NAME = "Docente";
 	
 	/**
-	 * 
+	 * Metodo per salvare un docente nel database
 	 * @param docente: docente da salvare all'interno del database
 	 * @throws SQLException
 	 */
@@ -294,8 +294,9 @@ public class DocenteModel {
 				DriverManagerConnectionPool.releaseConnection(connection);
 			}
 		}
-			
+			System.out.println("EMAIL QUERY RETURN : "+bean.getEmail());
 		if(bean.getEmail()==null)
+			
 			return false;
 		else
 			return true;
