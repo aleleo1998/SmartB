@@ -63,7 +63,7 @@ public class PrenotaRicevimento extends HttpServlet {
 		Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("Europe/Rome"),Locale.ITALY);
 		calendar.set(Integer.parseInt(dd[2]), Integer.parseInt(dd[1])-1, Integer.parseInt(dd[0]));
 		
-		response.getWriter().println(calendar);
+	
 		Date d1=new Date();
 		Date d2=new Date();
 		Ricevimento r=new Ricevimento("Non valutato",d2,d1,8,request.getParameter("matricolaDocente"),(String)request.getSession().getAttribute("Utente"));
@@ -81,7 +81,7 @@ public class PrenotaRicevimento extends HttpServlet {
 				//dm.doRetrieveByKey(request.getParameter("matricolaDocente")).getEmail()
 				try {
 					gestioneMail.sendEmail(host, port, user, pass, user,doc.getEmail(), "", "", "Prenotazione Ricevimento", content );
-					content="La prenotazione è stata inoltrata al docente:\n"+doc.getCognome()+" "+doc.getNome()+"\nMatricola: "+doc.getMatricola();
+					content="La prenotazione ï¿½ stata inoltrata al docente:\n"+doc.getCognome()+" "+doc.getNome()+"\nMatricola: "+doc.getMatricola();
 					gestioneMail.sendEmail(host, port, user, pass, user,s.getEmail(), "", "", "Conferma prenotazione Ricevimento", content );//invio email di EmailUtility
 					String resultMessage = "The e-mail was sent successfully"; //setta il messaggio di buona riuscita dell'invio
 				} catch (Exception ex) {
@@ -93,8 +93,10 @@ public class PrenotaRicevimento extends HttpServlet {
 		}
 		 catch (SQLException e) {
 				// TODO Auto-generated catch block
+			 response.sendRedirect("./jsp/ProfiloStudente.jsp");
 				e.printStackTrace();
 		 }
+		response.sendRedirect("./jsp/ConfermaRic.jsp");
 	}
 
 	/**

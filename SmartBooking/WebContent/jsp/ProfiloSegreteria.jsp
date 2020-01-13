@@ -75,7 +75,7 @@ LinkedList<Model.RichiestaModOrario> orari = (LinkedList<RichiestaModOrario>) mo
       %>
       <td><p id="docente"><%=d.getNome()%> <%=d.getCognome()%></p></td>
       
-      <td><a href="###"><button><i class="fas fa-angle-double-right"></i></button></a></td>
+      <td><a href="ViewRichiesteModOrarioSeg.jsp"><button><i class="fas fa-angle-double-right"></i></button></a></td>
  	
     </tr>
     
@@ -88,7 +88,7 @@ LinkedList<Model.RichiestaModOrario> orari = (LinkedList<RichiestaModOrario>) mo
 
 
 <a href="ViewRicercaDocenti.jsp"><button id="buttonRicerca">Modifica orario apertura al pubblico</button></a>
-<a href="ViewRicercaDocenti.jsp"><button id="buttonRicerca">Inserisci docente</button></a>
+<a href="RegDocente.jsp"><button id="buttonRicerca">Inserisci docente</button></a>
   
 	</div>
 	</div>
