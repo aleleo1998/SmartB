@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,6 +16,9 @@
 <div id="menu">
 	<%@include file="menu.jsp"%>
 </div>
+
+<%if(tipo==1){ %>
+
 <div id="container">
 
 	<form method="POST" id="creaRichiesta" action="../creaRichiestaModificaOrario">
@@ -76,21 +79,21 @@
   <div class="form-group">
     <label for="exampleFormControlSelect1">Giorno Nuovo</label>
     <select  name = "giornoNuovo" class="form-control"  form = "creaRichiesta">
-      				<option value="lunedi">Lunedì</option>
-					  <option value="martedi">Martedì</option>
-					  <option value="mercoledi">Mercoledì</option>
-					  <option value="giovedi">Giovedì</option>
-					  <option value="venerdi">Venerdì</option>
+      				<option value="lunedi">LunedÃ¬</option>
+					  <option value="martedi">MartedÃ¬</option>
+					  <option value="mercoledi">MercoledÃ¬</option>
+					  <option value="giovedi">GiovedÃ¬</option>
+					  <option value="venerdi">VenerdÃ¬</option>
     </select>
   </div>
   <div class="form-group">
     <label for="exampleFormControlSelect1">Giorno Precedente</label>
     <select name = "giornoVecchio" class="form-control" form = "creaRichiesta">
-    					<option value="lunedi">Lunedì</option>
-    					<option value="martedi">Martedì</option>
-					  <option value="mercoledi">Mercoledì</option>
-					  <option value="giovedi">Giovedì</option>
-					  <option value="venerdi">Venerdì</option>
+    					<option value="lunedi">LunedÃ¬</option>
+    					<option value="martedi">MartedÃ¬</option>
+					  <option value="mercoledi">MercoledÃ¬</option>
+					  <option value="giovedi">GiovedÃ¬</option>
+					  <option value="venerdi">VenerdÃ¬</option>
     </select>
   </div>
   
@@ -99,6 +102,10 @@
  
 </form>
 </div>
+
+<%}else{ %>
+<h1 style="text-align:center">Non sei autorizzato</h1>
+<%} %>
 
 <div id="footer">
 	<%@include file="../html/footer.html"%>

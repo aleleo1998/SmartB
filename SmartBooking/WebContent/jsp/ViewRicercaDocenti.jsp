@@ -28,6 +28,8 @@ LinkedList<Docente> list = (LinkedList<Docente>) m.doRetrieveAll();
 	<%@include file="menu.jsp"%>
 </div>
 
+<%if(tipo!=0){ %>
+
 <div id="container">
 
 <!-- Search form -->
@@ -103,6 +105,10 @@ LinkedList<Docente> list = (LinkedList<Docente>) m.doRetrieveAll();
 </table>
 
 </div>
+
+<%}else{ %>
+<h1 style="text-align:center">Non sei autorizzato</h1>
+<%} %>
 
 <div id="footer">
 	<%@include file="../html/footer.html"%>
