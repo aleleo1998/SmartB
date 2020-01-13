@@ -19,7 +19,9 @@
 
 <meta charset="UTF-8">
 <title>SmartBooking: il mio profilo</title>
-<% Model.Studente studente = (Studente) request.getSession().getAttribute("studente"); %>
+<% Model.Studente studente = (Studente) request.getSession().getAttribute("studente"); 
+	if(studente!=null){
+%>
 <%
 Model.RicevimentoModel rm = new RicevimentoModel();
 LinkedList<Ricevimento> ricevimenti = (LinkedList<Ricevimento>) rm.doRetrieveAllByStudent(studente); 
@@ -37,6 +39,8 @@ preferiti = (LinkedList<Docente>) lpm.getAllDocenti(studente);
 <div id="menu">
 	<%@include file="menu.jsp"%>
 </div>
+
+<%if(tipo==2){ %>
 
 <div id="container">
 
@@ -134,6 +138,15 @@ preferiti = (LinkedList<Docente>) lpm.getAllDocenti(studente);
 	</div>
 	</div>
 </div>
+
+<%}else{ %>
+<h1 style="text-align:center">Non sei autorizzato</h1>
+<%} %>
+
+<%}else{ %>
+
+<h1 style="text-align:center">Non sei autorizzato</h1>
+<%} %>
 
 <div id="footer">
 	<%@include file="../html/footer.html" %>

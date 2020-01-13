@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -68,7 +68,7 @@ function controllo_data()
 	var r2=d1.getTime();
 	if(r1>r2)
 		{
-		 document.getElementById("add").innerHTML="La data che hai inserito è precedente a quella odierna";
+		 document.getElementById("add").innerHTML="La data che hai inserito Ã¨ precedente a quella odierna";
 		 document.getElementById("formCancella").style.display="none";
 		 document.getElementById("buttonDate").style.display="none";
 		}
@@ -90,11 +90,15 @@ function controllo_data()
 
 
 </div>
+<div id="menu">
+	<%@include file="menu.jsp"%>
+</div>
+
 <div id="container">
 
-<div id="menu">
-	<%@include file="../html/menu.html"%>
-<div>
+
+
+<%if(tipo==1){ %>
 <%
 Collection<Ricevimento> rv =(Collection) request.getSession().getAttribute("ricevimenti");
 
@@ -180,6 +184,11 @@ for(Ricevimento r : rv)
      </div>
 
 </div>
+
+<%}else{ %>
+
+<h1 style="text-align:center">Non sei autorizzato</h1>
+<%} %>
 <div id="footer">
 	<%@include file="../html/footer.html"%>
 </div>

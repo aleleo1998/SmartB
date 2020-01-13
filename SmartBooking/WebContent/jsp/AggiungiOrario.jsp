@@ -126,9 +126,13 @@ function showForm(){
 </script>
 
 
+
+
 <div id="menu">
 	<%@include file="menu.jsp"%>
 </div>
+
+<% if(tipo == 1 ){ %>
 
 <div id="container">
 
@@ -154,6 +158,11 @@ function showForm(){
 </div>
 
 </div>
+
+<%}else{ %>
+
+<h1 style="text-align:center">Non sei autorizzato</h1>
+<%} %>
 
 
 <div id="footer">
