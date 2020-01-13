@@ -174,7 +174,7 @@ LoginServlet myServlet;
 		
 	}
 	@Test
-	public void tc_1_0_1() throws IOException, ServletException{
+	public void tc_5_0_1() throws IOException, ServletException{
 		StringWriter output = new StringWriter();
 		PrintWriter out = new PrintWriter(output);
 		when(request.getSession()).thenReturn(session);
@@ -202,7 +202,7 @@ LoginServlet myServlet;
 	
 	
 	@Test
-	public void tc_2_0_1() throws IOException, ServletException{
+	public void tc_5_0_2() throws IOException, ServletException{
 		StringWriter output = new StringWriter();
 		PrintWriter out = new PrintWriter(output);
 		when(request.getSession()).thenReturn(session);
@@ -229,7 +229,7 @@ LoginServlet myServlet;
 	
 	
 	@Test
-	public void tc_3_0_1() throws IOException, ServletException{
+	public void tc_5_0_3() throws IOException, ServletException{
 		StringWriter output = new StringWriter();
 		PrintWriter out = new PrintWriter(output);
 		when(request.getSession()).thenReturn(session);
@@ -256,7 +256,7 @@ LoginServlet myServlet;
 	
 	
 	@Test
-	public void tc_4_0_1() throws IOException, ServletException{
+	public void tc_5_0_4() throws IOException, ServletException{
 		StringWriter output = new StringWriter();
 		PrintWriter out = new PrintWriter(output);
 		when(request.getSession()).thenReturn(session);
