@@ -2,6 +2,8 @@ package gestioneOrari;
 
 import java.sql.SQLException;
 
+import Model.DisponibilitaModel;
+import Model.RichiestaModOrario;
 import Model.RichiestaModOrarioModel;
 
 /**
