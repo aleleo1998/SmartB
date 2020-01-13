@@ -21,7 +21,7 @@ import DBConnection.DriverManagerConnectionPool;
 public class DisponibilitaModel {
 	
 
-private static final String TABLE_NAME = "Disponibilit‡†";
+private static final String TABLE_NAME = "Disponibilit√†";
 	
 	/**
 	 * @param Disponibilita
@@ -44,6 +44,8 @@ private static final String TABLE_NAME = "Disponibilit‡†";
 			preparedStatement.setString(1, Disponibilita.getGiorno());
 			preparedStatement.setString(2, Disponibilita.getOra());
 			preparedStatement.setString(3, Disponibilita.getMatricolaDocente());		
+			
+			System.out.println(preparedStatement);
 
 			preparedStatement.executeUpdate();
 

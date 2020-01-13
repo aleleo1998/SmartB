@@ -98,6 +98,8 @@ private static final String TABLE_NAME = "Richiesta_modifica_orario";
 			connection = DriverManagerConnectionPool.getDbConnection();
 			preparedStatement = connection.prepareStatement(deleteSQL);
 			preparedStatement.setString(1, doc);
+			
+			System.out.println(preparedStatement);
 
 			result = preparedStatement.executeUpdate();
 			
