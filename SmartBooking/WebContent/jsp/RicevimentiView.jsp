@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,6 +11,7 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://kit.fontawesome.com/7606041806.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="../css/Ricevimenti.css">
 <script>
 $(document).ready(function(){
 	$(".id").hide();
@@ -67,7 +68,7 @@ function controllo_data()
 	var r2=d1.getTime();
 	if(r1>r2)
 		{
-		 document.getElementById("add").innerHTML="La data che hai inserito è precedente a quella odierna";
+		 document.getElementById("add").innerHTML="La data che hai inserito Ã¨ precedente a quella odierna";
 		 document.getElementById("formCancella").style.display="none";
 		 document.getElementById("buttonDate").style.display="none";
 		}
@@ -86,12 +87,18 @@ function controllo_data()
 </script>
 </head>
 <body>
-<div id="menu">
-	<%@include file="../html/menu.html"%>
+
 
 </div>
+<div id="menu">
+	<%@include file="menu.jsp"%>
+</div>
 
-<div>
+<div id="container">
+
+
+
+<%if(tipo==1){ %>
 <%
 Collection<Ricevimento> rv =(Collection) request.getSession().getAttribute("ricevimenti");
 
@@ -111,14 +118,16 @@ Collection<Ricevimento> rv =(Collection) request.getSession().getAttribute("rice
     <tbody><% 
     
     String name="nome";
+
+    String data="";
 for(Ricevimento r : rv)
 	{
-    
+	 data=(r.getData().getDate()+1)+"/"+(r.getData().getMonth()+1)+"/"+(r.getData().getYear()+1900);
 	%><tr>
 	<td><%= r.getId()%></td>
 	<td><%= r.getMatStudente()%></td>
 	<td><%= r.getDataPrenotazione()%></td>
-	<td><%= r.getData()%></td>
+	<td><%=data%></td>
 	<td><%= r.getStato()%></td>
 	<%if(!(r.getStato().equals("Accettato"))){ %>
 	<td>
@@ -130,7 +139,7 @@ for(Ricevimento r : rv)
 	</td>
     <td>
       <form class="form" id="<%=r.getId()%>i"  action="../AccettaRicevimentoServlet" method="Post">
-      <input type="text" style="height:30px;width:300px" placeholder="inserisci una breve motivazione" id='<%= r.getId() %>' name="motivazione"><br>
+      <input type="text" style="height:30px;width:300px" placeholder="inserisci una breve motivazione" id='<%= r.getId() %>' name="motivazioneCancellazione"><br>
       <input type="text" name="id" class="id"  value='<%= r.getId() %>'>
       <input type="text" class="op" name="operazione" value="2">
       </form>
@@ -143,7 +152,7 @@ for(Ricevimento r : rv)
     <td></td>
     <td>
       <form class="form" id="<%=r.getId()%>i" action="../AccettaRicevimentoServlet" method="Post">
-      <input type="text" style="height:30px;width:300px" placeholder="inserisci una breve motivazione" id='<%= r.getId() %>' name="motivazione"><br>
+      <input type="text" style="height:30px;width:300px" placeholder="inserisci una breve motivazione" id='<%= r.getId() %>' name="motivazioneCancellazione"><br>
       
        
       <input type="text" name="id" class="id" value='<%= r.getId() %>'>
@@ -174,7 +183,12 @@ for(Ricevimento r : rv)
       <button  id="buttonDate" value="cancella appuntamento" onclick="controllo('generico')">Cancella appuntamento</button>
      </div>
 
+</div>
 
+<%}else{ %>
+
+<h1 style="text-align:center">Non sei autorizzato</h1>
+<%} %>
 <div id="footer">
 	<%@include file="../html/footer.html"%>
 </div>

@@ -19,12 +19,11 @@
 <%
 DocenteModel m = new DocenteModel();
 RicevimentoModel r = new RicevimentoModel();
-
 String matricola=(String)session.getAttribute("Utente");
 Docente doc = m.doRetrieveByKey(matricola);
-
 LinkedList<Docente> list = (LinkedList<Docente>) m.doRetrieveAll(); 
 LinkedList<Ricevimento> listRicevimenti = (LinkedList<Ricevimento>) r.doRetrieveTodayByDocente(matricola);
+DisponibilitaModel dm = new DisponibilitaModel();
 %>
 
 </head>
@@ -57,9 +56,15 @@ LinkedList<Ricevimento> listRicevimenti = (LinkedList<Ricevimento>) r.doRetrieve
           <div class="span6">
           <ul class="inline stats">
                <li>
+                <%if(dm.checkOrarioDefinito(utente.getMatricola())){		%>
                  <div class="col-sm-12">
-      				<button type="submit" class="btn btn-primary">Modifica Orari Ricevimento</button>
+      				<button type="submit" onclick="location.href='richiestaModificaOrario.jsp';" class="btn btn-primary">Modifica Orari Ricevimento</button>
    				 </div>
+   				  <% }else{%>
+   				  <div class="col-sm-12">
+      				<button type="submit" onclick="location.href='AggiungiOrario.jsp';" class="btn btn-primary">Definisci Orario</button>
+   				 </div>
+   				  <%}%>
                  
               </li>
               <li>

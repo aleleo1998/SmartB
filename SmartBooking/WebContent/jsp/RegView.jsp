@@ -32,7 +32,7 @@
                         <img src="../image/logo.png" id="logoReg" alt=""/>
                      </div>
                         <h3>Registrazione studente</h3>
-                        <p>Hai già un account SmartBooking? Effettua l'accesso</p>
+                        <p>Hai già un account SmartBooking? <a href="Login.jsp">Effettua l'accesso</a></p>
                         <a href="Login.jsp"><input type="submit" id="loginButton" name="" value="Login"/></a><br/>
                     </div>
                     <div class="col-md-9 register-right">

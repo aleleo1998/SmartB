@@ -39,7 +39,7 @@ public class LoginServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		
 		
@@ -49,21 +49,29 @@ public class LoginServlet extends HttpServlet {
 		
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
+	
 		
 		System.out.println(email);
 		System.out.println(password);
 		
 		
 		Utente utente = gestioneUtenti.loginUtente(email, password);
+
+		String risposta="";
+		//String matricola=utente.getMatricola();
+		//System.out.println(matricola);
+		//System.out.println("matricola"+utente.getMatricola()+" "+utente.getNome()+" "+utente.getPassword()+" "+utente.getEmail());
 		
-		System.out.println(utente);
+
 		
+
 		
 		
 		
 		if(utente==null){
 			System.out.println("utente null");
-			
+
+
 			out.write("Errore");
 			response.sendRedirect("./jsp/Login.jsp");  //se le credenziali sono sbagliate l'utente viene riportato sulla pagina di login
 		}
@@ -98,6 +106,7 @@ public class LoginServlet extends HttpServlet {
 
 			}
 		}
+
 	}
 
 	/**

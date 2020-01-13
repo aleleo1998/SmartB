@@ -15,7 +15,7 @@ import Model.RichiestaModOrario;
  *
  * 
  * 
- * Interfaccia del sottosistema GestioneOrari, offre funzionalità di aggiungere un orario ad un docente, inoltrari richieste di midifica orario e 
+ * Interfaccia del sottosistema GestioneOrari, offre funzionalità di aggiungere un orario ad un docente, inoltrare richieste di modifica orario e 
  * permette di gestire alla segreteria quest'ultime
  *
  */

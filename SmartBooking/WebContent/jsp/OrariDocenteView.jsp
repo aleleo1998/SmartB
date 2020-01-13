@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +11,13 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://kit.fontawesome.com/7606041806.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="../css/OrarioDocente.css">
 <script>
+$(document).ready(function(){
+	$("#matricolaDocente").hide();
+});
+
+
 function controllo(id)
 {
 	
@@ -27,6 +33,12 @@ function controllo(id)
 </script>
 </head>
 <body>
+<div id="menu">
+	<%@include file="menu.jsp"%>
+</div>
+
+
+
 <% Collection<Disponibilita> orari=(Collection) request.getSession().getAttribute("orari"); %>
 
 <table class="table table-striped" id="table">
@@ -59,7 +71,7 @@ function controllo(id)
 		<td><%=ds.getMatricolaDocente()%></td>
 		<td><%=ds.getOra()%></td>
 		<td>
-		<input type="text" name="matricolaDocente" value=<%=ds.getMatricolaDocente()%>>
+		<input type="text" name="matricolaDocente" id="matricolaDocente" value=<%=ds.getMatricolaDocente()%>>
 		<select name="date" id="<%=ds.getOra() %>"><%
 		while(d.getMonth()==mese)
 		{
@@ -136,14 +148,17 @@ function controllo(id)
 		calendar.add(calendar.DAY_OF_MONTH,1);
 		d=calendar.getTime();
 		}
-		%></td></select></form><td><button onclick="controllo('<%=ds.getOra()%>')">Prenota</button></td></tr>
+		%></td></select></form><td><button  onclick="controllo('<%=ds.getOra()%>')">Prenota</button></td></tr>
 	  <%
   }
   
   
   %>
   
+  
   </tbody>
-    
+    <div id="footer">
+	<%@include file="../html/footer.html"%>
+</div>
 </body>
 </html>
