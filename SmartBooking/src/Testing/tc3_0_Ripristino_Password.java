@@ -160,6 +160,7 @@ public class tc3_0_Ripristino_Password {
 		s.setEmail("carminesorrentino51@studenti.unisa.it");
 		
 		s.setMatricola("0000055555");
+		sm.doDeleteByEmail("carminesorrentino51@studenti.unisa.it");
 		
 		sm.doDeleteByEmail("carminesorrentino51@studenti.unisa.it");
 		
