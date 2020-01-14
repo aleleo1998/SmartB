@@ -75,8 +75,8 @@ class TestRegistrazioneStudente {
 		
 		Studente s = sm.doRetrieveByKey("0512105103");
 		System.out.println("MATRICLOA: ");
-		/*assertEquals(s.getMatricola(),"0512105103");
-	    sm.doDelete(s.getMatricola());*/
+		assertEquals(s.getMatricola(),"0512105103");
+	    sm.doDelete(s.getMatricola());
 
 	    driver.quit();
 
