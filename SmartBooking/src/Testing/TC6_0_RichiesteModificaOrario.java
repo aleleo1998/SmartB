@@ -84,7 +84,7 @@ public class TC6_0_RichiesteModificaOrario {
 		when(session.getAttribute("docente")).thenReturn(docente);
 		
 		when(request.getParameter("giornoVecchio")).thenReturn("");
-		when(request.getParameter("giornoNuovo")).thenReturn("Lunedì");
+		when(request.getParameter("giornoNuovo")).thenReturn("venerdi");
 		when(request.getParameter("orarioInizio")).thenReturn("11:00");
 		when(request.getParameter("orarioFine")).thenReturn("12:30");
 		
@@ -111,7 +111,7 @@ public class TC6_0_RichiesteModificaOrario {
 		
 		when(session.getAttribute("docente")).thenReturn(docente);
 		
-		when(request.getParameter("giornoVecchio")).thenReturn("Martedì");
+		when(request.getParameter("giornoVecchio")).thenReturn("sabato");
 		when(request.getParameter("giornoNuovo")).thenReturn("");
 		when(request.getParameter("orarioInizio")).thenReturn("11:00");
 		when(request.getParameter("orarioFine")).thenReturn("12:30");
@@ -139,8 +139,8 @@ public class TC6_0_RichiesteModificaOrario {
 		
 		when(session.getAttribute("docente")).thenReturn(docente);
 		
-		when(request.getParameter("giornoVecchio")).thenReturn("Martedì");
-		when(request.getParameter("giornoNuovo")).thenReturn("Lunedì");
+		when(request.getParameter("giornoVecchio")).thenReturn("domenica");
+		when(request.getParameter("giornoNuovo")).thenReturn("lunedì");
 		when(request.getParameter("orarioInizio")).thenReturn("11:4");
 		when(request.getParameter("orarioFine")).thenReturn("12:30");
 		
@@ -167,8 +167,8 @@ public class TC6_0_RichiesteModificaOrario {
 		
 		when(session.getAttribute("docente")).thenReturn(docente);
 		
-		when(request.getParameter("giornoVecchio")).thenReturn("Martedì");
-		when(request.getParameter("giornoNuovo")).thenReturn("Lunedì");
+		when(request.getParameter("giornoVecchio")).thenReturn("martedì");
+		when(request.getParameter("giornoNuovo")).thenReturn("lunedì");
 		when(request.getParameter("orarioInizio")).thenReturn("11:409");
 		when(request.getParameter("orarioFine")).thenReturn("12:30");
 		
@@ -195,8 +195,8 @@ public class TC6_0_RichiesteModificaOrario {
 		
 		when(session.getAttribute("docente")).thenReturn(docente);
 		
-		when(request.getParameter("giornoVecchio")).thenReturn("Martedì");
-		when(request.getParameter("giornoNuovo")).thenReturn("Lunedì");
+		when(request.getParameter("giornoVecchio")).thenReturn("martedì");
+		when(request.getParameter("giornoNuovo")).thenReturn("lunedì");
 		when(request.getParameter("orarioInizio")).thenReturn("11:4R");
 		when(request.getParameter("orarioFine")).thenReturn("12:30");
 		
@@ -223,8 +223,8 @@ public class TC6_0_RichiesteModificaOrario {
 		
 		when(session.getAttribute("docente")).thenReturn(docente);
 		
-		when(request.getParameter("giornoVecchio")).thenReturn("Martedì");
-		when(request.getParameter("giornoNuovo")).thenReturn("Lunedì");
+		when(request.getParameter("giornoVecchio")).thenReturn("martedì");
+		when(request.getParameter("giornoNuovo")).thenReturn("sabato");
 		when(request.getParameter("orarioInizio")).thenReturn("11:45");
 		when(request.getParameter("orarioFine")).thenReturn("12:3");
 		
@@ -251,8 +251,8 @@ public class TC6_0_RichiesteModificaOrario {
 		
 		when(session.getAttribute("docente")).thenReturn(docente);
 		
-		when(request.getParameter("giornoVecchio")).thenReturn("Martedì");
-		when(request.getParameter("giornoNuovo")).thenReturn("Lunedì");
+		when(request.getParameter("giornoVecchio")).thenReturn("martedì");
+		when(request.getParameter("giornoNuovo")).thenReturn("venerdì");
 		when(request.getParameter("orarioInizio")).thenReturn("11:45");
 		when(request.getParameter("orarioFine")).thenReturn("12:309");
 		
@@ -279,8 +279,8 @@ public class TC6_0_RichiesteModificaOrario {
 		
 		when(session.getAttribute("docente")).thenReturn(docente);
 		
-		when(request.getParameter("giornoVecchio")).thenReturn("Martedì");
-		when(request.getParameter("giornoNuovo")).thenReturn("Lunedì");
+		when(request.getParameter("giornoVecchio")).thenReturn("mercoledì");
+		when(request.getParameter("giornoNuovo")).thenReturn("giovedì");
 		when(request.getParameter("orarioInizio")).thenReturn("11:45");
 		when(request.getParameter("orarioFine")).thenReturn("12:4R");
 		
@@ -307,8 +307,8 @@ public class TC6_0_RichiesteModificaOrario {
 		
 		when(session.getAttribute("docente")).thenReturn(docente);
 		
-		when(request.getParameter("giornoVecchio")).thenReturn("Martedì");
-		when(request.getParameter("giornoNuovo")).thenReturn("Lunedì");
+		when(request.getParameter("giornoVecchio")).thenReturn("martedì");
+		when(request.getParameter("giornoNuovo")).thenReturn("lunedì");
 		when(request.getParameter("orarioInizio")).thenReturn("11:45");
 		when(request.getParameter("orarioFine")).thenReturn("10:45");
 		
@@ -335,8 +335,8 @@ public class TC6_0_RichiesteModificaOrario {
 		
 		when(session.getAttribute("docente")).thenReturn(docente);
 		
-		when(request.getParameter("giornoVecchio")).thenReturn("Martedì");
-		when(request.getParameter("giornoNuovo")).thenReturn("Lunedì");
+		when(request.getParameter("giornoVecchio")).thenReturn("martedì");
+		when(request.getParameter("giornoNuovo")).thenReturn("lunedì");
 		when(request.getParameter("orarioInizio")).thenReturn("11:45");
 		when(request.getParameter("orarioFine")).thenReturn("12:45");
 		
@@ -353,6 +353,8 @@ public class TC6_0_RichiesteModificaOrario {
 		
 		
 	}
+	
+	
 	
 
 }

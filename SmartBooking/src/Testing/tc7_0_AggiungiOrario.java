@@ -142,7 +142,7 @@ class tc7_0_AggiungiOrario {
 		when(session.getAttribute("docente")).thenReturn(d);
 		
 		when(request.getParameter("numOrari")).thenReturn("1");
-		when(request.getParameter("giorno1")).thenReturn("lunedi");
+		when(request.getParameter("giorno1")).thenReturn("martedi");
 		when(request.getParameter("oraInizio1")).thenReturn("0:00");
 		when(request.getParameter("oraFine1")).thenReturn("09:00");
 		
@@ -170,7 +170,7 @@ class tc7_0_AggiungiOrario {
 		when(session.getAttribute("docente")).thenReturn(d);
 		when(request.getSession()).thenReturn(session);
 		when(request.getParameter("numOrari")).thenReturn("1");
-		when(request.getParameter("giorno1")).thenReturn("lunedi");
+		when(request.getParameter("giorno1")).thenReturn("mercoledi");
 		when(request.getParameter("oraInizio1")).thenReturn("08:00");
 		when(request.getParameter("oraFine1")).thenReturn("0:00");
 		
@@ -198,7 +198,7 @@ class tc7_0_AggiungiOrario {
 		when(session.getAttribute("docente")).thenReturn(d);
 		
 		when(request.getParameter("numOrari")).thenReturn("1");
-		when(request.getParameter("giorno1")).thenReturn("lunedi");
+		when(request.getParameter("giorno1")).thenReturn("giovedi");
 		when(request.getParameter("oraInizio1")).thenReturn("11:00");
 		when(request.getParameter("oraFine1")).thenReturn("10:00");
 		

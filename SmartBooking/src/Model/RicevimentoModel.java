@@ -21,7 +21,7 @@ import DBConnection.DriverManagerConnectionPool;
 
 			Connection connection = null;
 			PreparedStatement preparedStatement = null;
-
+            System.out.println(Ricevimento.getMatDocente());
 			String insertSQL = "INSERT INTO " + RicevimentoModel.TABLE_NAME
 					+ " (studente, docente, data_prenotazione, data_ricevimento, stato) VALUES (?, ?, ?, ?,?)";
 			Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("Europe/Rome"),Locale.ITALY);
@@ -34,10 +34,15 @@ import DBConnection.DriverManagerConnectionPool;
 				preparedStatement.setDate(3, new Date(calendar.getTimeInMillis()),calendar);
 				preparedStatement.setString(5, Ricevimento.getStato());
 
-				preparedStatement.executeUpdate();
+				System.out.println(preparedStatement.executeUpdate());
 
 				connection.commit();
-			} finally {
+			}
+			catch(SQLException e)
+			{
+				e.printStackTrace();
+			}
+			finally {
 				try {
 					if (preparedStatement != null)
 						preparedStatement.close();
@@ -62,7 +67,9 @@ import DBConnection.DriverManagerConnectionPool;
 
 				result = preparedStatement.executeUpdate();
 				connection.commit();
-			} finally {
+			}
+			
+			finally {
 				try {
 					if (preparedStatement != null)
 						preparedStatement.close();

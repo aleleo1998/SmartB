@@ -94,7 +94,7 @@ LinkedList<Docente> list = (LinkedList<Docente>) m.doRetrieveAll();
     		<form name="form" action="../VisualizzaOrariDocente">
     			<input id="matricolaDocente" style="display:none;" name="matricolaDocente" value="<%=d.getMatricola()%>"/>
     		
-      			<button name="prenota" id=<%="prenota"+d.getMatricola()%> class="prenotaButton">Prenota</button> 
+      			<button name="prenota" id=<%="prenota"+d.getMatricola()%> class="prenotaButton">Visualizza orari</button> 
       		</form>
     	</td>
     </tr>
