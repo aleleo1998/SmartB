@@ -49,7 +49,7 @@ public class CambioPasswordServlet extends HttpServlet {
 		System.out.println("nuova password: "+nuovaPassword);
 		
 		if(!Check.checkPassword(vecchiaPassword) ) {
-			
+		
 			risposta = "password non corretta";
 			writer.write(risposta);
 			return;

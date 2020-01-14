@@ -12,7 +12,7 @@ package Model;
 		
 	private static final String TABLE_NAME = "Segreteria";
 		
-		public synchronized void doSave(Segreteria Segreteria) throws SQLException {
+/*	public synchronized void doSave(Segreteria Segreteria) throws SQLException {
 
 			Connection connection = null;
 			PreparedStatement preparedStatement = null;
@@ -44,7 +44,7 @@ package Model;
 			}
 		}
 		
-		public synchronized boolean doDelete(String matricola) throws SQLException {
+	/*	public synchronized boolean doDelete(String matricola) throws SQLException {
 			Connection connection = null;
 			PreparedStatement preparedStatement = null;
 
@@ -68,50 +68,12 @@ package Model;
 				}
 			}
 			return (result != 0);
-		}
+		}*/
 		
 		
-		public synchronized Collection<Segreteria> doRetrieveAll(String order) throws SQLException {
-			Connection connection = null;
-			PreparedStatement preparedStatement = null;
-
-			Collection<Segreteria> utenti = new LinkedList<Segreteria>();
-
-			String selectSQL = "SELECT * FROM " + SegreteriaModel.TABLE_NAME;
-
-			if (order != null && !order.equals("")) {
-				selectSQL += " ORDER BY " + order;
-			}
-
-			try {
-				connection = DriverManagerConnectionPool.getDbConnection();
-				preparedStatement = connection.prepareStatement(selectSQL);
-
-				ResultSet rs = preparedStatement.executeQuery();
-
-				while (rs.next()) {
-					Segreteria bean = new Segreteria();
-
-					bean.setMatricola(rs.getString("matricola"));
-					bean.setNome(rs.getString("nome"));
-					bean.setCognome(rs.getString("cognome"));
-					bean.setEmail(rs.getString("email"));
-					bean.setPassword(rs.getString("password"));
-					bean.setOrari(rs.getString("orario"));
-					
-					utenti.add(bean);
-				}
-
-			} finally {
-				try {
-					if (preparedStatement != null)
-						preparedStatement.close();
-				} finally {
-					DriverManagerConnectionPool.releaseConnection(connection);
-				}
-			}
-			return utenti;
-		}
+		
+		
+		
 		
 		
 		public synchronized Segreteria doRetrieveByKey(String matricola) throws SQLException {
@@ -150,45 +112,7 @@ package Model;
 		}
 
 		
-		public synchronized Collection<Segreteria> doRetrieveAll() throws SQLException {
-			Connection connection = null;
-			PreparedStatement preparedStatement = null;
-
-			Collection<Segreteria> utenti = new LinkedList<Segreteria>();
-
-			String selectSQL = "SELECT * FROM " + SegreteriaModel.TABLE_NAME;
-
-			
-
-			try {
-				connection = DriverManagerConnectionPool.getDbConnection();
-				preparedStatement = connection.prepareStatement(selectSQL);
-
-				ResultSet rs = preparedStatement.executeQuery();
-
-				while (rs.next()) {
-					Segreteria bean = new Segreteria();
-
-					bean.setMatricola(rs.getString("matricola"));
-					bean.setNome(rs.getString("nome"));
-					bean.setCognome(rs.getString("cognome"));
-					bean.setEmail(rs.getString("email"));
-					bean.setPassword(rs.getString("password"));
-					bean.setOrari(rs.getString("orario"));
-					
-					utenti.add(bean);
-				}
-
-			} finally {
-				try {
-					if (preparedStatement != null)
-						preparedStatement.close();
-				} finally {
-					DriverManagerConnectionPool.releaseConnection(connection);
-				}
-			}
-			return utenti;
-		}
+		
 
 	}
 

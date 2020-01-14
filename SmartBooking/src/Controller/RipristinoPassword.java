@@ -52,7 +52,7 @@ public class RipristinoPassword extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		PrintWriter writer = response.getWriter();
 		
@@ -64,7 +64,7 @@ public class RipristinoPassword extends HttpServlet {
 		
 		
 		try {
-			risposta = Check.checkMailDocente(email);
+			risposta = Check.checkStudenteMail(email);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

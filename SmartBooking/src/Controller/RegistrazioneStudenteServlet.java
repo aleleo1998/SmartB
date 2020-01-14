@@ -156,13 +156,11 @@ public class RegistrazioneStudenteServlet extends HttpServlet {
 							
 							String resultMessage = "";
 					
-							try {
+							
 								gestioneMail.sendEmail(host, port, user, pass, emailMittente, emailDestinatario, nome, cognome, subject, content); //invio email di EmailUtility
 								resultMessage = "The e-mail was sent successfully"; //setta il messaggio di buona riuscita dell'invio
-							} catch (Exception ex) {
-								ex.printStackTrace();
-								resultMessage = "There were an error: " + ex.getMessage(); //altrimenti crea un messaggio di errore
-							}
+							
+							
 						
 				response.sendRedirect("./jsp/SuccessReg.jsp");
 			}else {

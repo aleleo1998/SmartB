@@ -45,26 +45,6 @@ RegistrazioneStudenteServlet myServlet;
 	
 	@Test
 	public void tc_1_0_9() throws IOException, ServletException{
-		StringWriter output = new StringWriter();
-		PrintWriter out = new PrintWriter(output);
-		
-		when(request.getParameter("nome")).thenReturn("Lorenzo");
-		when(request.getParameter("cognome")).thenReturn("Fasolino");
-		when(request.getParameter("matricola")).thenReturn("0512102335");
-		when(request.getParameter("email")).thenReturn("iao@studenti.unisa.it");
-		when(request.getParameter("password")).thenReturn("!");
-		when(request.getParameter("confermaPassword")).thenReturn("1234");
-		
-		
-		when(response.getWriter()).thenReturn(out);
-		
-		
-		myServlet.doPost(request, response);
-		
-		System.out.println(output.toString());
-		
-		
-		assertEquals("Password non corretta",output.toString().toString());
 		
 		
 	}
