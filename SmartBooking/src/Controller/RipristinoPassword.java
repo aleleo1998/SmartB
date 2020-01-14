@@ -85,7 +85,7 @@ public class RipristinoPassword extends HttpServlet {
 		
 		//*******INVIO EMAIL********//
 		//Invio email con credenziali
-		String emailMittente="smartbookingplatform@gmail.com";
+/*		String emailMittente="smartbookingplatform@gmail.com";
 		String emailDestinatario="fasolinolorenzo@gmail.com"; //email;
 		String subject="Benvenuto Su SmartBooking";
 		
@@ -107,7 +107,7 @@ public class RipristinoPassword extends HttpServlet {
 			//**Cosa fare dopo aver fatto il sendMail***
 		} 
 	
-		
+*/		
 		
 		risposta = "email inviato";
 		writer.write(risposta);
