@@ -93,7 +93,7 @@ class TestRegistrazioneDocente {
 		assertEquals(d.getMatricola(),"0512100001");
 	  
 
-	    driver.quit();
+	    driver.quit(); 
 
 	  }
 }

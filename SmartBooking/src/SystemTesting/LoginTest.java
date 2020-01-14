@@ -53,7 +53,7 @@ class LoginTest {
 	    dm.doDelete(d.getMatricola());
 
 	    assertEquals("http://localhost:8080/SmartBooking/jsp/index.jsp", driver.getCurrentUrl());
-	    driver.quit();
+	    driver.quit(); 
 
 	  }
 	 

@@ -78,7 +78,7 @@ class TestRegistrazioneStudente {
 		assertEquals(s.getMatricola(),"0512105103");
 	    sm.doDelete(s.getMatricola());
 
-	    driver.quit();
+	    driver.quit(); 
 
 	  }
 }
