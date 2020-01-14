@@ -85,7 +85,9 @@
                 		<li class="nav-item ">
 		                <a class="nav-link" href="InfoDocente.jsp?mat=<%=utente.getMatricola()%>">Profilo docente<span class="sr-only">(current)</span></a>
 		                </li>
-		                
+		                 <li class="nav-item">
+                        <a class="nav-link" href="ViewRicercaDocenti.jsp">Ricerca docente</a>
+                        </li>
 		                <li class="nav-item">
                         <a class="nav-link" href="../visualizzaRicevimentiServlet" >Visualizza ricevimenti</a>
                         </li>
@@ -141,6 +143,10 @@
 		                
 		                <li class="nav-item">
                         <a class="nav-link" href="FormInserimentoDocente.jsp">Registrazione docente</a>
+                        </li>
+                        
+                         <li class="nav-item">
+                        <a class="nav-link" href="ViewRicercaDocenti.jsp">Ricerca docente</a>
                         </li>
                         
                         <li class="nav-item">

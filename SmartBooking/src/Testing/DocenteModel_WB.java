@@ -5,10 +5,13 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.when;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.LinkedList;
 
 import org.junit.jupiter.api.Test;
 
@@ -109,6 +112,39 @@ public class DocenteModel_WB {
 	  }
 	  
 	  
+	  @Test
+	  void testAll() throws Exception {
+	    DocenteModel dm = new DocenteModel();
+	    
+	    LinkedList<Docente> docenti =(LinkedList<Docente>) dm.doRetrieveAll();
+	    
+	    
+	    Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		
+		String countSQL = "SELECT * FROM ACALE.Docente";
+		
+		connection = DriverManagerConnectionPool.getDbConnection();
+		preparedStatement = connection.prepareStatement(countSQL);
+		
+		
+		
+		ResultSet rs = preparedStatement.executeQuery();
+		
+		DriverManagerConnectionPool.releaseConnection(connection);
+		int num = 0;
+		while(rs.next()){
+		 num = rs.getRow();
+			
+		}
+		
+	    
+		System.out.println(num);
+	    
+	    assertEquals(docenti.size(),num);
+	    
+	  }
 	  
 	  
 	  

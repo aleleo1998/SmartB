@@ -9,7 +9,9 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.LinkedList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -28,6 +30,7 @@ import Controller.GestisciRischiesteModOrarioServlet;
 import DBConnection.DriverManagerConnectionPool;
 import Model.DisponibilitaModel;
 import Model.Docente;
+import Model.DocenteModel;
 import Model.RichiestaModOrario;
 import Model.RichiestaModOrarioModel;
 import gestioneOrari.GestioneOrari;
@@ -153,6 +156,40 @@ class GestioneRichiesteModOtatioWB {
 		
 		assertEquals("",output.toString().toString());
 	}
+	
+	 @Test
+	  void testAll() throws Exception {
+	    RichiestaModOrarioModel rm = new RichiestaModOrarioModel();
+	    
+	    LinkedList<RichiestaModOrario> richieste =(LinkedList<RichiestaModOrario>) rm.doRetrieveAll();
+	    
+	    
+	    Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		
+		String countSQL = "SELECT * FROM ACALE.Richiesta_modifica_orario";
+		
+		connection = DriverManagerConnectionPool.getDbConnection();
+		preparedStatement = connection.prepareStatement(countSQL);
+		
+		
+		
+		ResultSet rs = preparedStatement.executeQuery();
+		
+		DriverManagerConnectionPool.releaseConnection(connection);
+		int num = 0;
+		while(rs.next()){
+		 num = rs.getRow();
+			
+		}
+		
+	    
+		System.out.println(num);
+	    
+	    assertEquals(richieste.size(),num);
+	    
+	  }
 	
 	
 

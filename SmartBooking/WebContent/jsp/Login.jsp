@@ -43,6 +43,8 @@
     				
     			
     				<button type="submit" id="loginButton" class="btn btn-login float-right">Submit</button>
+    				
+    				<a href="RipristinoPassword.jsp">Ripristino password</a>
   				
   		
   

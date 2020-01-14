@@ -48,7 +48,7 @@ function controllo(id)
       <th scope="col">Giorno</th>
       <th scope="col">Ora</th>
       <th scope="col">Data disponibile</th>
-      <th scope="col">Prenota</th>
+     <%if(tipo==2){ %> <th scope="col">Prenota</th><%} %>
    </tr>
     </thread>
   <tbody>
@@ -150,9 +150,14 @@ function controllo(id)
 		calendar.add(calendar.DAY_OF_MONTH,1);
 		d=calendar.getTime();
 		}
-		%></td></select></form><td><button  onclick="controllo('<%=ds.getOra()%>')">Prenota</button></td></tr>
-	  <%
-  }
+		%></td></select></form>
+		<%if(tipo==2){
+			%><td><button  onclick="controllo('<%=ds.getOra()%>')">Prenota</button></td>
+			<%} %></tr>
+			 <%
+		}
+	 
+  
   
   
   %>
