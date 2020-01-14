@@ -44,7 +44,7 @@ LinkedList<Model.RichiestaModOrario> orari = (LinkedList<RichiestaModOrario>) mo
             <h3><%= segreteria.getNome() %> <%= segreteria.getCognome() %> </h3>
             <h6>Email: <%= segreteria.getEmail() %></h6>
             <h6>Matricola: <%= segreteria.getMatricola() %></h6>
-            <h6>Orari di apertura al pubblico: <%=segreteria.getOrari() %></h6>
+            <h6>Orario di apertura al pubblico: <%=segreteria.getOrari() %></h6>
         </div>  
         
 <table class="table table-striped" id="tableRicevimenti">
