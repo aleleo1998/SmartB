@@ -146,13 +146,15 @@ static Docente doc = new Docente("Alfredo", "Raimondo", "0512105214", "12345678"
 	void tc7() throws SQLException {
 		
 		LinkedList<Ricevimento> ricevimenti = (LinkedList<Ricevimento>) rm.doRetrieveAll(); 
-		
+		System.out.println("SSSS"+ricevimenti.size());
+		int i=0;
 		for(Ricevimento r : ricevimenti){
 			if(!r.getMatDocente().equals("0512105214")){
 				ricevimenti.remove(r);
 			}
 		}
 		
+	
 		assertEquals(ricevimenti.size(),1);
 	}
 	

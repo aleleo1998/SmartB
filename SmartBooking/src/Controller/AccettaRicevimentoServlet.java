@@ -25,11 +25,12 @@ public class AccettaRicevimentoServlet extends HttpServlet {
 	private String pass;
 	private static final long serialVersionUID = 1L;
 	public void init() {
+	    //password email mittente (SmartAcale)
 		ServletContext context = getServletContext();
-		host = context.getInitParameter("host"); 
+		host = context.getInitParameter("host");
 		port = context.getInitParameter("port");
 		user = context.getInitParameter("user"); //indirizzo email mittente (smartbookingplatform@gmail.com)
-		pass = context.getInitParameter("pass"); //password email mittente (SmartAcale)
+		pass = context.getInitParameter("pass");
 	}
     /**
      * @see HttpServlet#HttpServlet()
@@ -44,6 +45,7 @@ public class AccettaRicevimentoServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+	
 		GestioneRicevimento gr= new GestioneRicevimentoConcrete();
 		RicevimentoModel rm= new RicevimentoModel();
 		int id=Integer.parseInt(request.getParameter("id"));
@@ -53,18 +55,19 @@ public class AccettaRicevimentoServlet extends HttpServlet {
 		try
 		{ 
 		  Ricevimento r= rm.doRetrieveByKey(id);
+		  System.out.println(r.getId());
 			DocenteModel dm= new DocenteModel();
 			StudenteModel sm= new StudenteModel();
-			Docente doc = dm.doRetrieveByKey((String)request.getSession().getAttribute("Utente"));
+			
+			Docente doc =(Docente) request.getSession().getAttribute("docente");
+			System.out.println(doc);
 			Studente s= sm.doRetrieveByKey(r.getMatStudente());
-			System.out.println(s);
 		  if(operazione.equals("1"))
 		  {
 	     
 	      
 			
 			boolean verifica=gr.accettaRicevimento(r);
-			System.out.println(verifica);
 			
 			if(verifica)
 			{
@@ -75,15 +78,12 @@ public class AccettaRicevimentoServlet extends HttpServlet {
 			
 					GestioneMail gestioneMail = new GestioneMailConcrete();		
 					//dm.doRetrieveByKey(request.getParameter("matricolaDocente")).getEmail()
-					try {
-						gestioneMail.sendEmail(host, port, user, pass, doc.getEmail(),"alexleopardi98@gmail.com", "", "", "Conferma ricevimento", content );
+					System.out.println("HOST:"+ host);
+						gestioneMail.sendEmail(host, port, user, pass, 
+								doc.getEmail(),
+								s.getEmail(), "", "", "Conferma ricevimento", content );
 						String resultMessage = "The e-mail was sent successfully"; //setta il messaggio di buona riuscita dell'invio
-					} catch (Exception ex) {
-						ex.printStackTrace();
-						String resultMessage = "There were an error: " + ex.getMessage(); //altrimenti crea un messaggio di errore
-					} finally {
-						//**Cosa fare dopo aver fatto il sendMail***
-					} 
+					 
 			}
 			 
 				response.sendRedirect("visualizzaRicevimentiServlet");
@@ -99,21 +99,18 @@ public class AccettaRicevimentoServlet extends HttpServlet {
 				String content="Ricevimento Rifiutato/Cancellato da parte di "+doc.getCognome()+" "+doc.getNome()+" Matrciola: "
 				+doc.getMatricola()+".Per il seguente motivo: "+request.getParameter("motivazioneCancellazione");
 				//dm.doRetrieveByKey(request.getParameter("matricolaDocente")).getEmail()
-				try {
+			
 					gestioneMail.sendEmail(host, port, user, pass, doc.getEmail(),"alexleopardi98@gmail.com", "", "", "Cancellazione/Rifiuto ricevimneto", content );
 					String resultMessage = "The e-mail was sent successfully"; //setta il messaggio di buona riuscita dell'invio
-				} catch (Exception ex) {
-					ex.printStackTrace();
-					String resultMessage = "There were an error: " + ex.getMessage(); //altrimenti crea un messaggio di errore
-				} finally {
-					//**Cosa fare dopo aver fatto il sendMail***
-				} 
+				
+					 //altrimenti crea un messaggio di errore
+				
 		}
 				response.sendRedirect("visualizzaRicevimentiServlet");
 			}
 		  
 	    }
-        catch (SQLException e) {
+        catch (Exception e) {
 			
 			e.printStackTrace();
 		  }
@@ -123,7 +120,7 @@ public class AccettaRicevimentoServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
