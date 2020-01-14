@@ -67,6 +67,7 @@ private static final String TABLE_NAME = "Studente";
 			preparedStatement.setString(1, matricola);
 
 			result = preparedStatement.executeUpdate();
+			connection.commit();
 
 		} finally {
 			try {
