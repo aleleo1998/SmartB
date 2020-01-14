@@ -1,5 +1,7 @@
 package SystemTesting;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
 import java.util.concurrent.TimeUnit;
@@ -15,59 +17,72 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 
+import Model.Docente;
+import Model.DocenteModel;
+
 class LoginTest {
 	
 	 private WebDriver driver;
 	 private String baseUrl;
 	 private boolean acceptNextAlert = true;
 	 private StringBuffer verificationErrors = new StringBuffer();
+	 private DocenteModel dm;
+	 private Docente d;
 
-	 @Before
-	  public void setUp() throws Exception {
-		
-	 
-	 }
-	 
+
 	 @Test
-	  public void testLogin() throws Exception {
-		 System.setProperty("webdriver.chrome.driver","/SmartBooking/WebContent/Driver/chromedriver");
-
-		driver = new ChromeDriver();	  
-		driver.get("http://localhost:8080/SmartBooking/jsp/Login.jsp");
+	  public void testLoginDocenteOk() throws Exception {
+		 System.setProperty("webdriver.chrome.driver","C:\\Users\\alfre\\Desktop\\chromedriver.exe");
+		 dm = new DocenteModel();
+		 d = new Docente("Nome", "Cognome", "0512100001", "12345678", "doc.docente@unisa.it", "uff01");
+		 dm.doSave(d);
+		driver = new ChromeDriver();	
+		String baseUrl="http://localhost:8080/SmartBooking/jsp/Login.jsp";
+		driver.get(baseUrl);
 		WebElement email = driver.findElement(By.name("email"));
 		WebElement password = driver.findElement(By.name("password"));
 
-		email.sendKeys("ff.ferrucci@unisa.it");
-		password.sendKeys("123");
+		
+		
+		
+		email.sendKeys(d.getEmail());
+		password.sendKeys(d.getPassword());
 		
 		WebElement submit = driver.findElement(By.id("loginButton"));
 		submit.click();
-		
-	    /*
-	    driver.findElement(By.name("email")).click();
-	    driver.findElement(By.name("email")).clear();
-	    driver.findElement(By.name("email")).sendKeys("ff.ferruci@unisa.it");
-	    driver.findElement(By.name("password")).click();
-	    driver.findElement(By.name("password")).clear();
-	    driver.findElement(By.name("password")).sendKeys("123");
-	    
-	    driver.findElement(By.id("loginButton")).click(); */
-	    /*driver.findElement(By.xpath(
-	        "(.//*[normalize-space(text()) and normalize-space(.)='Login'])[3]/following::button[1]"))
-	        .click(); */
-	    
-	    
-	  }
-	 
-	 @After
-	  public void tearDown() throws Exception {
+	    dm.doDelete(d.getMatricola());
+
+	    assertEquals("http://localhost:8080/SmartBooking/jsp/index.jsp", driver.getCurrentUrl());
 	    driver.quit();
-	    String verificationErrorString = verificationErrors.toString();
-	    if (!"".equals(verificationErrorString)) {
-	      fail(verificationErrorString);
-	    }
+
 	  }
 	 
 	 
+	 @Test
+	  public void testLoginDocenteError() throws Exception {
+		 System.setProperty("webdriver.chrome.driver","C:\\Users\\alfre\\Desktop\\chromedriver.exe");
+		 dm = new DocenteModel();
+		 d = new Docente("Nome", "Cognome", "0512100001", "12345678", "doc.docente@unisa.it", "uff01");
+		 dm.doDelete(d.getMatricola());
+		 
+		driver = new ChromeDriver();	  
+		String baseUrl="http://localhost:8080/SmartBooking/jsp/Login.jsp";
+		driver.get(baseUrl);
+		WebElement email = driver.findElement(By.name("email"));
+		WebElement password = driver.findElement(By.name("password"));
+	
+		email.sendKeys(d.getEmail());
+		password.sendKeys(d.getPassword());
+		
+		WebElement submit = driver.findElement(By.id("loginButton"));
+		submit.click();
+
+	    assertNotEquals("http://localhost:8080/SmartBooking/jsp/index.jsp", driver.getCurrentUrl());
+	    assertEquals(baseUrl,driver.getCurrentUrl());
+	    driver.quit();
+	  }
+	 
+	 
+
 
 }

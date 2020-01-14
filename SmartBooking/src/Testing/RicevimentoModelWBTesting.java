@@ -87,7 +87,7 @@ static Docente doc = new Docente("Alfredo", "Raimondo", "0512105214", "12345678"
 		
 		System.out.println(r.getStato());
 		
-		assertEquals(r.getStato(),"no");
+		assertEquals(r.getStato(),"acc");
 	}
 	
 	@Test
