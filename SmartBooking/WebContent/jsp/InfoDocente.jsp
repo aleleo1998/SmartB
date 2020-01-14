@@ -21,7 +21,7 @@
 <% Model.Docente docente = (Model.Docente) request.getSession().getAttribute("infoDocente"); 
 DisponibilitaModel dm= new DisponibilitaModel();
 Collection<Disponibilita> orari=dm.doRetrieveByKey(docente.getMatricola());
-%>
+%> 
 </head>
 <body>
 <script>
