@@ -47,7 +47,6 @@ RegistrazioneStudenteServlet myServlet;
 		session = mock(HttpSession.class);
 		myServlet = new RegistrazioneStudenteServlet(); 
 		
-		
 	}
 	
 	@AfterEach

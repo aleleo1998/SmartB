@@ -58,15 +58,6 @@ public class LoginServlet extends HttpServlet {
 		Utente utente = gestioneUtenti.loginUtente(email, password);
 
 		String risposta="";
-		//String matricola=utente.getMatricola();
-		//System.out.println(matricola);
-		//System.out.println("matricola"+utente.getMatricola()+" "+utente.getNome()+" "+utente.getPassword()+" "+utente.getEmail());
-		
-
-		
-
-		
-		
 		
 		if(utente==null){
 			System.out.println("utente null");
@@ -90,7 +81,7 @@ public class LoginServlet extends HttpServlet {
 				response.sendRedirect("./jsp/index.jsp");  //profilo docente
 			}else if(utente instanceof Model.Studente) {
 				
-				out.write("Studente");
+				out.write("Studente"); 
 			
 				request.getSession().setAttribute("studente",(Studente) utente);  //'Utente'in sessione restituisce la matricola
 			

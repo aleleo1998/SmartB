@@ -19,7 +19,6 @@ import DBConnection.DriverManagerConnectionPool;
  *
  */
 public class DisponibilitaModel {
-	
 
 private static final String TABLE_NAME = "Disponibilità ";
 	
@@ -58,7 +57,7 @@ private static final String TABLE_NAME = "Disponibilità ";
 				DriverManagerConnectionPool.releaseConnection(connection);
 			}
 		}
-	}
+	} 
 	
 	/**
 	 * @param matricola_docente
