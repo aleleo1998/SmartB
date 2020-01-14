@@ -26,7 +26,7 @@ class DisponibilitaTest {
 		Disponibilita r = new Disponibilita("Lunedi", t, "0512100001");
 	    assertEquals("Lunedi", r.getGiorno());
 	  }
-	  
+	   
 	  @Test
 	  void testGetOra() {
 		  String t = "10:00";
