@@ -81,52 +81,7 @@ public class DocenteModel {
 	}
 	
 	
-	/**
-	 * 
-	 * @param order: ASC/DESC per ordinare i risultati
-	 * @return collezione di docenti trovati
-	 * @throws SQLException
-	 */
-	public synchronized Collection<Docente> doRetrieveAll(String order) throws SQLException {
-		Connection connection = null;
-		PreparedStatement preparedStatement = null;
 
-		Collection<Docente> docenti = new LinkedList<Docente>();
-
-		String selectSQL = "SELECT * FROM " + DocenteModel.TABLE_NAME;
-
-		if (order != null && !order.equals("")) {
-			selectSQL += " ORDER BY " + order;
-		}
-
-		try {
-			connection = DriverManagerConnectionPool.getDbConnection();
-			preparedStatement = connection.prepareStatement(selectSQL);
-
-			ResultSet rs = preparedStatement.executeQuery();
-
-			while (rs.next()) {
-				Docente bean = new Docente();
-
-				bean.setMatricola(rs.getString("matricola"));
-				bean.setNome(rs.getString("nome"));
-				bean.setCognome(rs.getString("cognome"));
-				bean.setPassword(rs.getString("password"));
-				bean.setEmail(rs.getString("email"));
-				
-				docenti.add(bean);
-			}
-
-		} finally {
-			try {
-				if (preparedStatement != null)
-					preparedStatement.close();
-			} finally {
-				DriverManagerConnectionPool.releaseConnection(connection);
-			}
-		}
-		return docenti;
-	}
 	
 
 	/**

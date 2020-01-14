@@ -117,6 +117,8 @@ public class LoginServletWB {
 		
 		connection.commit();
 		
+		DriverManagerConnectionPool.releaseConnection(connection);
+		
 		
 		StringWriter output = new StringWriter();
 		PrintWriter out = new PrintWriter(output);
@@ -169,6 +171,8 @@ public class LoginServletWB {
 		preparedStatement.executeUpdate();
 		
 		connection.commit();
+		
+		DriverManagerConnectionPool.releaseConnection(connection);
 
 
 		StringWriter output = new StringWriter();
@@ -226,6 +230,8 @@ public class LoginServletWB {
 		preparedStatement.executeUpdate();
 		
 		connection.commit();
+		
+		DriverManagerConnectionPool.releaseConnection(connection);
 
 
 		StringWriter output = new StringWriter();

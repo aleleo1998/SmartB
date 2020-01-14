@@ -67,8 +67,10 @@ public class removeDocenteListaPreferiti extends HttpServlet {
 		
 		
 		
-		if(gestioneLista.removeDocente(d,s))
+		if(gestioneLista.removeDocente(d,s)) {
+			response.sendRedirect("./jsp/ProfiloStudente.jsp");
 			System.out.println("Query effettuata con successo.");
+		}
 		else
 			System.out.println("Errore durante l'esecuzione della query");
 	}
