@@ -22,7 +22,7 @@ private static final String TABLE_NAME_SEG = "ACALE.Segreteria";
 	 * @throws SQLException
 	 */
 	public synchronized Collection<Utente> doRetrieveAll(String order) throws SQLException {
-		Connection connection = null;
+		Connection connection = null; 
 		PreparedStatement preparedStatement = null;
 
 		Collection<Utente> utenti = new LinkedList<Utente>();

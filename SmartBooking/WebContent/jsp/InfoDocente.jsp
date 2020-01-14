@@ -18,6 +18,7 @@
 <title>SmartBooking: Informazioni docente</title>
 <%@ page import="Model.*"%>
 <%@ page import ="java.util.*" %>
+
 <% Model.Docente docente = (Model.Docente) request.getSession().getAttribute("docente"); 
 
 	String mat;
@@ -51,6 +52,7 @@ System.out.println("Matricola:"+matRequest);
 //DisponibilitaModel dm= new DisponibilitaModel();
 //Collection<Disponibilita> orari=dm.doRetrieveByKey(docente.getMatricola());
 %>
+
 </head>
 <body>
 <script>

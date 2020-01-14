@@ -119,13 +119,7 @@ preferiti = (LinkedList<Docente>) lpm.getAllDocenti(studente);
   
       <td><p id="docente"><%=d.getNome()%> <%=d.getCognome()%></p></td>
       <td><p id="ufficio"><%=d.getUfficio()%></p></td>
-      <td>
-      <form action="../VisualizzaOrariDocente">
-      		<button><i class="far fa-comment-dots"></i> </button>
-      		<input type="text" id="matricolaDocente" name="matricolaDocente" value="<%=d.getMatricola()%>" style="display:none;"></input>
-      	</form>	
-      
-      </td>
+      <td><a href="#####"></a><i class="far fa-comment-dots"></i></td>
       <td>
       	<form action="../removeDocenteListaPreferiti">
       		<button><i class="fas fa-user-slash"></i> </button>

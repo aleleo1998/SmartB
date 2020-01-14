@@ -79,7 +79,7 @@ public class tc4_0_Cambio_Password {
 	}*/
 	
 	@Test
-	public void tc_4_0_1() throws IOException, ServletException{
+	public void tc_1_0_1() throws IOException, ServletException{
 		StringWriter output = new StringWriter();
 		PrintWriter out = new PrintWriter(output);
 	
@@ -102,7 +102,7 @@ public class tc4_0_Cambio_Password {
 	
 	
 	@Test
-	public void tc_4_0_2() throws IOException, ServletException{
+	public void tc_1_0_2() throws IOException, ServletException{
 		StringWriter output = new StringWriter();
 		PrintWriter out = new PrintWriter(output);
 		when(request.getSession()).thenReturn(session);
@@ -127,7 +127,7 @@ public class tc4_0_Cambio_Password {
 	
 	
 	@Test
-	public void tc_4_0_3() throws IOException, ServletException{
+	public void tc_1_0_3() throws IOException, ServletException{
 		StringWriter output = new StringWriter();
 		PrintWriter out = new PrintWriter(output);
 		when(request.getSession()).thenReturn(session);
@@ -152,7 +152,7 @@ public class tc4_0_Cambio_Password {
 	
 	
 	@Test
-	public void tc_4_0_4() throws IOException, ServletException{
+	public void tc_1_0_4() throws IOException, ServletException{
 		StringWriter output = new StringWriter();
 		PrintWriter out = new PrintWriter(output);
 		when(request.getSession()).thenReturn(session);

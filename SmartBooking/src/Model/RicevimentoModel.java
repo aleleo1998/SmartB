@@ -73,8 +73,9 @@ import DBConnection.DriverManagerConnectionPool;
 			return (result != 0);
 		}
 		
-		
-		public synchronized Collection<Ricevimento> doRetrieveAll(String order) throws SQLException {
+
+		//
+		public synchronized Collection<Ricevimento> doRetrieveAll() throws SQLException {
 			Connection connection = null;
 			PreparedStatement preparedStatement = null;
 
@@ -82,10 +83,7 @@ import DBConnection.DriverManagerConnectionPool;
 
 			String selectSQL = "SELECT * FROM " + RicevimentoModel.TABLE_NAME;
 
-			if (order != null && !order.equals("")) {
-				selectSQL += " ORDER BY " + order;
-			}
-
+			
 			try {
 				connection = DriverManagerConnectionPool.getDbConnection();
 				preparedStatement = connection.prepareStatement(selectSQL);
@@ -114,6 +112,7 @@ import DBConnection.DriverManagerConnectionPool;
 			}
 			return utenti;
 		}
+
 		
 		
 		public synchronized Ricevimento doRetrieveByKey(int id) throws SQLException {
@@ -152,44 +151,7 @@ import DBConnection.DriverManagerConnectionPool;
 		}
  
 		
-		public synchronized Collection<Ricevimento> doRetrieveAll() throws SQLException {
-			Connection connection = null;
-			PreparedStatement preparedStatement = null;
-
-			Collection<Ricevimento> utenti = new LinkedList<Ricevimento>();
-
-			String selectSQL = "SELECT * FROM " + RicevimentoModel.TABLE_NAME;
-
-			
-
-			try {
-				connection = DriverManagerConnectionPool.getDbConnection();
-				preparedStatement = connection.prepareStatement(selectSQL);
-
-				ResultSet rs = preparedStatement.executeQuery();
-
-				while (rs.next()) {
-					Ricevimento bean = new Ricevimento();
-
-					bean.setId(rs.getInt("id"));
-					bean.setMatDocente(rs.getString("docente"));
-					bean.setMatStudente(rs.getString("studente"));
-					bean.setData(rs.getDate("data_prenotazione"));
-					bean.setDataPrenotazione(rs.getDate("data_ricevimento"));
-					
-					utenti.add(bean);
-				}
-
-			} finally {
-				try {
-					if (preparedStatement != null)
-						preparedStatement.close();
-				} finally {
-					DriverManagerConnectionPool.releaseConnection(connection);
-				}
-			}
-			return utenti;
-		}
+		
 		
 
 

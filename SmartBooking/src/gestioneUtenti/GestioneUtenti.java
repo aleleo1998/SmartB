@@ -3,7 +3,7 @@ package gestioneUtenti;
 import java.sql.SQLException;
 
 /**
- * GestioneUtenti Ã¨ unâ€™interfaccia che viene implementata dalla classe â€œGestioneUtentiConcreteâ€� e contiene 
+ * GestioneUtenti è un’interfaccia che viene implementata dalla classe “GestioneUtentiConcrete” e contiene 
  * la specifica di tutti i metodi che verranno utilizzati per realizzare il sottosistema per la gestione degli utenti.
  */
 
@@ -31,7 +31,7 @@ public interface GestioneUtenti {
 	 * @return boolean b
 	 *
 	 */
-	public String ripristinaPasswordEmail(String email);
+	public boolean ripristinaPasswordEmail(String email);
 	
 	/**
 	 * Il metodo registrazioneStudente(Studente s) inserisce nel database, nella tabella ACALE.Studente lo studente passato come argomento.

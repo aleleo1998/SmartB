@@ -83,7 +83,7 @@
 		                </li>
                 		
                 		<li class="nav-item ">
-		                <a class="nav-link" href="InfoDocente.jsp?mat=<%=utente.getMatricola()%>">Profilo docente<span class="sr-only">(current)</span></a>
+		                <a class="nav-link" href="InfoDocente.jsp">Profilo docente<span class="sr-only">(current)</span></a>
 		                </li>
 		                
 		                <li class="nav-item">

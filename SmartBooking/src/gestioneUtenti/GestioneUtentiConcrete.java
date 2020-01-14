@@ -49,14 +49,14 @@ public class GestioneUtentiConcrete implements GestioneUtenti {
 	 *
 	 */
 	@Override
-	public String ripristinaPasswordEmail(String email) {
+	public boolean ripristinaPasswordEmail(String email) {
 		try {
-			String url =  password.sendResetPasswordEmail(email);
-			return url;
+			password.sendResetPasswordEmail(email);
+			return true;
 			}catch(Exception e) {
 				e.printStackTrace();
 			}
-		return "";
+		return false;
 	}
 	
 	/**

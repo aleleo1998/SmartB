@@ -51,15 +51,13 @@ public class GestionePassword {
 			utente.changePassword(nuovaPassword,u);
 		
 	}
-	
-
 
 	/**
 	 * @param email
 	 * 
 	 * Permette di inviare un email per il ripristino della password
 	 */
-	public String sendResetPasswordEmail(String email) {
+	public void sendResetPasswordEmail(String email) {
 		// TODO AutR-generated method stub
 		
 		UtenteModel utente = new UtenteModel();
@@ -70,16 +68,15 @@ public class GestionePassword {
 				String url = "http://localhost:8080/SmartBooking/jsp/CambioRipristinoPassword.jsp?mat="+matCriptata;
 				System.out.println(url);
 				
-				return url;
+				//Invio email
 				
 				
 			}
-				return "";
+				
 			}
 		catch(Exception e) {
 			e.printStackTrace();
 			}
-		return "";
 		}
 	
 

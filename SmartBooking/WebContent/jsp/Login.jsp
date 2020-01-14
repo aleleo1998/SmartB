@@ -39,12 +39,15 @@
     					<input type="password" id="password" name="password" class="form-control" placeholder="">
   				</div>
   
-  			    
-    				
+  			    <div class="form-check">
+    				<label class="form-check-label">
+      					<input type="checkbox" class="form-check-input">
+      						<small>Remember Me</small>
+    				</label>
     			
     				<button type="submit" id="loginButton" class="btn btn-login float-right">Submit</button>
   				
-  		
+  				</div>
   
 				</form>
 					<div class="copy-text"></div>
@@ -57,7 +60,6 @@
                     	<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
                     	<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
                   	 </ol>
-            
             
             <div class="carousel-inner" role="listbox">
     			<div class="carousel-item active">
