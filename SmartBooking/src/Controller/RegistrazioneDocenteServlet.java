@@ -256,8 +256,8 @@ public class RegistrazioneDocenteServlet extends HttpServlet {
 		
 
 		//*******INVIO EMAIL********//
-			//Invio email con credenziali
-/*			String emailMittente="smartbookingplatform@gmail.com";
+/*			//Invio email con credenziali
+			String emailMittente="smartbookingplatform@gmail.com";
 			String emailDestinatario=email;
 			String subject="Benvenuto Su SmartBooking";
 			
@@ -280,7 +280,7 @@ public class RegistrazioneDocenteServlet extends HttpServlet {
 				//**Cosa fare dopo aver fatto il sendMail***
 			} 
 		
-	*/	
+	*/
 		
 			response.setContentType("text");
 			writer.print(risposta);

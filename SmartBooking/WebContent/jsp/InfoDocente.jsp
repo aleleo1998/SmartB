@@ -20,6 +20,7 @@
 <%@ page import ="java.util.*" %>
 
 <% Model.Docente docente = (Model.Docente) request.getSession().getAttribute("docente"); 
+DisponibilitaModel dism= new DisponibilitaModel();
 
 	String mat;
 	String matRequest = request.getParameter("mat");
@@ -153,8 +154,12 @@ $(document).ready(function(){
                                                 <p id="prenotazioneButton"><input type="submit" value="Invia richiesta"></p>
                                               <% }%>
                                               </form>   
-                                              <%if(tipo==1 && doc){ %>
+                                              <%if(tipo==1 && doc){ 
+                                                 if(dism.checkOrarioDefinito(docente.getMatricola())){%>
                                               <p id="prenotazioneButton"><a id="link" href="richiestaModificaOrario.jsp">Modifica orario</a></p>
+                                              <%} else{%>
+                                              <p id="prenotazioneButton"><a id="link" href="AggiungiOrario.jsp">Aggiungi orario</a></p>
+                                              <%} %>
                                                <p id="prenotazioneButton"><a id="link" href="../visualizzaRicevimentiServlet">Ricevimenti</a></p>
                                               
                                               <%}%>

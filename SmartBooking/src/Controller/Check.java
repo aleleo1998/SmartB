@@ -205,27 +205,35 @@ public class Check {
 	 */
 		public static boolean checkGiorno(String giorno){
 			
-			if(giorno.equalsIgnoreCase("lunedi") || giorno.equalsIgnoreCase("lunedì")){
+			if(giorno.equalsIgnoreCase("lunedi"))
+			{
 				return true;
 			}
+			if(giorno.equalsIgnoreCase("lunedì"))
+			 return true;
 			
-			if(giorno.equalsIgnoreCase("martedi") || giorno.equalsIgnoreCase("martedì")){
+			if(giorno.equalsIgnoreCase("martedi")) {
 				return true;
 			}
+			if(giorno.equalsIgnoreCase("martedì")) return true;
 			
-			if(giorno.equalsIgnoreCase("mercoledi") || giorno.equalsIgnoreCase("mercoledì")){
+			if(giorno.equalsIgnoreCase("mercoledi") ){
 				return true;
 			}
+			if(giorno.equalsIgnoreCase("mercoledì")) return true;
 			
-			if(giorno.equalsIgnoreCase("giovedi") || giorno.equalsIgnoreCase("giovedì")){
+			if(giorno.equalsIgnoreCase("giovedi")){
 				return true;
 			}
+			if(giorno.equalsIgnoreCase("giovedì")) return true;
 			
-			if(giorno.equalsIgnoreCase("venerdi") || giorno.equalsIgnoreCase("venerdì")){
+			if(giorno.equalsIgnoreCase("venerdi")){
 				return true;
 			}
+			if(giorno.equalsIgnoreCase("venerdì")) return true;
 			
-			if(giorno.equalsIgnoreCase("sabato")){
+			if(giorno.equalsIgnoreCase("sabato"))
+			{
 				return true;
 			}
 			

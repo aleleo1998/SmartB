@@ -56,7 +56,8 @@ public class FindServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
+		try
+		{
 		String result = "";
 		
 		System.out.print("\nEntrato in FindServlet");
@@ -74,12 +75,11 @@ public class FindServlet extends HttpServlet {
 		DocenteModel dm = new DocenteModel();
 		Docente d = new Docente();
 		
-		try {
+		
 			d = dm.doRetrieveByNameAndSurname(nome,cognome);
 			System.out.print(d);
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
+		
+		
 		
 		if(d.getMatricola() == null) {  //Se non esiste un docente con quella coppia Nome/Cognome
 			
@@ -98,7 +98,7 @@ public class FindServlet extends HttpServlet {
 		}else {
 			
 			ListaPreferitiModel lpm = new ListaPreferitiModel();
-			try {
+			
 				
 				result = result+"<tr>";
 				result = result+"<th scope=\"row\">";
@@ -152,14 +152,15 @@ public class FindServlet extends HttpServlet {
 				System.out.println(result);
 				
 				
-			}catch(Exception e) {
-				e.printStackTrace();
-			}
+			
 			
 		}  //fine else interno
 		
 		out.append(result);
-		
+		}catch(Exception e)
+		{
+			e.printStackTrace();
+		}
 	}
 
 	/**

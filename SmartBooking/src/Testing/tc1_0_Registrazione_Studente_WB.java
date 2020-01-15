@@ -25,6 +25,7 @@ import org.mockito.Mock;
 
 import Controller.RegistrazioneStudenteServlet;
 import DBConnection.DriverManagerConnectionPool;
+import Model.StudenteModel;
 
 public class tc1_0_Registrazione_Studente_WB {
 	
@@ -44,15 +45,14 @@ RegistrazioneStudenteServlet myServlet;
 		request = mock(HttpServletRequest.class);
 		response = mock(HttpServletResponse.class);
 		session = mock(HttpSession.class);
-		myServlet = new RegistrazioneStudenteServlet();
-		
+		myServlet = new RegistrazioneStudenteServlet(); 
 		
 	}
 	
 	@AfterEach
 	public void afterEachTestCase() throws SQLException {
 		
-		Connection connection = null;
+		/*Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		
 		String deleteSQL = "DELETE FROM ACALE.Studente WHERE matricola = ? OR matricola = ? OR email = ?;";
@@ -67,7 +67,12 @@ RegistrazioneStudenteServlet myServlet;
 		
 		connection.commit();
 		
-		DriverManagerConnectionPool.releaseConnection(connection);
+		DriverManagerConnectionPool.releaseConnection(connection);*/
+		
+		StudenteModel sm = new StudenteModel();
+		sm.doDelete("0512105641");
+		sm.doDelete("0512105642");
+		sm.doDeleteByEmail("c.sorrentino50@studenti.unisa.it");
 		
 	}
 	
@@ -142,7 +147,7 @@ RegistrazioneStudenteServlet myServlet;
 		System.out.println(output.toString());
 		
 		
-		assertEquals("Password non corretta",output.toString().toString());
+		assertEquals("Password non corretta",output.toString());
 	}
 	
 	

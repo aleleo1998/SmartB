@@ -86,45 +86,25 @@ private static final String TABLE_NAME = "Richiesta_modifica_orario";
 		return (result != 0);
 	}
 	
-	
-	/**
-	 * 
-	 * @param order ASC/DESC per ordinare i risultati ottenuti
-	 * @return restituisce una collezione di RichiestaModOrario
-	 * @throws SQLException
-	 */
-	public synchronized Collection<RichiestaModOrario> doRetrieveAll(String order) throws SQLException {
+	public synchronized boolean doDeleteByDoc(String doc) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
-		Collection<RichiestaModOrario> richiesteModOrario = new LinkedList<RichiestaModOrario>();
+		int result = 0;
 
-		String selectSQL = "SELECT * FROM " + RichiestaModOrarioModel.TABLE_NAME;
-
-		if (order != null && !order.equals("")) {
-			selectSQL += " ORDER BY " + order;
-		}
+		String deleteSQL = "DELETE FROM " + RichiestaModOrarioModel.TABLE_NAME + " WHERE matricola_docente = ? ";
 
 		try {
 			connection = DriverManagerConnectionPool.getDbConnection();
-			preparedStatement = connection.prepareStatement(selectSQL);
+			preparedStatement = connection.prepareStatement(deleteSQL);
+			preparedStatement.setString(1, doc);
+			
+			System.out.println(preparedStatement);
 
-			ResultSet rs = preparedStatement.executeQuery();
-
-			while (rs.next()) {
-				RichiestaModOrario bean = new RichiestaModOrario();
-
-				bean.setId(rs.getInt("id"));
-				bean.setMatricolaDocente(rs.getString("matricola_docente"));
-				bean.setMatricolaSegreteria(rs.getString("matricola_segreteria"));
-				bean.setOraInizio(rs.getString("ora_inizio"));
-				bean.setOraFine(rs.getString("ora_fine"));
-				bean.setGiornoPrecedente(rs.getString("giorno_precedente"));
-				bean.setGiorno(rs.getString("giorno"));
-				
-				richiesteModOrario.add(bean);
-			}
-
+			result = preparedStatement.executeUpdate();
+			
+			connection.commit();
+			
 		} finally {
 			try {
 				if (preparedStatement != null)
@@ -133,8 +113,13 @@ private static final String TABLE_NAME = "Richiesta_modifica_orario";
 				DriverManagerConnectionPool.releaseConnection(connection);
 			}
 		}
-		return richiesteModOrario;
+		return (result != 0);
 	}
+	
+	
+	
+	
+	
 	
 	
 	/**
@@ -155,6 +140,42 @@ private static final String TABLE_NAME = "Richiesta_modifica_orario";
 			connection = DriverManagerConnectionPool.getDbConnection();
 			preparedStatement = connection.prepareStatement(selectSQL);
 			preparedStatement.setInt(1, id);
+
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) {
+				bean.setId(rs.getInt("id"));
+				bean.setMatricolaDocente(rs.getString("matricola_docente"));
+				bean.setMatricolaSegreteria(rs.getString("matricola_segreteria"));
+				bean.setOraInizio(rs.getString("ora_inizio"));
+				bean.setOraFine(rs.getString("ora_fine"));
+				bean.setGiornoPrecedente(rs.getString("giorno_precedente"));
+				bean.setGiorno(rs.getString("giorno"));
+			}
+
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				DriverManagerConnectionPool.releaseConnection(connection);
+			}
+		}
+		return bean;
+	}
+	
+	public synchronized RichiestaModOrario doRertiveByDoc(String mat) throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		RichiestaModOrario bean = new RichiestaModOrario();
+
+		String selectSQL = "Select *  FROM " + RichiestaModOrarioModel.TABLE_NAME + " WHERE matricola_docente = ?";
+
+		try {
+			connection = DriverManagerConnectionPool.getDbConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+			preparedStatement.setString(1, mat);
 
 			ResultSet rs = preparedStatement.executeQuery();
 

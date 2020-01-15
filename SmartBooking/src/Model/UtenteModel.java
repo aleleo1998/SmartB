@@ -14,54 +14,14 @@ public class UtenteModel {
 private static final String TABLE_NAME_STUD = "ACALE.Studente";
 private static final String TABLE_NAME_DOC = "ACALE.Docente";
 private static final String TABLE_NAME_SEG = "ACALE.Segreteria";
-	
-	/**
-	 * 
-	 * @param order: ASC/DESC per ordinare i risultati
-	 * @return collezione di docenti trovati
-	 * @throws SQLException
-	 */
-	public synchronized Collection<Utente> doRetrieveAll(String order) throws SQLException {
-		Connection connection = null;
-		PreparedStatement preparedStatement = null;
 
-		Collection<Utente> utenti = new LinkedList<Utente>();
 
-		String selectSQL = "SELECT * FROM " + UtenteModel.TABLE_NAME_STUD + " UNION " + " SELECT * FROM "+ UtenteModel.TABLE_NAME_DOC;
 
-		if (order != null && !order.equals("")) {
-			selectSQL += " ORDER BY " + order;
-		}
 
-		try {
-			connection = DriverManagerConnectionPool.getDbConnection();
-			preparedStatement = connection.prepareStatement(selectSQL);
 
-			ResultSet rs = preparedStatement.executeQuery();
 
-			while (rs.next()) {
-				Utente bean = new Utente();
 
-				bean.setMatricola(rs.getString("matricola"));
-				bean.setNome(rs.getString("nome"));
-				bean.setCognome(rs.getString("cognome"));
-				bean.setPassword(rs.getString("password"));
-				bean.setEmail(rs.getString("email"));
-				
-				utenti.add(bean);
-			}
 
-		} finally {
-			try {
-				if (preparedStatement != null)
-					preparedStatement.close();
-			} finally {
-				DriverManagerConnectionPool.releaseConnection(connection);
-			}
-		}
-		return utenti;
-	}
-	
 
 	/**
 	 * 
@@ -94,42 +54,6 @@ private static final String TABLE_NAME_SEG = "ACALE.Segreteria";
 	 * @return collezione di tutti i docenti
 	 * @throws SQLException
 	 */
-	public synchronized Collection<Utente> doRetrieveAll() throws SQLException {
-		Connection connection = null;
-		PreparedStatement preparedStatement = null;
-
-		Collection<Utente> utenti = new LinkedList<Utente>();
-
-		String selectSQL = "SELECT * FROM " + UtenteModel.TABLE_NAME_STUD + " UNION " + " SELECT * FROM "+ UtenteModel.TABLE_NAME_DOC;
-
-		try {
-			connection = DriverManagerConnectionPool.getDbConnection();
-			preparedStatement = connection.prepareStatement(selectSQL);
-
-			ResultSet rs = preparedStatement.executeQuery();
-
-			while (rs.next()) {
-				Utente bean = new Utente();
-
-				bean.setMatricola(rs.getString("matricola"));
-				bean.setNome(rs.getString("nome"));
-				bean.setCognome(rs.getString("cognome"));
-				bean.setPassword(rs.getString("password"));
-				bean.setEmail(rs.getString("email"));
-				
-				utenti.add(bean);
-			}
-
-		} finally {
-			try {
-				if (preparedStatement != null)
-					preparedStatement.close();
-			} finally {
-				DriverManagerConnectionPool.releaseConnection(connection);
-			}
-		}
-		return utenti;
-	}
 	
 	
 	/**

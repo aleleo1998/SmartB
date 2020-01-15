@@ -45,7 +45,7 @@ RegistrazioneStudenteServlet myServlet;
 	@Mock
 	HttpSession session;
 
-	@BeforeEach
+	@BeforeEach 
 	public void beforeEachTestCase() throws SQLException{
 		request = mock(HttpServletRequest.class);
 		response = mock(HttpServletResponse.class);

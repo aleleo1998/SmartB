@@ -13,7 +13,10 @@
 <meta charset="UTF-8">
 <title>SmartBooking: area segreteria</title>
 <script src="https://kit.fontawesome.com/7606041806.js" crossorigin="anonymous"></script>
-<% Model.Segreteria segreteria = (Segreteria) request.getSession().getAttribute("segreteria"); %>
+<% Model.Segreteria seg = (Segreteria) request.getSession().getAttribute("segreteria"); %>
+<% 
+SegreteriaModel sm = new SegreteriaModel();
+Model.Segreteria segreteria = sm.doRetrieveByKey(seg.getMatricola()); %>
 <% Model.RichiestaModOrarioModel mom = new RichiestaModOrarioModel();
 LinkedList<Model.RichiestaModOrario> orari = (LinkedList<RichiestaModOrario>) mom.doRetrieveAll(); %>
 
@@ -41,6 +44,9 @@ LinkedList<Model.RichiestaModOrario> orari = (LinkedList<RichiestaModOrario>) mo
             <h3><%= segreteria.getNome() %> <%= segreteria.getCognome() %> </h3>
             <h6>Email: <%= segreteria.getEmail() %></h6>
             <h6>Matricola: <%= segreteria.getMatricola() %></h6>
+
+            <h6>Orario di apertura al pubblico: <%=segreteria.getOrari() %></h6>
+
         </div>  
         
 <table class="table table-striped" id="tableRicevimenti">
@@ -75,7 +81,7 @@ LinkedList<Model.RichiestaModOrario> orari = (LinkedList<RichiestaModOrario>) mo
       %>
       <td><p id="docente"><%=d.getNome()%> <%=d.getCognome()%></p></td>
       
-      <td><a href="###"><button><i class="fas fa-angle-double-right"></i></button></a></td>
+      <td><a href="ViewRichiesteModOrarioSeg.jsp"><button><i class="fas fa-angle-double-right"></i></button></a></td>
  	
     </tr>
     
@@ -88,7 +94,7 @@ LinkedList<Model.RichiestaModOrario> orari = (LinkedList<RichiestaModOrario>) mo
 
 
 <a href="ViewRicercaDocenti.jsp"><button id="buttonRicerca">Modifica orario apertura al pubblico</button></a>
-<a href="ViewRicercaDocenti.jsp"><button id="buttonRicerca">Inserisci docente</button></a>
+<a href="RegDocente.jsp"><button id="buttonRicerca">Inserisci docente</button></a>
   
 	</div>
 	</div>
