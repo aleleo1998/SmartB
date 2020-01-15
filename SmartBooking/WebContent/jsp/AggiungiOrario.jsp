@@ -19,8 +19,48 @@
 
 <script>
 //Material Select Initialization
-$(document).ready(function() {
-});
+var numero = 0;
+
+function checkOrario(){
+	
+	
+	
+	
+	var num = numero;
+	var giorni = [];
+	
+	var flag = false;
+	
+	
+	for(var i = 1; i<=num; i++){
+		
+		giorni.push($("#giorno"+i).val());		
+	}
+	
+	console.log(giorni);
+	
+	while(giorni.length != 0){
+		
+		console.log(giorni.length);
+		
+		var giorno = giorni.pop();
+		
+		if(giorni.includes(giorno)){
+			flag = true;
+		}
+		
+	}
+	
+	if(!flag){
+		$("#aggOrario").submit();
+	}else{
+		alert("I giorni non possono essere uguali");
+	}
+	
+
+}
+
+
 
 
 function showForm(){
@@ -37,7 +77,7 @@ function showForm(){
 			'<div class="form-group row">'+
 			'	<label for="inputEmail3" class="col-sm-2 col-form-label">Giorno</label>'+
 			'    <div class="col-sm-10">'+
-			'      <select name="giorno'+i+'" form="aggOrario">'+
+			'      <select name="giorno'+i+'" id="giorno'+i+'" form="aggOrario">'+
 			'		  <option value="lunedi">Lunedì</option>'+
 			'		  <option value="martedi">Martedì</option>'+
 			'		  <option value="mercoledi">Mercoledì</option>'+
@@ -109,19 +149,27 @@ function showForm(){
 	
 	}
 	
-	$( "#aggOrario" ).append('<input type="hidden" name="numOrari" value="'+num+'" />'+
-			'<div class="form-group row">'+
+	$("#aggOrario").append('<input type="hidden" name="numOrari" value="'+num+'" />');
+	
+	$("#aggbutton").append('<div class="form-group row">'+
 			'	<div class="col-sm-10">'+
-			'	<button type="submit" class="btn btn-primary">Aggiungi orario</button>'+
+			'	<button  onClick="checkOrario()" class="btn btn-primary">Aggiungi orario</button>'+
 			'	</div>'+
 			'	</div>');
 	
+	numero = num;
 	
 	$( "#form" ).show("slow");
 	$( "#form2" ).hide("slow");
 	console.log("ciao");
 	
 }
+
+
+
+
+
+
 
 </script>
 
@@ -152,9 +200,15 @@ function showForm(){
 
 
 <div id="form" style="display: none">
+<!-- ../AggiungiOrarioServlet -->
 <form action="../AggiungiOrarioServlet" id="aggOrario" method="POST">
-  
+
 </form>
+
+<div id="aggbutton">
+	
+</div>
+
 </div>
 
 </div>

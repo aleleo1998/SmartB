@@ -69,7 +69,7 @@ function checkMatricola(){
 					alert("Matricola già presente nel database");
 					flag =  0;
 				}else if(result == "1"){
-					alert("result == 1. Matricola non esiste nel database");
+					//alert("result == 1. Matricola non esiste nel database");
 					flag =  1;
 				}else{
 					//alert("Errore.");
