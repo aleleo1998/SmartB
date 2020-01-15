@@ -57,18 +57,36 @@ public class RipristinoPassword extends HttpServlet {
 		PrintWriter writer = response.getWriter();
 		
 		String risposta = "";
+		String risposta2 = "";
 		
 		String email = request.getParameter("email");
 		
 		
 		
 		
+
+		risposta = Check.checkStudenteMail(email);		
+		
 		try {
-			risposta = Check.checkStudenteMail(email);
+			risposta2 = Check.checkMailDocente(email);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}		
+		
+		
+		if(risposta.equals("ok") || risposta2.equals("ok")){
+			
+			risposta = "ok";
+			
+		}else {
+			
+			risposta = "non corretto";
+			
+		}
+		
+		
+
 		if(risposta.equals("ok")) {
 			String risp ="";
 			risp = "L'indirizzo email non esiste nel db";
@@ -85,7 +103,7 @@ public class RipristinoPassword extends HttpServlet {
 		
 		//*******INVIO EMAIL********//
 		//Invio email con credenziali
-		String emailMittente="smartbookingplatform@gmail.com";
+/*		String emailMittente="smartbookingplatform@gmail.com";
 		String emailDestinatario="fasolinolorenzo@gmail.com"; //email;
 		String subject="Benvenuto Su SmartBooking";
 		
@@ -107,7 +125,7 @@ public class RipristinoPassword extends HttpServlet {
 			//**Cosa fare dopo aver fatto il sendMail***
 		} 
 	
-		
+*/		
 		
 		risposta = "email inviato";
 		writer.write(risposta);
