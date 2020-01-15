@@ -45,7 +45,6 @@ $(document).ready(function(){
 function controllo(id)
 {
 	testo=document.getElementById(id).value;
-	alert(testo)
 	if(testo=="")
 		{
 		alert("Devi inserire una motivazione per l'annullamento")
@@ -119,10 +118,11 @@ Collection<Ricevimento> rv =(Collection) request.getSession().getAttribute("rice
     <tbody><% 
     
     String name="nome";
-
+   int i=0;
     String data="";
 for(Ricevimento r : rv)
 	{
+	i++;
 	 data=(r.getData().getDate()+1)+"/"+(r.getData().getMonth()+1)+"/"+(r.getData().getYear()+1900);
 	%><tr>
 	<td><%= r.getId()%></td>
@@ -171,6 +171,7 @@ for(Ricevimento r : rv)
 %>
     </tbody>
     </table>
+    <%if(i!=0){ %>
     <form action="../CancellaGiornataAppServlet" id="genericoi">
     <div id="dataIns" style="text-align:center">
     <input type="date"  id="insertData" name="insertData" onchange="controllo_data()"> <a id="add">Cancella giornata di appuntamento</a>
@@ -186,7 +187,10 @@ for(Ricevimento r : rv)
 
 </div>
 
-<%}else{ %>
+
+<%}%>
+<div style="text-align:center"><h1>Non hai richieste di ricevimento.</h1></div>
+    <% }else{ %>
 
 <h1 style="text-align:center">Non sei autorizzato</h1>
 <%} %>

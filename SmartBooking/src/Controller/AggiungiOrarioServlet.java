@@ -122,7 +122,10 @@ public class AggiungiOrarioServlet extends HttpServlet {
 			
 			try {
 				if(tf)
+				{
 				gestioneOrari.aggiungiFirstOrario(matricolaDocente,giorni,orariInizio,orariFine);
+				response.sendRedirect("./jsp/ConfermaAggOrario.jsp");
+				}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
