@@ -37,6 +37,7 @@ public class RipristinoPassword extends HttpServlet {
 		PrintWriter writer = response.getWriter();
 		
 		String risposta = "";
+		String risposta2 = "";
 		
 		String email = request.getParameter("email");
 		
@@ -44,6 +45,27 @@ public class RipristinoPassword extends HttpServlet {
 		
 		
 		risposta = Check.checkStudenteMail(email);		
+		
+		try {
+			risposta2 = Check.checkMailDocente(email);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
+		
+		
+		if(risposta.equals("ok") || risposta2.equals("ok")){
+			
+			risposta = "ok";
+			
+		}else {
+			
+			risposta = "non corretto";
+			
+		}
+		
+		
+		
 		if(risposta.equals("ok")) {
 			String risp ="";
 			risp = "L'indirizzo email non esiste nel db";
