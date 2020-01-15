@@ -8,7 +8,7 @@ import java.util.LinkedList;
 
 import org.junit.jupiter.api.Test;
 import Model.*;
-class Disponibili√†ModelTesting {
+class Disponibili‡ModelTesting {
 	DisponibilitaModel dm= new DisponibilitaModel();
 	Docente d= new Docente("Nome","Cognome","0512105101","alex","ale@unisa.it","stanza d");
 	DocenteModel dc=new DocenteModel();
