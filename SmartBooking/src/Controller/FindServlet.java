@@ -10,9 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import Model.Docente;
-import Model.DocenteModel;
-import Model.ListaPreferitiModel;
+import Model.*;
 
 /**
  * Servlet richiamata da ViewRicercaDocenti.js in maniera asincrona. Effettua una query sul databse
@@ -58,6 +56,7 @@ public class FindServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		try
 		{
+		Studente s=(Studente) request.getSession().getAttribute("studente");
 		String result = "";
 		
 		System.out.print("\nEntrato in FindServlet");
@@ -110,11 +109,14 @@ public class FindServlet extends HttpServlet {
 				result = result+"<input id=\"matricolaDocente\" style=\"display:none;\" name=\"matricolaDocente\" value=\""+d.getMatricola()+"\"</>";
 				result = result+"<button type=\"submit\" href=\"../visualizzaInfoDocente\"><i class=\"fas fa-info-circle\"></i></button>";
 				result = result+"</form>";
-				result = result+"</td>";
+				result = result+"</td><div id\"divisioneStudente\">";
+				if(s!=null)
+				  {
 				result = result+"<td>";
+				
 				result = result+"<form name=\"form\" action=\"../addDocenteListaPreferiti\">";
 				result = result+"<input id=\"matricolaDocente\" style=\"display:none;\" name=\"matricolaDocente\" value=\""+d.getMatricola()+"\"</>";
-			
+			  
 				if(lpm.existIntoDB(d.getMatricola(),(String) request.getSession().getAttribute("Utente"))) {  //Se esiste una corrispondenza docente studente
 																									//il docente è nella lista preferiti dello studente
 					result = result+"<button name=\"add\" id=\"addButton"+d.getMatricola()+"\" class=\"addButton\" disabled><i class=\"fas fa-user-plus\"></i></button>";
@@ -123,7 +125,7 @@ public class FindServlet extends HttpServlet {
 					result = result+"<td>";
 					result = result+"<form name=\"form\" action=\"../removeDocenteListaPreferiti\">";
 					result = result+"<input id=\"matricolaDocente\" style=\"display:none;\" name=\"matricolaDocente\" value=\""+d.getMatricola()+"\"</>";
-					result = result+"<button name=\"remove\" id=\"removeButton"+d.getMatricola()+"\" class=\"removeButton\"><i class=\"fas fa-user-plus\"></i></button>";
+			   	result = result+"<button name=\"remove\" id=\"removeButton"+d.getMatricola()+"\" class=\"removeButton\"><i class=\"fas fa-user-plus\"></i></button>";
 				}else {
 					result = result+"<button name=\"add\" id=\"addButton"+d.getMatricola()+"\" class=\"addButton\"><i class=\"fas fa-user-plus\"></i></button>";
 					result = result+"</form>";
@@ -136,14 +138,18 @@ public class FindServlet extends HttpServlet {
 				
 				result = result+"</form>";
 				result = result+"</td>";
-				result = result+"<td>";
-	    		result = result+"<form name=\"form\" action=\"############\">";
+				  }
+				result = result+"<td id=\"studente\">";
+				  
+	    		result = result+"<form name=\"form\" action=\"../VisualizzaOrariDocente\">";
 	    		result = result+"<input id=\"matricolaDocente\" style=\"display:none;\" name=\"matricolaDocente\" value=\""+d.getMatricola()+"\"/>";
-	    		result = result+"<button name=\"prenota\" id=\"prenota"+d.getMatricola()+"\" class=\"prenotaButton\">Prenota</button>"; 
+	    		result = result+"<button name=\"prenota\" id=\"prenota"+d.getMatricola()+"\" class=\"prenotaButton\">Visualizza orario</button>"; 
 	      		result = result+"</form>";
 	      		result = result+"</td>";
-				result = result+"</tr>";
+				result = result+"</tr></div>";
+				
 				result = result+"<tr>";
+				
 				result = result+"<td>";
 				result = result+"<a id=\"link\" href=\"../jsp/ViewRicercaDocenti.jsp\" ><p id=\"all\">Visualizza tutti i docenti</p></a>";
 				result = result+"</td>";

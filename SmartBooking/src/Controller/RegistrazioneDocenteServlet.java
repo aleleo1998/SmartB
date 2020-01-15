@@ -154,7 +154,7 @@ public class RegistrazioneDocenteServlet extends HttpServlet {
 					risposta="Nome non corretto";
 				}
 				
-				
+				response.sendRedirect("./jsp/ConfermaRegDocente.jsp");
 				
 				
 				

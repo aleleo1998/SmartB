@@ -248,12 +248,12 @@ private static final String TABLE_NAME = "Disponibilità ";
 			}
 
 		} finally {
-			try {
+			 
 				if (preparedStatement != null)
 					preparedStatement.close();
-			} finally {
+		
 				DriverManagerConnectionPool.releaseConnection(connection);
-			}
+			
 		}
 		
 	}

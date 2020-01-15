@@ -4,9 +4,14 @@
 
 $(document).ready(function(){
 	
+	
+	
+	
+	
 	$("#searchButton").click(function(){
 		var docente = $("#nameDoc").val();
-		
+		var tipo=$("#tipo").val();
+	
 		$.ajax({            //AJAX CON JQUERY
 			type : 'Post',   //TIPO DI CHIAMATA
 			data : {docente : docente},  //COPPIE NOME-VALORE DA PASSARE ALLA SERVLET
@@ -14,7 +19,7 @@ $(document).ready(function(){
 			success : function resultServlet(result) {  //FUNZIONE DA ESEGUIRE IN CASO DI SUCCESSO
 				
 					$("#tbody").html(result);
-			
+					
 			}
 			
 		}); /*fine ajax*/

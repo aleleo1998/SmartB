@@ -93,7 +93,7 @@ LinkedList<Model.RichiestaModOrario> orari = (LinkedList<RichiestaModOrario>) mo
 
 
 
-<a href="ViewRicercaDocenti.jsp"><button id="buttonRicerca">Modifica orario apertura al pubblico</button></a>
+
 <a href="RegDocente.jsp"><button id="buttonRicerca">Inserisci docente</button></a>
   
 	</div>

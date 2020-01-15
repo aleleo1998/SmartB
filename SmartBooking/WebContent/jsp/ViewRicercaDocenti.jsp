@@ -20,6 +20,7 @@
 <%
 DocenteModel m = new DocenteModel();
 LinkedList<Docente> list = (LinkedList<Docente>) m.doRetrieveAll(); 
+
 %>
 </head>
 <body>
@@ -27,8 +28,18 @@ LinkedList<Docente> list = (LinkedList<Docente>) m.doRetrieveAll();
 <div id="menu">
 	<%@include file="menu.jsp"%>
 </div>
+<%if(tipo!=2){ %>
+<script>
+$(document).ready(function(){
+	$(".removeButton").hide();
+	$(".addButton").hide();
+	
+	
+});
 
-<%if(tipo!=0){ %>
+</script>
+
+<%}if(tipo!=0){ %>
 
 <div id="container">
 
@@ -42,6 +53,7 @@ LinkedList<Docente> list = (LinkedList<Docente>) m.doRetrieveAll();
 	<a id="searchButton" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
   <input class="form-control form-control-sm ml-3 w-75" id="nameDoc" type="text" placeholder="Cognome* Nome*"
     aria-label="Search">
+    
 </form>
 
 
@@ -54,9 +66,12 @@ LinkedList<Docente> list = (LinkedList<Docente>) m.doRetrieveAll();
       <th scope="col">Docente</th>
       <th scope="col">Ufficio</th>
       <th scope="col">Informazioni docente</th>
+      <%if(tipo==2){ %>
       <th scope="col">Aggiungi ai miei docenti</th>
       <th scope="col">Rimuovi dai miei docenti</th>
-      <th scope="col">Richiedi incontro</th>
+         <%} %>
+      <th scope="col">Visualizza orari</th>
+   
     </tr>
   </thead>
   <tbody id="tbody">
@@ -75,7 +90,8 @@ LinkedList<Docente> list = (LinkedList<Docente>) m.doRetrieveAll();
       	<button type="submit" href="InfoDocente.jsp?mat=<%=d.getMatricola()%>"><i class="fas fa-info-circle"></i></button>
       	</form>	
       </td>
- 	
+ 	<%if(tipo==2) {%>
+ 	<div id="divisoneStudente">
       	<td>
       		<form name="form" action="../addDocenteListaPreferiti">
     			<input id="matricolaDocente" style="display:none;" name="matricolaDocente" value="<%=d.getMatricola()%>"/>
@@ -90,13 +106,16 @@ LinkedList<Docente> list = (LinkedList<Docente>) m.doRetrieveAll();
       			<button name="remove" id=<%="removeButton"+d.getMatricola()%> class="removeButton"><i id="rmvIcon" class="fas fa-user-minus"></i></button>  <!-- Rimuovi docente icon -->
       		</form>
      	</td> 
+     	<%} %>
      	<td>
     		<form name="form" action="../VisualizzaOrariDocente">
     			<input id="matricolaDocente" style="display:none;" name="matricolaDocente" value="<%=d.getMatricola()%>"/>
     		
-      			<button name="prenota" id=<%="prenota"+d.getMatricola()%> class="prenotaButton">Visualizza orari</button> 
+      			<button  name="prenota" id=<%="prenota"+d.getMatricola()%> class="prenotaButton">Visualizza orari</button> 
       		</form>
     	</td>
+    	</div>
+    	
     </tr>
     
     <% } %>

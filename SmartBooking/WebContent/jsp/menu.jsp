@@ -142,7 +142,7 @@
 		                </li>
 		                
 		                <li class="nav-item">
-                        <a class="nav-link" href="FormInserimentoDocente.jsp">Registrazione docente</a>
+                        <a class="nav-link" href="RegDocente.jsp">Registrazione docente</a>
                         </li>
                         
                          <li class="nav-item">

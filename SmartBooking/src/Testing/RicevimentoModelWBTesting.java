@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -87,7 +88,7 @@ static Docente doc = new Docente("Alfredo", "Raimondo", "0512105214", "12345678"
 		
 		System.out.println(r.getStato());
 		
-		assertEquals(r.getStato(),"acc");
+		assertEquals(r.getStato(),"no");
 	}
 	
 	@Test
@@ -147,15 +148,34 @@ static Docente doc = new Docente("Alfredo", "Raimondo", "0512105214", "12345678"
 		
 		LinkedList<Ricevimento> ricevimenti = (LinkedList<Ricevimento>) rm.doRetrieveAll(); 
 		System.out.println("SSSS"+ricevimenti.size());
-		int i=0;
-		for(Ricevimento r : ricevimenti){
-			if(!r.getMatDocente().equals("0512105214")){
-				ricevimenti.remove(r);
-			}
-		}
 		
+		
+		
+		
+		 Connection connection = null;
+			PreparedStatement preparedStatement = null;
+			
+			
+			String countSQL = "SELECT * FROM ACALE.Ricevimento";
+			
+			connection = DriverManagerConnectionPool.getDbConnection();
+			preparedStatement = connection.prepareStatement(countSQL);
+			
+			
+			
+			ResultSet rs = preparedStatement.executeQuery();
+			
+			DriverManagerConnectionPool.releaseConnection(connection);
+			int num = 0;
+			while(rs.next()){
+			 num = rs.getRow()-1;
+				
+			}
+			
+		
+		System.out.println("NUM:"+num);
 	
-		assertEquals(ricevimenti.size(),1);
+		assertEquals(ricevimenti.size(),num);
 	}
 	
 	
