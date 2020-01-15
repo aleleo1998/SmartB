@@ -17,6 +17,16 @@
 <div id="menu">
 		<%@include file="menu.jsp"%>
 	</div>
+	
+	<% 
+		if(tipo==1){
+			response.sendRedirect("InfoDocente.jsp?mat="+utente.getMatricola()); 
+		}else if(tipo==2){
+			response.sendRedirect("ProfiloStudente.jsp"); 
+		}else if(tipo==3){
+			response.sendRedirect("ProfiloSegreteria.jsp"); 
+		}
+	%>
 
 <div id="container">
 

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
- pageEncoding="UTF-8"%>
+ pageEncoding="UTF-8" import="Model.*" import="java.util.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,11 +14,27 @@
 <link rel="stylesheet" href="../css/Login.css">
 </head>
 <body>
+
+
 <div id="menu">
 	<%@include file="menu.jsp"%>
 </div>
 
 <%if(tipo==1){ %>
+
+<%
+	DisponibilitaModel dm = new DisponibilitaModel();
+
+	LinkedList<Disponibilita> disp = (LinkedList<Disponibilita>) dm.doRetrieveByKey(utente.getMatricola());
+	
+	ArrayList<String> giorni = new ArrayList<String>();
+	
+	for(Disponibilita d : disp){
+		if(!giorni.contains(d.getGiorno())){
+			giorni.add(d.getGiorno());
+		}
+	}
+%>
 
 <div id="container">
 
@@ -90,11 +106,15 @@
   <div class="form-group">
     <label for="exampleFormControlSelect1">Giorno Precedente</label>
     <select name = "giornoVecchio" class="form-control" form = "creaRichiesta">
-    					<option value="lunedi">Lunedì</option>
+    
+    			<%for(String s : giorni){ %>
+    				<option value="<%=s%>"><%=s%></option>
+    			<%} %>
+    					<!--  <option value="lunedi">Lunedì</option>
     					<option value="martedi">Martedì</option>
 					  <option value="mercoledi">Mercoledì</option>
 					  <option value="giovedi">Giovedì</option>
-					  <option value="venerdi">Venerdì</option>
+					  <option value="venerdi">Venerdì</option>-->
     </select>
   </div>
   

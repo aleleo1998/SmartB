@@ -78,7 +78,7 @@ public class LoginServlet extends HttpServlet {
 				out.write("Docente");
 				request.getSession().setAttribute("docente", (Docente) utente);
 			
-				response.sendRedirect("./jsp/index.jsp");  //profilo docente
+				response.sendRedirect("./jsp/InfoDocente.jsp?mat="+utente.getMatricola());  //profilo docente
 			}else if(utente instanceof Model.Studente) {
 				
 				out.write("Studente"); 
